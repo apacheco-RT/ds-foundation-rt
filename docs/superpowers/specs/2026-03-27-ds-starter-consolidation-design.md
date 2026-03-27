@@ -1,7 +1,7 @@
 # Design Spec: DS Starter — Living Design System + Project Template
 
 **Date:** 2026-03-27
-**Status:** Approved for implementation
+**Status:** Ready for review
 **Author:** Alex Pacheco + Claude
 
 ---
@@ -68,9 +68,16 @@ Starter/  (canonical team repo)
 └── turbo.json          — Turborepo build orchestration
 ```
 
-### Published npm Packages
+### Package Registry
 
-These packages are published from the monorepo and consumed by projects:
+**Publishing target:** GitHub Packages under the `@ds` scope. Projects add the following to their `.npmrc` to resolve `@ds/*` packages:
+
+```
+@ds:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
+
+Auth uses `GITHUB_TOKEN` (available automatically in GitHub Actions; developers authenticate once with `npm login --registry https://npm.pkg.github.com`).
 
 | Package | Contents | Semver policy |
 |---------|----------|---------------|
@@ -86,32 +93,35 @@ A ready-to-run Next.js 15 application with:
 - **Tailwind v4** — pre-configured to import `@ds/tokens` preset
 - **CLAUDE.md** — pre-loaded with design system rules (check registry, use `var(--ds-*)` tokens, implement ARIA, wrap Radix primitives)
 - **Skills/** — populated with ds-foundation skills (component-generation, token-resolution, registry-validation, accessibility-audit)
-- **MCP config** — Claude settings pointing to `localhost:3100` for live registry context
-- **`@ds/tokens`, `@ds/core`, `@ds/registry`** — pre-installed in package.json
+- **MCP config** — Claude settings pointing to the MCP server. Port is configurable via `DS_MCP_PORT` env var (default: `3100`). Teams running the MCP server locally must match this port or set the env var.
+- **`@ds/tokens`, `@ds/core`, `@ds/registry`** — pre-installed in package.json with `.npmrc` pre-configured for GitHub Packages
 
 ---
 
 ## Contribution Workflow
 
-### Developer/Designer → Design System
+### Developer → Design System
 
-1. **Build locally** — Developer or designer creates a new component or pattern in their project
+1. **Build locally** — Developer creates a new component or pattern in their project
 2. **Open PR** — Submits PR to Starter repo adding:
    - Component spec in `packages/registry/` (MDX file: variants, states, ARIA, token usage, Tailwind mappings)
    - Story in `apps/storybook/` for visual review
 3. **CI validates automatically** — `validate:registry` runs on PR, checks for hardcoded values, missing ARIA, schema compliance. Fails fast before human review
-4. **Storybook preview deploys** — PR branch auto-deploys Storybook so design team can interact with the component rendered in light/dark modes and density scales, without reading code
+4. **Chromatic preview deploys** — PR branch auto-deploys Storybook to Chromatic so design team can interact with the component rendered in light/dark modes and density scales, without reading code. Chromatic is already a devDependency in `apps/storybook/`
 5. **Design team reviews** — Checks: correct token usage, pattern consistency, accessibility, whether it belongs in the shared library
-6. **Merged** — Changesets handles versioning automatically (patch/minor/major based on change type)
-7. **Published** — CI publishes updated `@ds/*` packages
+6. **Merged** — Changesets handles versioning (patch/minor/major based on change type)
+7. **Published** — CI publishes updated `@ds/*` packages to GitHub Packages
 8. **Projects update** — `npm update @ds/registry` (and other packages as needed) — each project updates on its own schedule
 
-### Figma → Design System (Designer path)
+### Designer → Design System (v1: manual with GitHub issue template)
 
-Designers don't write MDX or open PRs manually. The `publish-figma-connect.mjs` script bridges the gap:
-- Designer proposes component in Figma
-- Script generates the registry spec and opens a PR automatically
-- Same review flow from step 4 onward
+For v1, the designer contribution path is manual. Automated Figma-to-PR generation is post-v1.
+
+1. **Designer files a GitHub issue** using a component proposal template (Name, description, Figma link, intended variants, usage context)
+2. **A developer picks it up** and opens the PR as in the developer path above, referencing the issue
+3. **Same review flow** from step 4 onward
+
+The `publish-figma-connect.mjs` script in ds-foundation handles Figma Code Connect bindings (keeping Figma components linked to their code counterparts). Full automation of spec generation from Figma is a post-v1 investment.
 
 ---
 
@@ -119,23 +129,23 @@ Designers don't write MDX or open PRs manually. The `publish-figma-connect.mjs` 
 
 1. Use Starter as a **GitHub Template** — one click creates a new repo pre-populated with `template/` contents
 2. Clone the new repo
-3. Fill in `.env` (database URL, auth secrets)
+3. Fill in `.env` (database URL, auth secrets, `DS_MCP_PORT` if not using default 3100)
 4. Run `npm install && npm run dev`
 5. Design system tokens, Claude rules, skills, and MCP config are all present from the first commit
 
-No configuration of the design system is required. Tailwind, tokens, CLAUDE.md, and the MCP server config are pre-wired in the template.
+No design system configuration required. Tailwind, tokens, CLAUDE.md, and MCP config are pre-wired.
 
 ---
 
 ## How Projects Stay Current
 
-Projects consume `@ds/*` as npm dependencies. To pull the latest components and tokens:
+Projects consume `@ds/*` as npm dependencies from GitHub Packages. To pull the latest components and tokens:
 
 ```bash
 npm update @ds/tokens @ds/core @ds/registry
 ```
 
-Version changes follow semver. Breaking changes (token renames, interface changes) are major version bumps and require a deliberate upgrade decision. New components and tokens are minor bumps — safe to auto-update.
+Version changes follow semver. Breaking changes (token renames, interface changes) are major bumps — require a deliberate upgrade decision. New components and tokens are minor bumps — safe to pull freely.
 
 ---
 
@@ -143,15 +153,15 @@ Version changes follow semver. Breaking changes (token renames, interface change
 
 A `docs/how-to-guide.md` ships as part of the repo covering:
 - What this repo is and how it relates to projects
-- Step-by-step: start a new project from the template
+- Step-by-step: start a new project from the template (including GitHub Packages auth setup)
 - Step-by-step: contribute a new component (developer path)
-- Step-by-step: contribute a new component (designer/Figma path)
-- How the design team reviews and approves contributions
+- Step-by-step: propose a new component (designer path — GitHub issue template)
+- How the design team reviews and approves contributions via Chromatic
 - How to update `@ds/*` packages in an existing project
-- Token usage reference (how to use `var(--ds-*)`, when to use semantic vs primitive tokens)
-- MCP server setup (for Claude Code users)
+- Token usage reference (`var(--ds-*)`, semantic vs primitive tokens)
+- MCP server setup for Claude Code users
 
-The guide is written for team members with no prior knowledge of the system.
+Written for team members with no prior knowledge of the system.
 
 ---
 
@@ -159,46 +169,47 @@ The guide is written for team members with no prior knowledge of the system.
 
 | Trigger | Pipeline |
 |---------|----------|
-| PR opened | `validate:tokens`, `validate:registry`, Storybook preview deploy |
-| Merge to main | Full build, Changesets version bump, npm publish |
+| PR opened | `validate:tokens`, `validate:registry`, Chromatic Storybook preview deploy |
+| Merge to main | Full build, Changesets version bump, publish to GitHub Packages |
 | Scheduled (weekly) | `npm audit`, token drift check |
 
-**Tools:** GitHub Actions, Changesets, Turborepo remote cache (optional)
+**Tools:** GitHub Actions, Changesets, Chromatic, Turborepo
 
 ---
 
 ## Phase Plan
 
 ### Phase 1 — Build on ds-foundation-rt (current repo)
-- Add `template/` — Next.js 15 app with Auth.js, Prisma, Tailwind + tokens, CLAUDE.md, Skills
-- Add `.github/workflows/` — CI validate, build, publish pipelines
-- Add `.github/PULL_REQUEST_TEMPLATE/` — component contribution PR template
+- Add `template/` — Next.js 15 app with Auth.js, Prisma, Tailwind + `@ds/tokens`, CLAUDE.md, Skills, `.npmrc` pre-configured for GitHub Packages
 - Configure Changesets for versioning
+- Add `.github/workflows/` — CI validate, Chromatic deploy, build, publish to GitHub Packages
+- Add `.github/PULL_REQUEST_TEMPLATE/` — component contribution PR template
+- Add `.github/ISSUE_TEMPLATE/` — component proposal template for designers
 - Add `docs/how-to-guide.md`
-- Publish `@ds/tokens`, `@ds/core`, `@ds/registry` to npm (or GitHub Packages)
-- Wire template to consume published packages
+- Publish initial `@ds/tokens`, `@ds/core`, `@ds/registry` to GitHub Packages
+- Wire template's `package.json` to consume published packages
 
 ### Phase 2 — Migrate into Starter repo
-- Move all of ds-foundation-rt into `mlawless-eng/Starter` (preserve git history via `git subtree` or similar)
+- Merge ds-foundation-rt history into `mlawless-eng/Starter` using `git subtree add` (preserves full commit history; cleaner than filter-repo for an additive merge of one repo into another)
 - Update GitHub Template flag on Starter repo
-- Redirect ds-foundation-rt with archive notice
-- Update all internal references
+- Archive ds-foundation-rt with a redirect notice pointing to Starter
+- Update all internal references (CLAUDE.md paths, CI env vars, package registry scope)
 
 ---
 
 ## What Is Explicitly Out of Scope
 
-- Multi-tenant or external-facing package publishing (v1 is internal only)
-- Automated Figma sync beyond what `publish-figma-connect.mjs` already handles
+- Multi-tenant or external-facing package publishing (v1 is internal/GitHub Packages only)
+- Automated Figma-to-PR spec generation (v1 designer path is a GitHub issue → developer PR)
 - A custom CLI (GitHub Template + npm packages is sufficient for v1)
 - White-label token override system (planned in ds-foundation architecture, deferred to post-v1)
-- Component implementation code in the registry (v1 registry contains specs and mappings only — implementation lives in consumer projects or a future `@ds/components` package)
+- Component implementation code in the registry (v1 contains specs and mappings only — implementation lives in consumer projects or a future `@ds/components` package)
 
 ---
 
 ## Success Criteria
 
-- A developer with no prior context can start a new project from the template in under 10 minutes
-- A component contribution PR can be reviewed by the design team without reading any code
+- A developer with no prior context can start a new project from the template in under 10 minutes, measured by timing the process end-to-end from template click to `npm run dev` serving a page
+- A component contribution PR can be reviewed and approved by the design team using only the Chromatic preview and PR description — no code reading required
 - All `@ds/*` package consumers can update to the latest components and tokens with a single `npm update` command
-- The how-to guide is self-sufficient — no tribal knowledge required to use the system
+- A team member unfamiliar with the system completes the new-project flow using only `docs/how-to-guide.md`, without asking for help — validated by testing with one team member before the guide ships
