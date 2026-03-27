@@ -22,6 +22,8 @@ The design system registry defines all approved components, their variants, ARIA
 - MCP server: `localhost:${DS_MCP_PORT|3100}` — query for live component context
 - Skills: `./Skills/` directory contains component-generation, token-resolution, registry-validation, accessibility-audit guides
 
+> **MCP setup note:** `.claude/settings.json` is pre-configured for use alongside the ds-foundation monorepo (paths are relative to `template/`). If you are using this project standalone (not inside the monorepo), update the `args` and `DS_REGISTRY` paths in `.claude/settings.json` to point to wherever `ds-server` is installed. See `docs/how-to-guide.md` in the source repo for setup instructions.
+
 ## Rules
 1. **Check the registry first.** Before building any UI element, check if a component exists in the registry via the MCP server (`get_component`) or Skills.
 2. **Never hardcode values.** Use only semantic CSS custom properties: `var(--ds-color-brand-primary)`, `var(--ds-spacing-4)`, etc. Never hex, never raw px where tokens exist.

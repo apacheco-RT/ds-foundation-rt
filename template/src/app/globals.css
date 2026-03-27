@@ -9,10 +9,3 @@
 
 /* Dark theme token overrides — activated via data-theme="dark" on <html> */
 @import "@ds/tokens/css/dark" layer(theme-dark);
-
-/* Apply dark theme overrides when data-theme="dark" is set on <html> */
-@layer theme-dark {
-  [data-theme="dark"] {
-    /* Dark theme variables are scoped here via the imported dark CSS */
-  }
-}
