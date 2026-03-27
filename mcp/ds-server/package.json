@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "description": "MCP server exposing the design system registry as agent tools",
   "type": "module",
-  "bin": { "@ds/mcp-server": "./src/index.ts" },
+  "bin": {
+    "@ds/mcp-server": "./src/index.ts"
+  },
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
@@ -15,8 +17,9 @@
     "zod": "^3.23.0"
   },
   "devDependencies": {
-    "typescript": "^5.7.0",
+    "@types/node": "^25.5.0",
+    "rimraf": "^6.0.0",
     "tsx": "^4.19.0",
-    "rimraf": "^6.0.0"
+    "typescript": "^5.7.0"
   }
 }

@@ -11,18 +11,19 @@
     "clean": "rimraf .next out"
   },
   "dependencies": {
+    "@ds/registry": "*",
+    "@ds/tokens": "*",
     "next": "^15.0.0",
     "nextra": "^3.0.0",
     "nextra-theme-docs": "^3.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "@ds/tokens": "*",
-    "@ds/registry": "*"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.7.0",
-    "rimraf": "^6.0.0",
+    "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
-    "@types/node": "^22.0.0"
+    "critters": "^0.0.23",
+    "rimraf": "^6.0.0",
+    "typescript": "^5.7.0"
   }
 }
