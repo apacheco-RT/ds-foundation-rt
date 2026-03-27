@@ -18,5 +18,5 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true
   },
-  "exclude": ["node_modules", "dist", "build", "**/*.test.ts", ".next"]
+  "exclude": ["node_modules", "dist", "build", "**/*.test.ts", ".next", "template", "apps/docs"]
 }

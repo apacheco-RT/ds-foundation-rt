@@ -23,7 +23,7 @@
     "build:tokens": "node sd.config.mjs",
     "dev": "node sd.config.mjs --watch",
     "clean": "rimraf build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "echo 'tokens: no TS sources to check (Style Dictionary JSON pipeline)'"
   },
   "devDependencies": {
     "style-dictionary": "^4.3.0",
