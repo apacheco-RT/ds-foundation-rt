@@ -1,0 +1,12 @@
+# @ds/registry
+
+## 0.2.0
+
+### Minor Changes
+
+- ce5edd4: Phase 1 complete — GitHub Packages publishing, CI, project template
+
+### Patch Changes
+
+- Updated dependencies [ce5edd4]
+  - @ds/tokens@0.2.0

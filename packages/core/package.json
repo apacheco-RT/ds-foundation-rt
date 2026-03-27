@@ -1,6 +1,6 @@
 {
   "name": "@ds/core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Framework-agnostic adapter types, token contracts, and utility functions",
   "type": "module",
   "main": "./dist/index.js",
@@ -27,7 +27,9 @@
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
   },
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",

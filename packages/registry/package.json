@@ -1,6 +1,6 @@
 {
   "name": "@ds/registry",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Component registry — JSON schemas, MDX specs, Velite pipeline",
   "type": "module",
   "main": "./registry.json",
@@ -11,7 +11,10 @@
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
   },
-  "files": ["registry.json", "schemas/"],
+  "files": [
+    "registry.json",
+    "schemas/"
+  ],
   "scripts": {
     "build": "velite build",
     "dev": "velite dev",
