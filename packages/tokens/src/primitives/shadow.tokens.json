@@ -1,0 +1,14 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Elevation/shadow scale — DTCG 2025.10 shadow composite type.",
+  "shadow": {
+    "$type": "shadow",
+    "none": { "$value": { "color": { "colorSpace": "srgb", "components": [0,0,0], "alpha": 0, "hex": "#000000" }, "offsetX": { "value": 0, "unit": "px" }, "offsetY": { "value": 0, "unit": "px" }, "blur": { "value": 0, "unit": "px" }, "spread": { "value": 0, "unit": "px" } } },
+    "xs":   { "$value": { "color": { "colorSpace": "srgb", "components": [0,0,0], "alpha": 0.05, "hex": "#000000" }, "offsetX": { "value": 0, "unit": "px" }, "offsetY": { "value": 1, "unit": "px" }, "blur": { "value": 2, "unit": "px" }, "spread": { "value": 0, "unit": "px" } } },
+    "sm":   { "$value": { "color": { "colorSpace": "srgb", "components": [0,0,0], "alpha": 0.07, "hex": "#000000" }, "offsetX": { "value": 0, "unit": "px" }, "offsetY": { "value": 1, "unit": "px" }, "blur": { "value": 3, "unit": "px" }, "spread": { "value": 0, "unit": "px" } } },
+    "md":   { "$value": { "color": { "colorSpace": "srgb", "components": [0,0,0], "alpha": 0.10, "hex": "#000000" }, "offsetX": { "value": 0, "unit": "px" }, "offsetY": { "value": 4, "unit": "px" }, "blur": { "value": 6, "unit": "px" }, "spread": { "value": -1, "unit": "px" } } },
+    "lg":   { "$value": { "color": { "colorSpace": "srgb", "components": [0,0,0], "alpha": 0.10, "hex": "#000000" }, "offsetX": { "value": 0, "unit": "px" }, "offsetY": { "value": 10, "unit": "px" }, "blur": { "value": 15, "unit": "px" }, "spread": { "value": -3, "unit": "px" } } },
+    "xl":   { "$value": { "color": { "colorSpace": "srgb", "components": [0,0,0], "alpha": 0.10, "hex": "#000000" }, "offsetX": { "value": 0, "unit": "px" }, "offsetY": { "value": 20, "unit": "px" }, "blur": { "value": 25, "unit": "px" }, "spread": { "value": -5, "unit": "px" } } },
+    "2xl":  { "$value": { "color": { "colorSpace": "srgb", "components": [0,0,0], "alpha": 0.25, "hex": "#000000" }, "offsetX": { "value": 0, "unit": "px" }, "offsetY": { "value": 25, "unit": "px" }, "blur": { "value": 50, "unit": "px" }, "spread": { "value": -12, "unit": "px" } } }
+  }
+}

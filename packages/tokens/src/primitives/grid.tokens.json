@@ -1,0 +1,56 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Layout grid primitives — columns, gutters, breakpoints, max-widths, z-index.",
+  "grid": {
+    "columns": {
+      "$type": "number",
+      "xs":  { "$value": 4 },
+      "sm":  { "$value": 4 },
+      "md":  { "$value": 8 },
+      "lg":  { "$value": 12 },
+      "xl":  { "$value": 12 },
+      "2xl": { "$value": 12 }
+    },
+    "gutter": {
+      "$type": "dimension",
+      "xs":  { "$value": { "value": 1,   "unit": "rem" } },
+      "sm":  { "$value": { "value": 1,   "unit": "rem" } },
+      "md":  { "$value": { "value": 1.5, "unit": "rem" } },
+      "lg":  { "$value": { "value": 2,   "unit": "rem" } },
+      "xl":  { "$value": { "value": 2,   "unit": "rem" } },
+      "2xl": { "$value": { "value": 2.5, "unit": "rem" } }
+    },
+    "breakpoint": {
+      "$type": "dimension",
+      "xs":  { "$value": { "value": 0,    "unit": "px" } },
+      "sm":  { "$value": { "value": 480,  "unit": "px" } },
+      "md":  { "$value": { "value": 768,  "unit": "px" } },
+      "lg":  { "$value": { "value": 1024, "unit": "px" } },
+      "xl":  { "$value": { "value": 1280, "unit": "px" } },
+      "2xl": { "$value": { "value": 1536, "unit": "px" } }
+    },
+    "max-width": {
+      "$type": "dimension",
+      "sm":   { "$value": { "value": 640,  "unit": "px" } },
+      "md":   { "$value": { "value": 768,  "unit": "px" } },
+      "lg":   { "$value": { "value": 1024, "unit": "px" } },
+      "xl":   { "$value": { "value": 1280, "unit": "px" } },
+      "2xl":  { "$value": { "value": 1536, "unit": "px" } },
+      "full": { "$value": { "value": 100,  "unit": "%" } },
+      "prose":{ "$value": { "value": 65,   "unit": "ch" } }
+    }
+  },
+  "z-index": {
+    "$type": "number",
+    "below":    { "$value": -1 },
+    "base":     { "$value": 0 },
+    "raised":   { "$value": 10 },
+    "dropdown": { "$value": 100 },
+    "sticky":   { "$value": 200 },
+    "overlay":  { "$value": 300 },
+    "modal":    { "$value": 400 },
+    "popover":  { "$value": 500 },
+    "toast":    { "$value": 600 },
+    "max":      { "$value": 9999 }
+  }
+}

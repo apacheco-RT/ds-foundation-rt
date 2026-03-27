@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ds-foundation.dev/schema/v1/registry.json",
+  "name": "DS Foundation Registry",
+  "version": "0.1.0",
+  "spec": "DTCG-2025.10",
+  "namespace": "ds",
+  "description": "Root registry manifest. Machine-readable index of all components and foundations.",
+  "components": [],
+  "foundations": [],
+  "$extensions": {
+    "com.ds.pipeline": "velite",
+    "com.ds.aiContext": ".claude/registry-context/registry.json",
+    "com.ds.mcpServer": "localhost:3100"
+  }
+}

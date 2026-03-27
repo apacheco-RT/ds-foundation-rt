@@ -1,0 +1,25 @@
+name: Sync tokens to Figma
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/tokens/src/**/*.tokens.json'
+
+jobs:
+  sync:
+    name: Push token changes to Figma variables
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - name: Sync to Figma via Tokens Studio
+        uses: tokens-studio/figma-sync-action@v1
+        with:
+          figma-token: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          token-path: packages/tokens/src

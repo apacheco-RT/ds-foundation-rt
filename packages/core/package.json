@@ -1,0 +1,22 @@
+{
+  "name": "@ds/core",
+  "version": "0.1.0",
+  "description": "Framework-agnostic adapter types, token contracts, and utility functions",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./adapter": "./src/adapter/index.ts",
+    "./tokens": "./src/tokens/index.ts",
+    "./types": "./src/types/index.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "rimraf": "^6.0.0"
+  }
+}

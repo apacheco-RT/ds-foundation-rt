@@ -1,0 +1,36 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "*.config.*", "tsconfig.json"],
+      "outputs": ["dist/**", "build/**", ".next/**", ".turbo/**"]
+    },
+    "build:tokens": {
+      "inputs": ["src/**/*.tokens.json", "sd.config.mjs"],
+      "outputs": ["build/**"],
+      "cache": true
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "*.config.*"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "tsconfig.json"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "test/**", "*.test.*"]
+    },
+    "clean": {
+      "cache": false
+    }
+  },
+  "globalEnv": ["NODE_ENV", "DS_NAMESPACE", "DS_VERSION", "FIGMA_ACCESS_TOKEN"]
+}

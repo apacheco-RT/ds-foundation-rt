@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ds-foundation.dev/schema/v1/component.json",
+  "title": "DS Component Registry Entry",
+  "description": "DTCG 2025.10 compliant component spec schema. Every registry component entry must validate against this.",
+  "type": "object",
+  "required": ["id", "type", "version", "status", "accessibility", "ai-prompt"],
+  "properties": {
+    "id":       { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "type":     { "type": "string", "enum": ["component", "pattern", "template"] },
+    "version":  { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "status":   { "type": "string", "enum": ["draft", "beta", "stable", "deprecated"] },
+    "primitive":{ "type": "string", "pattern": "^radix:" },
+    "variants": { "type": "array", "items": { "type": "string" } },
+    "sizes":    { "type": "array", "items": { "type": "string" } },
+    "adapters": {
+      "type": "object",
+      "properties": {
+        "tailwind":  { "type": "object" },
+        "material":  { "type": "object" },
+        "bootstrap": { "type": "object" }
+      }
+    },
+    "frameworks": {
+      "type": "object",
+      "properties": {
+        "react":        { "type": "string" },
+        "angular":      { "type": "string" },
+        "webcomponent": { "type": "string" }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "required": ["role", "wcag", "aria"],
+      "properties": {
+        "role":  { "type": "string" },
+        "wcag":  { "type": "array", "items": { "type": "string" } },
+        "aria":  { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "string" }
+      }
+    },
+    "figma": {
+      "type": "object",
+      "required": ["node-id"],
+      "properties": {
+        "node-id":      { "type": "string" },
+        "code-connect": { "type": "boolean" },
+        "library-key":  { "type": "string" }
+      }
+    },
+    "ai-prompt": { "type": "string", "minLength": 50 },
+    "$extensions": {
+      "type": "object",
+      "description": "Vendor-specific extensions. Keys must use reverse-domain notation."
+    }
+  }
+}

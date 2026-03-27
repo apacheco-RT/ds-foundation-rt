@@ -1,0 +1,57 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Primitive typography scale — font families, sizes, weights, leading, tracking.",
+  "font": {
+    "family": {
+      "$type": "font-family",
+      "sans":  { "$value": ["Inter Variable", "Inter", "system-ui", "-apple-system", "sans-serif"] },
+      "serif": { "$value": ["Lora", "Georgia", "Times New Roman", "serif"] },
+      "mono":  { "$value": ["JetBrains Mono", "Fira Code", "Consolas", "monospace"] }
+    },
+    "size": {
+      "$type": "dimension",
+      "2xs": { "$value": { "value": 0.625, "unit": "rem" } },
+      "xs":  { "$value": { "value": 0.75,  "unit": "rem" } },
+      "sm":  { "$value": { "value": 0.875, "unit": "rem" } },
+      "md":  { "$value": { "value": 1,     "unit": "rem" } },
+      "lg":  { "$value": { "value": 1.125, "unit": "rem" } },
+      "xl":  { "$value": { "value": 1.25,  "unit": "rem" } },
+      "2xl": { "$value": { "value": 1.5,   "unit": "rem" } },
+      "3xl": { "$value": { "value": 1.875, "unit": "rem" } },
+      "4xl": { "$value": { "value": 2.25,  "unit": "rem" } },
+      "5xl": { "$value": { "value": 3,     "unit": "rem" } },
+      "6xl": { "$value": { "value": 3.75,  "unit": "rem" } },
+      "7xl": { "$value": { "value": 4.5,   "unit": "rem" } }
+    },
+    "weight": {
+      "$type": "font-weight",
+      "thin":       { "$value": 100 },
+      "extralight": { "$value": 200 },
+      "light":      { "$value": 300 },
+      "regular":    { "$value": 400 },
+      "medium":     { "$value": 500 },
+      "semibold":   { "$value": 600 },
+      "bold":       { "$value": 700 },
+      "extrabold":  { "$value": 800 },
+      "black":      { "$value": 900 }
+    },
+    "leading": {
+      "$type": "number",
+      "none":    { "$value": 1 },
+      "tight":   { "$value": 1.25 },
+      "snug":    { "$value": 1.375 },
+      "normal":  { "$value": 1.5 },
+      "relaxed": { "$value": 1.625 },
+      "loose":   { "$value": 2 }
+    },
+    "tracking": {
+      "$type": "dimension",
+      "tighter": { "$value": { "value": -0.05,  "unit": "em" } },
+      "tight":   { "$value": { "value": -0.025, "unit": "em" } },
+      "normal":  { "$value": { "value": 0,      "unit": "em" } },
+      "wide":    { "$value": { "value": 0.025,  "unit": "em" } },
+      "wider":   { "$value": { "value": 0.05,   "unit": "em" } },
+      "widest":  { "$value": { "value": 0.1,    "unit": "em" } }
+    }
+  }
+}

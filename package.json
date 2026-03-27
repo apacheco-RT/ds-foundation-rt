@@ -1,0 +1,45 @@
+{
+  "name": "ds-foundation",
+  "private": true,
+  "description": "Design system monorepo — DTCG 2025.10 compliant, Radix-grounded, registry-driven, AI-injectable",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "mcp/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "build:tokens": "turbo run build --filter=@ds/tokens",
+    "build:docs": "turbo run build --filter=@ds/docs",
+    "build:storybook": "turbo run build --filter=@ds/storybook",
+    "dev": "turbo run dev",
+    "dev:docs": "turbo run dev --filter=@ds/docs",
+    "dev:storybook": "turbo run dev --filter=@ds/storybook",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "validate:tokens": "node scripts/validate-tokens.mjs",
+    "validate:registry": "node scripts/validate-registry.mjs",
+    "ci:validate": "npm run validate:tokens && npm run validate:registry",
+    "registry:build": "node scripts/build-registry.mjs",
+    "registry:context": "npx tsx scripts/build-spec-outputs.mts",
+    "figma:publish": "node scripts/publish-figma-connect.mjs",
+    "clean": "turbo run clean && rimraf node_modules .turbo"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.0",
+    "typescript": "^5.7.0",
+    "rimraf": "^6.0.0",
+    "@changesets/cli": "^2.27.0",
+    "prettier": "^3.4.0",
+    "eslint": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "tsx": "^4.19.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "packageManager": "npm@10.9.0"
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Motion primitives — duration and easing curves.",
+  "motion": {
+    "duration": {
+      "$type": "duration",
+      "instant":    { "$value": { "value": 0,   "unit": "ms" } },
+      "fastest":    { "$value": { "value": 50,  "unit": "ms" } },
+      "faster":     { "$value": { "value": 100, "unit": "ms" } },
+      "fast":       { "$value": { "value": 150, "unit": "ms" } },
+      "normal":     { "$value": { "value": 200, "unit": "ms" } },
+      "slow":       { "$value": { "value": 300, "unit": "ms" } },
+      "slower":     { "$value": { "value": 400, "unit": "ms" } },
+      "slowest":    { "$value": { "value": 500, "unit": "ms" } },
+      "deliberate": { "$value": { "value": 700, "unit": "ms" } }
+    },
+    "easing": {
+      "$type": "cubic-bezier",
+      "linear":      { "$value": [0, 0, 1, 1] },
+      "ease":        { "$value": [0.25, 0.1, 0.25, 1] },
+      "ease-in":     { "$value": [0.4, 0, 1, 1] },
+      "ease-out":    { "$value": [0, 0, 0.2, 1] },
+      "ease-in-out": { "$value": [0.4, 0, 0.2, 1] },
+      "spring":      { "$value": [0.34, 1.56, 0.64, 1] },
+      "anticipate":  { "$value": [0.36, 0, 0.66, -0.56] }
+    }
+  }
+}

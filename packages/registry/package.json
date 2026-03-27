@@ -1,0 +1,21 @@
+{
+  "name": "@ds/registry",
+  "version": "0.1.0",
+  "description": "Component registry — JSON schemas, MDX specs, Velite pipeline",
+  "type": "module",
+  "scripts": {
+    "build": "velite build",
+    "dev": "velite dev",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf .velite"
+  },
+  "dependencies": {
+    "@ds/tokens": "*"
+  },
+  "devDependencies": {
+    "velite": "^0.2.0",
+    "typescript": "^5.7.0",
+    "rimraf": "^6.0.0",
+    "zod": "^3.23.0"
+  }
+}

@@ -1,0 +1,50 @@
+---
+title: Installation
+---
+
+# Installation
+
+## For external teams — npm
+
+```bash
+# Install token package (CSS vars, JS, Tailwind preset)
+npm install @ds/tokens
+
+# Install React component library
+npm install @ds/react
+
+# Or Web Components
+npm install @ds/elements
+```
+
+Import tokens in your app entry:
+
+```css
+/* In your global CSS */
+@import '@ds/tokens/css';
+
+/* Dark theme */
+@import '@ds/tokens/css/dark';
+```
+
+## For external teams — CLI
+
+```bash
+# Set up DS in any project (recommended)
+npx @ds/cli init
+
+# Pull specific components with AI context
+npx @ds/cli pull button input badge
+```
+
+## Token CSS variable format
+
+All tokens are available as CSS custom properties prefixed `--ds-`:
+
+```css
+.my-button {
+  background: var(--ds-color-brand-primary);
+  border-radius: var(--ds-radius-md);
+  height: var(--ds-component-height-md);
+}
+```

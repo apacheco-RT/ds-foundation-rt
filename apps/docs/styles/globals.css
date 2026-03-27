@@ -1,0 +1,15 @@
+/* Design system token CSS variables — site is styled with its own DS */
+@import '@ds/tokens/css';
+@import '@ds/tokens/css/dark';
+
+/* Nextra overrides using DS tokens */
+:root {
+  --nextra-primary-hue: 214deg;
+  --nextra-primary-saturation: 89%;
+}
+
+body {
+  font-family: var(--ds-font-family-sans);
+  color: var(--ds-color-text-primary);
+  background-color: var(--ds-color-surface-page);
+}

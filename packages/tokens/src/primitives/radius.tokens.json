@@ -1,0 +1,16 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Primitive border radius scale.",
+  "radius": {
+    "$type": "dimension",
+    "none": { "$value": { "value": 0,    "unit": "px" } },
+    "xs":   { "$value": { "value": 0.125,"unit": "rem" } },
+    "sm":   { "$value": { "value": 0.25, "unit": "rem" } },
+    "md":   { "$value": { "value": 0.375,"unit": "rem" } },
+    "lg":   { "$value": { "value": 0.5,  "unit": "rem" } },
+    "xl":   { "$value": { "value": 0.75, "unit": "rem" } },
+    "2xl":  { "$value": { "value": 1,    "unit": "rem" } },
+    "3xl":  { "$value": { "value": 1.5,  "unit": "rem" } },
+    "full": { "$value": { "value": 9999, "unit": "px" } }
+  }
+}

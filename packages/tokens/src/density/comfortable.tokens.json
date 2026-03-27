@@ -1,0 +1,22 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Comfortable density — default UI density modifier.",
+  "component": {
+    "height": {
+      "$type": "dimension",
+      "xs":  { "$value": { "value": 1.5,  "unit": "rem" }, "$description": "24px" },
+      "sm":  { "$value": { "value": 2,    "unit": "rem" }, "$description": "32px" },
+      "md":  { "$value": { "value": 2.5,  "unit": "rem" }, "$description": "40px" },
+      "lg":  { "$value": { "value": 3,    "unit": "rem" }, "$description": "48px" },
+      "xl":  { "$value": { "value": 3.5,  "unit": "rem" }, "$description": "56px" }
+    },
+    "padding": {
+      "$type": "dimension",
+      "xs":  { "$value": { "value": 0.5,  "unit": "rem" } },
+      "sm":  { "$value": { "value": 0.75, "unit": "rem" } },
+      "md":  { "$value": { "value": 1,    "unit": "rem" } },
+      "lg":  { "$value": { "value": 1.25, "unit": "rem" } },
+      "xl":  { "$value": { "value": 1.5,  "unit": "rem" } }
+    }
+  }
+}

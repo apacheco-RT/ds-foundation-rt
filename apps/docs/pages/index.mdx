@@ -1,0 +1,27 @@
+# DS Foundation
+
+A production-grade design system built on DTCG 2025.10 compliant tokens,
+Radix UI primitives, and a registry-driven architecture that serves
+engineers, designers, AI agents, and external teams from a single source of truth.
+
+## Quick start
+
+```bash
+npx @ds/cli init
+```
+
+This installs token CSS variables, CLAUDE.md, and per-component AI context into your project in under 10 seconds.
+
+## Architecture
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| Tokens | Style Dictionary v4 | DTCG 2025.10 → CSS / SCSS / JS / Tailwind |
+| Spec pipeline | Velite | MDX → typed JSON → all consumers |
+| Components | Radix UI primitives | Headless, accessible base |
+| Adapters | Tailwind / Material / Bootstrap | Style layer swap |
+| Docs | Next.js 15 + Nextra | This site |
+| Dev hub | Storybook 8 | Live components + QA |
+| Figma | Tokens Studio + Code Connect | Bidirectional sync |
+| AI | MCP server + CLAUDE.md | Agent context injection |
+```

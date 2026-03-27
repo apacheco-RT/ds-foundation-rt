@@ -1,0 +1,28 @@
+{
+  "name": "@ds/docs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Public design system documentation — Next.js 15 App Router + Nextra",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev --port 3000",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf .next out"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "nextra": "^3.0.0",
+    "nextra-theme-docs": "^3.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@ds/tokens": "*",
+    "@ds/registry": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "rimraf": "^6.0.0",
+    "@types/react": "^19.0.0",
+    "@types/node": "^22.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@ds/tokens",
+  "version": "0.1.0",
+  "description": "DTCG 2025.10 compliant design token source files and build pipeline",
+  "type": "module",
+  "main": "./build/js/tokens.js",
+  "types": "./build/js/tokens.d.ts",
+  "exports": {
+    ".": "./build/js/tokens.js",
+    "./css": "./build/css/variables.css",
+    "./css/dark": "./build/css/variables.dark.css",
+    "./scss": "./build/scss/_variables.scss",
+    "./tailwind": "./build/tailwind/preset.css",
+    "./json": "./build/json/tokens.flat.json"
+  },
+  "scripts": {
+    "build": "node sd.config.mjs",
+    "build:tokens": "node sd.config.mjs",
+    "dev": "node sd.config.mjs --watch",
+    "clean": "rimraf build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0",
+    "@tokens-studio/sd-transforms": "^0.16.0",
+    "rimraf": "^6.0.0",
+    "typescript": "^5.7.0"
+  }
+}

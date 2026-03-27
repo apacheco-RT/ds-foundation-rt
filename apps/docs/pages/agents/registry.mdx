@@ -1,0 +1,43 @@
+---
+title: Registry Injection
+---
+
+# Registry Injection for AI Agents
+
+The design system registry can be injected into any AI coding session in three ways,
+from simplest to most powerful.
+
+## Pattern A — CLAUDE.md (zero setup)
+
+```bash
+npx @ds/cli init
+```
+
+Creates a `CLAUDE.md` at your project root containing the full design system contract —
+active adapter, token format, registry location, and coding rules.
+
+## Pattern B — Per-component context
+
+```bash
+npx @ds/cli pull button input modal --format ai-context
+```
+
+Writes individual component context files to `.claude/registry-context/components/`.
+
+## Pattern C — MCP server (live, richest)
+
+Add to your `mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "design-system": {
+      "command": "npx",
+      "args": ["@ds/mcp-server", "--port", "3100"]
+    }
+  }
+}
+```
+
+The MCP server exposes `get_component`, `resolve_token`, `validate_component`,
+and `search_registry` as live tools any agent can call mid-session.

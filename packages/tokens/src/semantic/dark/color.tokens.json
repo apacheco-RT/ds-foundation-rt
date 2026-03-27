@@ -1,0 +1,58 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Semantic color tokens — dark theme. Same token names as light; values swap.",
+  "color": {
+    "$type": "color",
+    "brand": {
+      "primary":          { "$value": "{color.blue.400}" },
+      "primary-hover":    { "$value": "{color.blue.300}" },
+      "primary-active":   { "$value": "{color.blue.200}" },
+      "primary-subtle":   { "$value": "{color.blue.950}" },
+      "primary-on":       { "$value": "{color.neutral.900}" },
+      "secondary":        { "$value": "{color.violet.400}" },
+      "secondary-hover":  { "$value": "{color.violet.300}" },
+      "secondary-subtle": { "$value": "{color.violet.950}" },
+      "secondary-on":     { "$value": "{color.neutral.900}" }
+    },
+    "surface": {
+      "page":     { "$value": "{color.neutral.950}" },
+      "default":  { "$value": "{color.neutral.900}" },
+      "raised":   { "$value": "{color.neutral.800}" },
+      "overlay":  { "$value": "{color.neutral.800}" },
+      "sunken":   { "$value": "{color.neutral.950}" },
+      "disabled": { "$value": "{color.neutral.800}" }
+    },
+    "text": {
+      "primary":    { "$value": "{color.neutral.50}" },
+      "secondary":  { "$value": "{color.neutral.400}" },
+      "tertiary":   { "$value": "{color.neutral.600}" },
+      "disabled":   { "$value": "{color.neutral.700}" },
+      "inverse":    { "$value": "{color.neutral.900}" },
+      "on-brand":   { "$value": "{color.neutral.900}" },
+      "link":       { "$value": "{color.blue.400}" },
+      "link-hover": { "$value": "{color.blue.300}" }
+    },
+    "border": {
+      "default":  { "$value": "{color.neutral.700}" },
+      "strong":   { "$value": "{color.neutral.500}" },
+      "focus":    { "$value": "{color.blue.400}" },
+      "error":    { "$value": "{color.red.400}" },
+      "disabled": { "$value": "{color.neutral.700}" }
+    },
+    "feedback": {
+      "success": { "text": { "$value": "{color.green.400}" }, "bg": { "$value": "{color.green.950}" }, "border": { "$value": "{color.green.700}" }, "icon": { "$value": "{color.green.400}" } },
+      "error":   { "text": { "$value": "{color.red.400}" },   "bg": { "$value": "{color.red.950}" },   "border": { "$value": "{color.red.700}" },   "icon": { "$value": "{color.red.400}" } },
+      "warning": { "text": { "$value": "{color.amber.400}" }, "bg": { "$value": "{color.amber.950}" }, "border": { "$value": "{color.amber.700}" }, "icon": { "$value": "{color.amber.400}" } },
+      "info":    { "text": { "$value": "{color.blue.400}" },  "bg": { "$value": "{color.blue.950}" },  "border": { "$value": "{color.blue.700}" },  "icon": { "$value": "{color.blue.400}" } }
+    },
+    "interactive": {
+      "default":    { "$value": "{color.neutral.50}" },
+      "hover":      { "$value": "{color.neutral.200}" },
+      "active":     { "$value": "{color.neutral.100}" },
+      "focus":      { "$value": "{color.blue.400}" },
+      "disabled":   { "$value": "{color.neutral.700}" },
+      "selected":   { "$value": "{color.blue.400}" },
+      "selected-bg":{ "$value": "{color.blue.950}" }
+    }
+  }
+}
