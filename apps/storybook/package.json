@@ -1,5 +1,5 @@
 {
-  "name": "@ds/storybook",
+  "name": "@ds-foundation/storybook",
   "version": "0.1.0",
   "private": true,
   "description": "Storybook 8 — dev hub for live components, QA, visual regression",
@@ -10,7 +10,7 @@
     "clean": "rimraf storybook-static"
   },
   "dependencies": {
-    "@ds/tokens": "*"
+    "@ds-foundation/tokens": "*"
   },
   "devDependencies": {
     "@storybook/react-vite": "^8.0.0",

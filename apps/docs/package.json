@@ -1,5 +1,5 @@
 {
-  "name": "@ds/docs",
+  "name": "@ds-foundation/docs",
   "version": "0.1.0",
   "private": true,
   "description": "Public design system documentation — Next.js 15 App Router + Nextra",
@@ -11,8 +11,8 @@
     "clean": "rimraf .next out"
   },
   "dependencies": {
-    "@ds/registry": "*",
-    "@ds/tokens": "*",
+    "@ds-foundation/registry": "*",
+    "@ds-foundation/tokens": "*",
     "next": "^15.0.0",
     "nextra": "^3.0.0",
     "nextra-theme-docs": "^3.0.0",

@@ -1,11 +1,11 @@
 {
-  "name": "@ds/mcp-server",
+  "name": "@ds-foundation/mcp-server",
   "version": "0.1.0",
   "description": "MCP server exposing the design system registry as agent tools",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/apacheco-RT/ds-foundation-rt.git"
+    "url": "https://github.com/ds-foundation/ds-foundation-rt.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",

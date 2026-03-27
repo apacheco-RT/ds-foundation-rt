@@ -9,6 +9,6 @@ const withNextra = nextra({
 
 export default withNextra({
   experimental: { optimizeCss: true },
-  transpilePackages: ['@ds/tokens', '@ds/registry'],
+  transpilePackages: ['@ds-foundation/tokens', '@ds-foundation/registry'],
   // Token CSS vars are imported in _app or layout — docs site is styled with its own DS
 });

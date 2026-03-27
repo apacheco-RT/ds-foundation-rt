@@ -2,10 +2,10 @@
 @import "tailwindcss";
 
 /* Import DS token @theme block — maps @ds/* values to Tailwind utility classes */
-@import "@ds/tokens/tailwind";
+@import "@ds-foundation/tokens/tailwind";
 
 /* Import DS Foundation design tokens — provides all --ds-* CSS custom properties */
-@import "@ds/tokens/css";
+@import "@ds-foundation/tokens/css";
 
 /* Dark theme token overrides — activated via data-theme="dark" on <html> */
-@import "@ds/tokens/css/dark" layer(theme-dark);
+@import "@ds-foundation/tokens/css/dark" layer(theme-dark);

@@ -1,5 +1,5 @@
 {
-  "name": "@ds/tokens",
+  "name": "@ds-foundation/tokens",
   "version": "0.2.0",
   "description": "DTCG 2025.10 compliant design token source files and build pipeline",
   "type": "module",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/apacheco-RT/ds-foundation-rt.git"
+    "url": "https://github.com/ds-foundation/ds-foundation-rt.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",

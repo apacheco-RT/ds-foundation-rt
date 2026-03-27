@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['@ds/tokens', '@ds/core', '@ds/registry'],
+  transpilePackages: ['@ds-foundation/tokens', '@ds-foundation/core', '@ds-foundation/registry'],
 };
 
 export default nextConfig;

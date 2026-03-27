@@ -17,9 +17,9 @@
     "react-dom": "^19.0.0",
     "next-auth": "^5.0.0",
     "@prisma/client": "^6.0.0",
-    "@ds/tokens": "^0.1.0",
-    "@ds/core": "^0.1.0",
-    "@ds/registry": "^0.1.0"
+    "@ds-foundation/tokens": "^0.1.0",
+    "@ds-foundation/core": "^0.1.0",
+    "@ds-foundation/registry": "^0.1.0"
   },
   "devDependencies": {
     "typescript": "^5.7.0",

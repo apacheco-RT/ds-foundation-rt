@@ -1,6 +1,6 @@
 /* Design system token CSS variables — site is styled with its own DS */
-@import '@ds/tokens/css';
-@import '@ds/tokens/css/dark';
+@import '@ds-foundation/tokens/css';
+@import '@ds-foundation/tokens/css/dark';
 
 /* Nextra overrides using DS tokens */
 :root {

@@ -1,5 +1,5 @@
 {
-  "name": "@ds/registry",
+  "name": "@ds-foundation/registry",
   "version": "0.2.0",
   "description": "Component registry — JSON schemas, MDX specs, Velite pipeline",
   "type": "module",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/apacheco-RT/ds-foundation-rt.git"
+    "url": "https://github.com/ds-foundation/ds-foundation-rt.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
@@ -27,7 +27,7 @@
     "clean": "rimraf .velite registry.json"
   },
   "dependencies": {
-    "@ds/tokens": "*"
+    "@ds-foundation/tokens": "*"
   },
   "devDependencies": {
     "velite": "^0.2.0",
