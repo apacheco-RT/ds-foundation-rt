@@ -24,6 +24,7 @@
     "registry:build": "node scripts/build-registry.mjs",
     "registry:context": "npx tsx scripts/build-spec-outputs.mts",
     "figma:publish": "node scripts/publish-figma-connect.mjs",
+    "release": "changeset publish",
     "clean": "turbo run clean && rimraf node_modules .turbo"
   },
   "devDependencies": {

@@ -3,33 +3,43 @@ name: Release
 on:
   push:
     branches: [main]
-    paths:
-      - '.changeset/**'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
-    name: Publish npm packages + Figma Code Connect
+    name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write       # to create GitHub releases + push version commits
+      pull-requests: write  # to create the Changesets version PR
+      packages: write       # to publish to GitHub Packages
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
-      - run: npm run build
-      - name: Create release PR or publish
+          node-version: 20
+          cache: npm
+          registry-url: https://npm.pkg.github.com
+          scope: "@ds"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build all packages
+        run: npm run build
+
+      - name: Create Release PR or Publish
+        id: changesets
         uses: changesets/action@v1
         with:
-          publish: npx changeset publish
+          publish: npm run release
+          title: "chore: version packages"
+          commit: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Publish Figma Code Connect (on release only)
-        if: steps.changesets.outputs.published == 'true'
-        run: npx figma connect publish
-        env:
-          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
