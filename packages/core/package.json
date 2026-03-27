@@ -3,13 +3,31 @@
   "version": "0.1.0",
   "description": "Framework-agnostic adapter types, token contracts, and utility functions",
   "type": "module",
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./adapter": "./src/adapter/index.ts",
-    "./tokens": "./src/tokens/index.ts",
-    "./types": "./src/types/index.ts"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./adapter": {
+      "import": "./dist/adapter/index.js",
+      "types": "./dist/adapter/index.d.ts"
+    },
+    "./types": {
+      "import": "./dist/types/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./tokens": {
+      "import": "./dist/tokens/index.js",
+      "types": "./dist/tokens/index.d.ts"
+    }
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "files": ["dist/"],
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",

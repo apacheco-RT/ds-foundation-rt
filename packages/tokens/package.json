@@ -13,6 +13,11 @@
     "./tailwind": "./build/tailwind/preset.css",
     "./json": "./build/json/tokens.flat.json"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "files": ["build/"],
   "scripts": {
     "build": "node sd.config.mjs",
     "build:tokens": "node sd.config.mjs",

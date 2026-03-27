@@ -3,11 +3,21 @@
   "version": "0.1.0",
   "description": "Component registry — JSON schemas, MDX specs, Velite pipeline",
   "type": "module",
+  "main": "./registry.json",
+  "exports": {
+    ".": "./registry.json"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "files": ["registry.json", "schemas/"],
   "scripts": {
     "build": "velite build",
     "dev": "velite dev",
+    "prepack": "cp .velite/registry.json ./registry.json",
     "typecheck": "tsc --noEmit",
-    "clean": "rimraf .velite"
+    "clean": "rimraf .velite registry.json"
   },
   "dependencies": {
     "@ds/tokens": "*"
