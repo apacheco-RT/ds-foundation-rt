@@ -16,7 +16,7 @@
     "build": "velite build",
     "dev": "velite dev",
     "prepack": "cp .velite/registry.json ./registry.json",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "echo 'registry: no TS sources to check (Velite pipeline)'",
     "clean": "rimraf .velite registry.json"
   },
   "dependencies": {
