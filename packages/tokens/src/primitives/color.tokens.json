@@ -35,6 +35,7 @@
       "50":  { "$value": { "colorSpace": "oklch", "components": [0.971, 0.027, 155], "hex": "#f0fdf4" } },
       "100": { "$value": { "colorSpace": "oklch", "components": [0.945, 0.058, 155], "hex": "#dcfce7" } },
       "300": { "$value": { "colorSpace": "oklch", "components": [0.823, 0.149, 155], "hex": "#86efac" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.740, 0.175, 155], "hex": "#4ade80" } },
       "500": { "$value": { "colorSpace": "oklch", "components": [0.650, 0.191, 155], "hex": "#22c55e" } },
       "600": { "$value": { "colorSpace": "oklch", "components": [0.528, 0.175, 155], "hex": "#16a34a" } },
       "700": { "$value": { "colorSpace": "oklch", "components": [0.437, 0.152, 155], "hex": "#15803d" } },
@@ -52,6 +53,7 @@
     "amber": {
       "50":  { "$value": { "colorSpace": "oklch", "components": [0.983, 0.025, 88], "hex": "#fffbeb" } },
       "300": { "$value": { "colorSpace": "oklch", "components": [0.893, 0.150, 88], "hex": "#fcd34d" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.828, 0.182, 83], "hex": "#fbbf24" } },
       "500": { "$value": { "colorSpace": "oklch", "components": [0.769, 0.195, 79], "hex": "#f59e0b" } },
       "600": { "$value": { "colorSpace": "oklch", "components": [0.665, 0.187, 65], "hex": "#d97706" } },
       "700": { "$value": { "colorSpace": "oklch", "components": [0.558, 0.170, 55], "hex": "#b45309" } },
@@ -60,6 +62,7 @@
     "violet": {
       "50":  { "$value": { "colorSpace": "oklch", "components": [0.977, 0.020, 295], "hex": "#f5f3ff" } },
       "300": { "$value": { "colorSpace": "oklch", "components": [0.824, 0.139, 295], "hex": "#c4b5fd" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.729, 0.201, 295], "hex": "#a78bfa" } },
       "500": { "$value": { "colorSpace": "oklch", "components": [0.627, 0.242, 295], "hex": "#8b5cf6" } },
       "600": { "$value": { "colorSpace": "oklch", "components": [0.541, 0.255, 295], "hex": "#7c3aed" } },
       "700": { "$value": { "colorSpace": "oklch", "components": [0.459, 0.241, 295], "hex": "#6d28d9" } },

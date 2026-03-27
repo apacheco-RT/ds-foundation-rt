@@ -107,9 +107,14 @@ const PRIMITIVES = [
 
 const SHARED_TRANSFORMS = ['ts/resolveMath', 'ds/dimension/css', 'ds/color/css', 'name/kebab'];
 
+// Suppress collisions on DTCG file-level metadata keys ($schema, $description)
+// and on $type at group level — these are harmless and expected when merging files.
+const LOG_CONFIG = { log: { warnings: 'warn' } };
+
 const configs = [
   // CSS light (default)
   {
+    ...LOG_CONFIG,
     source: [...PRIMITIVES, 'src/semantic/light/color.tokens.json', 'src/density/comfortable.tokens.json'],
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -125,6 +130,7 @@ const configs = [
   },
   // CSS dark theme
   {
+    ...LOG_CONFIG,
     source: [...PRIMITIVES, 'src/semantic/dark/color.tokens.json', 'src/density/comfortable.tokens.json'],
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -139,6 +145,7 @@ const configs = [
   },
   // SCSS
   {
+    ...LOG_CONFIG,
     source: [...PRIMITIVES, 'src/semantic/light/color.tokens.json'],
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -155,11 +162,12 @@ const configs = [
   },
   // JS + TS types
   {
+    ...LOG_CONFIG,
     source: [...PRIMITIVES, 'src/semantic/light/color.tokens.json'],
     preprocessors: ['tokens-studio'],
     platforms: {
       js: {
-        transforms: [...SHARED_TRANSFORMS, 'ds/color/hex-fallback'],
+        transforms: [...SHARED_TRANSFORMS.filter(t => t !== 'name/kebab'), 'name/camel', 'ds/color/hex-fallback'],
         buildPath: 'build/js/',
         files: [
           { destination: 'tokens.js', format: 'javascript/es6' },
@@ -170,6 +178,7 @@ const configs = [
   },
   // Tailwind v4
   {
+    ...LOG_CONFIG,
     source: [...PRIMITIVES, 'src/semantic/light/color.tokens.json'],
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -183,6 +192,7 @@ const configs = [
   },
   // Flat JSON (for MCP + AI context)
   {
+    ...LOG_CONFIG,
     source: [...PRIMITIVES, 'src/semantic/light/color.tokens.json'],
     preprocessors: ['tokens-studio'],
     platforms: {
