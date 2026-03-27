@@ -39,10 +39,15 @@ function validateToken(name, token, filePath, groupType) {
     errors++;
   }
 
-  // Rule: color values must NOT be hex strings
+  // Rule: color values must NOT be bare hex strings (e.g. "#ff0000")
+  // Token references like "{color.amber.700}" are valid DTCG and are allowed.
   if (type === 'color' && typeof token['$value'] === 'string') {
-    console.error(`  ✗ FAIL [${filePath}] "${name}" color $value is a string — must be { colorSpace, components } object`);
-    errors++;
+    const v = token['$value'];
+    const isReference = v.startsWith('{') && v.endsWith('}');
+    if (!isReference) {
+      console.error(`  ✗ FAIL [${filePath}] "${name}" color $value is a hardcoded string "${v}" — use a { colorSpace, components } object or a {token.reference}`);
+      errors++;
+    }
   }
 
   // Rule: color objects must have colorSpace + components
