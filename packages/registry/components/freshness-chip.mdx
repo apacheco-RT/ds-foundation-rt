@@ -1,0 +1,57 @@
+---
+id: freshness-chip
+type: component
+version: 0.1.0
+status: beta
+variants: []
+sizes: []
+accessibility:
+  role: "status"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "4.1.2 Name, Role, Value"
+    - "4.1.3 Status Messages"
+  aria:
+    - "aria-live='polite' announces freshness state changes to screen readers"
+    - "Refresh button has aria-label='Refresh data'"
+  notes: "The aria-live='polite' region is always in the DOM even when state is 'fresh' (rendered as display:none) to prevent screen reader announcement interruptions on mount."
+ai-prompt: "FreshnessChip shows data recency status: fresh (hidden), watch (amber, 5–15 min old), stale (red, 15+ min). Pass state and timestamp; the component formats the relative age automatically. Exports deriveFreshnessState(lastUpdatedAt) utility to compute state from a Date. Stale state optionally shows a refresh button."
+---
+
+# FreshnessChip
+
+Indicates data recency: hidden when fresh, amber when data is aging (watch), red when stale. Includes an optional refresh action in the stale state.
+
+## Usage
+
+```tsx
+import { FreshnessChip, deriveFreshnessState } from '@ds-foundation/react';
+
+const state = deriveFreshnessState(lastUpdatedAt);
+
+<FreshnessChip
+  state={state}
+  timestamp={lastUpdatedAt}
+  onRefresh={() => refetch()}
+/>
+```
+
+## Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `state` | `'fresh' \| 'watch' \| 'stale'` | Freshness state to display |
+| `timestamp` | `Date` | The last-updated timestamp; formatted as relative time |
+| `onRefresh` | `() => void` | Optional callback shown as refresh button in stale state only |
+
+## Utility export
+
+```ts
+deriveFreshnessState(lastUpdatedAt: Date): FreshnessState
+```
+
+Computes `FreshnessState` from a `Date`. Thresholds: watch at 5 min, stale at 15 min.
+
+## Accessibility
+
+The `aria-live="polite"` region is always present in the DOM (even when `fresh` and visually hidden). This prevents an announcement burst when the component first mounts in a live state.

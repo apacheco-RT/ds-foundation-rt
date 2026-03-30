@@ -1,0 +1,43 @@
+---
+id: currency-badge
+type: component
+version: 0.1.0
+status: beta
+variants: []
+sizes: []
+accessibility:
+  role: "text"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-label='Currency: {currency}' to identify the denomination"
+  notes: "Decorative pill — aria-label is provided so screen readers can announce the denomination in context"
+ai-prompt: "CurrencyBadge renders a compact pill showing a currency code (USD, EUR, or GBP) in monospace font. Use alongside MonoAmount to make the denomination explicit in settlement tables, transaction rows, or balance cards. No interactive behavior — purely informational."
+---
+
+# CurrencyBadge
+
+A compact pill badge that displays a currency code (USD, EUR, GBP) in monospace font. Purely informational — no interaction behavior.
+
+## Usage
+
+Pair with `MonoAmount` to label the denomination of a financial value.
+
+```tsx
+import { CurrencyBadge } from '@ds-foundation/react';
+
+<CurrencyBadge currency="USD" />
+<CurrencyBadge currency="EUR" />
+<CurrencyBadge currency="GBP" />
+```
+
+## Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `currency` | `'USD' \| 'EUR' \| 'GBP'` | The currency code to display |
+
+## Accessibility
+
+Includes `aria-label="Currency: {currency}"` so screen readers can announce the denomination without relying on visual-only context.

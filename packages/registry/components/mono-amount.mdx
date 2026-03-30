@@ -1,0 +1,67 @@
+---
+id: mono-amount
+type: component
+version: 0.1.0
+status: beta
+variants: []
+sizes:
+  - sm
+  - md
+  - lg
+accessibility:
+  role: "text (interactive: button)"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role='button' when onProvenanceTap is provided"
+    - "tabIndex={0} when interactive"
+    - "aria-label describes value, currency, and action when interactive"
+  notes: "When onProvenanceTap is provided, the element is keyboard-operable with Enter and Space keys"
+ai-prompt: "MonoAmount renders a financial figure in monospace font with tabular-nums. Use for currency amounts, balances, and settlement values. Accepts value (number), currency (USD/EUR/GBP), size (sm/md/lg), color (default/success/warning/error/muted/brand), and onProvenanceTap callback. Pair with CurrencyBadge to show denomination. Interactive variant triggers provenance or detail drilldown with underline affordance."
+---
+
+# MonoAmount
+
+Renders a financial figure in monospace font with tabular number alignment. Supports an interactive mode that triggers a provenance overlay or detail drilldown.
+
+## Usage
+
+Use `MonoAmount` wherever a currency value needs to be displayed with consistent visual weight and alignment — settlement rows, balance summaries, transaction amounts.
+
+Pair with `CurrencyBadge` to make the denomination explicit.
+
+```tsx
+import { MonoAmount, CurrencyBadge } from '@ds-foundation/react';
+
+// Static display
+<MonoAmount value={1250000} currency="USD" />
+
+// With denomination badge
+<span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+  <MonoAmount value={4500000} currency="EUR" size="lg" color="success" />
+  <CurrencyBadge currency="EUR" />
+</span>
+
+// Interactive (provenance drill-down)
+<MonoAmount
+  value={750000}
+  currency="GBP"
+  onProvenanceTap={() => openProvenancePanel()}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | — | The numeric amount to display |
+| `currency` | `'USD' \| 'EUR' \| 'GBP'` | — | Currency code; determines the symbol prefix |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Font size variant |
+| `color` | `AmountColor` | `'default'` | Semantic color: default, success, warning, error, muted, brand |
+| `onProvenanceTap` | `() => void` | — | When provided, renders as an interactive button for provenance drill-down |
+
+## Accessibility
+
+When `onProvenanceTap` is provided, the element renders with `role="button"`, `tabIndex={0}`, and an `aria-label` describing the value and action. Keyboard users can activate it with `Enter` or `Space`.

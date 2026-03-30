@@ -1,0 +1,57 @@
+---
+id: status-pill
+type: component
+version: 0.1.0
+status: beta
+variants: []
+sizes: []
+accessibility:
+  role: "status"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role='status' to announce payment instruction state"
+    - "aria-label='Status: {label}' describes current state"
+  notes: "Uses role='status' so state changes are announced by screen readers. Color alone is not the only indicator — text label is always visible."
+ai-prompt: "StatusPill renders a color-coded badge for payment instruction workflow states: submitted, in_payments, first_approval, second_approval, sent_to_bank, bank_confirmed, failed, rejected. Each state maps to a semantic feedback color (neutral, info, success, error). Use in transaction tables and instruction detail views."
+---
+
+# StatusPill
+
+A color-coded status badge for payment instruction lifecycle states. Maps workflow stages to semantic feedback colors (neutral, info, success, error).
+
+## Usage
+
+```tsx
+import { StatusPill } from '@ds-foundation/react';
+
+<StatusPill status="submitted" />
+<StatusPill status="in_payments" />
+<StatusPill status="sent_to_bank" />
+<StatusPill status="bank_confirmed" />
+<StatusPill status="failed" />
+```
+
+## Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `status` | `InstructionStatus` | The workflow state to display |
+
+## States
+
+| Status | Label | Color |
+|--------|-------|-------|
+| `submitted` | Submitted | Neutral |
+| `in_payments` | In Payments | Info |
+| `first_approval` | 1st Approval | Info |
+| `second_approval` | 2nd Approval | Info |
+| `sent_to_bank` | Sent to Bank | Success |
+| `bank_confirmed` | Confirmed ✓ | Success |
+| `failed` | Failed | Error |
+| `rejected` | Rejected | Error |
+
+## Accessibility
+
+Uses `role="status"` so transitions are announced by assistive technology. Text label is always visible — color is used as reinforcement, not the sole indicator.

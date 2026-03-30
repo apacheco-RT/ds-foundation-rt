@@ -1,0 +1,46 @@
+---
+id: status-ring
+type: component
+version: 0.1.0
+status: beta
+variants: []
+sizes:
+  - sm
+  - md
+accessibility:
+  role: "presentation"
+  wcag:
+    - "1.4.1 Use of Color"
+    - "2.3.1 Three Flashes or Below Threshold"
+  aria:
+    - "aria-hidden='true' — decorative indicator; urgency must be conveyed via adjacent text or UrgencyBadge"
+  notes: "Always pair with a text label (UrgencyBadge or visible copy) so urgency is not conveyed by color alone. Pulse animation is safe for WCAG 2.3.1 — frequency is below the 3 Hz threshold."
+ai-prompt: "StatusRing is a small circular dot with a translucent glow ring indicating urgency level: critical (red), watch (amber), clear (green), skip (brand). Use as a visual accent alongside UrgencyBadge in list rows or card headers. Supports pulse animation for critical/watch states. Always pair with visible text — aria-hidden by design."
+---
+
+# StatusRing
+
+A circular dot with a translucent glow ring that encodes urgency at a glance — critical, watch, clear, or skip. Intended as a visual accent, not a standalone indicator.
+
+## Usage
+
+```tsx
+import { StatusRing } from '@ds-foundation/react';
+
+<StatusRing urgency="critical" />
+<StatusRing urgency="watch" pulse />
+<StatusRing urgency="clear" size="sm" />
+<StatusRing urgency="skip" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `urgency` | `'critical' \| 'watch' \| 'clear' \| 'skip'` | — | Visual urgency level |
+| `size` | `'sm' \| 'md'` | `'md'` | Dot size: sm=8px, md=10px |
+| `pulse` | `boolean` | `false` | Enable pulsing animation for active/urgent states |
+
+## Accessibility
+
+Always pair `StatusRing` with a visible text label such as `UrgencyBadge`. The component is `aria-hidden="true"` by design — urgency must not be communicated through color alone.
