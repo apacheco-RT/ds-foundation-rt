@@ -1,12 +1,15 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import path from 'path';
+
+const root = path.resolve(__dirname, '..', '..', '..');
 
 const config: StorybookConfig = {
   stories: [
     // Spec MDX files render as Storybook docs
-    '../../packages/registry/components/**/*.mdx',
-    '../../packages/registry/foundations/**/*.mdx',
+    path.join(root, 'packages/registry/components/**/*.mdx'),
+    path.join(root, 'packages/registry/foundations/**/*.mdx'),
     // Stories co-located with components
-    '../../packages/*/src/**/*.stories.@(ts|tsx)',
+    path.join(root, 'packages/*/src/**/*.stories.@(ts|tsx)'),
   ],
   addons: [
     '@storybook/addon-docs',
