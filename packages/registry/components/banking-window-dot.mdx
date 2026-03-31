@@ -1,0 +1,53 @@
+---
+id: banking-window-dot
+type: component
+version: 0.1.0
+status: beta
+variants: []
+sizes: []
+accessibility:
+  role: "presentation"
+  wcag:
+    - "1.4.1 Use of Color"
+    - "2.3.1 Three Flashes or Below Threshold"
+  aria:
+    - "aria-hidden='true' — decorative indicator; window status must be conveyed via adjacent text"
+  notes: "Color-only indicator; must always be paired with visible text labeling the banking window state. Pulse animation on 'closing' is safe for WCAG 2.3.1."
+ai-prompt: "BankingWindowDot is a tiny colored dot (default 6px) showing banking window status: open (green), closing (amber, animated pulse), closed (neutral gray). Use in table rows, header status bars, or timezone cards alongside a text label. Always pair with visible copy — the dot is aria-hidden and decorative."
+---
+
+# BankingWindowDot
+
+A small dot indicator showing whether a banking window is open, closing, or closed. The `closing` state pulses to draw attention to the upcoming cutoff.
+
+## Usage
+
+```tsx
+import { BankingWindowDot } from '@ds-foundation/react';
+
+<BankingWindowDot status="open" />
+<BankingWindowDot status="closing" />
+<BankingWindowDot status="closed" />
+
+// Larger size
+<BankingWindowDot status="open" size={10} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `status` | `'open' \| 'closing' \| 'closed'` | — | Banking window state |
+| `size` | `number` | `6` | Dot diameter in pixels |
+
+## States
+
+| Status | Color | Animation |
+|--------|-------|-----------|
+| `open` | Success green | None |
+| `closing` | Warning amber | Pulse ring |
+| `closed` | Tertiary gray | None |
+
+## Accessibility
+
+The dot is `aria-hidden="true"`. Always pair with visible text (e.g., "NY Open", "London Closing") so the window state is not communicated by color alone.

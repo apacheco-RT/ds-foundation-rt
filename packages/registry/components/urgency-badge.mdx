@@ -1,0 +1,56 @@
+---
+id: urgency-badge
+type: component
+version: 0.1.0
+status: beta
+variants: []
+sizes: []
+accessibility:
+  role: "text"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "1.4.1 Use of Color"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-label='Urgency: {label}' to identify urgency level to screen readers"
+  notes: "Text label is always visible — color reinforces urgency but is not the sole indicator."
+ai-prompt: "UrgencyBadge is a color-coded pill label for settlement urgency levels: critical (red), watch (amber), clear (green), skip (brand/neutral). Use in list rows and detail panels alongside StatusRing for a visual + text pairing. Accepts an optional custom label to override the default."
+---
+
+# UrgencyBadge
+
+A color-coded pill badge that labels the urgency level of a settlement instruction. Pairs with `StatusRing` for a complete visual + text urgency indicator.
+
+## Usage
+
+```tsx
+import { UrgencyBadge } from '@ds-foundation/react';
+
+<UrgencyBadge urgency="critical" />
+<UrgencyBadge urgency="watch" />
+<UrgencyBadge urgency="clear" />
+<UrgencyBadge urgency="skip" />
+
+// Custom label
+<UrgencyBadge urgency="critical" label="Urgent" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `urgency` | `'critical' \| 'watch' \| 'clear' \| 'skip'` | — | Urgency level |
+| `label` | `string` | — | Overrides the default label text |
+
+## Default labels
+
+| Urgency | Default label |
+|---------|--------------|
+| `critical` | Critical |
+| `watch` | Watch |
+| `clear` | Clear |
+| `skip` | Skip-node |
+
+## Accessibility
+
+Includes `aria-label="Urgency: {label}"`. Urgency is conveyed through both color and visible text — color alone is never the sole indicator.
