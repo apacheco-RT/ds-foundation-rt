@@ -8,9 +8,9 @@ export interface BankingWindowDotProps {
 }
 
 const DOT_COLOR: Record<WindowStatus, string> = {
-  open:    'var(--color-feedback-success-icon)',
-  closing: 'var(--color-feedback-warning-icon)',
-  closed:  'var(--color-text-tertiary)',
+  open:    'var(--ds-color-feedback-success-icon)',
+  closing: 'var(--ds-color-feedback-warning-icon)',
+  closed:  'var(--ds-color-text-tertiary)',
 };
 
 export function BankingWindowDot({ status, size = 6 }: BankingWindowDotProps) {

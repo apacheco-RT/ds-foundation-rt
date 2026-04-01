@@ -17,24 +17,24 @@ const DEFAULT_LABEL: Record<Urgency, string> = {
 
 const STYLE: Record<Urgency, { bg: string; text: string; border: string }> = {
   critical: {
-    bg:     'var(--color-feedback-error-bg)',
-    text:   'var(--color-feedback-error-text)',
-    border: 'var(--color-feedback-error-border)',
+    bg:     'var(--ds-color-feedback-error-bg)',
+    text:   'var(--ds-color-feedback-error-text)',
+    border: 'var(--ds-color-feedback-error-border)',
   },
   watch: {
-    bg:     'var(--color-feedback-warning-bg)',
-    text:   'var(--color-feedback-warning-text)',
-    border: 'var(--color-feedback-warning-border)',
+    bg:     'var(--ds-color-feedback-warning-bg)',
+    text:   'var(--ds-color-feedback-warning-text)',
+    border: 'var(--ds-color-feedback-warning-border)',
   },
   clear: {
-    bg:     'var(--color-feedback-success-bg)',
-    text:   'var(--color-feedback-success-text)',
-    border: 'var(--color-feedback-success-border)',
+    bg:     'var(--ds-color-feedback-success-bg)',
+    text:   'var(--ds-color-feedback-success-text)',
+    border: 'var(--ds-color-feedback-success-border)',
   },
   skip: {
-    bg:     'color-mix(in srgb, var(--color-brand-secondary) 8%, transparent)',
-    text:   'var(--color-brand-secondary)',
-    border: 'color-mix(in srgb, var(--color-brand-secondary) 30%, transparent)',
+    bg:     'color-mix(in srgb, var(--ds-color-brand-secondary) 8%, transparent)',
+    text:   'var(--ds-color-brand-secondary)',
+    border: 'color-mix(in srgb, var(--ds-color-brand-secondary) 30%, transparent)',
   },
 };
 

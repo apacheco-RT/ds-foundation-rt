@@ -27,9 +27,9 @@ export function FreshnessChip({ state, timestamp, onRefresh }: FreshnessChipProp
   if (state === 'fresh') return <span aria-live="polite" style={{ display: 'none' }} />;
 
   const isStale = state === 'stale';
-  const bg     = isStale ? 'var(--color-feedback-error-bg)'     : 'var(--color-feedback-warning-bg)';
-  const text   = isStale ? 'var(--color-feedback-error-text)'   : 'var(--color-feedback-warning-text)';
-  const border = isStale ? 'var(--color-feedback-error-border)' : 'var(--color-feedback-warning-border)';
+  const bg     = isStale ? 'var(--ds-color-feedback-error-bg)'     : 'var(--ds-color-feedback-warning-bg)';
+  const text   = isStale ? 'var(--ds-color-feedback-error-text)'   : 'var(--ds-color-feedback-warning-text)';
+  const border = isStale ? 'var(--ds-color-feedback-error-border)' : 'var(--ds-color-feedback-warning-border)';
   const label  = isStale ? 'Stale' : 'Watch';
 
   return (

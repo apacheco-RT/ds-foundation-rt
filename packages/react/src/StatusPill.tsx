@@ -15,14 +15,14 @@ export interface StatusPillProps {
 }
 
 const CONFIG: Record<InstructionStatus, { label: string; bg: string; text: string; border: string }> = {
-  submitted:       { label: 'Submitted',    bg: 'var(--color-surface-sunken)',       text: 'var(--color-text-tertiary)',           border: 'var(--color-border-default)' },
-  in_payments:     { label: 'In Payments',  bg: 'var(--color-feedback-info-bg)',     text: 'var(--color-feedback-info-text)',      border: 'var(--color-feedback-info-border)' },
-  first_approval:  { label: '1st Approval', bg: 'var(--color-feedback-info-bg)',     text: 'var(--color-feedback-info-text)',      border: 'var(--color-feedback-info-border)' },
-  second_approval: { label: '2nd Approval', bg: 'var(--color-feedback-info-bg)',     text: 'var(--color-feedback-info-text)',      border: 'var(--color-feedback-info-border)' },
-  sent_to_bank:    { label: 'Sent to Bank', bg: 'var(--color-feedback-success-bg)',  text: 'var(--color-feedback-success-text)',  border: 'var(--color-feedback-success-border)' },
-  bank_confirmed:  { label: 'Confirmed ✓',  bg: 'var(--color-feedback-success-bg)',  text: 'var(--color-feedback-success-text)',  border: 'var(--color-feedback-success-border)' },
-  failed:          { label: 'Failed',        bg: 'var(--color-feedback-error-bg)',    text: 'var(--color-feedback-error-text)',    border: 'var(--color-feedback-error-border)' },
-  rejected:        { label: 'Rejected',      bg: 'var(--color-feedback-error-bg)',    text: 'var(--color-feedback-error-text)',    border: 'var(--color-feedback-error-border)' },
+  submitted:       { label: 'Submitted',    bg: 'var(--ds-color-surface-sunken)',       text: 'var(--ds-color-text-tertiary)',           border: 'var(--ds-color-border-default)' },
+  in_payments:     { label: 'In Payments',  bg: 'var(--ds-color-feedback-info-bg)',     text: 'var(--ds-color-feedback-info-text)',      border: 'var(--ds-color-feedback-info-border)' },
+  first_approval:  { label: '1st Approval', bg: 'var(--ds-color-feedback-info-bg)',     text: 'var(--ds-color-feedback-info-text)',      border: 'var(--ds-color-feedback-info-border)' },
+  second_approval: { label: '2nd Approval', bg: 'var(--ds-color-feedback-info-bg)',     text: 'var(--ds-color-feedback-info-text)',      border: 'var(--ds-color-feedback-info-border)' },
+  sent_to_bank:    { label: 'Sent to Bank', bg: 'var(--ds-color-feedback-success-bg)',  text: 'var(--ds-color-feedback-success-text)',  border: 'var(--ds-color-feedback-success-border)' },
+  bank_confirmed:  { label: 'Confirmed ✓',  bg: 'var(--ds-color-feedback-success-bg)',  text: 'var(--ds-color-feedback-success-text)',  border: 'var(--ds-color-feedback-success-border)' },
+  failed:          { label: 'Failed',        bg: 'var(--ds-color-feedback-error-bg)',    text: 'var(--ds-color-feedback-error-text)',    border: 'var(--ds-color-feedback-error-border)' },
+  rejected:        { label: 'Rejected',      bg: 'var(--ds-color-feedback-error-bg)',    text: 'var(--ds-color-feedback-error-text)',    border: 'var(--ds-color-feedback-error-border)' },
 };
 
 export function StatusPill({ status }: StatusPillProps) {

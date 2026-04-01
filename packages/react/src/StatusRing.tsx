@@ -10,20 +10,20 @@ export interface StatusRingProps {
 
 const COLOR: Record<Urgency, { dot: string; ring: string }> = {
   critical: {
-    dot:  'var(--color-feedback-error-icon)',
-    ring: 'color-mix(in srgb, var(--color-feedback-error-icon) 20%, transparent)',
+    dot:  'var(--ds-color-feedback-error-icon)',
+    ring: 'color-mix(in srgb, var(--ds-color-feedback-error-icon) 20%, transparent)',
   },
   watch: {
-    dot:  'var(--color-feedback-warning-icon)',
-    ring: 'color-mix(in srgb, var(--color-feedback-warning-icon) 20%, transparent)',
+    dot:  'var(--ds-color-feedback-warning-icon)',
+    ring: 'color-mix(in srgb, var(--ds-color-feedback-warning-icon) 20%, transparent)',
   },
   clear: {
-    dot:  'var(--color-feedback-success-icon)',
-    ring: 'color-mix(in srgb, var(--color-feedback-success-icon) 20%, transparent)',
+    dot:  'var(--ds-color-feedback-success-icon)',
+    ring: 'color-mix(in srgb, var(--ds-color-feedback-success-icon) 20%, transparent)',
   },
   skip: {
-    dot:  'var(--color-brand-secondary)',
-    ring: 'color-mix(in srgb, var(--color-brand-secondary) 20%, transparent)',
+    dot:  'var(--ds-color-brand-secondary)',
+    ring: 'color-mix(in srgb, var(--ds-color-brand-secondary) 20%, transparent)',
   },
 };
 

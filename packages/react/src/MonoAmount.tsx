@@ -20,12 +20,12 @@ const FONT_SIZE: Record<string, string> = {
 };
 
 const COLOR_MAP: Record<AmountColor, string> = {
-  default: 'var(--color-text-primary)',
-  success: 'var(--color-feedback-success-icon)',
-  warning: 'var(--color-feedback-warning-text)',
-  error:   'var(--color-feedback-error-icon)',
-  muted:   'var(--color-text-tertiary)',
-  brand:   'var(--color-brand-primary)',
+  default: 'var(--ds-color-text-primary)',
+  success: 'var(--ds-color-feedback-success-icon)',
+  warning: 'var(--ds-color-feedback-warning-text)',
+  error:   'var(--ds-color-feedback-error-icon)',
+  muted:   'var(--ds-color-text-tertiary)',
+  brand:   'var(--ds-color-brand-primary)',
 };
 
 const fmt = new Intl.NumberFormat('en-US', {
