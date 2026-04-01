@@ -3,10 +3,17 @@
   "version": "0.1.0",
   "description": "React atom components built on @ds-foundation/tokens",
   "type": "module",
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
+  "files": [
+    "dist/"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/ds-foundation/ds-foundation-rt.git"
@@ -16,6 +23,7 @@
     "access": "restricted"
   },
   "scripts": {
+    "build": "../../node_modules/.bin/tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist"
   },
