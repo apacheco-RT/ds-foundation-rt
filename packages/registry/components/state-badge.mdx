@@ -1,0 +1,55 @@
+---
+id: state-badge
+type: component
+version: 0.2.0
+status: beta
+variants: [info, warning, success, error, neutral]
+sizes: [sm, md]
+accessibility:
+  role: "status"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role='status' announces state changes to screen readers"
+    - "aria-label='Status: {state}' or 'Status: {state}, next: {nextState}' describes full transition"
+  notes: "Color alone is never the sole indicator — text label is always visible. The → separator is aria-hidden; both state labels are included in aria-label."
+ai-prompt: "StateBadge renders a semantic pill for workflow state labels. Five intents (info, warning, success, error, neutral) drive colour from DS feedback tokens. Accepts an optional nextState that renders inline as 'state → nextState' inside the same pill. Use in tables and detail panels anywhere a workflow step needs visual status encoding. Always set intent based on the semantic meaning of the state, not its display colour."
+---
+
+# StateBadge
+
+A semantic status pill for workflow states. Intent drives colour via DS feedback tokens. Optionally shows a next-state transition inline within the pill.
+
+## Usage
+
+```tsx
+import { StateBadge } from '@ds-foundation/react';
+
+<StateBadge state="Processing" intent="info" />
+<StateBadge state="Processing" intent="info" nextState="Approval" />
+<StateBadge state="Failed" intent="error" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `state` | `string` | required | Current state display label |
+| `intent` | `StateBadgeIntent` | required | Colour intent |
+| `nextState` | `string` | — | Optional next state; renders `state → nextState` |
+| `size` | `StateBadgeSize` | `'md'` | `sm` or `md` |
+
+## Intent → Colour
+
+| Intent | Semantic meaning | Example states |
+|--------|-----------------|----------------|
+| `info` | In-progress, neutral positive | Processing, Draft, Extracted |
+| `warning` | Requires attention | Needs Approval, On Hold, Under Review |
+| `success` | Complete/approved | Approved |
+| `error` | Failed/rejected | Failed, Rejected |
+| `neutral` | Terminal/inactive | Void, Cancelled |
+
+## Accessibility
+
+`role="status"` announces transitions to assistive technology. The `→` arrow is `aria-hidden`; the full label including next-state is in `aria-label`.

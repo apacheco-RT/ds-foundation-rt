@@ -1,0 +1,41 @@
+---
+id: detail-card
+type: component
+version: 0.2.0
+status: beta
+variants: []
+sizes: []
+accessibility:
+  role: "none"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+  aria:
+    - "h4 heading provides semantic structure within the card"
+  notes: "Uses a semantic h4 for the title. No interactive elements — no ARIA roles required beyond the heading."
+ai-prompt: "DetailCard renders a labelled section card with a title heading and arbitrary children. Use for grouping related fields in detail views, drawers, or side panels. Title is always uppercase, brand-primary coloured, and separated from content by a bottom border."
+---
+
+# DetailCard
+
+A labelled section card for grouping related information. Uses a semantic `h4` heading for the title and renders arbitrary children in the card body.
+
+## Usage
+
+```tsx
+import { DetailCard } from '@ds-foundation/react';
+
+<DetailCard title="Payment Details">
+  <p>Amount: $1,250.00</p>
+</DetailCard>
+```
+
+## Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `title` | `string` | Card section heading (rendered as `h4`) |
+| `children` | `React.ReactNode` | Card body content |
+
+## Accessibility
+
+`h4` provides semantic heading structure. Title colour (`--ds-color-brand-primary`) meets WCAG 1.4.3 contrast requirements against the card background.

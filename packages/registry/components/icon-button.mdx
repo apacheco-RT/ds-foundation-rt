@@ -1,0 +1,48 @@
+---
+id: icon-button
+type: component
+version: 0.2.0
+status: beta
+variants: [info, success, primary, warning, danger, neutral]
+sizes: [sm, md]
+accessibility:
+  role: "button"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.4.7 Focus Visible"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-label or title required when button contains only an icon (no visible text)"
+    - "aria-expanded for toggle buttons (e.g. column pickers)"
+    - "disabled attribute for non-interactive states"
+  notes: "All variants share a neutral rest colour. Variant colour applies on hover only. Supports ref forwarding for programmatic focus management."
+ai-prompt: "IconButton renders a small icon-only or icon+text action button. Six variants (info, success, primary, warning, danger, neutral) drive hover colour via DS feedback tokens. Neutral rest state — all variants look the same at rest, only differ on hover. Use when action context is implied by position/icon (table row actions, toolbar controls). Always add aria-label or title when icon-only."
+---
+
+# IconButton
+
+A small icon-only (or icon+text) action button. Variants drive hover colour via DS feedback tokens. All variants share a neutral rest state — colour only applies on hover.
+
+## Usage
+
+```tsx
+import { IconButton } from '@ds-foundation/react';
+
+<IconButton variant="info" icon={<Eye size={16} />} title="View details" />
+<IconButton variant="danger" icon={<Trash size={16} />} aria-label="Delete" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `IconButtonVariant` | `'neutral'` | Hover colour intent |
+| `size` | `IconButtonSize` | `'md'` | `sm` (24px) or `md` (28px) |
+| `icon` | `React.ReactNode` | — | Icon element |
+| `children` | `React.ReactNode` | — | Optional label text beside icon |
+| `ref` | `React.Ref<HTMLButtonElement>` | — | Forwarded to button element |
+| `...rest` | `ButtonHTMLAttributes` | — | `disabled`, `onClick`, `title`, `aria-*`, etc. |
+
+## Accessibility
+
+Always provide `title` or `aria-label` on icon-only buttons. Use `aria-expanded` for toggle controls. Focus ring uses variant's ring token; outline offset 2px.
