@@ -7,3 +7,4 @@ export * from './UrgencyBadge';
 export * from './BankingWindowDot';
 export * from './DetailCard';
 export * from './IconButton';
+export * from './StateBadge';
