@@ -2,7 +2,7 @@
   "$schema": "https://www.designtokens.org/schemas/2025.10/resolver.json",
   "version": "2025.10",
   "name": "DS Foundation Token Resolver",
-  "description": "Resolves all theme and density permutations. 4 themes × 3 density = 12 possible outputs.",
+  "description": "Resolves theme and density permutations. 2 themes × 1 density = 2 outputs.",
   "sets": {
     "foundation": {
       "description": "Primitive scales — color ramps, spacing, type, radius, shadow, motion, grid",
@@ -22,19 +22,15 @@
       "description": "Color theme",
       "default": "light",
       "contexts": {
-        "light":    [{ "$ref": "./semantic/light/color.tokens.json" }],
-        "dark":     [{ "$ref": "./semantic/dark/color.tokens.json" }],
-        "light-hc": [{ "$ref": "./semantic/light/color.tokens.json" }, { "$ref": "./semantic/high-contrast.tokens.json" }],
-        "dark-hc":  [{ "$ref": "./semantic/dark/color.tokens.json" },  { "$ref": "./semantic/high-contrast.tokens.json" }]
+        "light": [{ "$ref": "./semantic/light/color.tokens.json" }],
+        "dark":  [{ "$ref": "./semantic/dark/color.tokens.json" }]
       }
     },
     "density": {
       "description": "UI density",
       "default": "comfortable",
       "contexts": {
-        "compact":     [{ "$ref": "./density/compact.tokens.json" }],
-        "comfortable": [{ "$ref": "./density/comfortable.tokens.json" }],
-        "spacious":    [{ "$ref": "./density/spacious.tokens.json" }]
+        "comfortable": [{ "$ref": "./density/comfortable.tokens.json" }]
       }
     }
   },
