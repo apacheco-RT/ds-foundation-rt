@@ -1,4 +1,6 @@
 // @ds-component: status-ring | @ds-version: 0.1.0
+import React from 'react';
+import { useReducedMotion } from './utils/useReducedMotion';
 
 export type Urgency = 'critical' | 'watch' | 'clear' | 'skip';
 
@@ -28,6 +30,7 @@ const COLOR: Record<Urgency, { dot: string; ring: string }> = {
 };
 
 export function StatusRing({ urgency, size = 'md', pulse = false }: StatusRingProps) {
+  const reducedMotion = useReducedMotion();
   const px = size === 'sm' ? 8 : 10;
   const { dot, ring } = COLOR[urgency];
   return (
@@ -41,8 +44,8 @@ export function StatusRing({ urgency, size = 'md', pulse = false }: StatusRingPr
         backgroundColor: dot,
         boxShadow: `0 0 0 3px ${ring}`,
         flexShrink: 0,
-        ...(pulse
-          ? { animation: 'pulse-ring var(--ds-motion-deliberate) ease-in-out infinite' }
+        ...(pulse && !reducedMotion
+          ? { animation: 'pulse-ring var(--ds-motion-duration-deliberate) ease-in-out infinite' }
           : {}),
       }}
     />

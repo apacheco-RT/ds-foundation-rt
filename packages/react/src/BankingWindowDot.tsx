@@ -1,4 +1,6 @@
 // @ds-component: banking-window-dot | @ds-version: 0.1.0
+import React from 'react';
+import { useReducedMotion } from './utils/useReducedMotion';
 
 export type WindowStatus = 'open' | 'closing' | 'closed';
 
@@ -14,6 +16,7 @@ const DOT_COLOR: Record<WindowStatus, string> = {
 };
 
 export function BankingWindowDot({ status, size = 6 }: BankingWindowDotProps) {
+  const reducedMotion = useReducedMotion();
   return (
     <span
       aria-hidden="true"
@@ -24,8 +27,8 @@ export function BankingWindowDot({ status, size = 6 }: BankingWindowDotProps) {
         borderRadius: '50%',
         backgroundColor: DOT_COLOR[status],
         flexShrink: 0,
-        ...(status === 'closing'
-          ? { animation: 'pulse-ring var(--ds-motion-deliberate) ease-in-out infinite' }
+        ...(status === 'closing' && !reducedMotion
+          ? { animation: 'pulse-ring var(--ds-motion-duration-deliberate) ease-in-out infinite' }
           : {}),
       }}
     />
