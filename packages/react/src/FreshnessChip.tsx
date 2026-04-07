@@ -10,12 +10,12 @@ export interface FreshnessChipProps extends React.HTMLAttributes<HTMLSpanElement
 }
 
 /** Thresholds for freshness state derivation (ms) */
-const FRESHNESS_WATCH_MS = 5 * 60 * 1000;   // 5 minutes
-const FRESHNESS_STALE_MS = 15 * 60 * 1000;  // 15 minutes
+export const FRESHNESS_WATCH_MS = 5 * 60 * 1000;   // 5 minutes
+export const FRESHNESS_STALE_MS = 15 * 60 * 1000;  // 15 minutes
 
 /** Format a Date as a relative time string (e.g. "3 min ago") */
-function formatRelativeTime(isoString: string): string {
-  const diffMs = Date.now() - new Date(isoString).getTime();
+function formatRelativeTime(date: Date): string {
+  const diffMs = Date.now() - date.getTime();
   const diffSec = Math.floor(diffMs / 1000);
   if (diffSec < 60) return `${diffSec}s ago`;
   const diffMin = Math.floor(diffSec / 60);
@@ -53,7 +53,7 @@ export function FreshnessChip({ state, timestamp, onRefresh, style, ...rest }: F
           lineHeight: 1.4,
         }}
       >
-        {label} · {formatRelativeTime(timestamp.toISOString())}
+        {label} · {formatRelativeTime(timestamp)}
       </span>
       {isStale && onRefresh && (
         <button
@@ -77,9 +77,14 @@ export function FreshnessChip({ state, timestamp, onRefresh, style, ...rest }: F
 }
 
 /** Derive FreshnessState from a timestamp */
-export function deriveFreshnessState(lastUpdatedAt: Date): FreshnessState {
+export function deriveFreshnessState(
+  lastUpdatedAt: Date,
+  options?: { watchThresholdMs?: number; staleThresholdMs?: number }
+): FreshnessState {
+  const watchMs = options?.watchThresholdMs ?? FRESHNESS_WATCH_MS;
+  const staleMs = options?.staleThresholdMs ?? FRESHNESS_STALE_MS;
   const age = Date.now() - lastUpdatedAt.getTime();
-  if (age >= FRESHNESS_STALE_MS) return 'stale';
-  if (age >= FRESHNESS_WATCH_MS) return 'watch';
+  if (age >= staleMs) return 'stale';
+  if (age >= watchMs) return 'watch';
   return 'fresh';
 }

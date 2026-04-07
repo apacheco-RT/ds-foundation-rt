@@ -9,3 +9,9 @@
 
 /* Dark theme token overrides — activated via data-theme="dark" on <html> */
 @import "@ds-foundation/tokens/css/dark" layer(theme-dark);
+
+/* Skeleton loading animation — required by MonoAmount and DetailCard isLoading states */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
