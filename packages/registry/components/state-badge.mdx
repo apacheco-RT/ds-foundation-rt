@@ -5,6 +5,23 @@ version: 0.2.0
 status: beta
 variants: [info, warning, success, error, neutral]
 sizes: [sm, md]
+adapters:
+  tailwind:
+    info:
+      base: "inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs font-medium"
+      variant: "bg-[var(--ds-color-feedback-info-bg)] text-[var(--ds-color-feedback-info-text)] border border-[var(--ds-color-feedback-info-border)]"
+    warning:
+      base: "inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs font-medium"
+      variant: "bg-[var(--ds-color-feedback-warning-bg)] text-[var(--ds-color-feedback-warning-text)] border border-[var(--ds-color-feedback-warning-border)]"
+    success:
+      base: "inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs font-medium"
+      variant: "bg-[var(--ds-color-feedback-success-bg)] text-[var(--ds-color-feedback-success-text)] border border-[var(--ds-color-feedback-success-border)]"
+    error:
+      base: "inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs font-medium"
+      variant: "bg-[var(--ds-color-feedback-error-bg)] text-[var(--ds-color-feedback-error-text)] border border-[var(--ds-color-feedback-error-border)]"
+    neutral:
+      base: "inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs font-medium"
+      variant: "bg-[var(--ds-color-surface-raised)] text-[var(--ds-color-text-secondary)] border border-[var(--ds-color-border-default)]"
 accessibility:
   role: "status"
   wcag:

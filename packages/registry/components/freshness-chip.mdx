@@ -5,6 +5,14 @@ version: 0.1.0
 status: beta
 variants: []
 sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "inline-flex items-center gap-1"
+    watch:
+      variant: "rounded-full px-2 py-0.5 text-xs font-bold tracking-widest bg-[var(--ds-color-feedback-warning-bg)] text-[var(--ds-color-feedback-warning-text)] border border-[var(--ds-color-feedback-warning-border)]"
+    stale:
+      variant: "rounded-full px-2 py-0.5 text-xs font-bold tracking-widest bg-[var(--ds-color-feedback-error-bg)] text-[var(--ds-color-feedback-error-text)] border border-[var(--ds-color-feedback-error-border)]"
 accessibility:
   role: "status"
   wcag:

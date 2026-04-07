@@ -5,6 +5,26 @@ version: 0.2.0
 status: beta
 variants: [info, success, primary, warning, danger, neutral]
 sizes: [sm, md]
+adapters:
+  tailwind:
+    info:
+      base: "inline-flex items-center justify-center rounded p-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+      variant: "text-[var(--ds-color-text-secondary)] hover:text-[var(--ds-color-feedback-info-text)] hover:bg-[var(--ds-color-feedback-info-bg)]"
+    success:
+      base: "inline-flex items-center justify-center rounded p-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+      variant: "text-[var(--ds-color-text-secondary)] hover:text-[var(--ds-color-feedback-success-text)] hover:bg-[var(--ds-color-feedback-success-bg)]"
+    primary:
+      base: "inline-flex items-center justify-center rounded p-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+      variant: "text-[var(--ds-color-text-secondary)] hover:text-[var(--ds-color-brand-primary)] hover:bg-[var(--ds-color-surface-raised)]"
+    warning:
+      base: "inline-flex items-center justify-center rounded p-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+      variant: "text-[var(--ds-color-text-secondary)] hover:text-[var(--ds-color-feedback-warning-text)] hover:bg-[var(--ds-color-feedback-warning-bg)]"
+    danger:
+      base: "inline-flex items-center justify-center rounded p-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+      variant: "text-[var(--ds-color-text-secondary)] hover:text-[var(--ds-color-feedback-error-text)] hover:bg-[var(--ds-color-feedback-error-bg)]"
+    neutral:
+      base: "inline-flex items-center justify-center rounded p-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+      variant: "text-[var(--ds-color-text-secondary)] hover:text-[var(--ds-color-text-primary)] hover:bg-[var(--ds-color-surface-raised)]"
 accessibility:
   role: "button"
   wcag:

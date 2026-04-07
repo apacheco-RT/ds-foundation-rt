@@ -8,6 +8,26 @@ sizes:
   - sm
   - md
   - lg
+adapters:
+  tailwind:
+    default:
+      base: "font-mono tabular-nums"
+      variant: "text-[var(--ds-color-text-primary)]"
+    success:
+      base: "font-mono tabular-nums"
+      variant: "text-[var(--ds-color-feedback-success-icon)]"
+    warning:
+      base: "font-mono tabular-nums"
+      variant: "text-[var(--ds-color-feedback-warning-text)]"
+    error:
+      base: "font-mono tabular-nums"
+      variant: "text-[var(--ds-color-feedback-error-icon)]"
+    muted:
+      base: "font-mono tabular-nums"
+      variant: "text-[var(--ds-color-text-tertiary)]"
+    brand:
+      base: "font-mono tabular-nums"
+      variant: "text-[var(--ds-color-brand-primary)]"
 accessibility:
   role: "text (interactive: button)"
   wcag:
