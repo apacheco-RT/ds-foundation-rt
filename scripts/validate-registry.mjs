@@ -7,7 +7,7 @@ import { resolve, join } from 'node:path';
 import matter from 'gray-matter';
 
 const COMPONENTS_DIR = resolve(import.meta.dirname, '../packages/registry/components');
-const files = readdirSync(COMPONENTS_DIR).filter(f => f.endsWith('.mdx'));
+const files = readdirSync(COMPONENTS_DIR).filter(f => f.endsWith('.mdx') && !f.startsWith('_'));
 
 let errors = 0;
 let warnings = 0;
