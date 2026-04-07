@@ -77,19 +77,35 @@ server.tool(
 );
 
 // ── Tool: resolve_token ───────────────────────────────────────────────────────
+const TOKENS_FLAT_PATH = resolve(
+  import.meta.dirname,
+  '../../../packages/tokens/build/json/tokens.flat.json'
+);
+
+function loadTokensFlat(): Record<string, string> {
+  try {
+    return JSON.parse(readFileSync(TOKENS_FLAT_PATH, 'utf8'));
+  } catch {
+    return {};
+  }
+}
+
 server.tool(
   'resolve_token',
-  'Resolve a semantic token path to its CSS custom property name and value.',
+  'Resolve a semantic token path to its CSS custom property name and current value.',
   {
     path:  z.string().describe('Dot-notation token path (e.g. "color.brand.primary")'),
     theme: z.enum(['light', 'dark']).default('light'),
   },
-  async ({ path }) => {
+  async ({ path, theme }) => {
     const cssVar = `--ds-${path.replace(/\./g, '-')}`;
+    const flat = loadTokensFlat();
+    // flat JSON may use dot-notation or CSS var keys — try both
+    const value = flat[path] ?? flat[cssVar] ?? null;
     return {
       content: [{
         type: 'text',
-        text: JSON.stringify({ path, cssVar, usage: `var(${cssVar})` }, null, 2),
+        text: JSON.stringify({ path, cssVar, usage: `var(${cssVar})`, value, theme }, null, 2),
       }],
     };
   }
