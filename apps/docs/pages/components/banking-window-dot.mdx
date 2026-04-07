@@ -1,0 +1,30 @@
+---
+title: BankingWindowDot
+---
+
+# BankingWindowDot
+
+A small coloured dot indicating whether a banking window (payment cut-off) is open, closing, or closed. `closing` state pulses to draw attention.
+
+## Usage
+
+```tsx
+import { BankingWindowDot } from '@ds-foundation/react';
+
+<BankingWindowDot status="open" />
+<BankingWindowDot status="closing" />
+<BankingWindowDot status="closed" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `status` | `'open' \| 'closing' \| 'closed'` | — | Required. Determines dot colour and animation |
+| `size` | `number` | `6` | Dot diameter in pixels |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | Forwarded to root span |
+
+## Accessibility
+
+- `aria-hidden="true"` — decorative. Always pair with a visible label or tooltip in the surrounding context
+- `closing` pulse animation is suppressed for users with `prefers-reduced-motion`

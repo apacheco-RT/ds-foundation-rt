@@ -1,0 +1,58 @@
+---
+title: MonoAmount
+---
+
+# MonoAmount
+
+Renders a financial figure in monospace font with tabular number alignment. Supports an optional interactive mode for provenance drill-down.
+
+## Usage
+
+```tsx
+import { MonoAmount, CurrencyBadge } from '@ds-foundation/react';
+
+// Static display
+<MonoAmount value={1250000} currency="USD" />
+
+// With denomination badge
+<span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+  <MonoAmount value={4500000} currency="EUR" size="lg" color="success" />
+  <CurrencyBadge currency="EUR" />
+</span>
+
+// Interactive — opens provenance panel
+<MonoAmount value={750000} currency="GBP" onProvenanceTap={() => openProvenance()} />
+
+// Loading state
+<MonoAmount value={0} currency="USD" isLoading />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | — | Required. The numeric amount |
+| `currency` | `'USD' \| 'EUR' \| 'GBP'` | — | Required. Determines the symbol prefix |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Font size |
+| `color` | `'default' \| 'success' \| 'warning' \| 'error' \| 'muted' \| 'brand'` | `'default'` | Semantic colour |
+| `onProvenanceTap` | `() => void` | — | When provided, renders as an interactive button |
+| `isLoading` | `boolean` | `false` | Shows a skeleton placeholder |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | Forwarded to root span; ref is also forwarded |
+
+## Accessibility
+
+- When `onProvenanceTap` is provided: `role="button"`, `tabIndex={0}`, keyboard-operable via Enter and Space
+- `aria-label` describes value, currency, and action in interactive mode
+- Invalid values (`NaN`, `Infinity`) render as `—` with `aria-label="invalid amount"`
+- Loading state has `role="status"` and `aria-label="Loading amount"`
+
+## Note: skeleton-pulse keyframe
+
+`isLoading` uses a `skeleton-pulse` CSS animation. Add this to your app's global CSS if not already present:
+
+```css
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+```

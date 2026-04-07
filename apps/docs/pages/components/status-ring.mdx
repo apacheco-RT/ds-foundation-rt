@@ -1,0 +1,31 @@
+---
+title: StatusRing
+---
+
+# StatusRing
+
+A coloured dot with an optional pulse animation. Used to indicate real-time system urgency — critical, watch, clear, or skip. Purely decorative (`aria-hidden`); the label is carried by the surrounding context.
+
+## Usage
+
+```tsx
+import { StatusRing } from '@ds-foundation/react';
+
+<StatusRing urgency="critical" />
+<StatusRing urgency="watch" pulse />
+<StatusRing urgency="clear" size="sm" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `urgency` | `'critical' \| 'watch' \| 'clear' \| 'skip'` | — | Required. Determines dot and ring colour |
+| `size` | `'sm' \| 'md'` | `'md'` | sm = 8px dot, md = 10px dot |
+| `pulse` | `boolean` | `false` | Adds a continuous pulse animation. Suppressed when `prefers-reduced-motion` is set |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | `data-*`, custom styles, etc. |
+
+## Accessibility
+
+- `aria-hidden="true"` — purely decorative. Always pair with a visible or screen-reader label in the surrounding context that communicates the urgency state
+- Pulse animation is suppressed for users with `prefers-reduced-motion`

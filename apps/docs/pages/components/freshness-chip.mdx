@@ -1,0 +1,46 @@
+---
+title: FreshnessChip
+---
+
+# FreshnessChip
+
+Shows data recency. Hidden when data is fresh, amber when aging (watch), red when stale. Includes an optional refresh action in the stale state.
+
+## Usage
+
+```tsx
+import { FreshnessChip, deriveFreshnessState } from '@ds-foundation/react';
+
+const state = deriveFreshnessState(lastUpdatedAt);
+
+<FreshnessChip state={state} timestamp={lastUpdatedAt} onRefresh={() => refetch()} />
+
+// Custom thresholds (e.g. for faster-moving data)
+const state = deriveFreshnessState(lastUpdatedAt, {
+  watchThresholdMs: 2 * 60 * 1000,   // 2 minutes
+  staleThresholdMs: 5 * 60 * 1000,   // 5 minutes
+});
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `state` | `'fresh' \| 'watch' \| 'stale'` | — | Required. Freshness state to display |
+| `timestamp` | `Date` | — | Required. Last-updated timestamp; formatted as relative time |
+| `onRefresh` | `() => void` | — | Optional. Shows a refresh button in stale state only |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | Forwarded to the outer `aria-live` span |
+
+## deriveFreshnessState
+
+```ts
+deriveFreshnessState(lastUpdatedAt: Date, options?: {
+  watchThresholdMs?: number;  // default: 5 min
+  staleThresholdMs?: number;  // default: 15 min
+}): FreshnessState
+```
+
+## Accessibility
+
+- `aria-live="polite"` region is always in the DOM (even when `fresh` and visually hidden) to prevent announcement bursts on mount
+- Refresh button has `aria-label="Refresh data"`

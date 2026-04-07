@@ -1,0 +1,40 @@
+---
+title: DetailCard
+---
+
+# DetailCard
+
+A labelled card container for displaying grouped detail information. Used for settlement breakdowns, entity summaries, and threshold configurations.
+
+## Usage
+
+```tsx
+import { DetailCard } from '@ds-foundation/react';
+
+<DetailCard title="Settlement Summary">
+  <p>Net position: USD 4,200,000</p>
+</DetailCard>
+
+// Loading state
+<DetailCard title="Settlement Summary" isLoading />
+
+// With ref
+const cardRef = useRef<HTMLDivElement>(null);
+<DetailCard ref={cardRef} title="Entity" isLoading={loading}>
+  {content}
+</DetailCard>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | — | Required. Card heading (rendered uppercase, brand-coloured) |
+| `children` | `React.ReactNode` | — | Card body content |
+| `isLoading` | `boolean` | `false` | Shows a skeleton placeholder |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to root div; ref is also forwarded |
+
+## Accessibility
+
+- `isLoading` state adds `aria-busy="true"` to the container
+- Use a descriptive `title` — it is rendered as an `<h4>` in the DOM
