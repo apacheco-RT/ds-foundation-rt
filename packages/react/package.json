@@ -1,6 +1,6 @@
 {
   "name": "@ds-foundation/react",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "React atom components built on @ds-foundation/tokens",
   "type": "module",
   "main": "./dist/index.js",

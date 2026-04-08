@@ -1,6 +1,6 @@
 {
   "name": "@ds-foundation/registry",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Component registry — JSON schemas, MDX specs, Velite pipeline",
   "type": "module",
   "main": "./registry.json",
