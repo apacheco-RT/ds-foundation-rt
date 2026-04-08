@@ -68,6 +68,27 @@
       "700": { "$value": { "colorSpace": "oklch", "components": [0.459, 0.241, 295], "hex": "#6d28d9" } },
       "950": { "$value": { "colorSpace": "oklch", "components": [0.193, 0.095, 295], "hex": "#2e1065" } }
     },
+    "purple": {
+      "100": { "$value": { "colorSpace": "oklch", "components": [0.91, 0.05, 275], "hex": "#D1D5FF" } },
+      "200": { "$value": { "colorSpace": "oklch", "components": [0.78, 0.11, 275], "hex": "#A19DFF" } },
+      "300": { "$value": { "colorSpace": "oklch", "components": [0.62, 0.18, 275], "hex": "#6C47FF" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.44, 0.20, 275], "hex": "#4417BF" } },
+      "500": { "$value": { "colorSpace": "oklch", "components": [0.21, 0.16, 275], "hex": "#2B0160" } }
+    },
+    "pink": {
+      "100": { "$value": { "colorSpace": "oklch", "components": [0.92, 0.05, 308], "hex": "#E9DEFF" } },
+      "200": { "$value": { "colorSpace": "oklch", "components": [0.77, 0.13, 308], "hex": "#D191FF" } },
+      "300": { "$value": { "colorSpace": "oklch", "components": [0.61, 0.22, 308], "hex": "#C247FF" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.40, 0.22, 308], "hex": "#7B099E" } },
+      "500": { "$value": { "colorSpace": "oklch", "components": [0.19, 0.14, 308], "hex": "#39003D" } }
+    },
+    "orange": {
+      "100": { "$value": { "colorSpace": "oklch", "components": [0.94, 0.05, 35], "hex": "#FFDCD0" } },
+      "200": { "$value": { "colorSpace": "oklch", "components": [0.84, 0.10, 35], "hex": "#FEB9A7" } },
+      "300": { "$value": { "colorSpace": "oklch", "components": [0.70, 0.16, 35], "hex": "#FF7F66" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.49, 0.17, 35], "hex": "#CB4526" } },
+      "500": { "$value": { "colorSpace": "oklch", "components": [0.21, 0.10, 35], "hex": "#471200" } }
+    },
     "white":       { "$value": { "colorSpace": "oklch", "components": [1, 0, "none"], "hex": "#ffffff" } },
     "black":       { "$value": { "colorSpace": "oklch", "components": [0, 0, "none"], "hex": "#000000" } },
     "transparent": { "$value": { "colorSpace": "srgb", "components": [0, 0, 0], "alpha": 0, "hex": "#000000" } }
