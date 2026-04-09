@@ -1,0 +1,30 @@
+/* Wireframe theme — brand-neutral palette for rapid prototyping.
+   Applied via [data-theme="wireframe"] on <html>.
+   Feedback tokens (success/warning/error/info) are intentionally omitted —
+   they cascade from :root and retain full semantic meaning for customer testing. */
+
+[data-theme="wireframe"] {
+  /* Surfaces */
+  --ds-bg:         #f5f5f5;
+  --ds-surface:    #ffffff;
+  --ds-surface-up: #ebebeb;
+  --ds-overlay:    rgba(0, 0, 0, 0.4);
+  --ds-sunken:     #e0e0e0;
+
+  /* Text */
+  --ds-text:          #1a1a1a;
+  --ds-text-muted:    #666666;
+  --ds-text-disabled: #aaaaaa;
+  --ds-text-inverse:  #ffffff;
+
+  /* Borders */
+  --ds-border:        #cccccc;
+  --ds-border-strong: #999999;
+  --ds-border-focus:  #4a7fa5;
+
+  /* Brand — generic blue, intentionally not Ripple-branded */
+  --ds-primary:        #4a7fa5;
+  --ds-primary-hover:  #3a6f95;
+  --ds-primary-fg:     #ffffff;
+  --ds-primary-subtle: #ddeaf4;
+}
