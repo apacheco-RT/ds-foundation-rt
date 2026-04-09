@@ -11,11 +11,11 @@ Token-first, registry-driven design system for the Ripple Treasury product team.
 
 | Package | What it gives you |
 |---|---|
-| `@ds-foundation/tokens` | CSS custom properties (`--ds-*`), Tailwind theme block, JS exports — DTCG 2025.10 |
+| `@ds-foundation/tokens` | CSS custom properties (`--ds-*`), Tailwind theme block, SCSS variables, JS exports — DTCG 2025.10 |
 | `@ds-foundation/react` | 80+ typed, accessible React components built on those tokens |
 | `@ds-foundation/core` | Framework-agnostic token contracts and adapter types |
 | `@ds-foundation/registry` | MDX component specs: variants, ARIA requirements, and AI prompts |
-| `mcp/ds-server` | MCP server — lets Claude Code query the registry and resolve tokens in real time |
+| `@ds-foundation/mcp-server` | MCP server — lets Claude Code query the registry and resolve tokens in real time |
 | `apps/docs` | Documentation site (Next.js 15 + Nextra) |
 | `apps/storybook` | Component development and visual review hub (Storybook 8) |
 | `template/` | Next.js 15 starter pre-wired to the full design system |
@@ -26,14 +26,41 @@ Token-first, registry-driven design system for the Ripple Treasury product team.
 
 ### See what exists
 
-Start with Storybook — every component has stories for all variants and states:
+Every component has a Storybook story showing all variants and states. PRs automatically publish a live Storybook preview via Chromatic — the link appears in the PR checks.
+
+To browse locally:
 
 ```bash
-npm run dev:storybook
+git clone git@github.com:ds-foundation/ds-foundation-rt.git
+cd ds-foundation-rt
+npm install && npm run dev:storybook
 # Opens at http://localhost:6006
 ```
 
-Or browse registry specs directly in `packages/registry/components/` — each `.mdx` file is the canonical spec for one component.
+To browse component specs without running anything, look in `packages/registry/components/` — each `.mdx` file is the canonical spec for one component.
+
+### Figma and tokens
+
+Token values are synced to Figma automatically via the `sync-figma-tokens` CI workflow on every push to `main`. The Figma library stays in sync with the token source — edit tokens here, not in Figma directly.
+
+### Token reference
+
+Tokens are organized by semantic intent — what they're *for*, not what they look like. Never hardcode a color, spacing value, or type size that has a token counterpart.
+
+| Category | What it covers |
+|---|---|
+| Color / surface | Background fills for containers, cards, and pages |
+| Color / text | Text on light or dark surfaces |
+| Color / border | Dividers, field outlines, card edges |
+| Color / interactive | Primary actions, links, focus rings |
+| Color / status | Success, warning, error, and info states |
+| Spacing | Layout gaps and padding — 4px base grid |
+| Typography | Font choice, size scale, weight, line height |
+| Radius | Corner rounding |
+| Shadow | Elevation levels for overlays and cards |
+| Motion | Animation duration and easing curves |
+
+Dark mode tokens live in a separate file and are scoped to `[data-theme="dark"]`. See the engineer setup below.
 
 ### Spec a new component
 
@@ -42,7 +69,8 @@ The registry is spec-first: if a component isn't specced, it doesn't get built. 
 1. Copy `packages/registry/components/_template.mdx`
 2. Rename it to `my-component.mdx`
 3. Fill in the required fields (see below)
-4. Run `node scripts/validate-registry.mjs` — fix any errors before opening a PR
+4. Run `node scripts/validate-registry.mjs` — fix any errors
+5. Open a PR — engineers pick up the implementation from there
 
 **Required fields:**
 
@@ -54,21 +82,6 @@ The registry is spec-first: if a component isn't specced, it doesn't get built. 
 | `accessibility.wcag` | Which WCAG criteria apply (minimum: `1.4.3 Contrast`) |
 | `accessibility.aria` | Required attributes that consumers must pass |
 | `ai-prompt` | One paragraph describing the component for AI code generation |
-
-### Token reference
-
-All design decisions live as semantic tokens — never hardcode colors, spacing, or type values. Token categories:
-
-| Prefix | What it covers |
-|---|---|
-| `--ds-color-*` | Surface, text, border, interactive, status |
-| `--ds-spacing-*` | 4px grid — `spacing-1` = 4px, `spacing-4` = 16px |
-| `--ds-typography-*` | Font families, sizes, weights, line heights |
-| `--ds-radius-*` | Border radii (sm / md / lg / full) |
-| `--ds-shadow-*` | Elevation levels |
-| `--ds-motion-*` | Duration and easing curves |
-
-**Dark mode:** add `data-theme="dark"` to `<html>`. All tokens swap automatically — no extra classes needed.
 
 ---
 
@@ -87,7 +100,7 @@ npm install
 npm run dev
 ```
 
-Storybook runs at `http://localhost:6006`. Docs at `http://localhost:3000`.
+Storybook at `http://localhost:6006`. Docs at `http://localhost:3000`.
 
 ### Install packages in your project
 
@@ -134,30 +147,54 @@ npm install @ds-foundation/tokens @ds-foundation/react @ds-foundation/core @ds-f
 }
 ```
 
-**Tailwind:**
+**Dark mode** — import the dark token file and scope it to your theme attribute:
+
+```css
+@import "@ds-foundation/tokens/css";           /* --ds-* custom properties (light) */
+@import "@ds-foundation/tokens/css/dark";      /* [data-theme="dark"] overrides */
+```
+
+Add `data-theme="dark"` to `<html>` to activate the dark theme. Tokens swap automatically.
+
+**Tailwind v4:**
 
 ```css
 /* globals.css */
-@import "@ds-foundation/tokens/tailwind";  /* @theme block */
-@import "@ds-foundation/tokens/css";       /* CSS custom properties */
+@import "tailwindcss";
+@import "@ds-foundation/tokens/tailwind";      /* @theme block — tokens as Tailwind utilities */
+@import "@ds-foundation/tokens/css";           /* --ds-* custom properties */
+@import "@ds-foundation/tokens/css/dark";      /* dark mode overrides */
 ```
-
-Then use Tailwind classes normally — they resolve to the token system.
 
 ### Use React components
 
-Import from `@ds-foundation/react`. All components are typed and accessible:
+Import from `@ds-foundation/react`. Components use the Radix UI composition pattern — there's no `options` prop shorthand; you compose the pieces directly. This gives you full control over rendering, ARIA attributes, and keyboard behavior.
 
 ```tsx
-import { Button, Badge, Card, Input, Select } from "@ds-foundation/react";
+import {
+  Button,
+  Card, CardContent,
+  Input,
+  Select, SelectTrigger, SelectValue, SelectContent, SelectItem,
+} from "@ds-foundation/react";
 import "@ds-foundation/react/styles.css";
 
 function Example() {
   return (
     <Card>
-      <Input placeholder="Account name" />
-      <Select options={accounts} />
-      <Button variant="primary">Submit</Button>
+      <CardContent className="space-y-4">
+        <Input placeholder="Account name" />
+        <Select>
+          <SelectTrigger>
+            <SelectValue placeholder="Select account" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="checking">Checking</SelectItem>
+            <SelectItem value="savings">Savings</SelectItem>
+          </SelectContent>
+        </Select>
+        <Button variant="default">Submit</Button>
+      </CardContent>
     </Card>
   );
 }
@@ -215,13 +252,13 @@ npm run dev --filter=@ds-foundation/mcp-server
 
 1. **Spec** — create `packages/registry/components/my-component.mdx` (designer step)
 2. **Implement** — add `packages/react/src/MyComponent.tsx`, use semantic tokens only
-3. **Story** — add `apps/storybook/src/stories/MyComponent.stories.tsx` with all variants
+3. **Story** — add `packages/react/src/MyComponent.stories.tsx` alongside the component
 4. **Validate:**
    ```bash
    npm run validate:registry && npm run validate:tokens && npm run typecheck
    ```
 5. **Changeset:** `npx changeset` (patch / minor / major)
-6. **PR** — CI runs all validators; Chromatic deploys a visual diff
+6. **PR** — CI runs all validators; Chromatic publishes a visual diff for review
 
 ---
 
