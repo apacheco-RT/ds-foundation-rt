@@ -140,7 +140,7 @@ function CardDivider({ label, className }: CardDividerProps) {
     )
   }
   return (
-    <div className={cn("border-t border-ds-border", className)} />
+    <div className={cn("border-t border-ds-border my-0", className)} />
   )
 }
 CardDivider.displayName = "CardDivider"
