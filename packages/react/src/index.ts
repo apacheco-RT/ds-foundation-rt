@@ -44,3 +44,41 @@ export { Textarea } from './Textarea';
 export { Toggle } from './Toggle';
 // (toggleVariants is an internal CVA helper — not exported)
 export { ToggleGroup, ToggleGroupItem } from './ToggleGroup';
+
+// Batch C — overlay and popup
+export { Collapsible, CollapsibleContent, CollapsibleTrigger } from './Collapsible';
+export {
+  ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuGroup,
+  ContextMenuItem, ContextMenuLabel, ContextMenuPortal, ContextMenuRadioGroup,
+  ContextMenuRadioItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub,
+  ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuTrigger,
+} from './ContextMenu';
+export {
+  Dialog, DialogClose, DialogContent, DialogDescription,
+  DialogFooter, DialogHeader, DialogOverlay, DialogPortal,
+  DialogTitle, DialogTrigger,
+} from './Dialog';
+export {
+  Drawer, DrawerClose, DrawerContent, DrawerDescription,
+  DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal,
+  DrawerTitle, DrawerTrigger,
+} from './Drawer';
+export {
+  DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup,
+  DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup,
+  DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub,
+  DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger,
+} from './DropdownMenu';
+export { HoverCard, HoverCardContent, HoverCardTrigger } from './HoverCard';
+export {
+  NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem,
+  NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport,
+  navigationMenuTriggerStyle,
+} from './NavigationMenu';
+export { Popover, PopoverContent, PopoverTrigger } from './Popover';
+export {
+  Sheet, SheetClose, SheetContent, SheetDescription,
+  SheetFooter, SheetHeader, SheetOverlay, SheetPortal,
+  SheetTitle, SheetTrigger,
+} from './Sheet';
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './Tooltip';
