@@ -130,3 +130,22 @@ Packages are published to GitHub Packages under the `ds-foundation` org.
 
 Registry: `https://npm.pkg.github.com`
 Org: `@ds-foundation`
+
+## Consumers
+
+### design-system-ML
+
+`design-system-ML` ([apacheco-RT/design-system-ML](https://github.com/apacheco-RT/design-system-ML)) consumes `@ds-foundation/tokens` as its token foundation layer via `src/tokens/bridge.css`.
+
+**Local dev setup (npm link):**
+
+```bash
+# In this repo — register the package globally
+cd packages/tokens
+npm link
+
+# In design-system-ML repo — wire the link
+npm link @ds-foundation/tokens
+```
+
+After making token changes, run `npm run build:tokens` here. The linked ML dev server will pick up changes automatically via Vite HMR.
