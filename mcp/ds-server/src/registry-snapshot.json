@@ -48,7 +48,19 @@
       "adapters": {
         "tailwind": {
           "default": {
-            "base": "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground"
+            "base": "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground bg-background text-foreground"
+          },
+          "destructive": {
+            "base": "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive"
+          },
+          "success": {
+            "base": "border-green-300/50 text-green-300 [&>svg]:text-green-300 bg-green-300/10"
+          },
+          "info": {
+            "base": "border-blue-500/50 text-blue-500 [&>svg]:text-blue-500 bg-blue-100"
+          },
+          "warning": {
+            "base": "border-orange-400/50 text-orange-400 [&>svg]:text-orange-400 bg-orange-400/10"
           }
         }
       },
@@ -147,7 +159,28 @@
       "adapters": {
         "tailwind": {
           "default": {
-            "base": "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+            "base": "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-blue-500 text-white hover:bg-blue-600"
+          },
+          "secondary": {
+            "base": "border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200"
+          },
+          "destructive": {
+            "base": "border-transparent bg-orange-400 text-white hover:bg-orange-500"
+          },
+          "outline": {
+            "base": "text-foreground"
+          },
+          "success": {
+            "base": "border-transparent bg-green-300 text-white hover:bg-green-400"
+          },
+          "warning": {
+            "base": "border-transparent bg-orange-300 text-white hover:bg-orange-400"
+          },
+          "info": {
+            "base": "border-transparent bg-purple-300 text-white hover:bg-purple-400"
+          },
+          "pink": {
+            "base": "border-transparent bg-pink-300 text-white hover:bg-pink-400"
           }
         }
       },
@@ -252,7 +285,22 @@
       "adapters": {
         "tailwind": {
           "default": {
-            "base": "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
+            "base": "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90"
+          },
+          "destructive": {
+            "base": "bg-destructive text-destructive-foreground hover:bg-destructive/90"
+          },
+          "outline": {
+            "base": "border border-input bg-background hover:bg-accent hover:text-accent-foreground"
+          },
+          "secondary": {
+            "base": "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+          },
+          "ghost": {
+            "base": "hover:bg-accent hover:text-accent-foreground"
+          },
+          "link": {
+            "base": "text-primary underline-offset-4 hover:underline"
           }
         }
       },
@@ -735,7 +783,13 @@
       "adapters": {
         "tailwind": {
           "default": {
-            "base": "border rounded-lg p-4 transition-all duration-150 outline-none focus-visible:ring-4 focus-visible:ring-[#65BEFF] focus-visible:ring-offset-0"
+            "base": "border rounded-lg p-4 transition-all duration-150 outline-none focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-0"
+          },
+          "tall": {
+            "base": "flex flex-col gap-2"
+          },
+          "long": {
+            "base": "flex items-center gap-3"
           }
         }
       },
@@ -1478,6 +1532,18 @@
         "tailwind": {
           "default": {
             "base": "fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500"
+          },
+          "top": {
+            "base": "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top"
+          },
+          "bottom": {
+            "base": "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom"
+          },
+          "left": {
+            "base": "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm"
+          },
+          "right": {
+            "base": "inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm"
           }
         }
       },
@@ -1899,7 +1965,22 @@
       "adapters": {
         "tailwind": {
           "default": {
-            "base": "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium"
+            "base": "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted text-muted-foreground"
+          },
+          "blue": {
+            "base": "bg-blue-100 text-blue-600"
+          },
+          "green": {
+            "base": "bg-green-100 text-green-400"
+          },
+          "error": {
+            "base": "bg-orange-100 text-orange-400"
+          },
+          "orange": {
+            "base": "bg-orange-200 text-orange-500"
+          },
+          "purple": {
+            "base": "bg-purple-100 text-purple-400"
           }
         }
       },
@@ -2001,6 +2082,9 @@
         "tailwind": {
           "default": {
             "base": "flex items-center justify-center gap-1"
+          },
+          "outline": {
+            "base": "border border-input rounded-md"
           }
         }
       },
@@ -2039,7 +2123,10 @@
       "adapters": {
         "tailwind": {
           "default": {
-            "base": "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 gap-2"
+            "base": "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 gap-2 bg-transparent"
+          },
+          "outline": {
+            "base": "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground"
           }
         }
       },
@@ -2113,6 +2200,36 @@
         "tailwind": {
           "default": {
             "base": "text-[16px] font-normal leading-[1.5]"
+          },
+          "Display": {
+            "base": "text-[72px] font-bold leading-[1.1] tracking-tight"
+          },
+          "H1": {
+            "base": "text-[48px] font-bold leading-[1.2] tracking-tight"
+          },
+          "H2": {
+            "base": "text-[36px] font-bold leading-[1.25] tracking-tight"
+          },
+          "H3": {
+            "base": "text-[28px] font-semibold leading-[1.3] tracking-tight"
+          },
+          "H4": {
+            "base": "text-[24px] font-semibold leading-[1.35] tracking-tight"
+          },
+          "H5": {
+            "base": "text-[20px] font-semibold leading-[1.4] tracking-tight"
+          },
+          "BodyLarge": {
+            "base": "text-[20px] font-normal leading-[1.6]"
+          },
+          "Body": {
+            "base": "text-[16px] font-normal leading-[1.5]"
+          },
+          "BodySmall": {
+            "base": "text-[14px] font-normal leading-[1.5]"
+          },
+          "Caption": {
+            "base": "text-[12px] font-normal leading-[1.4] text-muted-foreground"
           }
         }
       },
