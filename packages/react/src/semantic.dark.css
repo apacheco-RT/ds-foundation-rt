@@ -1,0 +1,56 @@
+/* packages/react/src/semantic.dark.css
+   Dark theme overrides for semantic aliases.
+   Activated by [data-theme="dark"] on <html>. */
+
+[data-theme="dark"] {
+  /* ── Surfaces ───────────────────────────────────────── */
+  --ds-bg:              var(--ds-color-surface-page);
+  --ds-surface:         var(--ds-color-surface-default);
+  --ds-surface-up:      var(--ds-color-surface-raised);
+  --ds-overlay:         var(--ds-color-surface-overlay);
+  --ds-sunken:          var(--ds-color-surface-sunken);
+
+  /* ── Text ───────────────────────────────────────────── */
+  --ds-text:            var(--ds-color-text-primary);
+  --ds-text-muted:      var(--ds-color-text-tertiary);
+  --ds-text-disabled:   var(--ds-color-text-disabled);
+  --ds-text-inverse:    var(--ds-color-text-inverse);
+
+  /* ── Borders ────────────────────────────────────────── */
+  --ds-border:          var(--ds-color-border-default);
+  --ds-border-strong:   var(--ds-color-border-strong);
+  --ds-border-focus:    var(--ds-color-border-focus);
+
+  /* ── Brand ──────────────────────────────────────────── */
+  --ds-primary:         var(--ds-color-brand-primary);
+  --ds-primary-hover:   var(--ds-color-brand-primary-hover);
+  --ds-primary-fg:      var(--ds-color-brand-primary-on);
+  --ds-primary-subtle:  var(--ds-color-brand-primary-subtle);
+
+  /* ── Feedback icons ─────────────────────────────────── */
+  --ds-success:         var(--ds-color-feedback-success-icon);
+  --ds-warning:         var(--ds-color-feedback-warning-icon);
+  --ds-danger:          var(--ds-color-feedback-error-icon);
+  --ds-info:            var(--ds-color-feedback-info-icon);
+
+  /* ── Feedback semantic sets ─────────────────────────── */
+  --ds-feedback-success-bg:     var(--ds-color-feedback-success-bg);
+  --ds-feedback-success-text:   var(--ds-color-feedback-success-text);
+  --ds-feedback-success-border: var(--ds-color-feedback-success-border);
+  --ds-feedback-success-icon:   var(--ds-color-feedback-success-icon);
+
+  --ds-feedback-error-bg:       var(--ds-color-feedback-error-bg);
+  --ds-feedback-error-text:     var(--ds-color-feedback-error-text);
+  --ds-feedback-error-border:   var(--ds-color-feedback-error-border);
+  --ds-feedback-error-icon:     var(--ds-color-feedback-error-icon);
+
+  --ds-feedback-warning-bg:     var(--ds-color-feedback-warning-bg);
+  --ds-feedback-warning-text:   var(--ds-color-feedback-warning-text);
+  --ds-feedback-warning-border: var(--ds-color-feedback-warning-border);
+  --ds-feedback-warning-icon:   var(--ds-color-feedback-warning-icon);
+
+  --ds-feedback-info-bg:        var(--ds-color-feedback-info-bg);
+  --ds-feedback-info-text:      var(--ds-color-feedback-info-text);
+  --ds-feedback-info-border:    var(--ds-color-feedback-info-border);
+  --ds-feedback-info-icon:      var(--ds-color-feedback-info-icon);
+}
