@@ -9,7 +9,8 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./styles.css": "./dist/styles.css"
   },
   "files": [
     "dist/"
@@ -23,19 +24,82 @@
     "access": "restricted"
   },
   "scripts": {
-    "build": "../../node_modules/.bin/tsc -p tsconfig.build.json",
+    "build": "tailwindcss -i src/styles.css -o dist/styles.css --config tailwind.config.ts && tsup",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ds-foundation/tokens": "*"
+    "@ds-foundation/tokens": "*",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.5.0"
   },
   "peerDependencies": {
-    "react": ">=18"
+    "@hookform/resolvers": ">=3",
+    "@radix-ui/react-accordion": ">=1",
+    "@radix-ui/react-aspect-ratio": ">=1",
+    "@radix-ui/react-avatar": ">=1",
+    "@radix-ui/react-checkbox": ">=1",
+    "@radix-ui/react-collapsible": ">=1",
+    "@radix-ui/react-context-menu": ">=2",
+    "@radix-ui/react-dialog": ">=1",
+    "@radix-ui/react-dropdown-menu": ">=2",
+    "@radix-ui/react-hover-card": ">=1",
+    "@radix-ui/react-label": ">=2",
+    "@radix-ui/react-navigation-menu": ">=1",
+    "@radix-ui/react-popover": ">=1",
+    "@radix-ui/react-progress": ">=1",
+    "@radix-ui/react-radio-group": ">=1",
+    "@radix-ui/react-scroll-area": ">=1",
+    "@radix-ui/react-select": ">=2",
+    "@radix-ui/react-separator": ">=1",
+    "@radix-ui/react-slider": ">=1",
+    "@radix-ui/react-slot": ">=1",
+    "@radix-ui/react-switch": ">=1",
+    "@radix-ui/react-tabs": ">=1",
+    "@radix-ui/react-toggle": ">=1",
+    "@radix-ui/react-toggle-group": ">=1",
+    "@radix-ui/react-tooltip": ">=1",
+    "date-fns": ">=3",
+    "lucide-react": ">=0.300",
+    "react": ">=18",
+    "react-hook-form": ">=7",
+    "zod": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "framer-motion": {
+      "optional": true
+    },
+    "embla-carousel-react": {
+      "optional": true
+    },
+    "react-day-picker": {
+      "optional": true
+    },
+    "sonner": {
+      "optional": true
+    },
+    "vaul": {
+      "optional": true
+    },
+    "cmdk": {
+      "optional": true
+    },
+    "input-otp": {
+      "optional": true
+    },
+    "react-resizable-panels": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "typescript": "^5.7.0",
+    "@types/react": "^19.0.0",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.4.31",
     "rimraf": "^6.0.0",
-    "@types/react": "^19.0.0"
+    "tailwindcss": "^3.4.19",
+    "tailwindcss-animate": "^1.0.7",
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.0"
   }
 }
