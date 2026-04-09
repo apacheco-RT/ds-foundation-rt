@@ -29,6 +29,12 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.0",
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
+    "@storybook/addon-themes": "^10.3.5",
+    "@storybook/react": "^10.3.5",
+    "@storybook/react-vite": "^10.3.5",
+    "storybook": "^10.3.5",
     "@hookform/resolvers": "^5.2.2",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
