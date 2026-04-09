@@ -17,7 +17,7 @@ Each sub-project follows the full workflow: Brainstorm → Spec → Plan → Imp
 
 | # | Sub-project | Spec | Plan | Status |
 |---|-------------|------|------|--------|
-| SP1 | Foundation (architecture + tokens) | — | — | 🔵 In progress |
+| SP1 | Foundation (architecture + tokens) | ✅ | ✅ | ✅ Done |
 | SP2 | Component API upgrades | — | — | ⏳ Pending |
 | SP3 | Wireframe / Lo-Fi mode | — | — | ⏳ Pending |
 | SP4 | Layout primitives (Box / Text / SystemProps) | — | — | ⏳ Pending |
@@ -32,16 +32,16 @@ Each sub-project follows the full workflow: Brainstorm → Spec → Plan → Imp
 
 **Spec:** `docs/superpowers/specs/2026-04-09-sp1-foundation-design.md` ✅ Written — awaiting user review
 
-**Plan:** `docs/superpowers/plans/2026-04-09-sp1-foundation.md` ✅ Written — ready to execute
+**Plan:** `docs/superpowers/plans/2026-04-09-sp1-foundation.md` ✅
 
-**Key decisions to make:**
-- [ ] Repo: stay in `ds-foundation-rt` monorepo or restructure?
-- [ ] Token format: keep DTCG or adopt flat `--ds-*`?
-- [ ] Token vocabulary: which tokens to add from Michelangelo (motion, spacing, feedback semantic)?
-- [ ] Bridge CSS strategy: keep shadcn/ui semantic alias layer or move to direct `--ds-*`?
-- [ ] Package name: `@ds-foundation/react` or `@ripple/meridian` or other?
+**Key decisions made:**
+- Repo: stayed in `ds-foundation-rt` monorepo (Option A)
+- Token format: DTCG source → flat `--ds-*` output, no bridge layer
+- Token vocabulary: z-index scale added; motion/easing/feedback/shadows deferred
+- Bridge CSS strategy: bridge layer deleted; direct `--ds-*` tokens only
+- Package name: deferred to post-v1
 
-**Status:** 🔵 Brainstorming
+**Status:** ✅ Complete
 
 ---
 
