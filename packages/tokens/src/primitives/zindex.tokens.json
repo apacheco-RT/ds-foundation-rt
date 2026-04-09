@@ -1,0 +1,17 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Z-index scale — 10 layers for stacking context management.",
+  "z": {
+    "$type": "number",
+    "base":     { "$value": 0 },
+    "raised":   { "$value": 10 },
+    "dropdown": { "$value": 100 },
+    "sticky":   { "$value": 200 },
+    "overlay":  { "$value": 300 },
+    "modal":    { "$value": 400 },
+    "popover":  { "$value": 500 },
+    "toast":    { "$value": 600 },
+    "tooltip":  { "$value": 700 },
+    "max":      { "$value": 9999 }
+  }
+}

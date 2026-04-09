@@ -177,6 +177,7 @@ const PRIMITIVES = [
   'src/primitives/shadow.tokens.json',
   'src/primitives/motion.tokens.json',
   'src/primitives/grid.tokens.json',
+  'src/primitives/zindex.tokens.json',
 ];
 
 const SHARED_TRANSFORMS = ['ts/resolveMath', 'ds/dimension/css', 'ds/duration/css', 'ds/shadow/css', 'ds/color/css', 'name/kebab'];
