@@ -1,9 +1,13 @@
 /* packages/react/src/styles.css
-   Load order: bridge vars → Tailwind → base overrides */
+   Load order: token vars → semantic aliases → Tailwind → base overrides */
 
-/* Token bridge: --ds-* → shadcn/ui convention vars (--primary, --background, etc.) */
-@import "./bridge.css";
-@import "./bridge-dark.css";
+/* DTCG-built token vars: --ds-color-*, --ds-shadow-*, --ds-motion-*, etc. */
+@import "@ds-foundation/tokens/build/css/variables.css";
+@import "@ds-foundation/tokens/build/css/variables.dark.css";
+
+/* Semantic aliases: short --ds-* names used by components */
+@import "./semantic.css";
+@import "./semantic.dark.css";
 
 @tailwind base;
 @tailwind components;
@@ -11,10 +15,10 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-ds-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-ds-bg text-ds-text;
   }
 }
