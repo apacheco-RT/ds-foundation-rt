@@ -30,7 +30,7 @@
     "access": "restricted"
   },
   "scripts": {
-    "build": "tailwindcss -i src/styles.css -o dist/styles.css --config tailwind.config.ts && tsup",
+    "build": "tailwindcss -i src/styles/styles.css -o dist/styles.css --config tailwind.config.ts && tsup",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist"
   },

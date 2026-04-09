@@ -1,125 +1,125 @@
-export * from './MonoAmount';
-export * from './CurrencyBadge';
-export * from './StatusPill';
-export * from './StatusRing';
-export * from './FreshnessChip';
-export * from './UrgencyBadge';
-export * from './BankingWindowDot';
-export * from './DetailCard';
-export * from './IconButton';
-export * from './StateBadge';
+export * from './components/MonoAmount';
+export * from './components/CurrencyBadge';
+export * from './components/StatusPill';
+export * from './components/StatusRing';
+export * from './components/FreshnessChip';
+export * from './components/UrgencyBadge';
+export * from './components/BankingWindowDot';
+export * from './components/DetailCard';
+export * from './components/IconButton';
+export * from './components/StateBadge';
 
 // Batch A — simple display components
-export { Alert, AlertTitle, AlertDescription } from './Alert';
-export { AspectRatio } from './AspectRatio';
-export { Avatar, AvatarImage, AvatarFallback } from './Avatar';
-export { Badge, type BadgeProps } from './Badge';
-export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardDivider } from './Card';
-export type { CardProps, CardHeaderProps, CardFooterProps, CardDividerProps } from './Card';
-export { Label } from './Label';
-export { Progress } from './Progress';
-export { Separator } from './Separator';
-export { Skeleton } from './Skeleton';
-export { Spinner } from './Spinner';
-export { Display, H1, H2, H3, H4, H5, BodyLarge, Body, BodySmall, Caption } from './Typography';
+export { Alert, AlertTitle, AlertDescription } from './components/Alert';
+export { AspectRatio } from './components/AspectRatio';
+export { Avatar, AvatarImage, AvatarFallback } from './components/Avatar';
+export { Badge, type BadgeProps } from './components/Badge';
+export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardDivider } from './components/Card';
+export type { CardProps, CardHeaderProps, CardFooterProps, CardDividerProps } from './components/Card';
+export { Label } from './components/Label';
+export { Progress } from './components/Progress';
+export { Separator } from './components/Separator';
+export { Skeleton } from './components/Skeleton';
+export { Spinner } from './components/Spinner';
+export { Display, H1, H2, H3, H4, H5, BodyLarge, Body, BodySmall, Caption } from './components/Typography';
 
 // Batch B — form inputs
-export { Button, type ButtonProps } from './Button';
+export { Button, type ButtonProps } from './components/Button';
 // (buttonVariants is an internal CVA helper — not exported)
-export { Checkbox } from './Checkbox';
+export { Checkbox } from './components/Checkbox';
 export {
   Form, FormControl, FormDescription, FormField,
   FormItem, FormLabel, FormMessage, useFormField,
-} from './Form';
-export { Input, type InputProps } from './Input';
-export { InputNumber } from './InputNumber';
-export { RadioGroup, RadioGroupItem } from './RadioGroup';
+} from './components/Form';
+export { Input, type InputProps } from './components/Input';
+export { InputNumber } from './components/InputNumber';
+export { RadioGroup, RadioGroupItem } from './components/RadioGroup';
 export {
   Select, SelectContent, SelectGroup, SelectItem, SelectLabel,
   SelectSeparator, SelectScrollUpButton, SelectScrollDownButton,
   SelectTrigger, SelectValue,
-} from './Select';
-export { Slider } from './Slider';
-export { Switch } from './Switch';
-export { Textarea } from './Textarea';
-export { Toggle } from './Toggle';
+} from './components/Select';
+export { Slider } from './components/Slider';
+export { Switch } from './components/Switch';
+export { Textarea } from './components/Textarea';
+export { Toggle } from './components/Toggle';
 // (toggleVariants is an internal CVA helper — not exported)
-export { ToggleGroup, ToggleGroupItem } from './ToggleGroup';
+export { ToggleGroup, ToggleGroupItem } from './components/ToggleGroup';
 
 // Batch C — overlay and popup
-export { Collapsible, CollapsibleContent, CollapsibleTrigger } from './Collapsible';
+export { Collapsible, CollapsibleContent, CollapsibleTrigger } from './components/Collapsible';
 export {
   ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuGroup,
   ContextMenuItem, ContextMenuLabel, ContextMenuPortal, ContextMenuRadioGroup,
   ContextMenuRadioItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub,
   ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuTrigger,
-} from './ContextMenu';
+} from './components/ContextMenu';
 export {
   Dialog, DialogClose, DialogContent, DialogDescription,
   DialogFooter, DialogHeader, DialogOverlay, DialogPortal,
   DialogTitle, DialogTrigger,
-} from './Dialog';
+} from './components/Dialog';
 export {
   Drawer, DrawerClose, DrawerContent, DrawerDescription,
   DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal,
   DrawerTitle, DrawerTrigger,
-} from './Drawer';
+} from './components/Drawer';
 export {
   DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup,
   DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup,
   DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub,
   DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger,
-} from './DropdownMenu';
-export { HoverCard, HoverCardContent, HoverCardTrigger } from './HoverCard';
+} from './components/DropdownMenu';
+export { HoverCard, HoverCardContent, HoverCardTrigger } from './components/HoverCard';
 export {
   NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem,
   NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport,
   navigationMenuTriggerStyle,
-} from './NavigationMenu';
-export { Popover, PopoverContent, PopoverTrigger } from './Popover';
+} from './components/NavigationMenu';
+export { Popover, PopoverContent, PopoverTrigger } from './components/Popover';
 export {
   Sheet, SheetClose, SheetContent, SheetDescription,
   SheetFooter, SheetHeader, SheetOverlay, SheetPortal,
   SheetTitle, SheetTrigger,
-} from './Sheet';
-export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './Tooltip';
+} from './components/Sheet';
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/Tooltip';
 
 // Batch D — navigation and layout
-export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './Accordion';
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './components/Accordion';
 export {
   Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink,
   BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
-} from './Breadcrumb';
-export { FormCard, type FormCardProps } from './FormCard';
+} from './components/Breadcrumb';
+export { FormCard, type FormCardProps } from './components/FormCard';
 // (RlusdIcon is Ripple-specific branding — not exported from this package)
-export { KpiCard, type KpiCardProps } from './KpiCard';
+export { KpiCard, type KpiCardProps } from './components/KpiCard';
 export {
   Pagination, PaginationContent, PaginationEllipsis, PaginationItem,
   PaginationLink, PaginationNext, PaginationPrevious,
-} from './Pagination';
-export { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './Resizable';
-export { ScrollArea, ScrollBar } from './ScrollArea';
-export { Segmented, type SegmentedProps } from './Segmented';
-export { Stepper, type StepperProps } from './Stepper';
-export { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
+} from './components/Pagination';
+export { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './components/Resizable';
+export { ScrollArea, ScrollBar } from './components/ScrollArea';
+export { Segmented, type SegmentedProps } from './components/Segmented';
+export { Stepper, type StepperProps } from './components/Stepper';
+export { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
 
 // Batch E — complex and data components
-export { Calendar, CalendarDayButton } from './Calendar';
+export { Calendar, CalendarDayButton } from './components/Calendar';
 export {
   Carousel, CarouselContent, CarouselItem,
   CarouselNext, CarouselPrevious, type CarouselApi,
-} from './Carousel';
+} from './components/Carousel';
 export {
   Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput,
   CommandItem, CommandList, CommandSeparator, CommandShortcut,
-} from './Command';
-export { DatePicker, type DatePickerProps } from './DatePicker';
-export { EmptyState, type EmptyStateProps } from './EmptyState';
-export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from './InputOTP';
-export { Toaster } from './Sonner';
+} from './components/Command';
+export { DatePicker, type DatePickerProps } from './components/DatePicker';
+export { EmptyState, type EmptyStateProps } from './components/EmptyState';
+export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from './components/InputOTP';
+export { Toaster } from './components/Sonner';
 export {
   Table, TableBody, TableCaption, TableCell,
   TableFooter, TableHead, TableHeader, TableRow,
-} from './Table';
-export { Tag, type TagProps } from './Tag';
-export { Timeline, type TimelineItem } from './Timeline';
+} from './components/Table';
+export { Tag, type TagProps } from './components/Tag';
+export { Timeline, type TimelineItem } from './components/Timeline';
