@@ -82,3 +82,22 @@ export {
   SheetTitle, SheetTrigger,
 } from './Sheet';
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './Tooltip';
+
+// Batch D — navigation and layout
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './Accordion';
+export {
+  Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink,
+  BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+} from './Breadcrumb';
+export { FormCard, type FormCardProps } from './FormCard';
+// (RlusdIcon is Ripple-specific branding — not exported from this package)
+export { KpiCard, type KpiCardProps } from './KpiCard';
+export {
+  Pagination, PaginationContent, PaginationEllipsis, PaginationItem,
+  PaginationLink, PaginationNext, PaginationPrevious,
+} from './Pagination';
+export { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './Resizable';
+export { ScrollArea, ScrollBar } from './ScrollArea';
+export { Segmented, type SegmentedProps } from './Segmented';
+export { Stepper, type StepperProps } from './Stepper';
+export { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
