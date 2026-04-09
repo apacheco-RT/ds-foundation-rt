@@ -60,7 +60,9 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
 
     React.useEffect(() => {
       if (isControlled && !onChange) {
+        if (process.env.NODE_ENV !== 'production') {
         console.warn("InputNumber: `value` provided without `onChange`. Component will be read-only.")
+      }
       }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

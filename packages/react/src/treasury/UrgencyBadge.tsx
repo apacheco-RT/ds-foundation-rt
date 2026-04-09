@@ -1,9 +1,6 @@
 // @ds-component: urgency-badge | @ds-version: 0.1.0
-import React from 'react';
+import * as React from 'react';
 import type { Urgency } from './StatusRing';
-
-
-export type { Urgency };
 
 export interface UrgencyBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   urgency: Urgency;

@@ -1,5 +1,5 @@
 // @ds-component: state-badge | @ds-version: 0.2.0
-import React from 'react';
+import * as React from 'react';
 
 export type StateBadgeIntent = 'info' | 'warning' | 'success' | 'error' | 'neutral';
 export type StateBadgeSize = 'sm' | 'md';

@@ -1,5 +1,5 @@
 // @ds-component: status-ring | @ds-version: 0.1.0
-import React from 'react';
+import * as React from 'react';
 import { useReducedMotion } from '../components/utils/useReducedMotion';
 
 export type Urgency = 'critical' | 'watch' | 'clear' | 'skip';

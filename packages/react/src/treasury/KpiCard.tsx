@@ -13,8 +13,8 @@ export interface KpiCardProps {
 
 function KpiCard({ label, value, trend, icon, className }: KpiCardProps) {
   const trendConfig = {
-    up: { cls: "bg-green-100 text-green-300", Icon: TrendingUp },
-    down: { cls: "bg-orange-100 text-orange-400", Icon: TrendingDown },
+    up: { cls: "bg-ds-surface text-ds-success", Icon: TrendingUp },
+    down: { cls: "bg-ds-surface text-ds-warning", Icon: TrendingDown },
     neutral: { cls: "bg-ds-sunken text-ds-text-muted", Icon: Minus },
   }
   return (

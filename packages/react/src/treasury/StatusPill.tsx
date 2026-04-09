@@ -1,5 +1,5 @@
 // @ds-component: status-pill | @ds-version: 0.1.0
-import React from 'react';
+import * as React from 'react';
 
 export type InstructionStatus =
   | 'submitted'

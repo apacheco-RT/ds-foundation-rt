@@ -1,5 +1,5 @@
 // @ds-component: detail-card | @ds-version: 0.2.0
-import React from 'react';
+import * as React from 'react';
 
 const BORDER_MUTED = '1px solid color-mix(in srgb, var(--ds-color-border-default) 50%, transparent)';
 

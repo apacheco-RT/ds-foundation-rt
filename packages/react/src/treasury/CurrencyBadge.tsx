@@ -1,5 +1,5 @@
 // @ds-component: currency-badge | @ds-version: 0.1.0
-import React from 'react';
+import * as React from 'react';
 
 export interface CurrencyBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   currency: 'USD' | 'EUR' | 'GBP';

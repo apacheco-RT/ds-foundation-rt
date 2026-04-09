@@ -8,12 +8,12 @@ const tagVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-gray-100 text-gray-700",
-        blue: "bg-blue-100 text-blue-600",
-        green: "bg-green-100 text-green-400",
-        error: "bg-orange-100 text-orange-400",
-        orange: "bg-orange-200 text-orange-500",
-        purple: "bg-purple-100 text-purple-400",
+        default: "bg-ds-surface-up text-ds-text-muted",
+        blue: "bg-ds-primary-subtle text-ds-primary",
+        green: "bg-ds-surface text-ds-success",
+        error: "bg-ds-surface text-ds-warning",
+        orange: "bg-ds-surface text-ds-warning",
+        purple: "bg-purple-100 text-purple-400", /* TODO: needs ds-feedback-purple token */
       },
     },
     defaultVariants: { variant: "default" },

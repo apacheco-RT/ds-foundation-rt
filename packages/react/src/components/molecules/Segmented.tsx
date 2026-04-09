@@ -22,7 +22,9 @@ function Segmented({ options, value, defaultValue, onChange, className }: Segmen
 
   React.useEffect(() => {
     if (isControlled && !onChange) {
-      console.warn("Segmented: `value` provided without `onChange`. Component will be read-only.")
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn("Segmented: `value` provided without `onChange`. Component will be read-only.")
+      }
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

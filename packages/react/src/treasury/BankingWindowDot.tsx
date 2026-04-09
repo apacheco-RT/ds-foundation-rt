@@ -1,5 +1,5 @@
 // @ds-component: banking-window-dot | @ds-version: 0.1.0
-import React from 'react';
+import * as React from 'react';
 import { useReducedMotion } from '../components/utils/useReducedMotion';
 
 export type WindowStatus = 'open' | 'closing' | 'closed';

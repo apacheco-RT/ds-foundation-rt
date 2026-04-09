@@ -1,5 +1,5 @@
 // @ds-component: icon-button | @ds-version: 0.2.0
-import React from 'react';
+import * as React from 'react';
 
 export type IconButtonVariant = 'info' | 'success' | 'primary' | 'warning' | 'danger' | 'neutral';
 export type IconButtonSize = 'sm' | 'md';

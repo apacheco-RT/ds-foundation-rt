@@ -2,6 +2,12 @@
    Dark theme overrides for semantic aliases.
    Activated by [data-theme="dark"] on <html>. */
 
+/* NOTE: The dark palette values are defined in @ds-foundation/tokens/build/css/variables.dark.css
+   (loaded in styles.css). This file provides a semantic override layer for any dark-mode
+   values that need to differ from their light equivalents at the semantic (alias) level,
+   not the primitive level. Add overrides here only when a semantic meaning changes in dark
+   mode beyond what the token layer already handles. */
+
 [data-theme="dark"] {
   /* ── Surfaces ───────────────────────────────────────── */
   --ds-bg:              var(--ds-color-surface-page);

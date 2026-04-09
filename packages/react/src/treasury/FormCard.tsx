@@ -73,8 +73,8 @@ export function FormCard({
     const stateClass = disabled
         ? "opacity-40 cursor-not-allowed bg-ds-primary-subtle border-ds-primary"
         : selected
-            ? "bg-ds-primary-subtle border-ds-primary cursor-pointer hover:bg-ds-primary-subtle/70 active:bg-ds-bg active:border-blue-900"
-            : "bg-ds-bg border-ds-border cursor-pointer hover:bg-ds-primary-subtle hover:border-ds-primary active:bg-ds-bg active:border-blue-900"
+            ? "bg-ds-primary-subtle border-ds-primary cursor-pointer hover:bg-ds-primary-subtle/70 active:bg-ds-bg active:border-ds-primary"
+            : "bg-ds-bg border-ds-border cursor-pointer hover:bg-ds-primary-subtle hover:border-ds-primary active:bg-ds-bg active:border-ds-primary"
 
     const Indicator = selectionType === "checkbox" ? CheckboxIndicator : RadioIndicator
 

@@ -19,10 +19,10 @@ interface TimelineProps {
 }
 
 const dotColor: Record<TimelineStatus, string> = {
-  default: "bg-gray-300",
-  active: "bg-blue-500",
-  complete: "bg-green-300",
-  error: "bg-orange-400",
+  default: "bg-ds-border",
+  active: "bg-ds-primary",
+  complete: "bg-ds-success",
+  error: "bg-ds-warning",
 }
 
 function Timeline({ items, className }: TimelineProps) {
@@ -33,7 +33,7 @@ function Timeline({ items, className }: TimelineProps) {
         const isLast = idx === items.length - 1
         return (
           <li key={item.id} role="listitem" className="relative flex gap-4 pb-6 last:pb-0">
-            {!isLast && <div className="absolute left-[11px] top-6 bottom-0 w-px border-l-2 border-gray-100" />}
+            {!isLast && <div className="absolute left-[11px] top-6 bottom-0 w-px border-l-2 border-ds-border" />}
             <div className="relative z-10 flex-shrink-0 flex items-start justify-center mt-0.5">
               {item.icon ? (
                 <span className={cn("w-6 h-6 rounded-full flex items-center justify-center text-white text-xs", dotColor[status])}>{item.icon}</span>
