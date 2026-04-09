@@ -101,3 +101,24 @@ export { ScrollArea, ScrollBar } from './ScrollArea';
 export { Segmented, type SegmentedProps } from './Segmented';
 export { Stepper, type StepperProps } from './Stepper';
 export { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
+
+// Batch E — complex and data components
+export { Calendar, CalendarDayButton } from './Calendar';
+export {
+  Carousel, CarouselContent, CarouselItem,
+  CarouselNext, CarouselPrevious, type CarouselApi,
+} from './Carousel';
+export {
+  Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput,
+  CommandItem, CommandList, CommandSeparator, CommandShortcut,
+} from './Command';
+export { DatePicker, type DatePickerProps } from './DatePicker';
+export { EmptyState, type EmptyStateProps } from './EmptyState';
+export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from './InputOTP';
+export { Toaster } from './Sonner';
+export {
+  Table, TableBody, TableCaption, TableCell,
+  TableFooter, TableHead, TableHeader, TableRow,
+} from './Table';
+export { Tag, type TagProps } from './Tag';
+export { Timeline, type TimelineItem } from './Timeline';
