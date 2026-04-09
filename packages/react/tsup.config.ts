@@ -8,4 +8,9 @@ export default defineConfig({
   clean: false,
   sourcemap: true,
   external: ['react', 'react-dom'],
+  esbuildOptions(options) {
+    // stories are already excluded — index.ts does not import them;
+    // this hook is retained for any future esbuild-level overrides
+    void options;
+  },
 });
