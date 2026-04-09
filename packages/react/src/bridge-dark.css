@@ -1,0 +1,38 @@
+/* Bridge: @ds-foundation/tokens (--ds-*) → shadcn/ui convention (dark)
+   Activated by .dark class OR [data-theme="dark"] attribute on <html>. */
+.dark,
+[data-theme="dark"] {
+  /* ── Surface ──────────────────────────────────────── */
+  --background:             var(--ds-color-surface-page);
+  --foreground:             var(--ds-color-text-primary);
+  --card:                   var(--ds-color-surface-default);
+  --card-foreground:        var(--ds-color-text-primary);
+  --popover:                var(--ds-color-surface-overlay);
+  --popover-foreground:     var(--ds-color-text-primary);
+
+  /* ── Brand ────────────────────────────────────────── */
+  --primary:                var(--ds-color-brand-primary);
+  --primary-foreground:     var(--ds-color-brand-primary-on);
+  --secondary:              var(--ds-color-surface-sunken);
+  --secondary-foreground:   var(--ds-color-text-primary);
+
+  /* ── Neutral states ───────────────────────────────── */
+  --muted:                  var(--ds-color-surface-sunken);
+  --muted-foreground:       var(--ds-color-text-tertiary);
+  --accent:                 var(--ds-color-brand-primary-subtle);
+  --accent-foreground:      var(--ds-color-brand-primary);
+  --destructive:            var(--ds-color-feedback-error-icon);
+  --destructive-foreground: var(--ds-color-neutral-0);
+
+  /* ── Chrome ───────────────────────────────────────── */
+  --border:                 var(--ds-color-border-default);
+  --input:                  var(--ds-color-border-default);
+  --ring:                   var(--ds-color-border-focus);
+
+  /* ── Layout ───────────────────────────────────────── */
+  --sidebar-bg:             var(--ds-color-layout-sidebar-bg);
+  --header-bg:              var(--ds-color-layout-header-bg);
+  --header-fg:              var(--ds-color-layout-header-fg);
+  --table-header-bg:        var(--ds-color-layout-table-header-bg);
+  --table-header-fg:        var(--ds-color-layout-table-header-fg);
+}

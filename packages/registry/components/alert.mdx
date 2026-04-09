@@ -8,15 +8,13 @@ sizes: []
 adapters:
   tailwind:
     default:
-      base: "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground bg-background text-foreground"
-    destructive:
-      base: "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive"
-    success:
-      base: "border-green-300/50 text-green-300 [&>svg]:text-green-300 bg-green-300/10"
-    info:
-      base: "border-blue-500/50 text-blue-500 [&>svg]:text-blue-500 bg-blue-100"
-    warning:
-      base: "border-orange-400/50 text-orange-400 [&>svg]:text-orange-400 bg-orange-400/10"
+      base: "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground"
+      variants:
+        default: "bg-background text-foreground"
+        destructive: "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive"
+        success: "border-ripple-green-50/50 text-ripple-green-50 [&>svg]:text-ripple-green-50 bg-ripple-green-50/10"
+        info: "border-ripple-blue-50/50 text-ripple-blue-50 [&>svg]:text-ripple-blue-50 bg-ripple-blue-10"
+        warning: "border-ripple-orange-50/50 text-ripple-orange-50 [&>svg]:text-ripple-orange-50 bg-ripple-orange-50/10"
 accessibility:
   role: "alert"
   wcag:

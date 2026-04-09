@@ -12,7 +12,7 @@ Styled clickable element with multiple variants for different semantic contexts.
 import { Button } from '@ds-foundation/react';
 
 <Button>Click me</Button>
-<Button variant="solid" colorScheme="danger">Delete</Button>
+<Button variant="destructive">Delete</Button>
 <Button variant="outline">Cancel</Button>
 <Button size="sm">Small</Button>
 ```
@@ -21,14 +21,9 @@ import { Button } from '@ds-foundation/react';
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `"solid" \| "outline" \| "ghost" \| "link"` | `"solid"` | Visual style |
-| `colorScheme` | `"primary" \| "success" \| "warning" \| "danger" \| "neutral"` | `"primary"` | Semantic color |
-| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "icon"` | `"md"` | Size preset |
-| `isLoading` | `boolean` | `false` | Shows spinner; disables button |
-| `loadingText` | `string` | — | Replaces label text while loading |
-| `leftIcon` | `React.ReactElement` | — | Icon rendered before label |
-| `rightIcon` | `React.ReactElement` | — | Icon rendered after label |
-| `asChild` | `boolean` | `false` | Render as child element via Radix Slot |
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"default"` | Visual style |
+| `size` | `"sm" \| "default" \| "lg" \| "icon"` | `"default"` | Size preset |
+| `asChild` | `boolean` | `false` | Render as child element via Radix Slot (e.g. router Link) |
 | `...rest` | `ButtonHTMLAttributes` | — | Forwarded to the `<button>` element |
 
 ## Accessibility

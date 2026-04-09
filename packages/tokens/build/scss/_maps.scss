@@ -1,0 +1,590 @@
+
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+$ds-color-neutral-0: /* #ffffff */ color(oklch 1 0 none) !default;
+$ds-color-neutral-50: /* #f8fafc */ color(oklch 0.98 0.003 247) !default;
+$ds-color-neutral-100: /* #f1f5f9 */ color(oklch 0.961 0.007 247) !default;
+$ds-color-neutral-200: /* #e2e8f0 */ color(oklch 0.925 0.012 247) !default;
+$ds-color-neutral-300: /* #cbd5e1 */ color(oklch 0.869 0.018 247) !default;
+$ds-color-neutral-400: /* #94a3b8 */ color(oklch 0.706 0.025 257) !default;
+$ds-color-neutral-500: /* #64748b */ color(oklch 0.553 0.028 257) !default;
+$ds-color-neutral-600: /* #475569 */ color(oklch 0.444 0.024 257) !default;
+$ds-color-neutral-700: /* #334155 */ color(oklch 0.371 0.02 257) !default;
+$ds-color-neutral-800: /* #1e293b */ color(oklch 0.279 0.016 257) !default;
+$ds-color-neutral-900: /* #0f172a */ color(oklch 0.208 0.013 257) !default;
+$ds-color-neutral-950: /* #020617 */ color(oklch 0.145 0.009 257) !default;
+$ds-color-neutral-1000: /* #000000 */ color(oklch 0 0 none) !default;
+$ds-color-blue-50: /* #eff6ff */ color(oklch 0.97 0.014 262) !default;
+$ds-color-blue-100: /* #dbeafe */ color(oklch 0.938 0.034 262) !default;
+$ds-color-blue-200: /* #bfdbfe */ color(oklch 0.882 0.066 262) !default;
+$ds-color-blue-300: /* #93c5fd */ color(oklch 0.809 0.113 261) !default;
+$ds-color-blue-400: /* #60a5fa */ color(oklch 0.707 0.165 261) !default;
+$ds-color-blue-500: /* #3b82f6 */ color(oklch 0.623 0.214 261) !default;
+$ds-color-blue-600: /* #2563eb */ color(oklch 0.546 0.245 262) !default;
+$ds-color-blue-700: /* #1d4ed8 */ color(oklch 0.467 0.24 264) !default;
+$ds-color-blue-800: /* #1e40af */ color(oklch 0.392 0.21 265) !default;
+$ds-color-blue-900: /* #1e3a8a */ color(oklch 0.332 0.17 265) !default;
+$ds-color-blue-950: /* #172554 */ color(oklch 0.237 0.13 265) !default;
+$ds-color-green-50: /* #f0fdf4 */ color(oklch 0.971 0.027 155) !default;
+$ds-color-green-100: /* #dcfce7 */ color(oklch 0.945 0.058 155) !default;
+$ds-color-green-300: /* #86efac */ color(oklch 0.823 0.149 155) !default;
+$ds-color-green-400: /* #4ade80 */ color(oklch 0.74 0.175 155) !default;
+$ds-color-green-500: /* #22c55e */ color(oklch 0.65 0.191 155) !default;
+$ds-color-green-600: /* #16a34a */ color(oklch 0.528 0.175 155) !default;
+$ds-color-green-700: /* #15803d */ color(oklch 0.437 0.152 155) !default;
+$ds-color-green-950: /* #052e16 */ color(oklch 0.172 0.062 155) !default;
+$ds-color-red-50: /* #fef2f2 */ color(oklch 0.971 0.016 24) !default;
+$ds-color-red-300: /* #fca5a5 */ color(oklch 0.81 0.137 24) !default;
+$ds-color-red-400: /* #f87171 */ color(oklch 0.703 0.199 27) !default;
+$ds-color-red-500: /* #ef4444 */ color(oklch 0.627 0.247 27) !default;
+$ds-color-red-600: /* #dc2626 */ color(oklch 0.535 0.252 27) !default;
+$ds-color-red-700: /* #b91c1c */ color(oklch 0.451 0.228 27) !default;
+$ds-color-red-950: /* #450a0a */ color(oklch 0.196 0.076 27) !default;
+$ds-color-amber-50: /* #fffbeb */ color(oklch 0.983 0.025 88) !default;
+$ds-color-amber-300: /* #fcd34d */ color(oklch 0.893 0.15 88) !default;
+$ds-color-amber-400: /* #fbbf24 */ color(oklch 0.828 0.182 83) !default;
+$ds-color-amber-500: /* #f59e0b */ color(oklch 0.769 0.195 79) !default;
+$ds-color-amber-600: /* #d97706 */ color(oklch 0.665 0.187 65) !default;
+$ds-color-amber-700: /* #b45309 */ color(oklch 0.558 0.17 55) !default;
+$ds-color-amber-950: /* #451a03 */ color(oklch 0.215 0.066 46) !default;
+$ds-color-violet-50: /* #f5f3ff */ color(oklch 0.977 0.02 295) !default;
+$ds-color-violet-300: /* #c4b5fd */ color(oklch 0.824 0.139 295) !default;
+$ds-color-violet-400: /* #a78bfa */ color(oklch 0.729 0.201 295) !default;
+$ds-color-violet-500: /* #8b5cf6 */ color(oklch 0.627 0.242 295) !default;
+$ds-color-violet-600: /* #7c3aed */ color(oklch 0.541 0.255 295) !default;
+$ds-color-violet-700: /* #6d28d9 */ color(oklch 0.459 0.241 295) !default;
+$ds-color-violet-950: /* #2e1065 */ color(oklch 0.193 0.095 295) !default;
+$ds-color-purple-100: /* #d1d5ff */ color(oklch 0.91 0.05 275) !default;
+$ds-color-purple-200: /* #a19dff */ color(oklch 0.78 0.11 275) !default;
+$ds-color-purple-300: /* #6c47ff */ color(oklch 0.62 0.18 275) !default;
+$ds-color-purple-400: /* #4417bf */ color(oklch 0.44 0.2 275) !default;
+$ds-color-purple-500: /* #2b0160 */ color(oklch 0.21 0.16 275) !default;
+$ds-color-pink-100: /* #e9deff */ color(oklch 0.92 0.05 308) !default;
+$ds-color-pink-200: /* #d191ff */ color(oklch 0.77 0.13 308) !default;
+$ds-color-pink-300: /* #c247ff */ color(oklch 0.61 0.22 308) !default;
+$ds-color-pink-400: /* #7b099e */ color(oklch 0.4 0.22 308) !default;
+$ds-color-pink-500: /* #39003d */ color(oklch 0.19 0.14 308) !default;
+$ds-color-orange-100: /* #ffdcd0 */ color(oklch 0.94 0.05 35) !default;
+$ds-color-orange-200: /* #feb9a7 */ color(oklch 0.84 0.1 35) !default;
+$ds-color-orange-300: /* #ff7f66 */ color(oklch 0.7 0.16 35) !default;
+$ds-color-orange-400: /* #cb4526 */ color(oklch 0.49 0.17 35) !default;
+$ds-color-orange-500: /* #471200 */ color(oklch 0.21 0.1 35) !default;
+$ds-color-white: /* #ffffff */ color(oklch 1 0 none) !default;
+$ds-color-black: /* #000000 */ color(oklch 0 0 none) !default;
+$ds-color-transparent: /* #000000 */ color(srgb 0 0 0 / 0) !default;
+$ds-spacing-0: 0px !default;
+$ds-spacing-1: 0.25rem !default;
+$ds-spacing-2: 0.5rem !default;
+$ds-spacing-3: 0.75rem !default;
+$ds-spacing-4: 1rem !default;
+$ds-spacing-5: 1.25rem !default;
+$ds-spacing-6: 1.5rem !default;
+$ds-spacing-8: 2rem !default;
+$ds-spacing-10: 2.5rem !default;
+$ds-spacing-12: 3rem !default;
+$ds-spacing-16: 4rem !default;
+$ds-spacing-20: 5rem !default;
+$ds-spacing-24: 6rem !default;
+$ds-spacing-32: 8rem !default;
+$ds-spacing-40: 10rem !default;
+$ds-spacing-48: 12rem !default;
+$ds-spacing-64: 16rem !default;
+$ds-spacing-80: 20rem !default;
+$ds-spacing-96: 24rem !default;
+$ds-spacing-px: 1px !default;
+$ds-spacing-0-5: 0.125rem !default;
+$ds-font-family-sans: Inter Variable,Inter,system-ui,-apple-system,sans-serif !default;
+$ds-font-family-serif: Lora,Georgia,Times New Roman,serif !default;
+$ds-font-family-mono: JetBrains Mono,Fira Code,Consolas,monospace !default;
+$ds-font-size-2xs: 0.625rem !default;
+$ds-font-size-xs: 0.75rem !default;
+$ds-font-size-sm: 0.875rem !default;
+$ds-font-size-md: 1rem !default;
+$ds-font-size-lg: 1.125rem !default;
+$ds-font-size-xl: 1.25rem !default;
+$ds-font-size-2xl: 1.5rem !default;
+$ds-font-size-3xl: 1.875rem !default;
+$ds-font-size-4xl: 2.25rem !default;
+$ds-font-size-5xl: 3rem !default;
+$ds-font-size-6xl: 3.75rem !default;
+$ds-font-size-7xl: 4.5rem !default;
+$ds-font-weight-thin: 100 !default;
+$ds-font-weight-extralight: 200 !default;
+$ds-font-weight-light: 300 !default;
+$ds-font-weight-regular: 400 !default;
+$ds-font-weight-medium: 500 !default;
+$ds-font-weight-semibold: 600 !default;
+$ds-font-weight-bold: 700 !default;
+$ds-font-weight-extrabold: 800 !default;
+$ds-font-weight-black: 900 !default;
+$ds-font-leading-none: 1 !default;
+$ds-font-leading-tight: 1.25 !default;
+$ds-font-leading-snug: 1.375 !default;
+$ds-font-leading-normal: 1.5 !default;
+$ds-font-leading-relaxed: 1.625 !default;
+$ds-font-leading-loose: 2 !default;
+$ds-font-tracking-tighter: -0.05em !default;
+$ds-font-tracking-tight: -0.025em !default;
+$ds-font-tracking-normal: 0em !default;
+$ds-font-tracking-wide: 0.025em !default;
+$ds-font-tracking-wider: 0.05em !default;
+$ds-font-tracking-widest: 0.1em !default;
+$ds-radius-none: 0px !default;
+$ds-radius-xs: 0.125rem !default;
+$ds-radius-sm: 0.25rem !default;
+$ds-radius-md: 0.375rem !default;
+$ds-radius-lg: 0.5rem !default;
+$ds-radius-xl: 0.75rem !default;
+$ds-radius-2xl: 1rem !default;
+$ds-radius-3xl: 1.5rem !default;
+$ds-radius-full: 9999px !default;
+$ds-shadow-none: 0px 0px 0px 0px rgba(0,0,0,0) !default;
+$ds-shadow-xs: 0px 1px 2px 0px rgba(0,0,0,0.05) !default;
+$ds-shadow-sm: 0px 1px 3px 0px rgba(0,0,0,0.07) !default;
+$ds-shadow-md: 0px 4px 6px -1px rgba(0,0,0,0.1) !default;
+$ds-shadow-lg: 0px 10px 15px -3px rgba(0,0,0,0.1) !default;
+$ds-shadow-xl: 0px 20px 25px -5px rgba(0,0,0,0.1) !default;
+$ds-shadow-2xl: 0px 25px 50px -12px rgba(0,0,0,0.25) !default;
+$ds-motion-duration-instant: 0ms !default;
+$ds-motion-duration-fastest: 50ms !default;
+$ds-motion-duration-faster: 100ms !default;
+$ds-motion-duration-fast: 150ms !default;
+$ds-motion-duration-normal: 200ms !default;
+$ds-motion-duration-slow: 300ms !default;
+$ds-motion-duration-slower: 400ms !default;
+$ds-motion-duration-slowest: 500ms !default;
+$ds-motion-duration-deliberate: 700ms !default;
+$ds-motion-easing-linear: 0,0,1,1 !default;
+$ds-motion-easing-ease: 0.25,0.1,0.25,1 !default;
+$ds-motion-easing-ease-in: 0.4,0,1,1 !default;
+$ds-motion-easing-ease-out: 0,0,0.2,1 !default;
+$ds-motion-easing-ease-in-out: 0.4,0,0.2,1 !default;
+$ds-motion-easing-spring: 0.34,1.56,0.64,1 !default;
+$ds-motion-easing-anticipate: 0.36,0,0.66,-0.56 !default;
+$ds-grid-columns-xs: 4 !default;
+$ds-grid-columns-sm: 4 !default;
+$ds-grid-columns-md: 8 !default;
+$ds-grid-columns-lg: 12 !default;
+$ds-grid-columns-xl: 12 !default;
+$ds-grid-columns-2xl: 12 !default;
+$ds-grid-gutter-xs: 1rem !default;
+$ds-grid-gutter-sm: 1rem !default;
+$ds-grid-gutter-md: 1.5rem !default;
+$ds-grid-gutter-lg: 2rem !default;
+$ds-grid-gutter-xl: 2rem !default;
+$ds-grid-gutter-2xl: 2.5rem !default;
+$ds-grid-breakpoint-xs: 0px !default;
+$ds-grid-breakpoint-sm: 480px !default;
+$ds-grid-breakpoint-md: 768px !default;
+$ds-grid-breakpoint-lg: 1024px !default;
+$ds-grid-breakpoint-xl: 1280px !default;
+$ds-grid-breakpoint-2xl: 1536px !default;
+$ds-grid-max-width-sm: 640px !default;
+$ds-grid-max-width-md: 768px !default;
+$ds-grid-max-width-lg: 1024px !default;
+$ds-grid-max-width-xl: 1280px !default;
+$ds-grid-max-width-2xl: 1536px !default;
+$ds-grid-max-width-full: 100% !default;
+$ds-grid-max-width-prose: 65ch !default;
+$ds-z-index-below: -1 !default;
+$ds-z-index-base: 0 !default;
+$ds-z-index-raised: 10 !default;
+$ds-z-index-dropdown: 100 !default;
+$ds-z-index-sticky: 200 !default;
+$ds-z-index-overlay: 300 !default;
+$ds-z-index-modal: 400 !default;
+$ds-z-index-popover: 500 !default;
+$ds-z-index-toast: 600 !default;
+$ds-z-index-max: 9999 !default;
+$ds-color-brand-primary: $ds-color-blue-600 !default;
+$ds-color-brand-primary-hover: $ds-color-blue-700 !default;
+$ds-color-brand-primary-active: $ds-color-blue-800 !default;
+$ds-color-brand-primary-subtle: $ds-color-blue-50 !default;
+$ds-color-brand-primary-on: $ds-color-white !default;
+$ds-color-brand-secondary: $ds-color-violet-600 !default;
+$ds-color-brand-secondary-hover: $ds-color-violet-700 !default;
+$ds-color-brand-secondary-subtle: $ds-color-violet-50 !default;
+$ds-color-brand-secondary-on: $ds-color-white !default;
+$ds-color-surface-page: $ds-color-neutral-50 !default;
+$ds-color-surface-default: $ds-color-neutral-0 !default;
+$ds-color-surface-raised: $ds-color-neutral-0 !default;
+$ds-color-surface-overlay: $ds-color-neutral-0 !default;
+$ds-color-surface-sunken: $ds-color-neutral-100 !default;
+$ds-color-surface-disabled: $ds-color-neutral-100 !default;
+$ds-color-text-primary: $ds-color-neutral-900 !default;
+$ds-color-text-secondary: $ds-color-neutral-600 !default;
+$ds-color-text-tertiary: $ds-color-neutral-400 !default;
+$ds-color-text-disabled: $ds-color-neutral-300 !default;
+$ds-color-text-inverse: $ds-color-neutral-0 !default;
+$ds-color-text-on-brand: $ds-color-white !default;
+$ds-color-text-link: $ds-color-blue-600 !default;
+$ds-color-text-link-hover: $ds-color-blue-700 !default;
+$ds-color-border-default: $ds-color-neutral-200 !default;
+$ds-color-border-strong: $ds-color-neutral-400 !default;
+$ds-color-border-focus: $ds-color-blue-500 !default;
+$ds-color-border-error: $ds-color-red-500 !default;
+$ds-color-border-disabled: $ds-color-neutral-200 !default;
+$ds-color-feedback-success-text: $ds-color-green-700 !default;
+$ds-color-feedback-success-bg: $ds-color-green-50 !default;
+$ds-color-feedback-success-border: $ds-color-green-300 !default;
+$ds-color-feedback-success-icon: $ds-color-green-600 !default;
+$ds-color-feedback-error-text: $ds-color-red-700 !default;
+$ds-color-feedback-error-bg: $ds-color-red-50 !default;
+$ds-color-feedback-error-border: $ds-color-red-300 !default;
+$ds-color-feedback-error-icon: $ds-color-red-600 !default;
+$ds-color-feedback-warning-text: $ds-color-amber-700 !default;
+$ds-color-feedback-warning-bg: $ds-color-amber-50 !default;
+$ds-color-feedback-warning-border: $ds-color-amber-300 !default;
+$ds-color-feedback-warning-icon: $ds-color-amber-600 !default;
+$ds-color-feedback-info-text: $ds-color-blue-700 !default;
+$ds-color-feedback-info-bg: $ds-color-blue-50 !default;
+$ds-color-feedback-info-border: $ds-color-blue-200 !default;
+$ds-color-feedback-info-icon: $ds-color-blue-600 !default;
+$ds-color-interactive-default: $ds-color-neutral-900 !default;
+$ds-color-interactive-hover: $ds-color-neutral-700 !default;
+$ds-color-interactive-active: $ds-color-neutral-800 !default;
+$ds-color-interactive-focus: $ds-color-blue-600 !default;
+$ds-color-interactive-disabled: $ds-color-neutral-300 !default;
+$ds-color-interactive-selected: $ds-color-blue-600 !default;
+$ds-color-interactive-selected-bg: $ds-color-blue-50 !default;
+$ds-color-layout-sidebar-bg: $ds-color-neutral-50 !default;
+$ds-color-layout-header-bg: $ds-color-neutral-1000 !default;
+$ds-color-layout-header-fg: $ds-color-neutral-0 !default;
+$ds-color-layout-table-header-bg: $ds-color-blue-600 !default;
+$ds-color-layout-table-header-fg: $ds-color-neutral-0 !default;
+
+$tokens: (
+  '$schema': 'https://www.designtokens.org/schemas/2025.10/format.json',
+  '$description': 'Semantic color tokens — light theme. Components MUST reference these, never primitives.',
+  'color': (
+    'neutral': (
+      '0': $ds-color-neutral-0,
+      '50': $ds-color-neutral-50,
+      '100': $ds-color-neutral-100,
+      '200': $ds-color-neutral-200,
+      '300': $ds-color-neutral-300,
+      '400': $ds-color-neutral-400,
+      '500': $ds-color-neutral-500,
+      '600': $ds-color-neutral-600,
+      '700': $ds-color-neutral-700,
+      '800': $ds-color-neutral-800,
+      '900': $ds-color-neutral-900,
+      '950': $ds-color-neutral-950,
+      '1000': $ds-color-neutral-1000
+    ),
+    'blue': (
+      '50': $ds-color-blue-50,
+      '100': $ds-color-blue-100,
+      '200': $ds-color-blue-200,
+      '300': $ds-color-blue-300,
+      '400': $ds-color-blue-400,
+      '500': $ds-color-blue-500,
+      '600': $ds-color-blue-600,
+      '700': $ds-color-blue-700,
+      '800': $ds-color-blue-800,
+      '900': $ds-color-blue-900,
+      '950': $ds-color-blue-950
+    ),
+    'green': (
+      '50': $ds-color-green-50,
+      '100': $ds-color-green-100,
+      '300': $ds-color-green-300,
+      '400': $ds-color-green-400,
+      '500': $ds-color-green-500,
+      '600': $ds-color-green-600,
+      '700': $ds-color-green-700,
+      '950': $ds-color-green-950
+    ),
+    'red': (
+      '50': $ds-color-red-50,
+      '300': $ds-color-red-300,
+      '400': $ds-color-red-400,
+      '500': $ds-color-red-500,
+      '600': $ds-color-red-600,
+      '700': $ds-color-red-700,
+      '950': $ds-color-red-950
+    ),
+    'amber': (
+      '50': $ds-color-amber-50,
+      '300': $ds-color-amber-300,
+      '400': $ds-color-amber-400,
+      '500': $ds-color-amber-500,
+      '600': $ds-color-amber-600,
+      '700': $ds-color-amber-700,
+      '950': $ds-color-amber-950
+    ),
+    'violet': (
+      '50': $ds-color-violet-50,
+      '300': $ds-color-violet-300,
+      '400': $ds-color-violet-400,
+      '500': $ds-color-violet-500,
+      '600': $ds-color-violet-600,
+      '700': $ds-color-violet-700,
+      '950': $ds-color-violet-950
+    ),
+    'purple': (
+      '100': $ds-color-purple-100,
+      '200': $ds-color-purple-200,
+      '300': $ds-color-purple-300,
+      '400': $ds-color-purple-400,
+      '500': $ds-color-purple-500
+    ),
+    'pink': (
+      '100': $ds-color-pink-100,
+      '200': $ds-color-pink-200,
+      '300': $ds-color-pink-300,
+      '400': $ds-color-pink-400,
+      '500': $ds-color-pink-500
+    ),
+    'orange': (
+      '100': $ds-color-orange-100,
+      '200': $ds-color-orange-200,
+      '300': $ds-color-orange-300,
+      '400': $ds-color-orange-400,
+      '500': $ds-color-orange-500
+    ),
+    'white': $ds-color-white,
+    'black': $ds-color-black,
+    'transparent': $ds-color-transparent,
+    'brand': (
+      'primary': $ds-color-brand-primary,
+      'primary-hover': $ds-color-brand-primary-hover,
+      'primary-active': $ds-color-brand-primary-active,
+      'primary-subtle': $ds-color-brand-primary-subtle,
+      'primary-on': $ds-color-brand-primary-on,
+      'secondary': $ds-color-brand-secondary,
+      'secondary-hover': $ds-color-brand-secondary-hover,
+      'secondary-subtle': $ds-color-brand-secondary-subtle,
+      'secondary-on': $ds-color-brand-secondary-on
+    ),
+    'surface': (
+      'page': $ds-color-surface-page,
+      'default': $ds-color-surface-default,
+      'raised': $ds-color-surface-raised,
+      'overlay': $ds-color-surface-overlay,
+      'sunken': $ds-color-surface-sunken,
+      'disabled': $ds-color-surface-disabled
+    ),
+    'text': (
+      'primary': $ds-color-text-primary,
+      'secondary': $ds-color-text-secondary,
+      'tertiary': $ds-color-text-tertiary,
+      'disabled': $ds-color-text-disabled,
+      'inverse': $ds-color-text-inverse,
+      'on-brand': $ds-color-text-on-brand,
+      'link': $ds-color-text-link,
+      'link-hover': $ds-color-text-link-hover
+    ),
+    'border': (
+      'default': $ds-color-border-default,
+      'strong': $ds-color-border-strong,
+      'focus': $ds-color-border-focus,
+      'error': $ds-color-border-error,
+      'disabled': $ds-color-border-disabled
+    ),
+    'feedback': (
+      'success': (
+        'text': $ds-color-feedback-success-text,
+        'bg': $ds-color-feedback-success-bg,
+        'border': $ds-color-feedback-success-border,
+        'icon': $ds-color-feedback-success-icon
+      ),
+      'error': (
+        'text': $ds-color-feedback-error-text,
+        'bg': $ds-color-feedback-error-bg,
+        'border': $ds-color-feedback-error-border,
+        'icon': $ds-color-feedback-error-icon
+      ),
+      'warning': (
+        'text': $ds-color-feedback-warning-text,
+        'bg': $ds-color-feedback-warning-bg,
+        'border': $ds-color-feedback-warning-border,
+        'icon': $ds-color-feedback-warning-icon
+      ),
+      'info': (
+        'text': $ds-color-feedback-info-text,
+        'bg': $ds-color-feedback-info-bg,
+        'border': $ds-color-feedback-info-border,
+        'icon': $ds-color-feedback-info-icon
+      )
+    ),
+    'interactive': (
+      'default': $ds-color-interactive-default,
+      'hover': $ds-color-interactive-hover,
+      'active': $ds-color-interactive-active,
+      'focus': $ds-color-interactive-focus,
+      'disabled': $ds-color-interactive-disabled,
+      'selected': $ds-color-interactive-selected,
+      'selected-bg': $ds-color-interactive-selected-bg
+    ),
+    'layout': (
+      'sidebar-bg': $ds-color-layout-sidebar-bg,
+      'header-bg': $ds-color-layout-header-bg,
+      'header-fg': $ds-color-layout-header-fg,
+      'table-header-bg': $ds-color-layout-table-header-bg,
+      'table-header-fg': $ds-color-layout-table-header-fg
+    )
+  ),
+  'spacing': (
+    '0': $ds-spacing-0,
+    '1': $ds-spacing-1,
+    '2': $ds-spacing-2,
+    '3': $ds-spacing-3,
+    '4': $ds-spacing-4,
+    '5': $ds-spacing-5,
+    '6': $ds-spacing-6,
+    '8': $ds-spacing-8,
+    '10': $ds-spacing-10,
+    '12': $ds-spacing-12,
+    '16': $ds-spacing-16,
+    '20': $ds-spacing-20,
+    '24': $ds-spacing-24,
+    '32': $ds-spacing-32,
+    '40': $ds-spacing-40,
+    '48': $ds-spacing-48,
+    '64': $ds-spacing-64,
+    '80': $ds-spacing-80,
+    '96': $ds-spacing-96,
+    'px': $ds-spacing-px,
+    '0-5': $ds-spacing-0-5
+  ),
+  'font': (
+    'family': (
+      'sans': $ds-font-family-sans,
+      'serif': $ds-font-family-serif,
+      'mono': $ds-font-family-mono
+    ),
+    'size': (
+      '2xs': $ds-font-size-2xs,
+      'xs': $ds-font-size-xs,
+      'sm': $ds-font-size-sm,
+      'md': $ds-font-size-md,
+      'lg': $ds-font-size-lg,
+      'xl': $ds-font-size-xl,
+      '2xl': $ds-font-size-2xl,
+      '3xl': $ds-font-size-3xl,
+      '4xl': $ds-font-size-4xl,
+      '5xl': $ds-font-size-5xl,
+      '6xl': $ds-font-size-6xl,
+      '7xl': $ds-font-size-7xl
+    ),
+    'weight': (
+      'thin': $ds-font-weight-thin,
+      'extralight': $ds-font-weight-extralight,
+      'light': $ds-font-weight-light,
+      'regular': $ds-font-weight-regular,
+      'medium': $ds-font-weight-medium,
+      'semibold': $ds-font-weight-semibold,
+      'bold': $ds-font-weight-bold,
+      'extrabold': $ds-font-weight-extrabold,
+      'black': $ds-font-weight-black
+    ),
+    'leading': (
+      'none': $ds-font-leading-none,
+      'tight': $ds-font-leading-tight,
+      'snug': $ds-font-leading-snug,
+      'normal': $ds-font-leading-normal,
+      'relaxed': $ds-font-leading-relaxed,
+      'loose': $ds-font-leading-loose
+    ),
+    'tracking': (
+      'tighter': $ds-font-tracking-tighter,
+      'tight': $ds-font-tracking-tight,
+      'normal': $ds-font-tracking-normal,
+      'wide': $ds-font-tracking-wide,
+      'wider': $ds-font-tracking-wider,
+      'widest': $ds-font-tracking-widest
+    )
+  ),
+  'radius': (
+    'none': $ds-radius-none,
+    'xs': $ds-radius-xs,
+    'sm': $ds-radius-sm,
+    'md': $ds-radius-md,
+    'lg': $ds-radius-lg,
+    'xl': $ds-radius-xl,
+    '2xl': $ds-radius-2xl,
+    '3xl': $ds-radius-3xl,
+    'full': $ds-radius-full
+  ),
+  'shadow': (
+    'none': $ds-shadow-none,
+    'xs': $ds-shadow-xs,
+    'sm': $ds-shadow-sm,
+    'md': $ds-shadow-md,
+    'lg': $ds-shadow-lg,
+    'xl': $ds-shadow-xl,
+    '2xl': $ds-shadow-2xl
+  ),
+  'motion': (
+    'duration': (
+      'instant': $ds-motion-duration-instant,
+      'fastest': $ds-motion-duration-fastest,
+      'faster': $ds-motion-duration-faster,
+      'fast': $ds-motion-duration-fast,
+      'normal': $ds-motion-duration-normal,
+      'slow': $ds-motion-duration-slow,
+      'slower': $ds-motion-duration-slower,
+      'slowest': $ds-motion-duration-slowest,
+      'deliberate': $ds-motion-duration-deliberate
+    ),
+    'easing': (
+      'linear': $ds-motion-easing-linear,
+      'ease': $ds-motion-easing-ease,
+      'ease-in': $ds-motion-easing-ease-in,
+      'ease-out': $ds-motion-easing-ease-out,
+      'ease-in-out': $ds-motion-easing-ease-in-out,
+      'spring': $ds-motion-easing-spring,
+      'anticipate': $ds-motion-easing-anticipate
+    )
+  ),
+  'grid': (
+    'columns': (
+      'xs': $ds-grid-columns-xs,
+      'sm': $ds-grid-columns-sm,
+      'md': $ds-grid-columns-md,
+      'lg': $ds-grid-columns-lg,
+      'xl': $ds-grid-columns-xl,
+      '2xl': $ds-grid-columns-2xl
+    ),
+    'gutter': (
+      'xs': $ds-grid-gutter-xs,
+      'sm': $ds-grid-gutter-sm,
+      'md': $ds-grid-gutter-md,
+      'lg': $ds-grid-gutter-lg,
+      'xl': $ds-grid-gutter-xl,
+      '2xl': $ds-grid-gutter-2xl
+    ),
+    'breakpoint': (
+      'xs': $ds-grid-breakpoint-xs,
+      'sm': $ds-grid-breakpoint-sm,
+      'md': $ds-grid-breakpoint-md,
+      'lg': $ds-grid-breakpoint-lg,
+      'xl': $ds-grid-breakpoint-xl,
+      '2xl': $ds-grid-breakpoint-2xl
+    ),
+    'max-width': (
+      'sm': $ds-grid-max-width-sm,
+      'md': $ds-grid-max-width-md,
+      'lg': $ds-grid-max-width-lg,
+      'xl': $ds-grid-max-width-xl,
+      '2xl': $ds-grid-max-width-2xl,
+      'full': $ds-grid-max-width-full,
+      'prose': $ds-grid-max-width-prose
+    )
+  ),
+  'z-index': (
+    'below': $ds-z-index-below,
+    'base': $ds-z-index-base,
+    'raised': $ds-z-index-raised,
+    'dropdown': $ds-z-index-dropdown,
+    'sticky': $ds-z-index-sticky,
+    'overlay': $ds-z-index-overlay,
+    'modal': $ds-z-index-modal,
+    'popover': $ds-z-index-popover,
+    'toast': $ds-z-index-toast,
+    'max': $ds-z-index-max
+  )
+);

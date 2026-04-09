@@ -68,6 +68,27 @@
       "700": { "$value": { "colorSpace": "oklch", "components": [0.459, 0.241, 295], "hex": "#6d28d9" } },
       "950": { "$value": { "colorSpace": "oklch", "components": [0.193, 0.095, 295], "hex": "#2e1065" } }
     },
+    "purple": {
+      "100": { "$value": { "colorSpace": "oklch", "components": [0.910, 0.050, 275], "hex": "#d1d5ff" } },
+      "200": { "$value": { "colorSpace": "oklch", "components": [0.780, 0.110, 275], "hex": "#a19dff" } },
+      "300": { "$value": { "colorSpace": "oklch", "components": [0.620, 0.180, 275], "hex": "#6c47ff" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.440, 0.200, 275], "hex": "#4417bf" } },
+      "500": { "$value": { "colorSpace": "oklch", "components": [0.210, 0.160, 275], "hex": "#2b0160" } }
+    },
+    "pink": {
+      "100": { "$value": { "colorSpace": "oklch", "components": [0.920, 0.050, 308], "hex": "#e9deff" } },
+      "200": { "$value": { "colorSpace": "oklch", "components": [0.770, 0.130, 308], "hex": "#d191ff" } },
+      "300": { "$value": { "colorSpace": "oklch", "components": [0.610, 0.220, 308], "hex": "#c247ff" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.400, 0.220, 308], "hex": "#7b099e" } },
+      "500": { "$value": { "colorSpace": "oklch", "components": [0.190, 0.140, 308], "hex": "#39003d" } }
+    },
+    "orange": {
+      "100": { "$value": { "colorSpace": "oklch", "components": [0.940, 0.050, 35], "hex": "#ffdcd0" } },
+      "200": { "$value": { "colorSpace": "oklch", "components": [0.840, 0.100, 35], "hex": "#feb9a7" } },
+      "300": { "$value": { "colorSpace": "oklch", "components": [0.700, 0.160, 35], "hex": "#ff7f66" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.490, 0.170, 35], "hex": "#cb4526" } },
+      "500": { "$value": { "colorSpace": "oklch", "components": [0.210, 0.100, 35], "hex": "#471200" } }
+    },
     "white":       { "$value": { "colorSpace": "oklch", "components": [1, 0, "none"], "hex": "#ffffff" } },
     "black":       { "$value": { "colorSpace": "oklch", "components": [0, 0, "none"], "hex": "#000000" } },
     "transparent": { "$value": { "colorSpace": "srgb", "components": [0, 0, 0], "alpha": 0, "hex": "#000000" } }

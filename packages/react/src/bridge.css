@@ -1,0 +1,103 @@
+/* Bridge: @ds-foundation/tokens (--ds-*) → shadcn/ui convention (light)
+   Never reference --ds-* variables outside this file and bridge-dark.css. */
+:root {
+  /* ── Surface ──────────────────────────────────────── */
+  --background:             var(--ds-color-surface-page);
+  --foreground:             var(--ds-color-text-primary);
+  --card:                   var(--ds-color-surface-default);
+  --card-foreground:        var(--ds-color-text-primary);
+  --popover:                var(--ds-color-surface-overlay);
+  --popover-foreground:     var(--ds-color-text-primary);
+
+  /* ── Brand ────────────────────────────────────────── */
+  --primary:                var(--ds-color-brand-primary);
+  --primary-foreground:     var(--ds-color-brand-primary-on);
+  --secondary:              var(--ds-color-surface-sunken);
+  --secondary-foreground:   var(--ds-color-text-primary);
+
+  /* ── Neutral states ───────────────────────────────── */
+  --muted:                  var(--ds-color-surface-sunken);
+  --muted-foreground:       var(--ds-color-text-tertiary);
+  --accent:                 var(--ds-color-brand-primary-subtle);
+  --accent-foreground:      var(--ds-color-brand-primary);
+  --destructive:            var(--ds-color-feedback-error-icon);
+  --destructive-foreground: var(--ds-color-neutral-0);
+
+  /* ── Chrome ───────────────────────────────────────── */
+  --border:                 var(--ds-color-border-default);
+  --input:                  var(--ds-color-border-default);
+  --ring:                   var(--ds-color-border-focus);
+
+  /* ── Layout ───────────────────────────────────────── */
+  --sidebar-bg:             var(--ds-color-layout-sidebar-bg);
+  --header-bg:              var(--ds-color-layout-header-bg);
+  --header-fg:              var(--ds-color-layout-header-fg);
+  --table-header-bg:        var(--ds-color-layout-table-header-bg);
+  --table-header-fg:        var(--ds-color-layout-table-header-fg);
+
+  /* ── Radius ───────────────────────────────────────── */
+  --radius:                 0.25rem;
+  --radius-sm:              max(0px, calc(var(--radius) - 2px));
+  --radius-md:              var(--radius);
+  --radius-lg:              calc(var(--radius) + 2px);
+}
+
+/* ── ML colour scale aliases ──────────────────────────────────────────────
+   Maps the legacy --gray-*, --blue-*, etc. naming to their values.
+   Purple/pink/orange forward to RT primitives.
+   Gray/blue/green retain original Ripple brand hex values until
+   those scales are added to @ds-foundation/tokens.
+   ──────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Gray — Ripple brand scale */
+  --gray-25:  #F8F8F8;
+  --gray-50:  #F2F2F3;
+  --gray-100: #E4E5E7;
+  --gray-200: #C9CBCF;
+  --gray-300: #ACB1B9;
+  --gray-400: #8F96A3;
+  --gray-500: #707A8F;
+  --gray-600: #5B6074;
+  --gray-700: #404759;
+  --gray-800: #2A2F3C;
+  --gray-900: #14171F;
+
+  /* Blue — Ripple brand scale */
+  --blue-100: #F2FAFF;
+  --blue-200: #B5DFFF;
+  --blue-300: #78BEFF;
+  --blue-400: #3B96FF;
+  --blue-500: #006AFF;
+  --blue-600: #004BCC;
+  --blue-700: #003D99;
+  --blue-800: #001B66;
+  --blue-900: #000B33;
+
+  /* Green — Ripple brand scale */
+  --green-100: #BDF5EF;
+  --green-200: #7AE0D6;
+  --green-300: #009994;
+  --green-400: #05696D;
+  --green-500: #09262B;
+
+  /* Purple — forwards to RT primitives */
+  --purple-100: var(--ds-color-purple-100);
+  --purple-200: var(--ds-color-purple-200);
+  --purple-300: var(--ds-color-purple-300);
+  --purple-400: var(--ds-color-purple-400);
+  --purple-500: var(--ds-color-purple-500);
+
+  /* Pink — forwards to RT primitives */
+  --pink-100: var(--ds-color-pink-100);
+  --pink-200: var(--ds-color-pink-200);
+  --pink-300: var(--ds-color-pink-300);
+  --pink-400: var(--ds-color-pink-400);
+  --pink-500: var(--ds-color-pink-500);
+
+  /* Orange — forwards to RT primitives */
+  --orange-100: var(--ds-color-orange-100);
+  --orange-200: var(--ds-color-orange-200);
+  --orange-300: var(--ds-color-orange-300);
+  --orange-400: var(--ds-color-orange-400);
+  --orange-500: var(--ds-color-orange-500);
+}

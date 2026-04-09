@@ -53,6 +53,13 @@
       "disabled":   { "$value": "{color.neutral.300}" },
       "selected":   { "$value": "{color.blue.600}" },
       "selected-bg":{ "$value": "{color.blue.50}" }
+    },
+    "layout": {
+      "sidebar-bg":      { "$value": "{color.neutral.50}" },
+      "header-bg":       { "$value": "{color.neutral.1000}" },
+      "header-fg":       { "$value": "{color.neutral.0}" },
+      "table-header-bg": { "$value": "{color.blue.600}" },
+      "table-header-fg": { "$value": "{color.neutral.0}" }
     }
   }
 }
