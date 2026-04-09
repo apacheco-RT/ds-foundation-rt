@@ -51,6 +51,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
+    const generatedId = React.useId()
+    const { id: propId, ...rest } = props
+    const inputId = propId ?? generatedId
+
     const hasError = !!errorText
     const hasComposite = !!(label || helperText || errorText || leftAdornment || rightAdornment)
 
@@ -69,7 +73,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         required={required}
         style={style}
         aria-invalid={hasError || undefined}
-        {...props}
+        id={inputId}
+        {...rest}
       />
     )
 
@@ -81,7 +86,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex flex-col gap-1.5 w-full">
         {label && (
-          <label className="text-sm font-medium text-ds-text">
+          <label htmlFor={inputId} className="text-sm font-medium text-ds-text">
             {label}
             {required && (
               <span className="text-ds-danger ml-0.5" aria-hidden="true">*</span>
