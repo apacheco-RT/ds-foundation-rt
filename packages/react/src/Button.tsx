@@ -42,15 +42,16 @@ const ICON_DIMENSION: Record<ButtonSize, string> = {
   xs: '14px', sm: '14px', md: '16px', lg: '16px', xl: '16px', icon: '16px',
 }
 
+const GHOST_HOVER_CLASS: Record<ButtonColorScheme, string> = {
+  primary: 'hover:bg-[var(--ds-primary-subtle)]',
+  success: 'hover:bg-[var(--ds-surface-up)]',
+  warning: 'hover:bg-[var(--ds-surface-up)]',
+  danger:  'hover:bg-[var(--ds-surface-up)]',
+  neutral: 'hover:bg-[var(--ds-surface-up)]',
+}
+
 const buttonVariants = cva(
-  [
-    'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border font-medium',
-    'ring-offset-ds-bg transition-opacity',
-    'hover:opacity-90',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-border-focus focus-visible:ring-offset-2',
-    'disabled:pointer-events-none disabled:opacity-50',
-    'active:scale-[0.98]',
-  ].join(' '),
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border font-medium ring-offset-ds-bg transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-border-focus focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       size: {
@@ -59,7 +60,7 @@ const buttonVariants = cva(
         md:   'h-10 px-4 text-sm',
         lg:   'h-11 px-6 text-base',
         xl:   'h-12 px-8 text-base',
-        icon: 'h-10 w-10 p-0',
+        icon: 'h-10 w-10',
       },
     },
     defaultVariants: { size: 'md' },
@@ -117,7 +118,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     )
 
     const leftSlot = isLoading
-      ? wrapIcon(<Loader2 className="animate-spin" />)
+      ? wrapIcon(<Loader2 className="animate-spin w-4 h-4" />)
       : leftIcon
         ? wrapIcon(leftIcon)
         : null
@@ -129,6 +130,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={cn(
           buttonVariants({ size }),
+          variant === 'solid' && 'hover:opacity-90',
+          variant === 'ghost' && GHOST_HOVER_CLASS[colorScheme],
           variant === 'link' && 'underline-offset-4 hover:underline',
           className
         )}
