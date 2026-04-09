@@ -1,0 +1,79 @@
+---
+id: card
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "rounded-[#0.25rem] border bg-card text-card-foreground shadow-sm"
+      header: "flex flex-col space-y-1.5 p-6"
+      title: "text-2xl font-semibold leading-none tracking-tight text-ripple-blue-90"
+      description: "text-sm text-muted-foreground"
+      content: "p-6 pt-0"
+      footer: "flex items-center p-6 pt-0"
+accessibility:
+  role: "region"
+  wcag:
+    - "1.3.1 Info and Relationships"
+    - "1.4.3 Contrast (Minimum)"
+  aria:
+    - "Add aria-labelledby pointing to CardTitle when the card is a standalone landmark section"
+    - "CardTitle renders as <h3> — ensure heading hierarchy is correct in context"
+  notes: "Card is a layout container with no interactive role. CardTitle renders an <h3> element. Adjust heading level by overriding with className or rendering a different heading inside CardHeader."
+ai-prompt: "Card is the primary content container component. Use it to group related information with a visual boundary: financial summaries, profile blocks, dashboard panels, list items with metadata. Compose with CardHeader (containing CardTitle and CardDescription), CardContent (the main body), and CardFooter (actions or metadata). Card has no interactive semantics by itself — wrap in a button or link only when the whole card is clickable. CardTitle renders as <h3>; ensure it fits the page heading hierarchy."
+---
+
+# Card
+
+Content container with header, body, and footer sections.
+
+## Usage
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from '@ds-foundation/react';
+import { Button } from '@ds-foundation/react';
+
+<Card>
+  <CardHeader>
+    <CardTitle>Payment Summary</CardTitle>
+    <CardDescription>Review your transaction details below.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Amount: $1,250.00</p>
+    <p>Status: Pending</p>
+  </CardContent>
+  <CardFooter>
+    <Button variant="outline">Cancel</Button>
+    <Button>Confirm</Button>
+  </CardFooter>
+</Card>
+```
+
+## Props
+
+All sub-components accept `className` and standard HTML div/heading attributes forwarded to their root element.
+
+| Component | Root element | Notable classes |
+|-----------|-------------|-----------------|
+| `Card` | `<div>` | `rounded border bg-card shadow-sm` |
+| `CardHeader` | `<div>` | `flex flex-col space-y-1.5 p-6` |
+| `CardTitle` | `<h3>` | `text-2xl font-semibold text-ripple-blue-90` |
+| `CardDescription` | `<p>` | `text-sm text-muted-foreground` |
+| `CardContent` | `<div>` | `p-6 pt-0` |
+| `CardFooter` | `<div>` | `flex items-center p-6 pt-0` |
+
+## Accessibility
+
+- Card is a layout container — add `role="region"` and `aria-labelledby` pointing to `CardTitle` when used as a standalone landmark section
+- `CardTitle` renders as `<h3>` — verify this fits your page heading hierarchy
+- When the entire card is clickable, wrap in a `<button>` or `<a>` and ensure the accessible name describes the action

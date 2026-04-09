@@ -1,0 +1,65 @@
+---
+title: Sonner
+---
+
+# Sonner
+
+Toast notification system built on the sonner library, pre-wired with design system tokens and icons.
+
+## Usage
+
+```tsx
+import { Toaster } from '@ds-foundation/react';
+import { toast } from 'sonner';
+
+// Place Toaster once at the root of your app
+<Toaster />
+
+// Trigger toasts from anywhere
+toast.success('Payment processed');
+toast.error('Transaction failed');
+toast.info('3 items selected');
+toast.warning('Session expiring soon');
+toast.loading('Processing…');
+
+// With description and action
+toast.success('Wire sent', {
+  description: 'USD 12,500 to JP Morgan Chase',
+  action: {
+    label: 'Undo',
+    onClick: () => cancelWire(),
+  },
+});
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `theme` | `"system" \| "light" \| "dark"` | `"system"` | Colour theme for the toaster |
+| `position` | `"top-left" \| "top-center" \| "top-right" \| "bottom-left" \| "bottom-center" \| "bottom-right"` | `"bottom-right"` | Screen position |
+| `duration` | `number` | `4000` | Auto-dismiss delay in milliseconds |
+| `richColors` | `boolean` | `false` | Richer semantic colours per type |
+| `expand` | `boolean` | `false` | Expand toasts to full width by default |
+| `closeButton` | `boolean` | `false` | Show a close button on each toast |
+
+All sonner `Toaster` props are forwarded.
+
+## Icons
+
+The Toaster ships with pre-configured Lucide icons:
+
+| Type | Icon |
+|------|------|
+| success | `CircleCheck` |
+| info | `Info` |
+| warning | `TriangleAlert` |
+| error | `OctagonX` |
+| loading | `LoaderCircle` (animated spin) |
+
+## Accessibility
+
+- Success, info, and warning toasts use `role="status"` (polite live region)
+- Error toasts use `role="alert"` (assertive) so they are announced immediately
+- Toasts auto-dismiss but pause on hover and keyboard focus
+- Close buttons are keyboard focusable and accessible by label

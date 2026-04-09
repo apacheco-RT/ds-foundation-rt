@@ -1,0 +1,90 @@
+---
+id: segmented
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "inline-flex items-center rounded-lg border border-gray-100 bg-gray-50 p-1 gap-1"
+accessibility:
+  role: "radiogroup"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=\"radiogroup\" on the container div"
+    - "role=\"radio\" and aria-checked on each button"
+    - "tabIndex roving: active segment is 0, others are -1"
+  notes: "Arrow keys (Left/Right), Home, and End navigate between enabled segments. Disabled segments are skipped in keyboard navigation."
+ai-prompt: "Segmented is a segmented control (tab switcher) component for selecting one option from a small, mutually exclusive set — similar to a tab bar or toggle group. Use it for view mode switches (List/Grid), time range selectors, or filter toggles. Pass an options array of {label, value, disabled?} objects, and control selection via value + onChange (controlled) or defaultValue (uncontrolled). The active segment renders with a white pill and shadow on a light gray track. Keyboard navigation uses arrow keys with a roving tabIndex pattern. Disabled options are visually dimmed and skipped by arrow key navigation."
+---
+
+# Segmented
+
+Segmented control for selecting one option from a small mutually-exclusive set.
+
+## Usage
+
+```tsx
+import { Segmented } from '@ds-foundation/react';
+
+const options = [
+  { label: 'List', value: 'list' },
+  { label: 'Grid', value: 'grid' },
+  { label: 'Map', value: 'map', disabled: true },
+];
+
+// Uncontrolled
+<Segmented options={options} defaultValue="list" />
+
+// Controlled
+const [view, setView] = React.useState('list');
+
+<Segmented
+  options={options}
+  value={view}
+  onChange={setView}
+/>
+```
+
+### With node labels
+
+```tsx
+<Segmented
+  options={[
+    { label: <><BoldIcon className="h-4 w-4" /> Bold</>, value: 'bold' },
+    { label: <><ItalicIcon className="h-4 w-4" /> Italic</>, value: 'italic' },
+  ]}
+  defaultValue="bold"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `options` | `SegmentedOption[]` | — | Array of segment definitions (required) |
+| `value` | `string` | — | Controlled active value |
+| `defaultValue` | `string` | — | Initial active value (uncontrolled) |
+| `onChange` | `(value: string) => void` | — | Callback when selection changes |
+| `className` | `string` | — | Additional classes for the container |
+
+### SegmentedOption
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `ReactNode` | — | Display content for the segment |
+| `value` | `string` | — | Unique value identifier |
+| `disabled` | `boolean` | `false` | Prevents selection and skips keyboard navigation |
+
+## Accessibility
+
+- Container has `role="radiogroup"`.
+- Each segment button has `role="radio"` and `aria-checked` reflecting its active state.
+- Roving tabIndex keeps only the active segment in the tab sequence.
+- Arrow Left/Right, Home, and End navigate between enabled segments.
+- Disabled segments have the native `disabled` attribute and are skipped by arrow key navigation.

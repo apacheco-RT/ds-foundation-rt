@@ -1,0 +1,75 @@
+---
+title: RadioGroup
+---
+
+# RadioGroup
+
+Single-select radio button group built on Radix UI for choosing one option from a set.
+
+## Usage
+
+```tsx
+import { RadioGroup, RadioGroupItem } from '@ds-foundation/react';
+
+<RadioGroup defaultValue="option-1">
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-1" id="r1" />
+    <label htmlFor="r1">Option 1</label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-2" id="r2" />
+    <label htmlFor="r2">Option 2</label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-3" id="r3" />
+    <label htmlFor="r3">Option 3</label>
+  </div>
+</RadioGroup>
+```
+
+### Controlled
+
+```tsx
+const [value, setValue] = React.useState('option-1');
+
+<RadioGroup value={value} onValueChange={setValue}>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-1" id="c1" />
+    <label htmlFor="c1">Option 1</label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-2" id="c2" />
+    <label htmlFor="c2">Option 2</label>
+  </div>
+</RadioGroup>
+```
+
+## Props
+
+### RadioGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Controlled selected value |
+| `defaultValue` | `string` | — | Default value (uncontrolled) |
+| `onValueChange` | `(value: string) => void` | — | Callback when selection changes |
+| `disabled` | `boolean` | `false` | Disables the entire group |
+| `orientation` | `"horizontal" \| "vertical"` | `"vertical"` | Arrow-key navigation axis |
+| `className` | `string` | — | Additional classes |
+
+### RadioGroupItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | The value this item represents (required) |
+| `disabled` | `boolean` | `false` | Disables this individual item |
+| `id` | `string` | — | Links to a `<label>` via `htmlFor` |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Root has `role="radiogroup"`.
+- Each item has `role="radio"` and `aria-checked` managed by Radix.
+- Roving tabIndex keeps only the active item in the tab sequence.
+- Arrow keys move selection; Space selects the focused item.
+- Always pair each item with a `<label htmlFor={id}>` or `aria-label`.

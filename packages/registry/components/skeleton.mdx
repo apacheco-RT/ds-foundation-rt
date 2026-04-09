@@ -1,0 +1,75 @@
+---
+id: skeleton
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "animate-pulse rounded-md bg-muted"
+accessibility:
+  role: "presentation"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-busy=\"true\" on the container while loading, when using multiple skeletons together"
+    - "aria-label or aria-live region to announce when content loads in"
+  notes: "Skeleton itself has no ARIA role. Wrap loading regions in a container with aria-busy=\"true\" and aria-label describing what is loading. Remove aria-busy when content replaces skeletons."
+ai-prompt: "Skeleton is a pulsing loading placeholder that mimics the shape of content before it loads. Use it to prevent layout shift and reduce perceived wait time. Render one or more Skeleton elements shaped like the content they replace — set width and height via className (e.g., h-4 w-3/4 for a text line, h-12 w-12 rounded-full for an avatar). Replace skeletons with real content once data is available. For screen reader support, wrap a skeleton group in a container with aria-busy=\"true\" and aria-label=\"Loading...\". There are no variants or props beyond className."
+---
+
+# Skeleton
+
+Pulsing loading placeholder that mimics content shape while data is fetching.
+
+## Usage
+
+```tsx
+import { Skeleton } from '@ds-foundation/react';
+
+// Single text line
+<Skeleton className="h-4 w-[250px]" />
+
+// Card placeholder
+<div className="flex items-center space-x-4">
+  <Skeleton className="h-12 w-12 rounded-full" />
+  <div className="space-y-2">
+    <Skeleton className="h-4 w-[200px]" />
+    <Skeleton className="h-4 w-[160px]" />
+  </div>
+</div>
+```
+
+### With aria-busy wrapper
+
+```tsx
+<div aria-busy={isLoading} aria-label="Loading user profile">
+  {isLoading ? (
+    <div className="flex items-center space-x-4">
+      <Skeleton className="h-12 w-12 rounded-full" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[200px]" />
+        <Skeleton className="h-4 w-[150px]" />
+      </div>
+    </div>
+  ) : (
+    <UserProfile user={user} />
+  )}
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Set width, height, and shape (e.g., `rounded-full` for circular) |
+
+## Accessibility
+
+- `Skeleton` itself has no ARIA attributes — it renders as a plain `<div>`.
+- Wrap skeleton groups in a container with `aria-busy="true"` while loading and remove it when content is ready.
+- Provide `aria-label` on the loading container to describe what is being fetched.
+- Optionally use an `aria-live="polite"` region to announce when content has loaded.

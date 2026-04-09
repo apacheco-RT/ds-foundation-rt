@@ -1,0 +1,47 @@
+---
+title: Progress
+---
+
+# Progress
+
+Linear progress bar for displaying task or process completion state, built on Radix UI.
+
+## Usage
+
+```tsx
+import { Progress } from '@ds-foundation/react';
+
+<Progress value={60} aria-label="Upload progress" />
+```
+
+### Indeterminate state
+
+```tsx
+<Progress aria-label="Loading" />
+```
+
+### Custom height and color
+
+```tsx
+<Progress
+  value={75}
+  className="h-2"
+  aria-label="Download progress"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | `0` | Completion percentage (0–100). Omit for indeterminate state |
+| `className` | `string` | — | Additional classes for the track element |
+| `aria-label` | `string` | — | Accessible label (required when no visible label is present) |
+| `aria-labelledby` | `string` | — | ID of an external label element |
+
+## Accessibility
+
+- Root renders `role="progressbar"` with `aria-valuemin="0"`, `aria-valuemax="100"`, and `aria-valuenow` from `value`.
+- When `value` is omitted, the bar is in an indeterminate state and `aria-valuenow` is not set.
+- Always provide an `aria-label` or `aria-labelledby` so assistive technology can announce the purpose.
+- The component is a status display only — it is not keyboard interactive.

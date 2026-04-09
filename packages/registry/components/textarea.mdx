@@ -1,0 +1,74 @@
+---
+id: textarea
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+accessibility:
+  role: "textbox"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-label or associated Label required for accessible name"
+    - "aria-invalid for validation error states"
+    - "aria-describedby to link error messages or helper text"
+  notes: "Always pair with a Label component using htmlFor. Use aria-invalid and aria-describedby to communicate validation errors."
+ai-prompt: "Textarea is a multi-line text input that extends the native HTML textarea with design system styling — consistent border, background, focus ring, and placeholder colour. It accepts all standard textarea HTML attributes including rows, placeholder, disabled, maxLength, and value/onChange for controlled usage. Always pair with a Label for accessibility. Exports: Textarea."
+---
+
+# Textarea
+
+Multi-line text input styled to match the design system's form controls.
+
+## Usage
+
+```tsx
+import { Textarea } from '@ds-foundation/react';
+import { Label } from '@ds-foundation/react';
+
+// Basic
+<div className="grid gap-1.5">
+  <Label htmlFor="notes">Notes</Label>
+  <Textarea id="notes" placeholder="Add a note…" />
+</div>
+
+// Controlled
+const [value, setValue] = React.useState('');
+
+<Textarea
+  value={value}
+  onChange={(e) => setValue(e.target.value)}
+  rows={6}
+  placeholder="Describe the issue…"
+/>
+
+// Disabled
+<Textarea disabled placeholder="Read only" />
+```
+
+## Props
+
+All native HTML `<textarea>` attributes are accepted, including:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `rows` | `number` | — | Number of visible text rows |
+| `placeholder` | `string` | — | Placeholder text |
+| `disabled` | `boolean` | `false` | Disables input and changes cursor |
+| `value` | `string` | — | Controlled value |
+| `onChange` | `React.ChangeEventHandler<HTMLTextAreaElement>` | — | Change handler |
+| `maxLength` | `number` | — | Maximum character count |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Always associate a `<Label>` using `htmlFor` matching the textarea's `id`
+- Add `aria-invalid="true"` and `aria-describedby` pointing to an error message element when validation fails
+- The textarea has a minimum height of 80px and is full-width by default

@@ -1,0 +1,48 @@
+---
+title: Avatar
+---
+
+# Avatar
+
+Circular user image with automatic text or icon fallback when the image fails to load.
+
+## Usage
+
+```tsx
+import { Avatar, AvatarImage, AvatarFallback } from '@ds-foundation/react';
+
+<Avatar>
+  <AvatarImage src="https://example.com/user.jpg" alt="Jane Smith" />
+  <AvatarFallback>JS</AvatarFallback>
+</Avatar>
+```
+
+## Props
+
+### Avatar (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Override size or shape (default `h-10 w-10 rounded-full`) |
+| `...rest` | `ComponentPropsWithoutRef` | — | Forwarded to Radix root |
+
+### AvatarImage
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `src` | `string` | — | Image URL |
+| `alt` | `string` | — | Descriptive alt text (required) |
+| `...rest` | `ComponentPropsWithoutRef` | — | Forwarded to Radix image |
+
+### AvatarFallback
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `delayMs` | `number` | — | Delay in ms before fallback is shown (avoids flash) |
+| `...rest` | `ComponentPropsWithoutRef` | — | Forwarded to Radix fallback |
+
+## Accessibility
+
+- Always provide meaningful `alt` text on `AvatarImage`
+- When the avatar appears without a visible adjacent name, add `aria-label` to the root `Avatar`
+- Fallback text or icon must meet 4.5:1 contrast against the `bg-muted` background

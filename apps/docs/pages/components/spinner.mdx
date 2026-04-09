@@ -1,0 +1,44 @@
+---
+title: Spinner
+---
+
+# Spinner
+
+Animated SVG loading indicator with accessible screen reader announcement.
+
+## Usage
+
+```tsx
+import { Spinner } from '@ds-foundation/react';
+
+// Default (md — 24px)
+<Spinner />
+
+// Small — inside a button
+<button disabled>
+  <Spinner size="sm" />
+  Saving…
+</button>
+
+// Large — overlay loader
+<div className="flex items-center justify-center h-64">
+  <Spinner size="lg" />
+</div>
+
+// Custom colour via className
+<Spinner className="text-blue-500" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Controls width/height: 16px / 24px / 32px |
+| `className` | `string` | — | Additional classes applied to the SVG |
+
+## Accessibility
+
+- The outer `<span>` has `role="status"` and `aria-label="Loading"` so screen readers announce loading state on mount
+- A visually hidden `<span className="sr-only">Loading…</span>` provides text for readers that ignore `aria-label` on non-interactive elements
+- The SVG itself is decorative and carries no accessible name
+- Spinner inherits `currentColor` — ensure the containing element has sufficient colour contrast

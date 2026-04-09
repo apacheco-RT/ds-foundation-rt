@@ -1,0 +1,42 @@
+---
+title: Label
+---
+
+# Label
+
+Accessible form label built on the Radix UI Label primitive.
+
+## Usage
+
+```tsx
+import { Label } from '@ds-foundation/react';
+import { Input } from '@ds-foundation/react';
+
+// Basic usage
+<div className="space-y-1">
+  <Label htmlFor="username">Username</Label>
+  <Input id="username" type="text" placeholder="johndoe" />
+</div>
+
+// Dims automatically when input is disabled
+<div className="space-y-1">
+  <Label htmlFor="locked">Locked field</Label>
+  <Input id="locked" disabled />
+</div>
+```
+
+## Props
+
+`Label` accepts all standard HTML label attributes.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `htmlFor` | `string` | — | Id of the associated form control |
+| `className` | `string` | — | Additional Tailwind classes |
+
+## Accessibility
+
+- Renders a native `<label>` — clicking it focuses the associated input.
+- `htmlFor` must match the `id` of the associated control.
+- `peer-disabled:opacity-70` visually dims the label when the adjacent input is disabled.
+- Inside `Form`, use `FormLabel` which wires `htmlFor` automatically.

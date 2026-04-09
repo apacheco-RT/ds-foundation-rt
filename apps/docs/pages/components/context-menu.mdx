@@ -1,0 +1,90 @@
+---
+title: ContextMenu
+---
+
+# ContextMenu
+
+Right-click context menu built on Radix UI primitives.
+
+## Usage
+
+```tsx
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuSub,
+  ContextMenuSubTrigger,
+  ContextMenuSubContent,
+} from '@ds-foundation/react';
+
+<ContextMenu>
+  <ContextMenuTrigger>Right-click me</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>
+      Open <ContextMenuShortcut>⌘O</ContextMenuShortcut>
+    </ContextMenuItem>
+    <ContextMenuSeparator />
+    <ContextMenuCheckboxItem checked={checked} onCheckedChange={setChecked}>
+      Show Preview
+    </ContextMenuCheckboxItem>
+    <ContextMenuSeparator />
+    <ContextMenuSub>
+      <ContextMenuSubTrigger>More Actions</ContextMenuSubTrigger>
+      <ContextMenuSubContent>
+        <ContextMenuItem>Move to Trash</ContextMenuItem>
+      </ContextMenuSubContent>
+    </ContextMenuSub>
+    <ContextMenuSeparator />
+    <ContextMenuLabel>View As</ContextMenuLabel>
+    <ContextMenuRadioGroup value={view} onValueChange={setView}>
+      <ContextMenuRadioItem value="list">List</ContextMenuRadioItem>
+      <ContextMenuRadioItem value="grid">Grid</ContextMenuRadioItem>
+    </ContextMenuRadioGroup>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+## Props
+
+### ContextMenuItem / ContextMenuSubTrigger / ContextMenuLabel
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `inset` | `boolean` | `false` | Adds left padding to align with indicator siblings |
+
+### ContextMenuCheckboxItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | — | Controlled checked state |
+| `onCheckedChange` | `(checked: boolean) => void` | — | Called when state changes |
+
+### ContextMenuRadioItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Value for this radio option |
+
+### ContextMenuRadioGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Currently selected radio value |
+| `onValueChange` | `(value: string) => void` | — | Called when selection changes |
+
+## Accessibility
+
+- Opened via right-click on `ContextMenuTrigger`.
+- Arrow keys navigate items; Enter/Space activate; Escape closes.
+- Focus is trapped inside the open menu and restored to trigger on close.
+- Checkbox items carry `role="menuitemcheckbox"` and `aria-checked`.
+- Radio items carry `role="menuitemradio"` and `aria-checked`.
+- Disabled items receive `aria-disabled`.

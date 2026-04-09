@@ -1,0 +1,90 @@
+---
+title: Form
+---
+
+# Form
+
+React Hook Form integration with automatic ARIA wiring and error display.
+
+## Usage
+
+```tsx
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+} from '@ds-foundation/react';
+import { Input } from '@ds-foundation/react';
+import { Button } from '@ds-foundation/react';
+
+const schema = z.object({ email: z.string().email() });
+
+function MyForm() {
+  const form = useForm({ resolver: zodResolver(schema) });
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(console.log)} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="you@example.com" {...field} />
+              </FormControl>
+              <FormDescription>We will never share your email.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Submit</Button>
+      </form>
+    </Form>
+  );
+}
+```
+
+## Props
+
+### FormField
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `control` | `Control<TFieldValues>` | — | react-hook-form control object |
+| `name` | `FieldPath<TFieldValues>` | — | Field name in the form schema |
+| `render` | `({ field, fieldState, formState }) => ReactElement` | — | Render prop receiving field bindings |
+
+### FormItem
+
+Wraps a single field group. Generates a unique `id` and provides it via context.
+
+### FormLabel
+
+Automatically connects `htmlFor` to the field id. Turns red on error.
+
+### FormControl
+
+Wires `id`, `aria-invalid`, and `aria-describedby` to the child input via Radix `Slot`.
+
+### FormDescription
+
+Helper text paragraph; referenced by `aria-describedby`.
+
+### FormMessage
+
+Renders validation error or children. Returns `null` when empty.
+
+## Accessibility
+
+- `FormControl` sets `aria-invalid` and extends `aria-describedby` with the error message id when a field has an error.
+- `FormLabel` is connected to the input via `htmlFor` automatically.
+- `FormMessage` renders only when there is content, preventing empty ARIA references.

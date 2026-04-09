@@ -1,0 +1,87 @@
+---
+title: NavigationMenu
+---
+
+# NavigationMenu
+
+Horizontal site navigation with animated flyout dropdown panels, built on Radix UI.
+
+## Usage
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  navigationMenuTriggerStyle,
+} from '@ds-foundation/react';
+
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <ul className="grid gap-3 p-6 md:w-[400px]">
+          <li>
+            <NavigationMenuLink href="/overview">Overview</NavigationMenuLink>
+          </li>
+        </ul>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/docs">
+        Docs
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+## Exports
+
+| Export | Description |
+|--------|-------------|
+| `NavigationMenu` | Root container; includes `NavigationMenuViewport` automatically |
+| `NavigationMenuList` | Horizontal list of menu items |
+| `NavigationMenuItem` | Wrapper for each top-level nav entry |
+| `NavigationMenuTrigger` | Button that opens a dropdown panel |
+| `NavigationMenuContent` | Dropdown panel content |
+| `NavigationMenuLink` | Navigation anchor element |
+| `NavigationMenuIndicator` | Animated pointer below the active trigger |
+| `NavigationMenuViewport` | Animated floating viewport for dropdown content |
+| `navigationMenuTriggerStyle` | CVA function returning trigger classes; apply to plain links for consistent styling |
+
+## Props
+
+### NavigationMenuTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional classes |
+| `children` | `ReactNode` | — | Trigger label |
+
+### NavigationMenuContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional classes |
+| `children` | `ReactNode` | — | Dropdown panel content |
+
+### NavigationMenuLink
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `href` | `string` | — | Navigation destination |
+| `asChild` | `boolean` | `false` | Render as child element |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Root renders as a `<nav>` element with implicit navigation landmark role.
+- Triggers manage `aria-expanded` and `aria-haspopup` via Radix automatically.
+- Arrow keys navigate between top-level items; Enter/Space open flyouts.
+- Escape closes the open panel and returns focus to the trigger.
+- Focus is trapped inside the open viewport.

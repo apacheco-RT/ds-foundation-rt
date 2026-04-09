@@ -1,0 +1,93 @@
+---
+id: popover
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none"
+accessibility:
+  role: "dialog"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-expanded on trigger reflects open state"
+    - "aria-haspopup=\"dialog\" on trigger"
+    - "Focus moves into PopoverContent on open"
+  notes: "Rendered inside a Portal to avoid z-index/overflow clipping issues. Supports align (start/center/end) and sideOffset props on PopoverContent."
+ai-prompt: "Popover is a triggered floating content panel built on Radix UI, suitable for contextual information, quick actions, or small forms that should not block the page. Use it when a tooltip is too small and a modal is too heavy. Compose Popover > PopoverTrigger + PopoverContent; optionally use PopoverAnchor to position content relative to a different element than the trigger. PopoverContent defaults to 288px wide (w-72), centered alignment, and 4px offset. Pass align=\"start\" or align=\"end\" to reposition horizontally. The panel renders in a portal and animates open/close via data-state attributes."
+---
+
+# Popover
+
+Triggered floating content panel for contextual information or quick actions, built on Radix UI.
+
+## Usage
+
+```tsx
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from '@ds-foundation/react';
+
+<Popover>
+  <PopoverTrigger asChild>
+    <button>Open</button>
+  </PopoverTrigger>
+  <PopoverContent>
+    <p className="text-sm">Popover content goes here.</p>
+  </PopoverContent>
+</Popover>
+```
+
+### With anchor
+
+```tsx
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverAnchor,
+} from '@ds-foundation/react';
+
+<Popover>
+  <PopoverAnchor asChild>
+    <div className="border p-4">Anchor element</div>
+  </PopoverAnchor>
+  <PopoverTrigger asChild>
+    <button>Open relative to anchor</button>
+  </PopoverTrigger>
+  <PopoverContent>Content positioned to the anchor.</PopoverContent>
+</Popover>
+```
+
+## Props
+
+### PopoverContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Horizontal alignment relative to trigger |
+| `sideOffset` | `number` | `4` | Gap in pixels between trigger and panel |
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` | Preferred side to render the panel |
+| `className` | `string` | — | Additional classes |
+| `children` | `ReactNode` | — | Panel content |
+
+### PopoverTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | `false` | Merge props onto child element instead of rendering a button |
+
+## Accessibility
+
+- Radix manages `aria-expanded` and `aria-haspopup` on the trigger automatically.
+- Focus moves into the popover content on open and returns to the trigger on close.
+- Escape key closes the popover.
+- Content is rendered in a portal, so it is always outside overflow-hidden ancestors.

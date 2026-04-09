@@ -1,0 +1,98 @@
+---
+id: typography
+type: component
+version: 1.0.0
+status: stable
+variants:
+  - Display
+  - H1
+  - H2
+  - H3
+  - H4
+  - H5
+  - BodyLarge
+  - Body
+  - BodySmall
+  - Caption
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "text-[16px] font-normal leading-[1.5]"
+accessibility:
+  role: "none"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "1.4.4 Resize Text"
+    - "1.3.1 Info and Relationships"
+  aria:
+    - "Heading components (H1–H5) render semantic h1–h5 elements — document outline is preserved"
+    - "Caption renders a span; ensure colour contrast meets 4.5:1 against its background"
+  notes: "Each export is a distinct component with a fixed element type and size. Heading hierarchy must follow document structure — do not skip levels. Caption defaults to text-muted-foreground which may need overriding in some contexts to meet contrast requirements."
+ai-prompt: "Typography is a collection of pre-styled text components that implement the design system's type scale. Each export renders the appropriate HTML element with a fixed size, weight, and line-height: Display (72px bold h1), H1 (48px bold h1), H2 (36px bold h2), H3 (28px semibold h3), H4 (24px semibold h4), H5 (20px semibold h5), BodyLarge (20px p), Body (16px p), BodySmall (14px p), Caption (12px muted span). Use these instead of raw HTML elements or ad-hoc Tailwind type classes to maintain consistent typographic hierarchy. All components accept className for overrides. Exports: Display, H1, H2, H3, H4, H5, BodyLarge, Body, BodySmall, Caption."
+---
+
+# Typography
+
+Design system type scale components — one export per text style, each rendering the correct semantic HTML element.
+
+## Usage
+
+```tsx
+import {
+  Display,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  BodyLarge,
+  Body,
+  BodySmall,
+  Caption,
+} from '@ds-foundation/react';
+
+<Display>Treasury Dashboard</Display>
+<H1>Account Overview</H1>
+<H2>Recent Transactions</H2>
+<H3>Filters</H3>
+<H4>Date Range</H4>
+<H5>Currency</H5>
+<BodyLarge>Your balances updated moments ago.</BodyLarge>
+<Body>Select a date range to filter transactions.</Body>
+<BodySmall>All times are shown in UTC.</BodySmall>
+<Caption>Last synced 2 minutes ago</Caption>
+```
+
+## Props
+
+All typography components share the same props:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional Tailwind classes for overrides |
+| `children` | `React.ReactNode` | — | Text content |
+
+Standard HTML attributes for the respective element type are also accepted.
+
+## Type Scale Reference
+
+| Export | Element | Size | Weight | Line Height |
+|--------|---------|------|--------|-------------|
+| `Display` | `h1` | 72px | bold | 1.1 |
+| `H1` | `h1` | 48px | bold | 1.2 |
+| `H2` | `h2` | 36px | bold | 1.25 |
+| `H3` | `h3` | 28px | semibold | 1.3 |
+| `H4` | `h4` | 24px | semibold | 1.35 |
+| `H5` | `h5` | 20px | semibold | 1.4 |
+| `BodyLarge` | `p` | 20px | normal | 1.6 |
+| `Body` | `p` | 16px | normal | 1.5 |
+| `BodySmall` | `p` | 14px | normal | 1.5 |
+| `Caption` | `span` | 12px | normal | 1.4 |
+
+## Accessibility
+
+- Heading components (`H1`–`H5`) render proper semantic heading elements — use them to maintain a logical document outline
+- Do not skip heading levels (e.g., jump from `H2` to `H4`)
+- `Caption` renders a `<span>` with `text-muted-foreground` — verify contrast meets 4.5:1 against its background
+- All components accept `className` for colour overrides when the muted default is insufficient

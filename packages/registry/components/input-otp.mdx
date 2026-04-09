@@ -1,0 +1,97 @@
+---
+id: input-otp
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "flex items-center gap-2 has-[:disabled]:opacity-50"
+accessibility:
+  role: "textbox"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "InputOTPSeparator has role=separator"
+    - "Active slot is indicated via ring-2 ring-ring ring-offset-background"
+    - "Disabled state applies opacity-50 via has-[:disabled] CSS selector on the container"
+  notes: "Built on the input-otp library. The underlying element is a single invisible native input — screen readers interact with it as a single text field. Slot rendering (InputOTPSlot) is purely visual. InputOTPGroup groups slots visually. InputOTPSeparator renders a Dot icon with role=separator between groups."
+ai-prompt: "InputOTP is a one-time password input with individual character slots built on the input-otp library. Use it for verification codes, PIN entry, or any fixed-length code entry. Compose InputOTPGroup containing InputOTPSlot elements (one per character), with optional InputOTPSeparator between groups. Key props on InputOTP: maxLength (number, required), pattern (string, for allowed characters — e.g. REGEXP_ONLY_DIGITS). The index prop on InputOTPSlot specifies which character position the slot displays. Exports: InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator."
+---
+
+# InputOTP
+
+One-time password entry with individual character slots built on input-otp.
+
+## Usage
+
+```tsx
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from '@ds-foundation/react';
+import { REGEXP_ONLY_DIGITS } from 'input-otp';
+
+// 6-digit code
+<InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>
+
+// Controlled
+<InputOTP
+  maxLength={4}
+  value={code}
+  onChange={setCode}
+>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+    <InputOTPSlot index={3} />
+  </InputOTPGroup>
+</InputOTP>
+```
+
+## Props
+
+### InputOTP
+
+Accepts all props from the `input-otp` `OTPInput` component.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `maxLength` | `number` | — | **Required.** Total number of OTP characters |
+| `pattern` | `string` | — | Regex pattern restricting allowed input (e.g. `REGEXP_ONLY_DIGITS`) |
+| `value` | `string` | — | Controlled value |
+| `onChange` | `(value: string) => void` | — | Called on each keystroke |
+| `disabled` | `boolean` | `false` | Disables input; container dims via `has-[:disabled]:opacity-50` |
+
+### InputOTPSlot
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `index` | `number` | — | **Required.** Position of this slot in the OTP sequence |
+
+## Accessibility
+
+- The underlying element is a single native `<input>` — screen readers interact with it as a single field.
+- The slot UI is purely visual decoration.
+- `InputOTPSeparator` renders a `<div role="separator">` with a `Dot` icon.
+- The active (focused) slot displays a `ring-2` highlight and an animated caret.
+- Disabled state applies `opacity-50` to the entire container via `has-[:disabled]`.

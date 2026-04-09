@@ -1,0 +1,124 @@
+---
+id: command
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground"
+      input: "flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+      list: "max-h-[300px] overflow-y-auto overflow-x-hidden"
+      item: "relative flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled=true]:pointer-events-none data-[selected='true']:bg-accent data-[selected=true]:text-accent-foreground data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
+      group: "overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground"
+      separator: "-mx-1 h-px bg-border"
+      shortcut: "ml-auto text-xs tracking-widest text-muted-foreground"
+      empty: "py-6 text-center text-sm"
+accessibility:
+  role: "combobox"
+  wcag:
+    - "1.3.1 Info and Relationships"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role='combobox' on CommandInput with aria-expanded and aria-controls"
+    - "role='listbox' on CommandList"
+    - "role='option' on CommandItem with aria-selected"
+    - "aria-label on Command root when used in a non-dialog context"
+  notes: "Built on cmdk library. CommandDialog wraps Command in a Radix Dialog — use it for global command palettes (Cmd+K). Keyboard: Arrow Up/Down navigate items; Enter activates; Escape closes dialog."
+ai-prompt: "Command renders a searchable command palette for keyboard-driven navigation and action execution. Use CommandDialog to wrap it in a modal opened by a keyboard shortcut (e.g. Cmd+K). Compose: Command (root) > CommandInput (search field) + CommandList > CommandGroup (sections with headings) > CommandItem (each action). CommandEmpty renders when no items match the search. CommandSeparator adds a visual divider between groups. CommandShortcut renders a keyboard hint aligned to the right of a CommandItem. Filter is built in — items are hidden automatically based on CommandInput value."
+---
+
+# Command
+
+Searchable command palette for keyboard-driven navigation and action execution, built on cmdk.
+
+## Usage
+
+```tsx
+import {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+  CommandSeparator,
+} from '@ds-foundation/react';
+
+{/* Inline */}
+<Command>
+  <CommandInput placeholder="Search commands..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>
+        Calendar
+        <CommandShortcut>⌘C</CommandShortcut>
+      </CommandItem>
+      <CommandItem>Search Payments</CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Settings">
+      <CommandItem>Profile</CommandItem>
+      <CommandItem>Billing</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+
+{/* Modal palette (Cmd+K) */}
+<CommandDialog open={open} onOpenChange={setOpen}>
+  <CommandInput placeholder="Type a command..." />
+  <CommandList>
+    <CommandEmpty>No results.</CommandEmpty>
+    <CommandGroup heading="Actions">
+      <CommandItem onSelect={() => runAction()}>New Payment</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</CommandDialog>
+```
+
+## Props
+
+### Command (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `filter` | `(value: string, search: string) => number` | built-in | Custom filter function |
+| `shouldFilter` | `boolean` | `true` | Enable/disable built-in filtering |
+| `value` | `string` | — | Controlled selected item value |
+| `onValueChange` | `(value: string) => void` | — | Called when selected item changes |
+| `loop` | `boolean` | `false` | Wrap arrow key navigation at ends |
+
+### CommandDialog
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Dialog open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Called when dialog open state changes |
+| `...rest` | `DialogProps` | — | All Radix Dialog props |
+
+### CommandItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Item value used for filtering |
+| `onSelect` | `(value: string) => void` | — | Called when item is activated |
+| `disabled` | `boolean` | `false` | Prevents selection |
+
+### CommandGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `heading` | `string` | — | Section label text |
+
+## Accessibility
+
+- `CommandInput` has `role="combobox"` with `aria-expanded` and `aria-controls` pointing to the list
+- `CommandList` has `role="listbox"`; `CommandItem` has `role="option"` with `aria-selected`
+- Keyboard: `Arrow Up/Down` navigate items; `Enter` activates; `Escape` closes dialog
+- Items are filtered in real time as the user types in `CommandInput`

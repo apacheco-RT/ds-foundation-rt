@@ -1,0 +1,58 @@
+---
+id: progress
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "relative h-4 w-full overflow-hidden rounded-full bg-secondary"
+accessibility:
+  role: "progressbar"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=\"progressbar\" on root element"
+    - "aria-valuemin, aria-valuemax, aria-valuenow set from value prop"
+    - "aria-label or aria-labelledby should be provided by consumer"
+  notes: "The indicator uses translateX to animate fill; value should be 0–100. Provide an accessible label via aria-label or a linked <label> element."
+ai-prompt: "Progress is a linear progress bar built on Radix UI's progress primitive. Use it to show the completion state of a task, upload, or multi-step process. Pass a numeric value between 0 and 100 to set the fill amount; the indicator animates smoothly via CSS transform. The track is full-width with a rounded pill shape. Always provide an aria-label or aria-labelledby so screen readers can announce the purpose of the bar. There are no variants or sizes — use className to override height or color."
+---
+
+# Progress
+
+Linear progress bar for displaying task or process completion state, built on Radix UI.
+
+## Usage
+
+```tsx
+import { Progress } from '@ds-foundation/react';
+
+<Progress value={60} aria-label="Upload progress" />
+```
+
+### Indeterminate state
+
+```tsx
+<Progress aria-label="Loading" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | `0` | Completion percentage (0–100). Omit for indeterminate state |
+| `className` | `string` | — | Additional classes for the track element |
+| `aria-label` | `string` | — | Accessible label (required when no visible label is present) |
+| `aria-labelledby` | `string` | — | ID of an external label element |
+
+## Accessibility
+
+- Root renders `role="progressbar"` with `aria-valuemin="0"`, `aria-valuemax="100"`, and `aria-valuenow` from the `value` prop.
+- When `value` is omitted, the bar is in an indeterminate state and `aria-valuenow` is not set.
+- Always provide an `aria-label` or `aria-labelledby` so assistive technology can announce the purpose.
+- The component is not keyboard interactive — it is a status display only.

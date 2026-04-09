@@ -1,0 +1,79 @@
+---
+id: toggle
+type: component
+version: 1.0.0
+status: stable
+variants:
+  - default
+  - outline
+sizes:
+  - sm
+  - default
+  - lg
+adapters:
+  tailwind:
+    default:
+      base: "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 gap-2"
+accessibility:
+  role: "button"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-pressed reflects the pressed/unpressed state (set by Radix)"
+    - "role=button with aria-pressed — not role=switch"
+  notes: "Radix Toggle uses role=button with aria-pressed to distinguish from Switch (which uses role=switch). Space and Enter toggle the pressed state."
+ai-prompt: "Toggle is a binary press/unpress button built on Radix UI Toggle primitive, useful for toolbar actions, formatting controls, and filter toggles. It has two variants (default: transparent background, outline: bordered) and three sizes (sm, default, lg). The pressed state is tracked by Radix and exposed via data-[state=on] which triggers accent background styling. Control programmatically via pressed and onPressedChange, or leave uncontrolled with defaultPressed. Exports: Toggle, toggleVariants."
+---
+
+# Toggle
+
+Binary press/unpress button built on the Radix UI Toggle primitive.
+
+## Usage
+
+```tsx
+import { Toggle } from '@ds-foundation/react';
+import { Bold } from 'lucide-react';
+
+// Default (transparent)
+<Toggle aria-label="Bold">
+  <Bold />
+</Toggle>
+
+// Outline variant
+<Toggle variant="outline" aria-label="Italic">
+  Italic
+</Toggle>
+
+// Controlled
+const [pressed, setPressed] = React.useState(false);
+
+<Toggle
+  pressed={pressed}
+  onPressedChange={setPressed}
+  size="sm"
+>
+  Filter
+</Toggle>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "outline"` | `"default"` | Visual style |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Control height and padding |
+| `pressed` | `boolean` | — | Controlled pressed state |
+| `defaultPressed` | `boolean` | `false` | Initial pressed state (uncontrolled) |
+| `onPressedChange` | `(pressed: boolean) => void` | — | Called when state changes |
+| `disabled` | `boolean` | `false` | Prevents interaction |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Radix sets `role="button"` with `aria-pressed` reflecting the current state
+- Always provide a visible label or `aria-label` when the toggle contains only an icon
+- `Space` and `Enter` toggle the pressed state
+- `data-[state=on]` applies accent background when pressed

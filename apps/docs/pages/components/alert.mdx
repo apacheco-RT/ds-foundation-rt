@@ -1,0 +1,58 @@
+---
+title: Alert
+---
+
+# Alert
+
+Status and informational banner with semantic color variants for different message types.
+
+## Usage
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from '@ds-foundation/react';
+import { AlertCircle, CheckCircle, Info } from 'lucide-react';
+
+<Alert>
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>You can add components to your app.</AlertDescription>
+</Alert>
+
+<Alert variant="destructive">
+  <AlertCircle className="h-4 w-4" />
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>Your session has expired. Please sign in again.</AlertDescription>
+</Alert>
+
+<Alert variant="success">
+  <CheckCircle className="h-4 w-4" />
+  <AlertTitle>Success</AlertTitle>
+  <AlertDescription>Payment processed successfully.</AlertDescription>
+</Alert>
+```
+
+## Props
+
+### Alert
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive" \| "success" \| "info" \| "warning"` | `"default"` | Semantic color style |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root element |
+
+### AlertTitle
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `...rest` | `HTMLAttributes<HTMLHeadingElement>` | — | Forwarded to `<h5>` |
+
+### AlertDescription
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `...rest` | `HTMLAttributes<HTMLParagraphElement>` | — | Forwarded to `<div>` |
+
+## Accessibility
+
+- `role="alert"` on the root div causes screen readers to announce content immediately
+- Always pair a color variant with an icon or text label — color alone is insufficient per WCAG 1.4.1
+- For non-urgent status messages, avoid `role="alert"` to prevent interrupting ongoing screen reader narration

@@ -1,0 +1,49 @@
+---
+title: HoverCard
+---
+
+# HoverCard
+
+Hover-triggered popover for rich preview information built on Radix UI.
+
+## Usage
+
+```tsx
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from '@ds-foundation/react';
+
+<HoverCard>
+  <HoverCardTrigger asChild>
+    <a href="/user/alice">@alice</a>
+  </HoverCardTrigger>
+  <HoverCardContent>
+    <div className="flex gap-3">
+      <img src="/alice-avatar.png" alt="Alice" className="h-10 w-10 rounded-full" />
+      <div>
+        <p className="text-sm font-semibold">Alice Chen</p>
+        <p className="text-xs text-muted-foreground">Product Designer · Joined Jan 2024</p>
+      </div>
+    </div>
+  </HoverCardContent>
+</HoverCard>
+```
+
+## Props
+
+### HoverCardContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment relative to the trigger |
+| `sideOffset` | `number` | `4` | Gap in px between trigger and content |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Opens on pointer hover or keyboard focus; closes on blur or pointer leave.
+- Not suitable for critical information — may be inaccessible to keyboard-only users.
+- Trigger should have an accessible name.
+- Do not use for interactive actions — use `DropdownMenu` or `Popover` instead.

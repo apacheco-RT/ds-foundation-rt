@@ -1,0 +1,36 @@
+---
+title: AspectRatio
+---
+
+# AspectRatio
+
+Constrains a child element to a fixed width-to-height ratio, preventing layout shift when media loads.
+
+## Usage
+
+```tsx
+import { AspectRatio } from '@ds-foundation/react';
+
+<div className="w-full max-w-sm">
+  <AspectRatio ratio={16 / 9}>
+    <img
+      src="/hero.jpg"
+      alt="Hero image"
+      className="h-full w-full object-cover rounded-md"
+    />
+  </AspectRatio>
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `ratio` | `number` | `1` | Width divided by height — e.g. `16/9`, `4/3`, `1` for square |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root element |
+
+## Accessibility
+
+- The container itself is presentational and requires no ARIA attributes
+- Images placed inside must have a descriptive `alt` attribute
+- Videos and iframes should provide `aria-label` or `title` for screen readers

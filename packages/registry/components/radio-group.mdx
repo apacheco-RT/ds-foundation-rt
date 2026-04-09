@@ -1,0 +1,97 @@
+---
+id: radio-group
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "grid gap-2"
+accessibility:
+  role: "radiogroup"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=\"radiogroup\" on the root element"
+    - "role=\"radio\" and aria-checked on each RadioGroupItem"
+    - "aria-disabled on disabled items"
+    - "Each item should have an associated <label> via htmlFor or aria-label"
+  notes: "Uses roving tabIndex so only one item is in the tab sequence at a time. Arrow keys move selection within the group."
+ai-prompt: "RadioGroup is a single-select set of radio buttons built on Radix UI, suitable for selecting one option from a small set (typically 2–5 choices). Compose RadioGroup as the container and RadioGroupItem for each option; pair each item with a <label> using htmlFor for accessibility. Pass value and onValueChange for controlled usage, or defaultValue for uncontrolled. The group uses a grid layout with gap-2 by default. Arrow keys navigate between options. The filled circle indicator renders via the Radix Indicator child inside RadioGroupItem."
+---
+
+# RadioGroup
+
+Single-select radio button group built on Radix UI for choosing one option from a set.
+
+## Usage
+
+```tsx
+import { RadioGroup, RadioGroupItem } from '@ds-foundation/react';
+
+<RadioGroup defaultValue="option-1">
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-1" id="r1" />
+    <label htmlFor="r1">Option 1</label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-2" id="r2" />
+    <label htmlFor="r2">Option 2</label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-3" id="r3" />
+    <label htmlFor="r3">Option 3</label>
+  </div>
+</RadioGroup>
+```
+
+### Controlled
+
+```tsx
+const [value, setValue] = React.useState('option-1');
+
+<RadioGroup value={value} onValueChange={setValue}>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-1" id="c1" />
+    <label htmlFor="c1">Option 1</label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-2" id="c2" />
+    <label htmlFor="c2">Option 2</label>
+  </div>
+</RadioGroup>
+```
+
+## Props
+
+### RadioGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Controlled selected value |
+| `defaultValue` | `string` | — | Default selected value (uncontrolled) |
+| `onValueChange` | `(value: string) => void` | — | Callback when selection changes |
+| `disabled` | `boolean` | `false` | Disables the entire group |
+| `orientation` | `"horizontal" \| "vertical"` | `"vertical"` | Layout direction for arrow key navigation |
+| `className` | `string` | — | Additional classes |
+
+### RadioGroupItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | The value this item represents (required) |
+| `disabled` | `boolean` | `false` | Disables this individual item |
+| `id` | `string` | — | Links to a `<label>` via `htmlFor` |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Root element has `role="radiogroup"`.
+- Each `RadioGroupItem` has `role="radio"` and `aria-checked` managed by Radix.
+- Only one item is in the tab sequence at a time (roving tabIndex).
+- Arrow keys move selection; Space selects the focused item.
+- Always pair each item with a `<label htmlFor={id}>` or `aria-label`.

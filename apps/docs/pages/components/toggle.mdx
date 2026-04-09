@@ -1,0 +1,63 @@
+---
+title: Toggle
+---
+
+# Toggle
+
+Binary press/unpress button built on the Radix UI Toggle primitive.
+
+## Usage
+
+```tsx
+import { Toggle } from '@ds-foundation/react';
+import { Bold, Italic, Underline } from 'lucide-react';
+
+// Icon-only toolbar button
+<Toggle aria-label="Bold">
+  <Bold />
+</Toggle>
+
+// Text toggle
+<Toggle>Filter active</Toggle>
+
+// Outline variant
+<Toggle variant="outline" aria-label="Italic">
+  <Italic />
+</Toggle>
+
+// Controlled
+const [active, setActive] = React.useState(false);
+
+<Toggle
+  pressed={active}
+  onPressedChange={setActive}
+  variant="outline"
+  size="sm"
+>
+  Pending only
+</Toggle>
+
+// Sizes
+<Toggle size="sm">Small</Toggle>
+<Toggle size="default">Default</Toggle>
+<Toggle size="lg">Large</Toggle>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "outline"` | `"default"` | Visual style — transparent or bordered |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Height and horizontal padding |
+| `pressed` | `boolean` | — | Controlled pressed state |
+| `defaultPressed` | `boolean` | `false` | Initial pressed state (uncontrolled) |
+| `onPressedChange` | `(pressed: boolean) => void` | — | Called when pressed state changes |
+| `disabled` | `boolean` | `false` | Prevents interaction |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Radix sets `role="button"` with `aria-pressed` reflecting the current state
+- Always provide a visible label or `aria-label` when the toggle contains only an icon
+- `Space` and `Enter` toggle the pressed state
+- `data-[state=on]` triggers accent background styling when pressed

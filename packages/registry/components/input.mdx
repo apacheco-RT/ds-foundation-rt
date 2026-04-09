@@ -1,0 +1,82 @@
+---
+id: input
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ripple-blue-50 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+accessibility:
+  role: "textbox"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "Must be associated with a Label via htmlFor/id or aria-label"
+    - "aria-invalid should be set when the field is in an error state"
+    - "aria-describedby should reference helper or error text when present"
+  notes: "Input is a thin wrapper around a native <input> element — all native input attributes are accepted. When used inside a Form, FormControl handles aria-invalid and aria-describedby automatically. Focus ring uses ripple-blue-50 design token."
+ai-prompt: "Input is a styled text input field wrapping a native HTML input. Use it for all single-line text entry including email, password, search, and URL fields. It accepts all standard HTML input attributes via InputProps (extends React.InputHTMLAttributes<HTMLInputElement>). Key props: type, placeholder, disabled, value, onChange. Always pair with a Label or provide aria-label. When used inside the Form component set, FormControl wires all ARIA automatically. Export: Input (component), InputProps (TypeScript interface)."
+---
+
+# Input
+
+Styled text input field wrapping a native `<input>` element.
+
+## Usage
+
+```tsx
+import { Input } from '@ds-foundation/react';
+import { Label } from '@ds-foundation/react';
+
+// Basic
+<div className="space-y-1">
+  <Label htmlFor="email">Email</Label>
+  <Input id="email" type="email" placeholder="you@example.com" />
+</div>
+
+// Disabled
+<Input type="text" placeholder="Not editable" disabled />
+
+// Controlled
+<Input
+  type="text"
+  value={value}
+  onChange={(e) => setValue(e.target.value)}
+  placeholder="Type here"
+/>
+
+// File input
+<Input type="file" />
+```
+
+## Props
+
+`Input` extends `React.InputHTMLAttributes<HTMLInputElement>` — all native input attributes are accepted.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `string` | `"text"` | HTML input type |
+| `placeholder` | `string` | — | Placeholder text |
+| `disabled` | `boolean` | `false` | Disables the input |
+| `value` | `string` | — | Controlled value |
+| `onChange` | `React.ChangeEventHandler<HTMLInputElement>` | — | Change handler |
+| `className` | `string` | — | Additional Tailwind classes |
+
+The exported `InputProps` interface can be used to type custom wrappers:
+
+```tsx
+import { type InputProps } from '@ds-foundation/react';
+```
+
+## Accessibility
+
+- Always associate with a `Label` via `htmlFor`/`id`, or provide `aria-label`.
+- Set `aria-invalid="true"` and `aria-describedby` pointing to error text when the field is invalid.
+- When used inside the `Form` component, `FormControl` handles all ARIA wiring automatically.
+- Focus ring uses the `ripple-blue-50` design token.
+- `disabled` renders with `opacity-50` and `cursor-not-allowed`.

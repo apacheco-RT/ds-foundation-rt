@@ -1,0 +1,114 @@
+---
+id: context-menu
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "z-50 max-h-[--radix-context-menu-content-available-height] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in fade-in-80"
+accessibility:
+  role: "menu"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=menu on ContextMenuContent"
+    - "role=menuitem on ContextMenuItem"
+    - "role=menuitemcheckbox on ContextMenuCheckboxItem"
+    - "role=menuitemradio on ContextMenuRadioItem"
+    - "aria-checked on checkbox and radio items"
+    - "aria-disabled on disabled items"
+  notes: "Opened via right-click (contextmenu event) on the trigger element. Arrow keys navigate items; Enter/Space activate; Escape closes. Focus is trapped inside the open menu."
+ai-prompt: "ContextMenu is a right-click context menu built on Radix UI. Use it to expose contextual actions on elements such as rows, cards, or canvas areas — triggered via right-click rather than a button. Compose it with ContextMenuTrigger wrapping the target element and ContextMenuContent holding ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioItem, ContextMenuLabel, ContextMenuSeparator, and ContextMenuShortcut children. Submenus are built with ContextMenuSub + ContextMenuSubTrigger + ContextMenuSubContent. ContextMenuGroup and ContextMenuRadioGroup provide semantic grouping. The inset prop on items and labels adds left padding to align with checked/radio indicator siblings."
+---
+
+# ContextMenu
+
+Right-click context menu built on Radix UI primitives.
+
+## Usage
+
+```tsx
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuSub,
+  ContextMenuSubTrigger,
+  ContextMenuSubContent,
+} from '@ds-foundation/react';
+
+<ContextMenu>
+  <ContextMenuTrigger>Right-click me</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>
+      Open <ContextMenuShortcut>⌘O</ContextMenuShortcut>
+    </ContextMenuItem>
+    <ContextMenuSeparator />
+    <ContextMenuCheckboxItem checked={checked} onCheckedChange={setChecked}>
+      Show Preview
+    </ContextMenuCheckboxItem>
+    <ContextMenuSeparator />
+    <ContextMenuSub>
+      <ContextMenuSubTrigger>More Actions</ContextMenuSubTrigger>
+      <ContextMenuSubContent>
+        <ContextMenuItem>Move to Trash</ContextMenuItem>
+      </ContextMenuSubContent>
+    </ContextMenuSub>
+    <ContextMenuSeparator />
+    <ContextMenuLabel>View As</ContextMenuLabel>
+    <ContextMenuRadioGroup value={view} onValueChange={setView}>
+      <ContextMenuRadioItem value="list">List</ContextMenuRadioItem>
+      <ContextMenuRadioItem value="grid">Grid</ContextMenuRadioItem>
+    </ContextMenuRadioGroup>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+## Props
+
+### ContextMenuItem / ContextMenuSubTrigger / ContextMenuLabel
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `inset` | `boolean` | `false` | Adds `pl-8` left padding to align with indicator siblings |
+
+### ContextMenuCheckboxItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | — | Controlled checked state |
+| `onCheckedChange` | `(checked: boolean) => void` | — | Called when state changes |
+
+### ContextMenuRadioItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Value for this radio option |
+
+### ContextMenuRadioGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Currently selected radio value |
+| `onValueChange` | `(value: string) => void` | — | Called when selection changes |
+
+## Accessibility
+
+- Opened via right-click (`contextmenu` event) on `ContextMenuTrigger`.
+- Arrow keys navigate items; Enter/Space activate the focused item; Escape closes.
+- Focus is trapped inside the open menu and restored to the trigger on close.
+- `ContextMenuCheckboxItem` carries `role="menuitemcheckbox"` and `aria-checked`.
+- `ContextMenuRadioItem` carries `role="menuitemradio"` and `aria-checked`.
+- Disabled items use `data-[disabled]` and receive `aria-disabled`.

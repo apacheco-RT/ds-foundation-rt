@@ -1,0 +1,80 @@
+---
+id: scroll-area
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "relative overflow-hidden"
+accessibility:
+  role: "region"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-label or aria-labelledby recommended on ScrollArea when used as a scrollable region"
+    - "ScrollBar is touch-none and select-none to prevent accidental selection on drag"
+  notes: "Custom scrollbar replaces the native OS scrollbar for cross-browser visual consistency. Supports vertical (default) and horizontal orientations."
+ai-prompt: "ScrollArea is a custom-styled scrollable container built on Radix UI that replaces the native browser scrollbar with a consistent, themeable scrollbar. Use it anywhere you want controlled overflow with a polished scrollbar — sidebars, chat lists, long dropdown panels, or overflow content areas. Wrap content in ScrollArea; the ScrollBar is included automatically and defaults to vertical. For horizontal scrolling, import ScrollBar and set orientation=\"horizontal\". Pass a fixed height or max-height to the ScrollArea to trigger scrolling. The native scroll behaviour is preserved for keyboard and assistive technology users."
+---
+
+# ScrollArea
+
+Custom-styled scrollable container with a cross-browser consistent scrollbar, built on Radix UI.
+
+## Usage
+
+```tsx
+import { ScrollArea } from '@ds-foundation/react';
+
+<ScrollArea className="h-72 w-48 rounded-md border">
+  <div className="p-4">
+    {Array.from({ length: 50 }, (_, i) => (
+      <div key={i} className="text-sm py-1">Item {i + 1}</div>
+    ))}
+  </div>
+</ScrollArea>
+```
+
+### Horizontal scrolling
+
+```tsx
+import { ScrollArea, ScrollBar } from '@ds-foundation/react';
+
+<ScrollArea className="w-96 whitespace-nowrap rounded-md border">
+  <div className="flex w-max gap-4 p-4">
+    {tags.map(tag => (
+      <div key={tag} className="shrink-0 rounded-md bg-muted px-3 py-2 text-sm">
+        {tag}
+      </div>
+    ))}
+  </div>
+  <ScrollBar orientation="horizontal" />
+</ScrollArea>
+```
+
+## Props
+
+### ScrollArea
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional classes; set a fixed height to trigger scrolling |
+| `children` | `ReactNode` | — | Scrollable content |
+
+### ScrollBar
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | Scrollbar axis |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- `ScrollArea` wraps the Radix ScrollArea primitive which preserves native scroll behaviour for keyboard and assistive technology users.
+- The custom scrollbar is `touch-none` to prevent accidental drag-to-scroll conflicts on touch devices.
+- Provide `aria-label` or `aria-labelledby` on the `ScrollArea` when it forms a distinct scrollable region that screen readers should identify.

@@ -1,0 +1,64 @@
+---
+title: Stepper
+---
+
+# Stepper
+
+Horizontal multi-step progress indicator for wizards and multi-stage forms.
+
+## Usage
+
+```tsx
+import { Stepper } from '@ds-foundation/react';
+
+<Stepper
+  steps={[
+    { label: 'Account', status: 'complete' },
+    { label: 'Details', description: 'Personal information', status: 'active' },
+    { label: 'Review', status: 'pending' },
+    { label: 'Confirm', status: 'pending' },
+  ]}
+/>
+
+// With an error state
+<Stepper
+  steps={[
+    { label: 'Upload', status: 'complete' },
+    { label: 'Validate', status: 'error', description: 'Format invalid' },
+    { label: 'Process', status: 'pending' },
+  ]}
+/>
+```
+
+## Props
+
+### Stepper
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `steps` | `Step[]` | — | Array of step descriptor objects (required) |
+| `className` | `string` | — | Additional classes on the container |
+
+### Step object
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `label` | `string` | — | Step label shown below the circle (required) |
+| `description` | `string` | — | Optional secondary caption |
+| `status` | `"pending" \| "active" \| "complete" \| "error"` | — | Visual and semantic state (required) |
+
+## Status colours
+
+| Status | Circle | Connector after |
+|--------|--------|-----------------|
+| `complete` | Blue filled + checkmark | Blue |
+| `active` | Blue border + step number | Grey |
+| `error` | Orange border + X | Grey |
+| `pending` | Grey border + step number | Grey |
+
+## Accessibility
+
+- The outer `<ol>` has `role="list"`; each step `<li>` has `role="listitem"`
+- The active step has `aria-current="step"`
+- Connector lines are decorative and excluded from the accessibility tree
+- Status is communicated by icon (checkmark, X) in addition to colour

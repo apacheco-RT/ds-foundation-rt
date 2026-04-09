@@ -1,0 +1,75 @@
+---
+id: tag
+type: component
+version: 1.0.0
+status: stable
+variants:
+  - default
+  - blue
+  - green
+  - error
+  - orange
+  - purple
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium"
+accessibility:
+  role: "none"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "Remove button has type=button and aria-label='Remove'"
+    - "Remove button is keyboard focusable and shows focus ring"
+  notes: "The tag itself is a span (presentational). The optional remove button is a properly labelled button element. Never use opacity-0 on the remove button — it must be keyboard discoverable."
+ai-prompt: "Tag is a coloured label/chip component, optionally removable and optionally decorated with a leading icon. Use it to display categories, filters, metadata labels, and selected values in multi-select inputs. Variants: default (grey), blue, green, error (orange-ish), orange, purple. Pass onRemove to show a close button. Pass icon for a leading slot. Exports: Tag."
+---
+
+# Tag
+
+Coloured label chip with optional remove button and leading icon.
+
+## Usage
+
+```tsx
+import { Tag } from '@ds-foundation/react';
+
+// Basic
+<Tag>Finance</Tag>
+
+// Coloured variant
+<Tag variant="blue">Pending</Tag>
+<Tag variant="green">Settled</Tag>
+<Tag variant="error">Failed</Tag>
+
+// Removable
+<Tag variant="purple" onRemove={() => removeTag('label')}>
+  Q2 Report
+</Tag>
+
+// With icon
+import { DollarSign } from 'lucide-react';
+<Tag variant="blue" icon={<DollarSign className="w-3 h-3" />}>
+  USD
+</Tag>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "blue" \| "green" \| "error" \| "orange" \| "purple"` | `"default"` | Colour scheme |
+| `onRemove` | `() => void` | — | If provided, renders a close button |
+| `icon` | `React.ReactNode` | — | Leading icon slot |
+| `children` | `React.ReactNode` | — | Tag label text |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- The tag renders as a `<span>` — purely presentational
+- When `onRemove` is provided, a `<button type="button" aria-label="Remove">` is rendered
+- The remove button has a visible focus ring and is keyboard accessible
+- Do not hide the remove button with `opacity-0` — it must always be discoverable by keyboard users

@@ -1,0 +1,61 @@
+---
+id: empty-state
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "flex flex-col items-center justify-center text-center py-12 px-6"
+accessibility:
+  role: "region"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "Icon is decorative; no alt text needed"
+    - "Action button is keyboard-accessible"
+  notes: "The icon is rendered inside a decorative div. Title uses H5 typography. Description uses Body typography. The action button is a standard Button and is fully keyboard-accessible."
+ai-prompt: "EmptyState is an empty-state placeholder component for surfaces that have no data. Use it inside tables, lists, or panels when there is no content to display. It centers an optional icon, a required title, an optional description, and an optional call-to-action button vertically. Key props: icon (ReactNode, decorative icon), title (string, required), description (string), action ({ label: string; onClick: () => void }). Import as EmptyState from @ds-foundation/react."
+---
+
+# EmptyState
+
+Empty-state placeholder with icon, title, description, and optional action button.
+
+## Usage
+
+```tsx
+import { EmptyState } from '@ds-foundation/react';
+import { InboxIcon } from 'lucide-react';
+
+// Minimal
+<EmptyState title="No results found" />
+
+// Full
+<EmptyState
+  icon={<InboxIcon />}
+  title="No transactions yet"
+  description="Transactions will appear here once they are processed."
+  action={{ label: "Create transaction", onClick: () => router.push('/new') }}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `React.ReactNode` | — | Decorative icon rendered above the title |
+| `title` | `string` | — | **Required.** Primary message |
+| `description` | `string` | — | Supporting text below the title |
+| `action` | `{ label: string; onClick: () => void }` | — | Primary call-to-action button |
+| `className` | `string` | — | Additional classes on the root container |
+
+## Accessibility
+
+- The icon is decorative — rendered inside a `<div>` with no `alt` or ARIA attributes.
+- `title` uses the `H5` typography component and is the primary label for the region.
+- The action `Button` is keyboard-focusable and activates on Enter/Space.

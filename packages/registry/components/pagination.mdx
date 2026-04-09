@@ -1,0 +1,92 @@
+---
+id: pagination
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "mx-auto flex w-full justify-center"
+accessibility:
+  role: "navigation"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=\"navigation\" aria-label=\"pagination\" on root nav element"
+    - "aria-current=\"page\" on the active PaginationLink"
+    - "aria-label=\"Go to previous page\" on PaginationPrevious"
+    - "aria-label=\"Go to next page\" on PaginationNext"
+    - "aria-hidden on PaginationEllipsis; screen-reader-only text \"More pages\" inside"
+  notes: "PaginationLink renders as an anchor tag using buttonVariants for consistent styling. Set isActive on the current page link."
+ai-prompt: "Pagination is a page-based navigation control composed from building-block sub-components. Use it below data tables, lists, or search results. Compose Pagination > PaginationContent > PaginationItem with PaginationPrevious, PaginationLink, PaginationEllipsis, and PaginationNext. Set isActive on the current page's PaginationLink to apply aria-current and outline variant styling. PaginationEllipsis renders a '…' indicator with a screen-reader label for large page ranges. All links render as anchor tags and accept standard href props."
+---
+
+# Pagination
+
+Page-based navigation controls for moving through paged data sets.
+
+## Usage
+
+```tsx
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from '@ds-foundation/react';
+
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="/page/1" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="/page/1">1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="/page/2" isActive>2</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="/page/3">3</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="/page/3" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>
+```
+
+## Props
+
+### PaginationLink
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `isActive` | `boolean` | `false` | Marks the current page; applies `aria-current="page"` and outline variant |
+| `size` | `ButtonProps["size"]` | `"icon"` | Button size variant |
+| `href` | `string` | — | Page destination URL |
+| `className` | `string` | — | Additional classes |
+
+### PaginationPrevious / PaginationNext
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `href` | `string` | — | Destination URL |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Root `<nav>` has `role="navigation"` and `aria-label="pagination"` automatically.
+- Active page link receives `aria-current="page"`.
+- Previous and Next buttons have descriptive `aria-label` values.
+- `PaginationEllipsis` is `aria-hidden`; a visually hidden `<span>` reads "More pages" for screen readers.

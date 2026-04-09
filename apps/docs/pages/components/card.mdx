@@ -1,0 +1,54 @@
+---
+title: Card
+---
+
+# Card
+
+Content container with header, body, and footer sections for grouping related information.
+
+## Usage
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from '@ds-foundation/react';
+import { Button } from '@ds-foundation/react';
+
+<Card>
+  <CardHeader>
+    <CardTitle>Payment Summary</CardTitle>
+    <CardDescription>Review your transaction details below.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Amount: $1,250.00</p>
+  </CardContent>
+  <CardFooter>
+    <Button variant="outline">Cancel</Button>
+    <Button>Confirm</Button>
+  </CardFooter>
+</Card>
+```
+
+## Props
+
+All sub-components accept `className` and their corresponding HTML element attributes.
+
+| Component | Root element | Description |
+|-----------|-------------|-------------|
+| `Card` | `<div>` | Outer container with border and shadow |
+| `CardHeader` | `<div>` | Top section with `p-6` padding |
+| `CardTitle` | `<h3>` | Card heading in `text-ripple-blue-90` |
+| `CardDescription` | `<p>` | Subtitle in `text-muted-foreground` |
+| `CardContent` | `<div>` | Main body with `p-6 pt-0` |
+| `CardFooter` | `<div>` | Bottom row, flex layout, for actions |
+
+## Accessibility
+
+- `CardTitle` renders as `<h3>` — verify it fits the page heading hierarchy
+- Add `role="region"` and `aria-labelledby` pointing to the title when the card is a standalone landmark
+- When the whole card is clickable, wrap in `<button>` or `<a>` with a descriptive accessible name

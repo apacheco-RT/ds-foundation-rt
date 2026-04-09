@@ -1,0 +1,63 @@
+---
+id: badge
+type: component
+version: 1.0.0
+status: stable
+variants: ["default", "secondary", "destructive", "outline", "success", "warning", "info", "pink"]
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+      variants:
+        default: "border-transparent bg-blue-500 text-white hover:bg-blue-600"
+        secondary: "border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200"
+        destructive: "border-transparent bg-orange-400 text-white hover:bg-orange-500"
+        outline: "text-foreground"
+        success: "border-transparent bg-green-300 text-white hover:bg-green-400"
+        warning: "border-transparent bg-orange-300 text-white hover:bg-orange-400"
+        info: "border-transparent bg-purple-300 text-white hover:bg-purple-400"
+        pink: "border-transparent bg-pink-300 text-white hover:bg-pink-400"
+accessibility:
+  role: "status"
+  wcag:
+    - "1.4.1 Use of Color"
+    - "1.4.3 Contrast (Minimum)"
+  aria:
+    - "Add aria-label when badge content is icon-only or acronym-only"
+    - "Use role=status or wrap in a live region if the badge value changes dynamically"
+  notes: "Badge is a non-interactive label by default. If used as a count that updates (e.g. notification count), wrap in aria-live='polite' so changes are announced."
+ai-prompt: "Badge renders a compact pill label for statuses, categories, counts, and tags. Use 'default' for primary/active state (blue), 'secondary' for neutral context, 'destructive' for errors or blocked states (orange), 'success' for confirmed states (green), 'warning' for caution (orange-300), 'info' for informational tips (purple), 'outline' for low-emphasis labels. 'pink' is reserved for special categorical labeling. Badge does not have interactive states — it is a pure display element. For interactive tags, use a button wrapper."
+---
+
+# Badge
+
+Compact pill label for status, category, and count display, built with CVA.
+
+## Usage
+
+```tsx
+import { Badge } from '@ds-foundation/react';
+
+<Badge>Active</Badge>
+<Badge variant="secondary">Draft</Badge>
+<Badge variant="destructive">Blocked</Badge>
+<Badge variant="success">Completed</Badge>
+<Badge variant="warning">Pending</Badge>
+<Badge variant="info">New</Badge>
+<Badge variant="outline">Tag</Badge>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "secondary" \| "destructive" \| "outline" \| "success" \| "warning" \| "info" \| "pink"` | `"default"` | Visual style and semantic color |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root `<div>` |
+
+## Accessibility
+
+- Badge is non-interactive — it renders as a `<div>`, not a `<button>`
+- Always pair a color variant with a text label — do not rely on color alone to convey meaning (WCAG 1.4.1)
+- If the badge count updates dynamically (e.g. notification count), wrap in a container with `aria-live="polite"` so changes are announced
+- Add `aria-label` when badge content is a number or acronym without surrounding context

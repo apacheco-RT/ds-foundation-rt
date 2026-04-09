@@ -1,0 +1,89 @@
+---
+id: toggle-group
+type: component
+version: 1.0.0
+status: stable
+variants:
+  - default
+  - outline
+sizes:
+  - sm
+  - default
+  - lg
+adapters:
+  tailwind:
+    default:
+      base: "flex items-center justify-center gap-1"
+accessibility:
+  role: "group"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=group on the ToggleGroup root"
+    - "Each ToggleGroupItem has role=button with aria-pressed (single mode) or aria-checked (multiple mode)"
+    - "aria-label on the root group to describe what is being toggled"
+  notes: "Variant and size set on ToggleGroup cascade to all ToggleGroupItem children via context, so you only need to set them once on the root."
+ai-prompt: "ToggleGroup is a group of related toggle buttons (single-select or multi-select) built on Radix UI ToggleGroup. Set type=single for exclusive selection (like a radio group) or type=multiple for independent toggles. Variant and size props set on the root cascade to all child ToggleGroupItem elements via React context. Use for view switchers, filter sets, and text formatting toolbars. Exports: ToggleGroup, ToggleGroupItem."
+---
+
+# ToggleGroup
+
+Group of related toggle buttons supporting single or multiple selection.
+
+## Usage
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from '@ds-foundation/react';
+import { AlignLeft, AlignCenter, AlignRight } from 'lucide-react';
+
+// Single select (exclusive)
+<ToggleGroup type="single" defaultValue="left" aria-label="Text alignment">
+  <ToggleGroupItem value="left" aria-label="Align left">
+    <AlignLeft />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="center" aria-label="Align center">
+    <AlignCenter />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="right" aria-label="Align right">
+    <AlignRight />
+  </ToggleGroupItem>
+</ToggleGroup>
+
+// Multiple select
+<ToggleGroup type="multiple" variant="outline" size="sm">
+  <ToggleGroupItem value="pending">Pending</ToggleGroupItem>
+  <ToggleGroupItem value="settled">Settled</ToggleGroupItem>
+  <ToggleGroupItem value="failed">Failed</ToggleGroupItem>
+</ToggleGroup>
+```
+
+## Props
+
+### ToggleGroup (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `"single" \| "multiple"` | — | Selection mode (required) |
+| `value` | `string \| string[]` | — | Controlled selected value(s) |
+| `defaultValue` | `string \| string[]` | — | Initial value(s) (uncontrolled) |
+| `onValueChange` | `(value: string \| string[]) => void` | — | Called on selection change |
+| `variant` | `"default" \| "outline"` | `"default"` | Cascades to all items |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Cascades to all items |
+| `disabled` | `boolean` | `false` | Disables all items |
+
+### ToggleGroupItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Unique identifier (required) |
+| `disabled` | `boolean` | `false` | Disables this item only |
+| `aria-label` | `string` | — | Required when item is icon-only |
+
+## Accessibility
+
+- Root has `role="group"`; provide `aria-label` to describe the group's purpose
+- Each item has `aria-pressed` (multiple) or participates in a radio-like pattern (single)
+- Always provide `aria-label` on icon-only items
+- `variant` and `size` cascade from root to items via context — no need to repeat on each item

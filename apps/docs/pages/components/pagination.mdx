@@ -1,0 +1,72 @@
+---
+title: Pagination
+---
+
+# Pagination
+
+Page-based navigation controls for moving through paged data sets.
+
+## Usage
+
+```tsx
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from '@ds-foundation/react';
+
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="/page/1" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="/page/1">1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="/page/2" isActive>2</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="/page/3">3</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="/page/10">10</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="/page/3" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>
+```
+
+## Props
+
+### PaginationLink
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `isActive` | `boolean` | `false` | Marks the current page; adds `aria-current="page"` and outline styling |
+| `size` | `ButtonProps["size"]` | `"icon"` | Button size variant |
+| `href` | `string` | — | Page destination URL |
+| `className` | `string` | — | Additional classes |
+
+### PaginationPrevious / PaginationNext
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `href` | `string` | — | Destination URL |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Root `<nav>` has `role="navigation"` and `aria-label="pagination"` automatically.
+- Active page link receives `aria-current="page"`.
+- Previous and Next buttons have descriptive `aria-label` values built in.
+- `PaginationEllipsis` is `aria-hidden`; "More pages" is read by screen readers via a visually hidden `<span>`.

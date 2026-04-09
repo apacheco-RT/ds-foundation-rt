@@ -1,0 +1,69 @@
+---
+id: hover-card
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "z-50 w-64 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
+accessibility:
+  role: "group"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "HoverCardContent is associated with the trigger via Radix portal"
+    - "Trigger should have an accessible name (text content or aria-label)"
+  notes: "HoverCard opens on pointer hover or focus and closes when the pointer leaves or focus moves away. It is not a tooltip — use it for rich preview content such as user profiles, link previews, or metadata cards. Not suitable for critical information that must be accessible to all users as keyboard access depends on focus reaching the trigger."
+ai-prompt: "HoverCard is a hover-triggered popover for rich preview content built on Radix UI. Use it to show supplemental context on hover — user profile cards, link previews, account summaries — that does not need to be permanently visible. The content pane (HoverCardContent) is 256px wide by default and supports arbitrary content. Key props on HoverCardContent: align (start | center | end, default center), sideOffset (number, default 4). Key exports: HoverCard, HoverCardTrigger, HoverCardContent."
+---
+
+# HoverCard
+
+Hover-triggered popover for rich preview information built on Radix UI.
+
+## Usage
+
+```tsx
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from '@ds-foundation/react';
+
+<HoverCard>
+  <HoverCardTrigger asChild>
+    <a href="/user/alice">@alice</a>
+  </HoverCardTrigger>
+  <HoverCardContent>
+    <div className="flex gap-3">
+      <img src="/alice-avatar.png" alt="Alice" className="h-10 w-10 rounded-full" />
+      <div>
+        <p className="text-sm font-semibold">Alice Chen</p>
+        <p className="text-xs text-muted-foreground">Product Designer · Joined Jan 2024</p>
+      </div>
+    </div>
+  </HoverCardContent>
+</HoverCard>
+```
+
+## Props
+
+### HoverCardContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment of the content relative to the trigger |
+| `sideOffset` | `number` | `4` | Gap in px between trigger and content |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Opens on pointer hover or keyboard focus; closes on blur/pointer leave.
+- Not suitable for critical information — content may be inaccessible to keyboard-only users who never focus the trigger.
+- Trigger should have an accessible name (text content, `aria-label`, or `aria-labelledby`).
+- Do not use for actions — use `DropdownMenu` or `Popover` for interactive content.

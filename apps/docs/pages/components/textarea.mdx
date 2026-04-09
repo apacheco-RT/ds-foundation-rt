@@ -1,0 +1,64 @@
+---
+title: Textarea
+---
+
+# Textarea
+
+Multi-line text input styled to match the design system's form controls.
+
+## Usage
+
+```tsx
+import { Textarea } from '@ds-foundation/react';
+import { Label } from '@ds-foundation/react';
+
+// Basic with label
+<div className="grid gap-1.5">
+  <Label htmlFor="notes">Notes</Label>
+  <Textarea id="notes" placeholder="Add a note…" />
+</div>
+
+// Controlled
+const [value, setValue] = React.useState('');
+
+<Textarea
+  value={value}
+  onChange={(e) => setValue(e.target.value)}
+  rows={6}
+  placeholder="Describe the issue…"
+/>
+
+// Disabled
+<Textarea disabled defaultValue="This field cannot be edited." />
+
+// With validation error
+<Textarea
+  aria-invalid="true"
+  aria-describedby="notes-error"
+  placeholder="Required field"
+/>
+<p id="notes-error" className="text-sm text-red-500">
+  Notes are required.
+</p>
+```
+
+## Props
+
+All native HTML `<textarea>` attributes are accepted:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `rows` | `number` | — | Number of visible text rows (default min-height is 80px) |
+| `placeholder` | `string` | — | Placeholder text |
+| `disabled` | `boolean` | `false` | Disables input and shows not-allowed cursor |
+| `value` | `string` | — | Controlled value |
+| `onChange` | `React.ChangeEventHandler<HTMLTextAreaElement>` | — | Change handler |
+| `maxLength` | `number` | — | Maximum character count |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Always associate a `<Label>` using `htmlFor` matching the textarea `id`
+- Add `aria-invalid="true"` and `aria-describedby` pointing to an error message when validation fails
+- The textarea is full-width by default and has a minimum height of 80px
+- Placeholder text does not substitute for a visible label

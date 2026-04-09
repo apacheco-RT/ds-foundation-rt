@@ -1,0 +1,54 @@
+---
+title: Collapsible
+---
+
+# Collapsible
+
+Show or hide a single content section on demand, built on Radix UI.
+
+## Usage
+
+```tsx
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from '@ds-foundation/react';
+import { Button } from '@ds-foundation/react';
+
+<Collapsible>
+  <CollapsibleTrigger asChild>
+    <Button variant="ghost">Toggle filters</Button>
+  </CollapsibleTrigger>
+  <CollapsibleContent>
+    <p className="pt-4">Filter content goes here.</p>
+  </CollapsibleContent>
+</Collapsible>
+```
+
+## Props
+
+### Collapsible (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `defaultOpen` | `boolean` | `false` | Uncontrolled initial open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Called when open state changes |
+| `disabled` | `boolean` | `false` | Prevents toggling |
+
+### CollapsibleTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | `false` | Render as a child element (e.g. an existing `<Button>`) |
+
+### CollapsibleContent
+
+Accepts all standard Radix CollapsibleContent props plus `className`.
+
+## Accessibility
+
+- `aria-expanded` on the trigger reflects open/closed state automatically
+- `aria-controls` links the trigger to the content panel
+- `Space` / `Enter` toggles the content when the trigger has focus

@@ -1,0 +1,68 @@
+---
+id: switch
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input"
+accessibility:
+  role: "switch"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=switch on the root element (set by Radix)"
+    - "aria-checked reflects the checked state"
+    - "aria-disabled when disabled prop is set"
+  notes: "Always pair with a visible Label component. Radix manages role=switch and aria-checked automatically. Space key toggles the switch."
+ai-prompt: "Switch is a binary on/off toggle built on Radix UI Switch primitive. It reflects checked/unchecked state via data-[state] attributes and handles keyboard toggling (Space). Always pair it with a visible Label or wrap in a form field for accessibility. Use for settings toggles, feature flags, and notification preferences. Controlled via checked and onCheckedChange props. Exports: Switch."
+---
+
+# Switch
+
+Binary on/off toggle control built on the Radix UI Switch primitive.
+
+## Usage
+
+```tsx
+import { Switch } from '@ds-foundation/react';
+import { Label } from '@ds-foundation/react';
+
+// Uncontrolled
+<div className="flex items-center gap-2">
+  <Switch id="notifications" />
+  <Label htmlFor="notifications">Enable notifications</Label>
+</div>
+
+// Controlled
+const [enabled, setEnabled] = React.useState(false);
+
+<Switch
+  checked={enabled}
+  onCheckedChange={setEnabled}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | — | Controlled checked state |
+| `defaultChecked` | `boolean` | `false` | Initial checked state (uncontrolled) |
+| `onCheckedChange` | `(checked: boolean) => void` | — | Called when state changes |
+| `disabled` | `boolean` | `false` | Disables the switch |
+| `name` | `string` | — | Form field name for submission |
+| `value` | `string` | `"on"` | Form submission value when checked |
+| `className` | `string` | — | Additional classes on the root |
+
+## Accessibility
+
+- Radix automatically sets `role="switch"` and `aria-checked` on the root element
+- `Space` key toggles state; the switch is reachable via `Tab`
+- `aria-disabled` is set when `disabled` is true
+- Always associate a visible label via `htmlFor` or wrap in a `<Label>` element

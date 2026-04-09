@@ -1,0 +1,119 @@
+---
+id: sheet
+type: component
+version: 1.0.0
+status: stable
+variants:
+  - top
+  - bottom
+  - left
+  - right
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500"
+accessibility:
+  role: "dialog"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=\"dialog\" and aria-modal=\"true\" on SheetContent"
+    - "aria-labelledby pointing to SheetTitle"
+    - "aria-describedby pointing to SheetDescription"
+    - "Focus trap: keyboard focus is constrained within the open sheet"
+  notes: "Built on Radix Dialog primitive. SheetOverlay dims the page. Close button (X) is built into SheetContent. SheetPortal renders outside the DOM tree to avoid z-index issues."
+ai-prompt: "Sheet is a side-panel drawer component built on Radix Dialog, suitable for detail panels, filter sidebars, navigation drawers, and settings panels. Use it when content needs temporary focus without full-page navigation. The side prop controls which edge the sheet slides in from: right (default), left, top, or bottom. Compose Sheet > SheetTrigger + SheetContent; use SheetHeader with SheetTitle and SheetDescription for the heading area, and SheetFooter for action buttons. A close button is built into SheetContent. Always include SheetTitle for accessibility; use SheetDescription for supporting text."
+---
+
+# Sheet
+
+Side-panel drawer that slides in from any screen edge, built on Radix Dialog.
+
+## Usage
+
+```tsx
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetFooter,
+  SheetClose,
+} from '@ds-foundation/react';
+import { Button } from '@ds-foundation/react';
+
+<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="outline">Open Sheet</Button>
+  </SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Edit Profile</SheetTitle>
+      <SheetDescription>
+        Make changes to your profile here. Click save when done.
+      </SheetDescription>
+    </SheetHeader>
+    <div className="py-4">
+      {/* Form content */}
+    </div>
+    <SheetFooter>
+      <SheetClose asChild>
+        <Button type="submit">Save changes</Button>
+      </SheetClose>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>
+```
+
+### Left-side sheet
+
+```tsx
+<Sheet>
+  <SheetTrigger asChild>
+    <Button>Open Navigation</Button>
+  </SheetTrigger>
+  <SheetContent side="left">
+    <SheetHeader>
+      <SheetTitle>Navigation</SheetTitle>
+    </SheetHeader>
+    <nav className="py-4">...</nav>
+  </SheetContent>
+</Sheet>
+```
+
+## Props
+
+### SheetContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"right"` | Edge the sheet slides in from |
+| `className` | `string` | — | Additional classes |
+| `children` | `ReactNode` | — | Sheet body content |
+
+### Sheet (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled) |
+
+### SheetTrigger / SheetClose
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | `false` | Merge props onto child element |
+
+## Accessibility
+
+- `SheetContent` has `role="dialog"` and `aria-modal="true"` automatically.
+- Always include `SheetTitle` — it is linked via `aria-labelledby`.
+- Include `SheetDescription` for supporting text linked via `aria-describedby`.
+- Focus is trapped inside the sheet while open; Escape closes and returns focus to the trigger.
+- The built-in close button has a screen-reader label "Close".

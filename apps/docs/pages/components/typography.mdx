@@ -1,0 +1,72 @@
+---
+title: Typography
+---
+
+# Typography
+
+Design system type scale — one named export per text style, each rendering the correct semantic HTML element.
+
+## Usage
+
+```tsx
+import {
+  Display,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  BodyLarge,
+  Body,
+  BodySmall,
+  Caption,
+} from '@ds-foundation/react';
+
+<Display>Welcome to Treasury</Display>
+
+<H1>Account Overview</H1>
+<H2>Recent Transactions</H2>
+<H3>Filters</H3>
+<H4>Date Range</H4>
+<H5>Currency</H5>
+
+<BodyLarge>Your balances were last updated moments ago.</BodyLarge>
+<Body>Select a date range to filter the transaction list below.</Body>
+<BodySmall>All times are shown in UTC.</BodySmall>
+<Caption>Last synced 2 minutes ago</Caption>
+
+// Override colour with className
+<Caption className="text-blue-500">Verified</Caption>
+```
+
+## Props
+
+All typography components accept the same props:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional Tailwind classes — useful for colour and spacing overrides |
+| `children` | `React.ReactNode` | — | Text content |
+
+Standard HTML attributes for the respective element are also accepted (e.g. `id`, `onClick`, `aria-*`).
+
+## Type Scale Reference
+
+| Export | Element | Size | Weight | Line Height | Notes |
+|--------|---------|------|--------|-------------|-------|
+| `Display` | `h1` | 72px | bold | 1.1 | Hero headings only |
+| `H1` | `h1` | 48px | bold | 1.2 | Page title |
+| `H2` | `h2` | 36px | bold | 1.25 | Section heading |
+| `H3` | `h3` | 28px | semibold | 1.3 | Sub-section heading |
+| `H4` | `h4` | 24px | semibold | 1.35 | Card/panel heading |
+| `H5` | `h5` | 20px | semibold | 1.4 | Small section label |
+| `BodyLarge` | `p` | 20px | normal | 1.6 | Lead paragraph |
+| `Body` | `p` | 16px | normal | 1.5 | Default body text |
+| `BodySmall` | `p` | 14px | normal | 1.5 | Supporting body text |
+| `Caption` | `span` | 12px | normal | 1.4 | Metadata, timestamps, labels |
+
+## Accessibility
+
+- Heading components (`H1`–`H5`) render proper semantic heading elements — maintain a logical document outline and do not skip levels
+- `Caption` renders a `<span>` with `text-muted-foreground` — verify the colour meets 4.5:1 contrast against its background and override with `className` if needed
+- Use `className` to add `tracking-tight` or other typographic utilities when needed without wrapping in another element

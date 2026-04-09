@@ -1,0 +1,45 @@
+---
+title: Checkbox
+---
+
+# Checkbox
+
+Boolean or tri-state toggle for form inputs and selection lists.
+
+## Usage
+
+```tsx
+import { Checkbox } from '@ds-foundation/react';
+
+<div className="flex items-center space-x-2">
+  <Checkbox id="terms" />
+  <label htmlFor="terms">Accept terms and conditions</label>
+</div>
+
+{/* Controlled */}
+<Checkbox
+  checked={enabled}
+  onCheckedChange={setEnabled}
+/>
+
+{/* Indeterminate — for select-all with partial selection */}
+<Checkbox checked="indeterminate" onCheckedChange={handleSelectAll} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean \| "indeterminate"` | — | Controlled checked state |
+| `defaultChecked` | `boolean` | — | Uncontrolled initial checked state |
+| `onCheckedChange` | `(checked: boolean \| "indeterminate") => void` | — | Called on state change |
+| `disabled` | `boolean` | `false` | Prevents interaction |
+| `required` | `boolean` | `false` | Marks field as required for forms |
+| `name` | `string` | — | Form field name for submission |
+
+## Accessibility
+
+- `role="checkbox"` with `aria-checked` managed automatically (values: `true`, `false`, `"mixed"`)
+- Always associate with a visible label via `htmlFor` or by wrapping in a `<label>`
+- `Space` key toggles the checkbox
+- `aria-disabled` is applied when `disabled` is true

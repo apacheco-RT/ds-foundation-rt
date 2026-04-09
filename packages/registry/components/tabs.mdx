@@ -1,0 +1,80 @@
+---
+id: tabs
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground"
+accessibility:
+  role: "tablist"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=tablist on TabsList"
+    - "role=tab on each TabsTrigger"
+    - "role=tabpanel on each TabsContent"
+    - "aria-selected on active tab trigger"
+    - "aria-controls links each trigger to its panel"
+    - "aria-labelledby on each panel links back to its trigger"
+  notes: "Radix manages all tab ARIA relationships automatically. Arrow keys move focus between tabs. Tab key moves into and out of the tab group."
+ai-prompt: "Tabs is a tab panel navigation component built on Radix UI Tabs. Compose it with Tabs (root with value/defaultValue/onValueChange), TabsList (the row of tab buttons), TabsTrigger (individual tab button with a value prop), and TabsContent (panel shown when its value matches the active tab). Use for switching between related views without a page reload — settings pages, detail drawers, and dashboard sub-sections. Exports: Tabs, TabsList, TabsTrigger, TabsContent."
+---
+
+# Tabs
+
+Tab panel navigation built on the Radix UI Tabs primitive.
+
+## Usage
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@ds-foundation/react';
+
+<Tabs defaultValue="overview">
+  <TabsList>
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="activity">Activity</TabsTrigger>
+    <TabsTrigger value="settings">Settings</TabsTrigger>
+  </TabsList>
+  <TabsContent value="overview">Overview content here.</TabsContent>
+  <TabsContent value="activity">Activity feed here.</TabsContent>
+  <TabsContent value="settings">Settings form here.</TabsContent>
+</Tabs>
+```
+
+## Props
+
+### Tabs (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultValue` | `string` | — | Initially active tab (uncontrolled) |
+| `value` | `string` | — | Controlled active tab |
+| `onValueChange` | `(value: string) => void` | — | Called when active tab changes |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Arrow key direction |
+
+### TabsTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Unique identifier matching a TabsContent value (required) |
+| `disabled` | `boolean` | `false` | Prevents activation |
+
+### TabsContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Matches the trigger value that shows this panel (required) |
+
+## Accessibility
+
+- `TabsList` has `role="tablist"`; each `TabsTrigger` has `role="tab"` with `aria-selected`
+- `TabsContent` has `role="tabpanel"` and is linked to its trigger via `aria-controls` / `aria-labelledby`
+- Arrow keys (`Left`/`Right` for horizontal) move focus between tabs
+- `Tab` key moves focus into the tab list and then into the active panel
+- Radix manages all ARIA relationships automatically

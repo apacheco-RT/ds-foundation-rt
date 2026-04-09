@@ -1,0 +1,99 @@
+---
+id: breadcrumb
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      list: "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5"
+      item: "inline-flex items-center gap-1.5"
+      link: "transition-colors hover:text-foreground"
+      page: "font-normal text-foreground"
+      separator: "[&>svg]:w-3.5 [&>svg]:h-3.5"
+      ellipsis: "flex h-9 w-9 items-center justify-center"
+accessibility:
+  role: "navigation"
+  wcag:
+    - "1.3.1 Info and Relationships"
+    - "2.4.8 Location"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-label='breadcrumb' on the root <nav>"
+    - "aria-current='page' on BreadcrumbPage marks the current location"
+    - "aria-disabled='true' on BreadcrumbPage prevents it from being interactive"
+    - "BreadcrumbSeparator uses role='presentation' aria-hidden='true'"
+    - "BreadcrumbEllipsis uses role='presentation' aria-hidden='true' with sr-only 'More' text"
+  notes: "The root Breadcrumb renders a <nav> with aria-label='breadcrumb'. Separator and ellipsis elements are hidden from assistive technology."
+ai-prompt: "Breadcrumb renders a navigation trail showing the user's location in the site hierarchy. Compose: Breadcrumb (nav) > BreadcrumbList (ol) > BreadcrumbItem (li) containing either BreadcrumbLink (ancestor pages, clickable) or BreadcrumbPage (current page, not clickable). Place BreadcrumbSeparator between each item. Use BreadcrumbEllipsis with a popover when the trail is too long to show all steps. The asChild prop on BreadcrumbLink allows rendering as a router Link component."
+---
+
+# Breadcrumb
+
+Navigation breadcrumb trail showing the user's current location in the site hierarchy.
+
+## Usage
+
+```tsx
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from '@ds-foundation/react';
+
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/payments">Payments</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Transaction Detail</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+## Props
+
+### Breadcrumb (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `separator` | `ReactNode` | — | Custom separator element |
+| `...rest` | `ComponentPropsWithoutRef<"nav">` | — | Forwarded to `<nav>` |
+
+### BreadcrumbLink
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | `false` | Render as child element via Radix Slot (e.g. a router `<Link>`) |
+| `href` | `string` | — | Navigation target |
+| `...rest` | `ComponentPropsWithoutRef<"a">` | — | Forwarded to `<a>` |
+
+### BreadcrumbPage
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `...rest` | `ComponentPropsWithoutRef<"span">` | — | Forwarded to `<span>` with `aria-current="page"` |
+
+### BreadcrumbSeparator / BreadcrumbEllipsis / BreadcrumbList / BreadcrumbItem
+
+Accept all standard HTML attributes plus `className`.
+
+## Accessibility
+
+- Root `<nav>` carries `aria-label="breadcrumb"` automatically
+- `BreadcrumbPage` receives `aria-current="page"` and `aria-disabled="true"` — screen readers identify it as the current location
+- Separators and the ellipsis are hidden from assistive technology via `role="presentation"` and `aria-hidden="true"`
+- `BreadcrumbEllipsis` includes a visually hidden `<span className="sr-only">More</span>` for screen readers

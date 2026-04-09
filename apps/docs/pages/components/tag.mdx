@@ -1,0 +1,58 @@
+---
+title: Tag
+---
+
+# Tag
+
+Coloured label chip with optional remove button and leading icon.
+
+## Usage
+
+```tsx
+import { Tag } from '@ds-foundation/react';
+
+// Variants
+<Tag>Default</Tag>
+<Tag variant="blue">Pending</Tag>
+<Tag variant="green">Settled</Tag>
+<Tag variant="error">Failed</Tag>
+<Tag variant="orange">Warning</Tag>
+<Tag variant="purple">Q2</Tag>
+
+// Removable
+<Tag variant="blue" onRemove={() => removeFilter('pending')}>
+  Pending
+</Tag>
+
+// With leading icon
+import { DollarSign } from 'lucide-react';
+
+<Tag variant="blue" icon={<DollarSign className="w-3 h-3" />}>
+  USD
+</Tag>
+
+// Removable with icon
+<Tag
+  variant="purple"
+  icon={<DollarSign className="w-3 h-3" />}
+  onRemove={() => remove()}
+>
+  EUR
+</Tag>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "blue" \| "green" \| "error" \| "orange" \| "purple"` | `"default"` | Colour scheme |
+| `onRemove` | `() => void` | — | If provided, renders a close/remove button |
+| `icon` | `React.ReactNode` | — | Leading icon slot |
+| `children` | `React.ReactNode` | — | Tag label text (required) |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- The tag renders as a `<span>` — purely presentational
+- When `onRemove` is provided, a `<button type="button" aria-label="Remove">` is rendered inside the tag
+- The remove button has a visible focus ring and is always keyboard accessible — do not hide it with `opacity-0`

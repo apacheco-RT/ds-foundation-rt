@@ -1,0 +1,63 @@
+---
+id: label
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-ripple-blue-90"
+accessibility:
+  role: "label"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "Renders as a native <label> element"
+    - "htmlFor must be set to the id of the associated input"
+    - "peer-disabled:opacity-70 visually dims the label when the associated input is disabled"
+  notes: "Built on Radix UI Label primitive which ensures correct pointer behaviour — clicking the label focuses the associated input. Uses the ripple-blue-90 design token for text color. When used inside Form, FormLabel handles htmlFor wiring automatically."
+ai-prompt: "Label is an accessible form label built on the Radix UI Label primitive. Use it to label any form control — Input, Select, Textarea, Checkbox — by setting htmlFor to the input's id. It renders a native <label> element in ripple-blue-90 text at 14px/medium weight. The peer-disabled variant automatically dims the label when the sibling input is disabled. When used inside the Form component set, FormLabel handles the htmlFor wiring automatically. Export: Label."
+---
+
+# Label
+
+Accessible form label built on the Radix UI Label primitive.
+
+## Usage
+
+```tsx
+import { Label } from '@ds-foundation/react';
+import { Input } from '@ds-foundation/react';
+
+// Basic usage
+<div className="space-y-1">
+  <Label htmlFor="username">Username</Label>
+  <Input id="username" type="text" placeholder="johndoe" />
+</div>
+
+// Auto-dims when input is disabled (peer pattern)
+<div className="space-y-1">
+  <Label htmlFor="locked">Locked field</Label>
+  <Input id="locked" disabled />
+</div>
+```
+
+## Props
+
+`Label` accepts all Radix `Label.Root` props plus standard HTML label attributes.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `htmlFor` | `string` | — | Id of the associated form control |
+| `className` | `string` | — | Additional Tailwind classes |
+
+## Accessibility
+
+- Renders a native `<label>` element — clicking it focuses the associated input.
+- `htmlFor` must be set to the `id` of the associated control.
+- `peer-disabled:opacity-70` visually dims the label when the adjacent input is disabled.
+- Inside `Form`, use `FormLabel` which sets `htmlFor` automatically via form context.

@@ -1,0 +1,117 @@
+---
+title: Select
+---
+
+# Select
+
+Dropdown select with keyboard navigation and type-ahead, built on Radix UI.
+
+## Usage
+
+```tsx
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '@ds-foundation/react';
+
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="apple">Apple</SelectItem>
+    <SelectItem value="banana">Banana</SelectItem>
+    <SelectItem value="orange">Orange</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+### Grouped with labels
+
+```tsx
+import {
+  Select, SelectTrigger, SelectValue, SelectContent,
+  SelectGroup, SelectLabel, SelectItem, SelectSeparator,
+} from '@ds-foundation/react';
+
+<Select>
+  <SelectTrigger className="w-[220px]">
+    <SelectValue placeholder="Select a timezone" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>North America</SelectLabel>
+      <SelectItem value="est">Eastern (UTC-5)</SelectItem>
+      <SelectItem value="pst">Pacific (UTC-8)</SelectItem>
+    </SelectGroup>
+    <SelectSeparator />
+    <SelectGroup>
+      <SelectLabel>Europe</SelectLabel>
+      <SelectItem value="gmt">GMT (UTC+0)</SelectItem>
+      <SelectItem value="cet">Central European (UTC+1)</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
+```
+
+### Controlled
+
+```tsx
+const [value, setValue] = React.useState('');
+
+<Select value={value} onValueChange={setValue}>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Choose..." />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="a">Option A</SelectItem>
+    <SelectItem value="b">Option B</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+## Props
+
+### Select (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Controlled selected value |
+| `defaultValue` | `string` | — | Default value (uncontrolled) |
+| `onValueChange` | `(value: string) => void` | — | Callback on selection change |
+| `disabled` | `boolean` | `false` | Disables the trigger |
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback on open state change |
+
+### SelectTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional classes; set width here |
+| `children` | `ReactNode` | — | Typically `<SelectValue>` |
+
+### SelectContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `position` | `"popper" \| "item-aligned"` | `"popper"` | Positioning strategy |
+| `className` | `string` | — | Additional classes |
+
+### SelectItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Value submitted on selection (required) |
+| `disabled` | `boolean` | `false` | Prevents selection |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- `SelectTrigger` has `role="combobox"`, `aria-expanded`, and `aria-haspopup="listbox"`.
+- `SelectContent` has `role="listbox"`; each `SelectItem` has `role="option"` and `aria-selected`.
+- Type-ahead: typing a character jumps to the matching option.
+- Arrow keys navigate options; Enter/Space select; Escape closes without selection.
+- Content renders in a portal to avoid z-index and overflow clipping issues.

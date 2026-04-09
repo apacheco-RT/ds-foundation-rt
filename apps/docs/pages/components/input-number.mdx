@@ -1,0 +1,58 @@
+---
+title: InputNumber
+---
+
+# InputNumber
+
+Numeric stepper input with decrement and increment buttons.
+
+## Usage
+
+```tsx
+import { InputNumber } from '@ds-foundation/react';
+
+// Uncontrolled
+<InputNumber defaultValue={1} min={0} max={100} />
+
+// Controlled
+const [qty, setQty] = React.useState(1);
+
+<InputNumber
+  value={qty}
+  onChange={setQty}
+  min={1}
+  max={99}
+  step={1}
+/>
+
+// Decimal precision
+<InputNumber
+  value={rate}
+  onChange={setRate}
+  min={0}
+  max={1}
+  step={0.01}
+  precision={2}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number \| undefined` | — | Controlled value |
+| `defaultValue` | `number \| undefined` | — | Uncontrolled initial value |
+| `onChange` | `(value: number \| undefined) => void` | — | Called with clamped numeric value |
+| `min` | `number` | — | Minimum allowed value |
+| `max` | `number` | — | Maximum allowed value |
+| `step` | `number` | `1` | Increment/decrement amount per button press |
+| `precision` | `number` | `0` | Decimal places for display and rounding |
+| `disabled` | `boolean` | `false` | Disables buttons and the input |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Inner input has `role="spinbutton"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`.
+- Decrement button: `aria-label="Decrease"`; increment: `aria-label="Increase"`.
+- Buttons disable at min/max bounds.
+- Non-numeric input reverts to last valid value on blur.

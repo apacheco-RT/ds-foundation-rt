@@ -1,0 +1,74 @@
+---
+id: checkbox
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "grid place-content-center peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+accessibility:
+  role: "checkbox"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-checked reflects checked/unchecked/indeterminate state automatically"
+    - "aria-disabled when disabled prop is true"
+    - "Associate with a visible <label> via htmlFor or wrap in a <label>"
+  notes: "Built on Radix CheckboxPrimitive. Supports checked=true, false, and 'indeterminate' for tri-state. The peer class enables styling sibling label elements based on state."
+ai-prompt: "Checkbox renders a binary or tri-state toggle for form inputs and selection lists. Use checked=true/false for controlled mode, or defaultChecked for uncontrolled. Use checked='indeterminate' for a parent checkbox that represents a mixed selection state (e.g. select-all with partial selection). Always pair with a visible <label> — either wrap in a label element or use htmlFor pointing to the checkbox id. Use the onCheckedChange callback for state changes."
+---
+
+# Checkbox
+
+Boolean or tri-state toggle input built on Radix UI CheckboxPrimitive.
+
+## Usage
+
+```tsx
+import { Checkbox } from '@ds-foundation/react';
+
+{/* Uncontrolled */}
+<div className="flex items-center space-x-2">
+  <Checkbox id="terms" />
+  <label htmlFor="terms">Accept terms and conditions</label>
+</div>
+
+{/* Controlled */}
+<Checkbox
+  id="notifications"
+  checked={enabled}
+  onCheckedChange={setEnabled}
+/>
+
+{/* Indeterminate (partial selection) */}
+<Checkbox
+  id="select-all"
+  checked="indeterminate"
+  onCheckedChange={handleSelectAll}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean \| "indeterminate"` | — | Controlled checked state |
+| `defaultChecked` | `boolean` | — | Uncontrolled initial state |
+| `onCheckedChange` | `(checked: boolean \| "indeterminate") => void` | — | Called when state changes |
+| `disabled` | `boolean` | `false` | Prevents interaction |
+| `required` | `boolean` | `false` | Marks field as required for form validation |
+| `name` | `string` | — | Form field name |
+| `value` | `string` | — | Form submission value |
+| `...rest` | `ComponentPropsWithoutRef<CheckboxPrimitive.Root>` | — | Forwarded to Radix root |
+
+## Accessibility
+
+- `role="checkbox"` with `aria-checked` managed automatically by Radix — reflects `true`, `false`, or `"mixed"` for indeterminate
+- Always associate with a visible label via `htmlFor` or by wrapping in a `<label>`
+- Space key toggles the checkbox
+- `aria-disabled` is applied when `disabled` is true

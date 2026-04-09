@@ -1,0 +1,64 @@
+---
+id: sonner
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "toaster group"
+accessibility:
+  role: "status"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=status on individual toasts for polite announcements"
+    - "role=alert used by sonner for error toasts (assertive)"
+  notes: "Toasts are announced by screen readers via live regions managed by the sonner library. Error toasts use assertive, others use polite."
+ai-prompt: "Sonner is a toast notification system built on the sonner library, pre-configured with design system theming and Lucide icons (CircleCheck for success, Info, TriangleAlert for warning, OctagonX for error, LoaderCircle for loading). Place a single Toaster instance near the root of your app, then trigger toasts from anywhere using the sonner toast() API. Accepts all sonner Toaster props for customisation. Exports: Toaster."
+---
+
+# Sonner
+
+Toast notification system built on the sonner library, pre-wired with design system tokens and icons.
+
+## Usage
+
+```tsx
+import { Toaster } from '@ds-foundation/react';
+import { toast } from 'sonner';
+
+// Place Toaster once at the root
+<Toaster />
+
+// Trigger from anywhere
+toast.success('Payment processed');
+toast.error('Transaction failed');
+toast.info('3 items selected');
+toast.warning('Session expiring soon');
+toast.loading('Processing…');
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `theme` | `"system" \| "light" \| "dark"` | `"system"` | Colour theme for the toaster |
+| `position` | `"top-left" \| "top-center" \| "top-right" \| "bottom-left" \| "bottom-center" \| "bottom-right"` | `"bottom-right"` | Screen position for toasts |
+| `duration` | `number` | `4000` | Auto-dismiss delay in milliseconds |
+| `richColors` | `boolean` | `false` | Use richer semantic colours per toast type |
+| `expand` | `boolean` | `false` | Expand toasts to full width by default |
+| `closeButton` | `boolean` | `false` | Show a close button on each toast |
+
+All sonner `Toaster` props are forwarded.
+
+## Accessibility
+
+- Individual toasts use `role="status"` for polite announcements; error toasts escalate to `role="alert"` (assertive)
+- Screen readers announce new toasts automatically via sonner's internal live region
+- Close buttons are focusable and labelled
+- Toasts auto-dismiss but can be paused on hover or focus

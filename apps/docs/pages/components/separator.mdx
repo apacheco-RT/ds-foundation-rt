@@ -1,0 +1,52 @@
+---
+title: Separator
+---
+
+# Separator
+
+Horizontal or vertical divider for visually separating content sections, built on Radix UI.
+
+## Usage
+
+```tsx
+import { Separator } from '@ds-foundation/react';
+
+// Horizontal (default)
+<div>
+  <p>Section above</p>
+  <Separator className="my-4" />
+  <p>Section below</p>
+</div>
+```
+
+### Vertical separator
+
+```tsx
+// Vertical — parent needs an explicit height
+<div className="flex items-center gap-4 h-5">
+  <span>Left content</span>
+  <Separator orientation="vertical" />
+  <span>Right content</span>
+</div>
+```
+
+### Semantic separator
+
+```tsx
+// Announced by screen readers
+<Separator decorative={false} aria-label="End of main content" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direction of the divider |
+| `decorative` | `boolean` | `true` | When true, hidden from accessibility tree (role="none") |
+| `className` | `string` | — | Additional classes for color, margin, or size |
+
+## Accessibility
+
+- `decorative={true}` (default): element has `role="none"` and is hidden from screen readers — correct for most visual separators.
+- `decorative={false}`: element has `role="separator"` and `aria-orientation`, making it discoverable by assistive technology.
+- Horizontal renders as `h-[1px] w-full`; vertical as `h-full w-[1px]`.

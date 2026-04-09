@@ -1,0 +1,87 @@
+---
+title: Command
+---
+
+# Command
+
+Searchable command palette for keyboard-driven navigation and action execution.
+
+## Usage
+
+```tsx
+import {
+  Command,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+  CommandSeparator,
+} from '@ds-foundation/react';
+
+<Command>
+  <CommandInput placeholder="Search commands..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Actions">
+      <CommandItem>
+        New Payment
+        <CommandShortcut>⌘N</CommandShortcut>
+      </CommandItem>
+      <CommandItem>Search Transactions</CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Settings">
+      <CommandItem>Profile</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```
+
+## Modal usage (Cmd+K palette)
+
+```tsx
+import { CommandDialog, CommandInput, CommandList, CommandItem } from '@ds-foundation/react';
+
+<CommandDialog open={open} onOpenChange={setOpen}>
+  <CommandInput placeholder="Type a command..." />
+  <CommandList>
+    <CommandItem onSelect={() => router.push('/payments')}>Go to Payments</CommandItem>
+  </CommandList>
+</CommandDialog>
+```
+
+## Props
+
+### Command (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `shouldFilter` | `boolean` | `true` | Enable/disable built-in item filtering |
+| `filter` | `(value, search) => number` | built-in | Custom filter function |
+| `loop` | `boolean` | `false` | Wrap arrow key navigation at list ends |
+| `value` | `string` | — | Controlled selected item |
+| `onValueChange` | `(value: string) => void` | — | Called when selection changes |
+
+### CommandDialog
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Dialog open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Called when dialog state changes |
+
+### CommandItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Value used for filtering |
+| `onSelect` | `(value: string) => void` | — | Called when activated |
+| `disabled` | `boolean` | `false` | Prevents selection |
+
+## Accessibility
+
+- `CommandInput` has `role="combobox"` with `aria-expanded` and `aria-controls`
+- `CommandList` has `role="listbox"`; each `CommandItem` has `role="option"` with `aria-selected`
+- `Arrow Up/Down` navigates; `Enter` activates; `Escape` closes the dialog
+- Items filter in real time as the user types

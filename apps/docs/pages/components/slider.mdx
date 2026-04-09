@@ -1,0 +1,86 @@
+---
+title: Slider
+---
+
+# Slider
+
+Range slider input for selecting a numeric value or range, built on Radix UI.
+
+## Usage
+
+```tsx
+import { Slider } from '@ds-foundation/react';
+
+// Single value
+<Slider
+  defaultValue={[50]}
+  min={0}
+  max={100}
+  step={1}
+  aria-label="Volume"
+/>
+```
+
+### Controlled single value
+
+```tsx
+const [volume, setVolume] = React.useState([50]);
+
+<Slider
+  value={volume}
+  onValueChange={setVolume}
+  min={0}
+  max={100}
+  aria-label="Volume"
+/>
+```
+
+### Range slider (two thumbs)
+
+```tsx
+const [range, setRange] = React.useState([20, 80]);
+
+<Slider
+  value={range}
+  onValueChange={setRange}
+  min={0}
+  max={100}
+  step={5}
+  aria-label="Price range"
+/>
+```
+
+### With step increments
+
+```tsx
+<Slider
+  defaultValue={[0]}
+  min={0}
+  max={100}
+  step={25}
+  aria-label="Completion"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number[]` | — | Controlled value(s); pass two numbers for a range |
+| `defaultValue` | `number[]` | — | Initial value(s) (uncontrolled) |
+| `onValueChange` | `(value: number[]) => void` | — | Callback when value changes during drag |
+| `onValueCommit` | `(value: number[]) => void` | — | Callback when drag ends (pointer up) |
+| `min` | `number` | `0` | Minimum allowed value |
+| `max` | `number` | `100` | Maximum allowed value |
+| `step` | `number` | `1` | Increment between discrete values |
+| `disabled` | `boolean` | `false` | Disables interaction |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Slider axis |
+| `className` | `string` | — | Additional classes |
+| `aria-label` | `string` | — | Accessible label for the slider |
+
+## Accessibility
+
+- Each thumb has `role="slider"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`, and `aria-orientation`.
+- Arrow keys move the focused thumb by `step`; Page Up/Down move by larger increments; Home/End jump to min/max.
+- The component is `touch-none select-none` to prevent text selection during drag.
+- Provide `aria-label` on the root or link to a visible label via `aria-labelledby`.

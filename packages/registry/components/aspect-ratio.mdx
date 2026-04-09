@@ -1,0 +1,61 @@
+---
+id: aspect-ratio
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: ""
+accessibility:
+  role: "presentation"
+  wcag:
+    - "1.4.4 Resize Text"
+    - "1.4.10 Reflow"
+  aria:
+    - "Child media elements should carry their own alt or aria-label"
+  notes: "Thin wrapper around Radix AspectRatioPrimitive.Root. Applies CSS padding-bottom trick to maintain ratio. No interactive ARIA needed on the container itself."
+ai-prompt: "AspectRatio constrains a child element to a fixed width-to-height ratio, preventing layout shift when media loads. Wrap images, videos, maps, or embedded iframes with it. Pass a ratio prop as a decimal (e.g. ratio={16/9} for widescreen, ratio={1} for square, ratio={4/3} for portrait). The child should be absolutely positioned to fill the container — use className='object-cover w-full h-full' on an <img>."
+---
+
+# AspectRatio
+
+Maintains a fixed width-to-height ratio for media and embedded content, built on Radix UI AspectRatioPrimitive.
+
+## Usage
+
+```tsx
+import { AspectRatio } from '@ds-foundation/react';
+
+<div className="w-full max-w-sm">
+  <AspectRatio ratio={16 / 9}>
+    <img
+      src="/hero.jpg"
+      alt="Hero image"
+      className="h-full w-full object-cover rounded-md"
+    />
+  </AspectRatio>
+</div>
+
+{/* Square avatar container */}
+<div className="w-24">
+  <AspectRatio ratio={1}>
+    <img src="/avatar.png" alt="User avatar" className="h-full w-full object-cover" />
+  </AspectRatio>
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `ratio` | `number` | `1` | Width divided by height (e.g. `16/9`, `4/3`, `1`) |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root element |
+
+## Accessibility
+
+- The container is presentational — no interactive ARIA attributes are needed on it
+- Child `<img>` elements must carry a descriptive `alt` attribute
+- Child videos and iframes should provide accessible labels via `aria-label` or `title`

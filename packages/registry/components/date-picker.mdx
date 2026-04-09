@@ -1,0 +1,65 @@
+---
+id: date-picker
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "w-[240px] justify-start text-left font-normal"
+accessibility:
+  role: "button"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "Trigger renders as a button; calendar opens in a Popover"
+    - "Calendar grid uses role=grid with aria-label for month navigation"
+    - "Selected date is announced via aria-selected on the calendar cell"
+  notes: "Trigger button shows selected date or placeholder text. The calendar popover opens on Enter/Space and can be navigated with arrow keys. A Clear button appears when a date is selected."
+ai-prompt: "DatePicker is a calendar popover for date selection built from Popover + Calendar + Button. Use it for single-date inputs such as due dates, effective dates, or filter ranges. It supports both controlled (value + onChange) and uncontrolled (defaultValue) modes. Key props: value (Date | undefined), defaultValue (Date | undefined), onChange (called with Date | undefined), placeholder (string, defaults to 'Pick a date'), disabled (boolean). When a date is selected a Clear button appears at the bottom of the popover. Import as DatePicker from @ds-foundation/react."
+---
+
+# DatePicker
+
+Calendar popover for single-date selection built from Popover, Calendar, and Button.
+
+## Usage
+
+```tsx
+import { DatePicker } from '@ds-foundation/react';
+
+// Uncontrolled
+<DatePicker defaultValue={new Date()} placeholder="Select date" />
+
+// Controlled
+const [date, setDate] = React.useState<Date | undefined>();
+
+<DatePicker
+  value={date}
+  onChange={setDate}
+  placeholder="Pick a date"
+  disabled={false}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `Date \| undefined` | — | Controlled selected date |
+| `defaultValue` | `Date \| undefined` | — | Uncontrolled initial date |
+| `onChange` | `(date: Date \| undefined) => void` | — | Called when the date changes or is cleared |
+| `placeholder` | `string` | `"Pick a date"` | Text shown when no date is selected |
+| `disabled` | `boolean` | `false` | Disables the trigger button |
+| `className` | `string` | — | Additional classes on the trigger button |
+
+## Accessibility
+
+- The trigger renders as a `<button>` — keyboard-accessible with Enter/Space.
+- Calendar navigation uses arrow keys; Tab moves between interactive controls.
+- The selected date cell carries `aria-selected="true"`.
+- A visually-labelled Clear button removes the selection without reopening the picker.

@@ -1,0 +1,33 @@
+---
+title: Button
+---
+
+# Button
+
+Styled clickable element with multiple variants for different semantic contexts.
+
+## Usage
+
+```tsx
+import { Button } from '@ds-foundation/react';
+
+<Button>Click me</Button>
+<Button variant="destructive">Delete</Button>
+<Button variant="outline">Cancel</Button>
+<Button size="sm">Small</Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"default"` | Visual style |
+| `size` | `"sm" \| "default" \| "lg" \| "icon"` | `"default"` | Size preset |
+| `asChild` | `boolean` | `false` | Render as child element via Radix Slot (e.g. router Link) |
+| `...rest` | `ButtonHTMLAttributes` | — | Forwarded to the `<button>` element |
+
+## Accessibility
+
+- Uses native `<button>` for built-in keyboard navigation and ARIA support
+- Add `aria-label` when button content is icon-only
+- Use `aria-pressed` for toggle buttons that switch between active and inactive states

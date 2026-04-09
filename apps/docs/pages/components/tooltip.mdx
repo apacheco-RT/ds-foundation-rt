@@ -1,0 +1,82 @@
+---
+title: Tooltip
+---
+
+# Tooltip
+
+Hover and focus-triggered contextual popup built on the Radix UI Tooltip primitive.
+
+## Usage
+
+```tsx
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from '@ds-foundation/react';
+
+// 1. Wrap at app root (once)
+<TooltipProvider>
+  <App />
+</TooltipProvider>
+
+// 2. Use anywhere within the app
+<Tooltip>
+  <TooltipTrigger asChild>
+    <button>Approve</button>
+  </TooltipTrigger>
+  <TooltipContent>
+    Approve this payment for processing
+  </TooltipContent>
+</Tooltip>
+
+// Custom side and offset
+<Tooltip>
+  <TooltipTrigger asChild>
+    <InfoIcon className="w-4 h-4" />
+  </TooltipTrigger>
+  <TooltipContent side="right" sideOffset={8}>
+    Settlement date is T+2 for cross-border wires
+  </TooltipContent>
+</Tooltip>
+
+// Controlled open state
+<Tooltip open={isOpen} onOpenChange={setIsOpen}>
+  <TooltipTrigger>…</TooltipTrigger>
+  <TooltipContent>…</TooltipContent>
+</Tooltip>
+```
+
+## Props
+
+### TooltipProvider
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `delayDuration` | `number` | `700` | Delay in ms before tooltip appears on hover |
+| `skipDelayDuration` | `number` | `300` | Grace period between sequential tooltips |
+
+### Tooltip (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `defaultOpen` | `boolean` | `false` | Initial open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Called when open state changes |
+
+### TooltipContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"top"` | Preferred side relative to trigger |
+| `sideOffset` | `number` | `4` | Distance from trigger in pixels |
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment along the side axis |
+| `className` | `string` | — | Additional classes on the content bubble |
+
+## Accessibility
+
+- `TooltipContent` has `role="tooltip"`; Radix sets `aria-describedby` on the trigger linking to the content
+- Tooltips appear on both mouse hover and keyboard focus — never require hover-only access to information
+- Do not place interactive content (links, buttons) inside tooltip content
+- Place `TooltipProvider` once near the root of your application

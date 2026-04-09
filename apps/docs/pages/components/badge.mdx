@@ -1,0 +1,35 @@
+---
+title: Badge
+---
+
+# Badge
+
+Compact pill label for displaying statuses, categories, and counts.
+
+## Usage
+
+```tsx
+import { Badge } from '@ds-foundation/react';
+
+<Badge>Active</Badge>
+<Badge variant="secondary">Draft</Badge>
+<Badge variant="destructive">Blocked</Badge>
+<Badge variant="success">Completed</Badge>
+<Badge variant="warning">Pending</Badge>
+<Badge variant="info">New</Badge>
+<Badge variant="outline">Tag</Badge>
+<Badge variant="pink">Featured</Badge>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "secondary" \| "destructive" \| "outline" \| "success" \| "warning" \| "info" \| "pink"` | `"default"` | Visual style and semantic color |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root `<div>` |
+
+## Accessibility
+
+- Renders as a `<div>` — not interactive by default
+- Always pair a color variant with a meaningful text label (WCAG 1.4.1 — use of color)
+- For dynamically updating counts (e.g. notifications), wrap in a container with `aria-live="polite"`

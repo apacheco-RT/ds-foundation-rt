@@ -1,0 +1,69 @@
+---
+title: InputOTP
+---
+
+# InputOTP
+
+One-time password entry with individual character slots built on input-otp.
+
+## Usage
+
+```tsx
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from '@ds-foundation/react';
+import { REGEXP_ONLY_DIGITS } from 'input-otp';
+
+// 6-digit code with separator
+<InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>
+
+// Controlled
+<InputOTP maxLength={4} value={code} onChange={setCode}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+    <InputOTPSlot index={3} />
+  </InputOTPGroup>
+</InputOTP>
+```
+
+## Props
+
+### InputOTP
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `maxLength` | `number` | — | **Required.** Total number of OTP characters |
+| `pattern` | `string` | — | Regex pattern restricting allowed input |
+| `value` | `string` | — | Controlled value |
+| `onChange` | `(value: string) => void` | — | Called on each keystroke |
+| `disabled` | `boolean` | `false` | Disables input |
+
+### InputOTPSlot
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `index` | `number` | — | **Required.** Position in the OTP sequence |
+
+## Accessibility
+
+- The underlying element is a single native `<input>` — screen readers see one field.
+- Slot rendering is purely visual.
+- `InputOTPSeparator` renders with `role="separator"`.
+- Active slot shows a ring highlight and animated caret.

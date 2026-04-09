@@ -1,0 +1,97 @@
+---
+id: table
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "w-full caption-bottom text-sm"
+accessibility:
+  role: "table"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "Semantic HTML table elements (table, thead, tbody, tfoot, tr, th, td, caption) carry implicit ARIA roles"
+    - "Use TableCaption to provide an accessible table title"
+    - "th elements in TableHead provide column header context for screen readers"
+  notes: "Uses native HTML table semantics. No additional ARIA roles needed. Wrap with TableCaption for an accessible name. The root Table component wraps in a scrollable div for horizontal overflow."
+ai-prompt: "Table is a composable data table built from semantic HTML elements. Assemble it with Table (root), TableHeader, TableBody, TableFooter, TableHead (th), TableRow, TableCell (td), and TableCaption. The root Table is wrapped in a horizontally scrollable container automatically. Use for structured data display such as transaction lists, reports, and dashboards. All parts accept className for custom styling. Exports: Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption."
+---
+
+# Table
+
+Composable semantic data table with scrollable container, header, body, footer, and caption.
+
+## Usage
+
+```tsx
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption,
+} from '@ds-foundation/react';
+
+<Table>
+  <TableCaption>Recent transactions</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Date</TableHead>
+      <TableHead>Description</TableHead>
+      <TableHead className="text-right">Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>2026-04-01</TableCell>
+      <TableCell>Wire transfer</TableCell>
+      <TableCell className="text-right">$12,500.00</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFooter>
+    <TableRow>
+      <TableCell colSpan={2}>Total</TableCell>
+      <TableCell className="text-right">$12,500.00</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>
+```
+
+## Props
+
+All parts accept `className` and standard HTML element props for their respective elements.
+
+### Table
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Applied to the inner `<table>` element |
+
+### TableHead
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Applied to the `<th>` element |
+
+### TableCell
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `colSpan` | `number` | — | Spans multiple columns |
+| `className` | `string` | — | Applied to the `<td>` element |
+
+## Accessibility
+
+- Native HTML table semantics provide implicit ARIA roles — no extra attributes required
+- `<TableHead>` renders `<th>` elements; browsers expose these as column headers to screen readers
+- `<TableCaption>` renders a `<caption>` element, giving the table an accessible name
+- Rows with `data-[state=selected]` apply a muted background for visual selection state

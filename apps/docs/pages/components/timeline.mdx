@@ -1,0 +1,93 @@
+---
+title: Timeline
+---
+
+# Timeline
+
+Vertical list of timestamped events with status-coloured markers and connector lines.
+
+## Usage
+
+```tsx
+import { Timeline } from '@ds-foundation/react';
+import { CheckCircle, AlertCircle } from 'lucide-react';
+
+// Basic
+<Timeline
+  items={[
+    {
+      id: '1',
+      title: 'Payment initiated',
+      timestamp: '09:00',
+      status: 'complete',
+    },
+    {
+      id: '2',
+      title: 'Compliance review',
+      description: 'Awaiting AML check',
+      timestamp: '09:15',
+      status: 'active',
+    },
+    {
+      id: '3',
+      title: 'Settlement',
+      status: 'default',
+    },
+  ]}
+/>
+
+// With custom icons
+<Timeline
+  items={[
+    {
+      id: 'a',
+      icon: <CheckCircle className="w-3 h-3" />,
+      title: 'Approved by treasury',
+      timestamp: '14:32',
+      status: 'complete',
+    },
+    {
+      id: 'b',
+      icon: <AlertCircle className="w-3 h-3" />,
+      title: 'Rejected — insufficient funds',
+      timestamp: '14:45',
+      status: 'error',
+    },
+  ]}
+/>
+```
+
+## Props
+
+### Timeline
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `items` | `TimelineItem[]` | — | Array of event objects (required) |
+| `className` | `string` | — | Additional classes on the container |
+
+### TimelineItem object
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `id` | `string` | — | Unique key (required) |
+| `title` | `string` | — | Primary event label (required) |
+| `description` | `string` | — | Secondary description text |
+| `timestamp` | `string` | — | Date/time string shown at the right |
+| `icon` | `React.ReactNode` | — | Icon rendered inside the marker circle |
+| `status` | `"default" \| "active" \| "complete" \| "error"` | `"default"` | Controls marker colour |
+
+## Status colours
+
+| Status | Marker colour |
+|--------|---------------|
+| `default` | Grey |
+| `active` | Blue |
+| `complete` | Green |
+| `error` | Orange |
+
+## Accessibility
+
+- The outer element is an `<ol>` with `role="list"`; each event is a `<li>` with `role="listitem"`
+- Status is communicated via colour and icon — provide descriptive `title` text so meaning is not colour-only
+- Connector lines are decorative `<div>` elements excluded from the accessibility tree

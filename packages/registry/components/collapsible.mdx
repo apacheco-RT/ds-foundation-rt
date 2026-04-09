@@ -1,0 +1,84 @@
+---
+id: collapsible
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: ""
+accessibility:
+  role: "region"
+  wcag:
+    - "1.3.1 Info and Relationships"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-expanded on the trigger reflects the open state"
+    - "aria-controls links the trigger to the content panel"
+  notes: "Thin wrapper around Radix CollapsiblePrimitive. No custom base styles — all layout comes from consumer className. Use Accordion for styled multi-item collapsible lists."
+ai-prompt: "Collapsible shows or hides a single content section on trigger click. Use it for expandable settings, filter panels, optional detail sections, or any single-item toggle — not for FAQ-style lists (use Accordion instead). Compose: Collapsible (root, holds open state) > CollapsibleTrigger (the button or element that toggles) + CollapsibleContent (the hidden/shown area). Use open and onOpenChange for controlled mode, or defaultOpen for uncontrolled. The trigger does not need to be a <button> element — it wraps whatever child is provided."
+---
+
+# Collapsible
+
+Show/hide a single content section, built on Radix UI CollapsiblePrimitive.
+
+## Usage
+
+```tsx
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from '@ds-foundation/react';
+import { Button } from '@ds-foundation/react';
+
+<Collapsible>
+  <CollapsibleTrigger asChild>
+    <Button variant="ghost">Toggle filters</Button>
+  </CollapsibleTrigger>
+  <CollapsibleContent>
+    <div className="space-y-2 pt-4">
+      <p>Filter content goes here.</p>
+    </div>
+  </CollapsibleContent>
+</Collapsible>
+
+{/* Controlled */}
+<Collapsible open={isOpen} onOpenChange={setIsOpen}>
+  <CollapsibleTrigger>Advanced options</CollapsibleTrigger>
+  <CollapsibleContent>...</CollapsibleContent>
+</Collapsible>
+```
+
+## Props
+
+### Collapsible (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `defaultOpen` | `boolean` | `false` | Uncontrolled initial open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Called when open state changes |
+| `disabled` | `boolean` | `false` | Prevents toggling |
+
+### CollapsibleTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | `false` | Render as child element (e.g. existing `<Button>`) |
+
+### CollapsibleContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `...rest` | `ComponentPropsWithoutRef<CollapsiblePrimitive.Content>` | — | Forwarded to Radix content |
+
+## Accessibility
+
+- `aria-expanded` on the trigger reflects open/closed state automatically
+- `aria-controls` links the trigger to the content region
+- Keyboard: `Space` / `Enter` on the trigger toggles the content

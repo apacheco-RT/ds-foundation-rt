@@ -1,0 +1,41 @@
+---
+title: EmptyState
+---
+
+# EmptyState
+
+Empty-state placeholder with icon, title, description, and optional action button.
+
+## Usage
+
+```tsx
+import { EmptyState } from '@ds-foundation/react';
+import { InboxIcon } from 'lucide-react';
+
+// Minimal
+<EmptyState title="No results found" />
+
+// Full
+<EmptyState
+  icon={<InboxIcon />}
+  title="No transactions yet"
+  description="Transactions will appear here once they are processed."
+  action={{ label: "Create transaction", onClick: () => router.push('/new') }}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `React.ReactNode` | — | Decorative icon rendered above the title |
+| `title` | `string` | — | **Required.** Primary message |
+| `description` | `string` | — | Supporting text below the title |
+| `action` | `{ label: string; onClick: () => void }` | — | Primary call-to-action button |
+| `className` | `string` | — | Additional classes on the root container |
+
+## Accessibility
+
+- The icon is decorative — no `alt` or ARIA attributes on the icon wrapper.
+- Title uses `H5` typography and is the primary label for the region.
+- The action button is fully keyboard-focusable.

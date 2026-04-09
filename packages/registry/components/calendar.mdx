@@ -1,0 +1,88 @@
+---
+id: calendar
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "bg-background group/calendar p-3 [--cell-size:2rem] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent"
+accessibility:
+  role: "grid"
+  wcag:
+    - "1.3.1 Info and Relationships"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=grid on the month grid"
+    - "aria-selected on selected day cells"
+    - "aria-disabled on disabled day cells"
+    - "aria-label on navigation buttons (Previous month, Next month)"
+    - "aria-live='polite' on the month caption for month/year change announcements"
+  notes: "Built on react-day-picker v9 (DayPicker). Navigation uses Button with ghost variant. Day cells use CalendarDayButton. Supports single, multiple, and range selection modes."
+ai-prompt: "Calendar renders an interactive month-view date picker grid. Use it inside a Popover or Dialog for date input fields. Pass mode='single' for single date selection, mode='range' for date ranges, or mode='multiple' for multi-select. Provide selected and onSelect props for controlled usage. Use the disabled prop with a matcher function (e.g. disabled={(d) => d < new Date()}) to block past dates. Set captionLayout='dropdown' to show month/year dropdowns instead of arrow navigation. The buttonVariant prop controls the nav button style."
+---
+
+# Calendar
+
+Interactive monthly date picker grid built on react-day-picker v9.
+
+## Usage
+
+```tsx
+import * as React from 'react';
+import { Calendar } from '@ds-foundation/react';
+
+function DatePicker() {
+  const [date, setDate] = React.useState<Date | undefined>();
+
+  return (
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={setDate}
+    />
+  );
+}
+
+// Date range
+function DateRangePicker() {
+  const [range, setRange] = React.useState<{ from?: Date; to?: Date }>();
+
+  return (
+    <Calendar
+      mode="range"
+      selected={range}
+      onSelect={setRange}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `mode` | `"single" \| "multiple" \| "range"` | `"single"` | Selection mode |
+| `selected` | `Date \| Date[] \| DateRange \| undefined` | — | Currently selected date(s) |
+| `onSelect` | `(date: ...) => void` | — | Callback when selection changes |
+| `disabled` | `Matcher \| Matcher[]` | — | Dates to disable (function or date/range) |
+| `showOutsideDays` | `boolean` | `true` | Show days from adjacent months |
+| `captionLayout` | `"label" \| "dropdown" \| "dropdown-years"` | `"label"` | Month/year navigation style |
+| `buttonVariant` | `ButtonVariant` | `"ghost"` | Style of the prev/next navigation buttons |
+| `...rest` | `ComponentProps<typeof DayPicker>` | — | All react-day-picker props |
+
+## Exports
+
+- `Calendar` — the main component
+- `CalendarDayButton` — individual day button, exported for custom composition
+
+## Accessibility
+
+- Month grid uses `role="grid"` with appropriate row/cell roles
+- Selected cells carry `aria-selected="true"`; disabled cells carry `aria-disabled="true"`
+- Month navigation buttons have accessible labels
+- Month/year caption change is announced via `aria-live="polite"`
+- Keyboard: `Arrow` keys navigate days; `Enter`/`Space` selects; `Page Up/Down` changes month

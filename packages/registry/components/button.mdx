@@ -1,0 +1,54 @@
+---
+id: button
+type: component
+version: 1.0.0
+status: stable
+variants: ["default", "destructive", "outline", "secondary", "ghost", "link"]
+sizes: ["sm", "default", "lg", "icon"]
+adapters:
+  tailwind:
+    default:
+      base: "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
+accessibility:
+  role: "button"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-disabled when not interactive"
+    - "aria-pressed for toggle buttons"
+  notes: "Uses native <button> element for built-in keyboard and ARIA support"
+ai-prompt: "Button renders a styled clickable element. Variants: default (primary brand action — blue), destructive (error/delete actions — red), outline (secondary actions with border), secondary (lower-emphasis filled), ghost (minimal, no background), link (inline text link style). Use asChild prop to render as a router Link or other element without losing button styles. Sizes: sm, default, lg, icon (square). Always provide descriptive text content or aria-label for icon-only buttons."
+---
+
+# Button
+
+A styled button component with multiple variants for different semantic contexts.
+
+## Usage
+
+```tsx
+import { Button } from '@ds-foundation/react';
+
+<Button variant="default">Save</Button>
+<Button variant="destructive">Delete</Button>
+<Button variant="outline">Cancel</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Learn more</Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"default"` | Visual style |
+| `size` | `"sm" \| "default" \| "lg" \| "icon"` | `"default"` | Size preset |
+| `asChild` | `boolean` | `false` | Render as child element via Radix Slot |
+| `...rest` | `ButtonHTMLAttributes` | — | Forwarded to button element |
+
+## Accessibility
+
+- Native `<button>` element — keyboard and ARIA built in
+- Use `aria-label` when button content is icon-only

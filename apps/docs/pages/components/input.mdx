@@ -1,0 +1,56 @@
+---
+title: Input
+---
+
+# Input
+
+Styled text input field wrapping a native `<input>` element.
+
+## Usage
+
+```tsx
+import { Input } from '@ds-foundation/react';
+import { Label } from '@ds-foundation/react';
+
+// Basic
+<div className="space-y-1">
+  <Label htmlFor="email">Email</Label>
+  <Input id="email" type="email" placeholder="you@example.com" />
+</div>
+
+// Disabled
+<Input type="text" placeholder="Not editable" disabled />
+
+// Controlled
+<Input
+  type="text"
+  value={value}
+  onChange={(e) => setValue(e.target.value)}
+  placeholder="Type here"
+/>
+```
+
+## Props
+
+`Input` extends all native `HTMLInputElement` attributes.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `string` | `"text"` | HTML input type |
+| `placeholder` | `string` | — | Placeholder text |
+| `disabled` | `boolean` | `false` | Disables the input |
+| `value` | `string` | — | Controlled value |
+| `onChange` | `React.ChangeEventHandler<HTMLInputElement>` | — | Change handler |
+| `className` | `string` | — | Additional Tailwind classes |
+
+TypeScript interface:
+
+```tsx
+import { type InputProps } from '@ds-foundation/react';
+```
+
+## Accessibility
+
+- Always associate with a `Label` via `htmlFor`/`id`, or provide `aria-label`.
+- Set `aria-invalid="true"` and `aria-describedby` on error.
+- When used inside `Form`, `FormControl` handles all ARIA wiring automatically.

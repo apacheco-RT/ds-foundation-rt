@@ -1,0 +1,50 @@
+---
+title: Switch
+---
+
+# Switch
+
+Binary on/off toggle control built on the Radix UI Switch primitive.
+
+## Usage
+
+```tsx
+import { Switch } from '@ds-foundation/react';
+import { Label } from '@ds-foundation/react';
+
+// Uncontrolled with label
+<div className="flex items-center gap-2">
+  <Switch id="notifications" />
+  <Label htmlFor="notifications">Enable notifications</Label>
+</div>
+
+// Controlled
+const [enabled, setEnabled] = React.useState(false);
+
+<Switch
+  checked={enabled}
+  onCheckedChange={setEnabled}
+/>
+
+// Disabled
+<Switch disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | — | Controlled checked state |
+| `defaultChecked` | `boolean` | `false` | Initial checked state (uncontrolled) |
+| `onCheckedChange` | `(checked: boolean) => void` | — | Called when state changes |
+| `disabled` | `boolean` | `false` | Disables the switch |
+| `name` | `string` | — | Form field name for submission |
+| `value` | `string` | `"on"` | Value submitted when checked |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Radix sets `role="switch"` and `aria-checked` automatically
+- `Space` key toggles the state; the control is reachable via `Tab`
+- `aria-disabled` is applied when `disabled` is true
+- Always pair with a visible `<Label>` using `htmlFor` pointing to the switch `id`

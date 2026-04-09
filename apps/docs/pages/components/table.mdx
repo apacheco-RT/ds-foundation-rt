@@ -1,0 +1,85 @@
+---
+title: Table
+---
+
+# Table
+
+Composable semantic data table with scrollable container, header, body, footer, and caption.
+
+## Usage
+
+```tsx
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption,
+} from '@ds-foundation/react';
+
+<Table>
+  <TableCaption>Recent transactions</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Date</TableHead>
+      <TableHead>Description</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead className="text-right">Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>2026-04-01</TableCell>
+      <TableCell>Wire transfer</TableCell>
+      <TableCell>Settled</TableCell>
+      <TableCell className="text-right">$12,500.00</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>2026-04-02</TableCell>
+      <TableCell>ACH payment</TableCell>
+      <TableCell>Pending</TableCell>
+      <TableCell className="text-right">$3,200.00</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFooter>
+    <TableRow>
+      <TableCell colSpan={3}>Total</TableCell>
+      <TableCell className="text-right">$15,700.00</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>
+```
+
+## Props
+
+All parts accept `className` and standard HTML element attributes.
+
+### Table
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Applied to the inner `<table>` element. The outer scroll wrapper is always present. |
+
+### TableHead
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Applied to the `<th>` element |
+
+### TableCell
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `colSpan` | `number` | — | Span multiple columns |
+| `className` | `string` | — | Applied to the `<td>` element |
+
+## Accessibility
+
+- Native HTML table semantics provide implicit ARIA roles — no extra attributes required
+- `TableHead` renders `<th>` elements; browsers expose these as column headers to screen readers
+- `TableCaption` renders a `<caption>` giving the table an accessible name
+- Rows with `data-[state=selected]` apply a muted background for selection state
+- The root `Table` wraps in a scrollable `<div>` — horizontal overflow is handled automatically

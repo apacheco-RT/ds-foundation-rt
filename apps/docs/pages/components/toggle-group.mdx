@@ -1,0 +1,71 @@
+---
+title: ToggleGroup
+---
+
+# ToggleGroup
+
+Group of related toggle buttons supporting single or multiple selection.
+
+## Usage
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from '@ds-foundation/react';
+import { AlignLeft, AlignCenter, AlignRight } from 'lucide-react';
+
+// Single-select (exclusive — like a radio group)
+<ToggleGroup type="single" defaultValue="left" aria-label="Text alignment">
+  <ToggleGroupItem value="left" aria-label="Align left">
+    <AlignLeft />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="center" aria-label="Align center">
+    <AlignCenter />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="right" aria-label="Align right">
+    <AlignRight />
+  </ToggleGroupItem>
+</ToggleGroup>
+
+// Multi-select (independent toggles)
+<ToggleGroup type="multiple" variant="outline" size="sm">
+  <ToggleGroupItem value="pending">Pending</ToggleGroupItem>
+  <ToggleGroupItem value="settled">Settled</ToggleGroupItem>
+  <ToggleGroupItem value="failed">Failed</ToggleGroupItem>
+</ToggleGroup>
+
+// Controlled single-select
+const [view, setView] = React.useState('list');
+
+<ToggleGroup type="single" value={view} onValueChange={(v) => v && setView(v)}>
+  <ToggleGroupItem value="list">List</ToggleGroupItem>
+  <ToggleGroupItem value="grid">Grid</ToggleGroupItem>
+</ToggleGroup>
+```
+
+## Props
+
+### ToggleGroup (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `"single" \| "multiple"` | — | Selection mode (required) |
+| `value` | `string \| string[]` | — | Controlled selected value(s) |
+| `defaultValue` | `string \| string[]` | — | Initial value(s) (uncontrolled) |
+| `onValueChange` | `(value: string \| string[]) => void` | — | Called on selection change |
+| `variant` | `"default" \| "outline"` | `"default"` | Cascades to all items via context |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Cascades to all items via context |
+| `disabled` | `boolean` | `false` | Disables all items |
+
+### ToggleGroupItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Unique identifier for this item (required) |
+| `disabled` | `boolean` | `false` | Disables this item only |
+| `aria-label` | `string` | — | Required when item contains only an icon |
+
+## Accessibility
+
+- Root has `role="group"`; provide `aria-label` to describe the group's purpose
+- `variant` and `size` cascade from root to items via React context — set them once on the root
+- Always provide `aria-label` on icon-only items
+- In `type="single"` mode, deselection is allowed by default — guard `onValueChange` if you need at-least-one selection

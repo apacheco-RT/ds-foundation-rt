@@ -1,0 +1,66 @@
+---
+id: stepper
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "flex items-start gap-0"
+accessibility:
+  role: "list"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=list on the outer ol element"
+    - "role=listitem on each step li"
+    - "aria-current=step on the active step"
+  notes: "Each step's status is communicated through aria-current=step for the active step. Completed steps show a checkmark icon and error steps show an X icon."
+ai-prompt: "Stepper is a horizontal multi-step progress indicator for multi-page forms and wizards. Pass a steps array where each item has label, optional description, and status (pending/active/complete/error). The component renders step circles connected by progress lines, colouring each connector based on whether the preceding step is complete. Use it at the top of checkout flows, onboarding sequences, and setup wizards. Exports: Stepper."
+---
+
+# Stepper
+
+Horizontal multi-step progress indicator for wizards and multi-stage forms.
+
+## Usage
+
+```tsx
+import { Stepper } from '@ds-foundation/react';
+
+<Stepper
+  steps={[
+    { label: 'Details', status: 'complete' },
+    { label: 'Review', description: 'Check your entries', status: 'active' },
+    { label: 'Confirm', status: 'pending' },
+  ]}
+/>
+```
+
+## Props
+
+### Stepper
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `steps` | `Step[]` | — | Array of step objects (required) |
+| `className` | `string` | — | Additional classes on the container |
+
+### Step object
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `label` | `string` | — | Step label displayed below the circle |
+| `description` | `string` | — | Optional secondary label |
+| `status` | `"pending" \| "active" \| "complete" \| "error"` | — | Visual and semantic state of the step |
+
+## Accessibility
+
+- The outer `<ol>` has `role="list"` and each step `<li>` has `role="listitem"`
+- The currently active step has `aria-current="step"`
+- Connector lines are decorative and hidden from assistive technology
+- Status colours (blue for active/complete, orange for error, grey for pending) are supplemented by icon and text cues

@@ -1,0 +1,78 @@
+---
+id: alert
+type: component
+version: 1.0.0
+status: stable
+variants: ["default", "destructive", "success", "info", "warning"]
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground"
+      variants:
+        default: "bg-background text-foreground"
+        destructive: "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive"
+        success: "border-ripple-green-50/50 text-ripple-green-50 [&>svg]:text-ripple-green-50 bg-ripple-green-50/10"
+        info: "border-ripple-blue-50/50 text-ripple-blue-50 [&>svg]:text-ripple-blue-50 bg-ripple-blue-10"
+        warning: "border-ripple-orange-50/50 text-ripple-orange-50 [&>svg]:text-ripple-orange-50 bg-ripple-orange-50/10"
+accessibility:
+  role: "alert"
+  wcag:
+    - "1.4.1 Use of Color"
+    - "1.4.3 Contrast (Minimum)"
+    - "4.1.3 Status Messages"
+  aria:
+    - "role=alert on the root element announces content to screen readers immediately"
+    - "Include an icon alongside text to avoid relying on color alone"
+  notes: "role=alert is live by default (aria-live=assertive). For non-urgent messages consider a different component to avoid interrupting screen reader flow."
+ai-prompt: "Alert renders a dismissible or persistent status banner. Use variant='default' for neutral information, 'destructive' for errors or irreversible actions, 'success' for confirmations, 'info' for tips and guidance, and 'warning' for caution states. Always pair with an icon (place it as a direct child before AlertTitle/AlertDescription) so the meaning is not conveyed by color alone. Compose with AlertTitle for a heading and AlertDescription for supporting text."
+---
+
+# Alert
+
+Status or informational banner with semantic color variants built on CVA.
+
+## Usage
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from '@ds-foundation/react';
+import { AlertCircle } from 'lucide-react';
+
+<Alert variant="destructive">
+  <AlertCircle className="h-4 w-4" />
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>Your session has expired. Please sign in again.</AlertDescription>
+</Alert>
+
+<Alert variant="success">
+  <AlertTitle>Payment confirmed</AlertTitle>
+  <AlertDescription>Your transaction was processed successfully.</AlertDescription>
+</Alert>
+```
+
+## Props
+
+### Alert
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive" \| "success" \| "info" \| "warning"` | `"default"` | Semantic color style |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root `<div>` |
+
+### AlertTitle
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `...rest` | `HTMLAttributes<HTMLHeadingElement>` | — | Forwarded to `<h5>` |
+
+### AlertDescription
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `...rest` | `HTMLAttributes<HTMLParagraphElement>` | — | Forwarded to `<div>` |
+
+## Accessibility
+
+- Root element carries `role="alert"` — content is announced immediately to assistive technology (equivalent to `aria-live="assertive"`)
+- Always include a non-color indicator (icon or text prefix) alongside the variant color so the message is not conveyed by color alone
+- For non-urgent status messages, prefer a component without `role="alert"` to avoid interrupting screen reader flow

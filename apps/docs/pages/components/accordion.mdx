@@ -1,0 +1,59 @@
+---
+title: Accordion
+---
+
+# Accordion
+
+Vertically stacked collapsible sections for progressively revealing content.
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@ds-foundation/react';
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Section title</AccordionTrigger>
+    <AccordionContent>Section body content.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Another section</AccordionTrigger>
+    <AccordionContent>More content here.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Props
+
+### Accordion (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `"single" \| "multiple"` | — | Whether one or many items can be open simultaneously |
+| `collapsible` | `boolean` | `false` | Allow all items to be closed when `type="single"` |
+| `defaultValue` | `string \| string[]` | — | Initially open item value(s) |
+| `value` | `string \| string[]` | — | Controlled open item(s) |
+| `onValueChange` | `(value: string \| string[]) => void` | — | Called when open state changes |
+
+### AccordionItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Unique identifier (required) |
+| `disabled` | `boolean` | `false` | Prevents toggling |
+
+### AccordionTrigger / AccordionContent
+
+Accept all standard HTML attributes plus `className`.
+
+## Accessibility
+
+- `aria-expanded` on the trigger reflects open/closed state automatically
+- `aria-controls` links each trigger to its content panel
+- Content panels receive `role="region"` with `aria-labelledby` pointing to the trigger
+- Keyboard: `Space` / `Enter` toggles; `Arrow Up/Down` moves focus between triggers

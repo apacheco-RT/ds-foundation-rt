@@ -1,0 +1,71 @@
+---
+title: ScrollArea
+---
+
+# ScrollArea
+
+Custom-styled scrollable container with a cross-browser consistent scrollbar, built on Radix UI.
+
+## Usage
+
+```tsx
+import { ScrollArea } from '@ds-foundation/react';
+
+<ScrollArea className="h-72 w-48 rounded-md border">
+  <div className="p-4">
+    {Array.from({ length: 50 }, (_, i) => (
+      <div key={i} className="text-sm py-1">Item {i + 1}</div>
+    ))}
+  </div>
+</ScrollArea>
+```
+
+### Horizontal scrolling
+
+```tsx
+import { ScrollArea, ScrollBar } from '@ds-foundation/react';
+
+<ScrollArea className="w-96 whitespace-nowrap rounded-md border">
+  <div className="flex w-max gap-4 p-4">
+    {tags.map(tag => (
+      <div key={tag} className="shrink-0 rounded-md bg-muted px-3 py-2 text-sm">
+        {tag}
+      </div>
+    ))}
+  </div>
+  <ScrollBar orientation="horizontal" />
+</ScrollArea>
+```
+
+### With accessible label
+
+```tsx
+<ScrollArea
+  className="h-72"
+  aria-label="Recent transactions"
+>
+  {/* content */}
+</ScrollArea>
+```
+
+## Props
+
+### ScrollArea
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional classes; set a fixed height to trigger scrolling |
+| `children` | `ReactNode` | — | Scrollable content |
+
+### ScrollBar
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | Scrollbar axis |
+| `className` | `string` | — | Additional classes |
+
+## Accessibility
+
+- Radix ScrollArea preserves native scroll behaviour for keyboard and assistive technology users.
+- The custom scrollbar is `touch-none` to prevent drag-to-scroll conflicts on touch devices.
+- Provide `aria-label` or `aria-labelledby` when the `ScrollArea` forms a distinct scrollable region.

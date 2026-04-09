@@ -1,0 +1,95 @@
+---
+id: drawer
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background"
+accessibility:
+  role: "dialog"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=dialog on DrawerContent"
+    - "aria-labelledby pointing to DrawerTitle"
+    - "aria-describedby pointing to DrawerDescription"
+  notes: "Focus is trapped inside the drawer when open. Escape or dragging the handle closes it. The drag handle is a decorative div; no additional ARIA needed. shouldScaleBackground=true scales the background page by default."
+ai-prompt: "Drawer is a slide-in panel built on the vaul library, defaulting to sliding up from the bottom. Use it for supplemental panels, detail views, or form sheets that should feel native-mobile while remaining accessible on desktop. The Drawer root defaults shouldScaleBackground to true. Compose DrawerContent with DrawerHeader (DrawerTitle + DrawerDescription) and DrawerFooter for actions. A visual drag-handle div is rendered automatically inside DrawerContent. Key exports: Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription, DrawerClose, DrawerOverlay, DrawerPortal."
+---
+
+# Drawer
+
+Slide-in panel (defaults to bottom) built on the vaul library.
+
+## Usage
+
+```tsx
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerClose,
+} from '@ds-foundation/react';
+import { Button } from '@ds-foundation/react';
+
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button variant="outline">Open Drawer</Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Edit Profile</DrawerTitle>
+      <DrawerDescription>
+        Make changes to your profile here.
+      </DrawerDescription>
+    </DrawerHeader>
+    <div className="p-4">
+      {/* form content */}
+    </div>
+    <DrawerFooter>
+      <Button>Save</Button>
+      <DrawerClose asChild>
+        <Button variant="outline">Cancel</Button>
+      </DrawerClose>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>
+```
+
+## Props
+
+### Drawer (root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `shouldScaleBackground` | `boolean` | `true` | Scales the background page when drawer opens |
+| `direction` | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"` | Edge the drawer slides in from |
+
+### DrawerContent
+
+Accepts all vaul `Drawer.Content` props plus `className`. A drag-handle bar is rendered automatically at the top.
+
+### DrawerHeader / DrawerFooter
+
+Plain `<div>` wrappers accepting all `HTMLDivElement` props.
+
+| Component | Layout |
+|-----------|--------|
+| `DrawerHeader` | `grid gap-1.5 p-4 text-center sm:text-left` |
+| `DrawerFooter` | `mt-auto flex flex-col gap-2 p-4` |
+
+## Accessibility
+
+- `DrawerContent` renders with `role="dialog"`, `aria-labelledby`, and `aria-describedby`.
+- Focus is trapped inside the drawer; Escape or the close button dismisses it.
+- The drag-handle is a decorative `<div>` with no ARIA role.

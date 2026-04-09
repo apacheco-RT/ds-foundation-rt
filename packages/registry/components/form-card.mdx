@@ -1,0 +1,89 @@
+---
+id: form-card
+type: component
+version: 1.0.0
+status: stable
+variants:
+  - tall
+  - long
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "border rounded-lg p-4 transition-all duration-150 outline-none focus-visible:ring-4 focus-visible:ring-[#65BEFF] focus-visible:ring-offset-0"
+accessibility:
+  role: "button"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=button on the card root"
+    - "aria-pressed reflecting the selected state"
+    - "aria-disabled reflecting the disabled state"
+    - "tabIndex=-1 when disabled to remove from tab order"
+  notes: "Activated by Enter or Space key in addition to click. Disabled cards are removed from tab order via tabIndex=-1. Selection indicator (radio or checkbox) is purely visual — ARIA state is carried by aria-pressed on the card root."
+ai-prompt: "FormCard is a selectable card component for radio-style or checkbox-style option selection in forms. Use it when users need to pick from a set of options presented as cards rather than native radio/checkbox inputs — for example, payment method selection, plan tiers, or configuration presets. It supports two layouts: tall (stacked, default) with the indicator and icon on top, and long (horizontal) with the indicator on the left. Key props: label (required), description, icon (ReactNode), selected (boolean), disabled (boolean), selectionType ('radio' | 'checkbox', default 'radio'), layout ('tall' | 'long', default 'tall'), onClick. Export: FormCard."
+---
+
+# FormCard
+
+Selectable card for radio-style or checkbox-style option picking in forms.
+
+## Usage
+
+```tsx
+import { FormCard } from '@ds-foundation/react';
+import { CreditCardIcon } from 'lucide-react';
+
+// Radio group (default)
+const [selected, setSelected] = React.useState('card');
+
+<div className="grid grid-cols-2 gap-3">
+  <FormCard
+    label="Credit Card"
+    description="Pay with Visa or Mastercard"
+    icon={<CreditCardIcon />}
+    selected={selected === 'card'}
+    onClick={() => setSelected('card')}
+  />
+  <FormCard
+    label="Bank Transfer"
+    description="ACH or wire transfer"
+    selected={selected === 'bank'}
+    onClick={() => setSelected('bank')}
+  />
+</div>
+
+// Checkbox style, horizontal layout
+<FormCard
+  label="Enable notifications"
+  description="Receive email alerts"
+  selectionType="checkbox"
+  layout="long"
+  selected={enabled}
+  onClick={() => setEnabled(v => !v)}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | **Required.** Primary option label |
+| `description` | `string` | — | Supporting description text |
+| `icon` | `React.ReactNode` | — | Optional icon displayed on the card |
+| `selected` | `boolean` | `false` | Whether this card is selected |
+| `disabled` | `boolean` | `false` | Disables interaction and dims the card |
+| `selectionType` | `"radio" \| "checkbox"` | `"radio"` | Visual indicator style |
+| `layout` | `"tall" \| "long"` | `"tall"` | `tall` = stacked; `long` = horizontal |
+| `onClick` | `() => void` | — | Called on click or Enter/Space keypress |
+| `className` | `string` | — | Additional classes on the root element |
+
+## Accessibility
+
+- The card root renders as `role="button"` with `aria-pressed` (selected state) and `aria-disabled`.
+- Disabled cards have `tabIndex=-1` and do not respond to click or keyboard.
+- Activated by Enter or Space in addition to mouse click.
+- The visual radio/checkbox indicator is decorative; selection state is carried by `aria-pressed`.
+- Focus ring uses a 4px blue ring (`#65BEFF`) on `focus-visible`.

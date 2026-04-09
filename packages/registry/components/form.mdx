@@ -1,0 +1,113 @@
+---
+id: form
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "space-y-2"
+accessibility:
+  role: "group"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "aria-invalid on FormControl when field has an error"
+    - "aria-describedby linking FormControl to FormDescription and FormMessage"
+    - "FormLabel htmlFor is wired automatically to the field's generated id"
+    - "FormMessage is conditionally rendered only when error or children exist"
+  notes: "Built on React Hook Form's FormProvider and Controller. FormField wraps Controller and provides field context. useFormField hook exposes id, name, and field state for custom field implementations. FormLabel turns red (text-destructive) on error automatically."
+ai-prompt: "Form is a React Hook Form integration layer built on Radix UI label primitives. Use it to build validated, accessible forms. Wrap the react-hook-form useForm instance in Form (re-export of FormProvider), then use FormField to connect each field to the form, wrapping the input in FormItem > FormLabel + FormControl + FormDescription + FormMessage. FormControl handles aria-invalid, aria-describedby, and id wiring automatically. useFormField is available for custom field components. Key exports: Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, useFormField."
+---
+
+# Form
+
+React Hook Form integration with automatic ARIA wiring and error display.
+
+## Usage
+
+```tsx
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+} from '@ds-foundation/react';
+import { Input } from '@ds-foundation/react';
+import { Button } from '@ds-foundation/react';
+
+const schema = z.object({ email: z.string().email() });
+
+function MyForm() {
+  const form = useForm({ resolver: zodResolver(schema) });
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(console.log)} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="you@example.com" {...field} />
+              </FormControl>
+              <FormDescription>We will never share your email.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Submit</Button>
+      </form>
+    </Form>
+  );
+}
+```
+
+## Props
+
+### FormField
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `control` | `Control<TFieldValues>` | — | react-hook-form control object |
+| `name` | `FieldPath<TFieldValues>` | — | Field name in the form schema |
+| `render` | `({ field, fieldState, formState }) => ReactElement` | — | Render prop receiving field bindings |
+
+### FormItem
+
+Wraps a single field group. Generates a unique `id` via `React.useId()` and provides it via context.
+
+### FormLabel
+
+Automatically connects `htmlFor` to the field's generated id. Applies `text-destructive` on error.
+
+### FormControl
+
+Wires `id`, `aria-invalid`, and `aria-describedby` to the child input element via Radix `Slot`.
+
+### FormDescription
+
+Renders a `<p>` with helper text. Receives the `formDescriptionId` so `aria-describedby` can reference it.
+
+### FormMessage
+
+Renders validation error message from react-hook-form, or custom `children` as a fallback. Returns `null` when no message exists.
+
+## Accessibility
+
+- `FormControl` sets `aria-invalid="true"` and adds `formMessageId` to `aria-describedby` when the field has an error.
+- `FormLabel` is connected to the input via `htmlFor` — no manual wiring required.
+- `FormMessage` is only rendered when there is content, preventing empty ARIA references.
+- `useFormField` throws descriptive errors if used outside `<FormField>` or `<FormItem>`.

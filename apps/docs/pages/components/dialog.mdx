@@ -1,0 +1,73 @@
+---
+title: Dialog
+---
+
+# Dialog
+
+Modal dialog built on Radix UI primitives with overlay, animations, and built-in close button.
+
+## Usage
+
+```tsx
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from '@ds-foundation/react';
+import { Button } from '@ds-foundation/react';
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="outline">Open Dialog</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Are you sure?</DialogTitle>
+      <DialogDescription>
+        This action cannot be undone.
+      </DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <DialogClose asChild>
+        <Button variant="outline">Cancel</Button>
+      </DialogClose>
+      <Button>Confirm</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```
+
+## Props
+
+### DialogHeader / DialogFooter
+
+Plain `<div>` wrappers; accept all `HTMLDivElement` props.
+
+| Component | Layout |
+|-----------|--------|
+| `DialogHeader` | Column, centered on mobile / left-aligned on sm+ |
+| `DialogFooter` | Stacked on mobile / row right-aligned on sm+ |
+
+### DialogTitle
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional Tailwind classes |
+
+### DialogDescription
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional Tailwind classes |
+
+## Accessibility
+
+- `DialogContent` carries `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, and `aria-describedby`.
+- Focus is trapped inside the dialog while open; restored to trigger on close.
+- Escape closes the dialog.
+- The built-in close button includes an `sr-only` "Close" label.

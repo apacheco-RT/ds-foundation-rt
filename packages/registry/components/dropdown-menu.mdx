@@ -1,0 +1,125 @@
+---
+id: dropdown-menu
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "z-50 max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-sm border-2 border-foreground bg-popover p-1 text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out"
+accessibility:
+  role: "menu"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=menu on DropdownMenuContent"
+    - "role=menuitem on DropdownMenuItem"
+    - "role=menuitemcheckbox on DropdownMenuCheckboxItem"
+    - "role=menuitemradio on DropdownMenuRadioItem"
+    - "aria-checked on checkbox and radio items"
+    - "aria-haspopup=menu on the trigger"
+    - "aria-expanded on the trigger"
+    - "aria-disabled on disabled items"
+  notes: "Opened by clicking the trigger. Arrow keys navigate items; Enter/Space activate; Escape closes. Focus is trapped inside the open menu and returned to trigger on close."
+ai-prompt: "DropdownMenu is a button-triggered dropdown built on Radix UI. Use it for action menus, settings menus, or multi-option selectors that open on click. Compose DropdownMenuTrigger (wrap with asChild for custom trigger elements) with DropdownMenuContent containing DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuLabel, DropdownMenuSeparator, and DropdownMenuShortcut. Submenus are built with DropdownMenuSub + DropdownMenuSubTrigger + DropdownMenuSubContent. DropdownMenuGroup and DropdownMenuRadioGroup provide semantic grouping. The inset prop on items and labels adds left padding. DropdownMenuContent uses a 2px foreground border."
+---
+
+# DropdownMenu
+
+Button-triggered dropdown menu built on Radix UI primitives.
+
+## Usage
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+} from '@ds-foundation/react';
+import { Button } from '@ds-foundation/react';
+
+<DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <Button variant="outline">Options</Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>
+      Profile <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
+    </DropdownMenuItem>
+    <DropdownMenuCheckboxItem checked={showStatus} onCheckedChange={setShowStatus}>
+      Show Status
+    </DropdownMenuCheckboxItem>
+    <DropdownMenuSeparator />
+    <DropdownMenuSub>
+      <DropdownMenuSubTrigger>More</DropdownMenuSubTrigger>
+      <DropdownMenuSubContent>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+      </DropdownMenuSubContent>
+    </DropdownMenuSub>
+    <DropdownMenuSeparator />
+    <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+      <DropdownMenuRadioItem value="light">Light</DropdownMenuRadioItem>
+      <DropdownMenuRadioItem value="dark">Dark</DropdownMenuRadioItem>
+    </DropdownMenuRadioGroup>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+## Props
+
+### DropdownMenuContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `sideOffset` | `number` | `4` | Gap in px between trigger and content |
+
+### DropdownMenuItem / DropdownMenuSubTrigger / DropdownMenuLabel
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `inset` | `boolean` | `false` | Adds `pl-8` to align with indicator siblings |
+
+### DropdownMenuCheckboxItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | — | Controlled checked state |
+| `onCheckedChange` | `(checked: boolean) => void` | — | Called when state changes |
+
+### DropdownMenuRadioItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Value for this radio option |
+
+### DropdownMenuRadioGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Currently selected value |
+| `onValueChange` | `(value: string) => void` | — | Called when selection changes |
+
+## Accessibility
+
+- The trigger receives `aria-haspopup="menu"` and `aria-expanded`.
+- `DropdownMenuContent` has `role="menu"`.
+- Arrow keys navigate items; Enter/Space activate; Escape closes.
+- Checkbox items: `role="menuitemcheckbox"` + `aria-checked`.
+- Radio items: `role="menuitemradio"` + `aria-checked`.
+- Disabled items receive `aria-disabled` and `pointer-events-none`.

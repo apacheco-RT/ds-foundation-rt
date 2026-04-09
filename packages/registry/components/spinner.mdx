@@ -1,0 +1,64 @@
+---
+id: spinner
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes:
+  - sm
+  - md
+  - lg
+adapters:
+  tailwind:
+    default:
+      base: "animate-spin"
+accessibility:
+  role: "status"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=status on the outer span"
+    - "aria-label='Loading' on the outer span"
+    - "sr-only span with text 'Loading…' for screen readers"
+  notes: "The visible SVG is purely decorative. All screen reader communication is via the sr-only text inside the role=status wrapper."
+ai-prompt: "Spinner is a simple animated loading indicator using an SVG circle with a dash-array animation. Use it to signal asynchronous activity in buttons, empty states, and overlay loaders. Size is controlled by the size prop (sm=16px, md=24px, lg=32px). The component is accessible by default with role=status and sr-only text. Exports: Spinner."
+---
+
+# Spinner
+
+Animated SVG loading indicator with accessible screen reader announcement.
+
+## Usage
+
+```tsx
+import { Spinner } from '@ds-foundation/react';
+
+// Default (md)
+<Spinner />
+
+// Small inside a button
+<button disabled>
+  <Spinner size="sm" />
+  Saving…
+</button>
+
+// Large overlay
+<div className="flex items-center justify-center h-64">
+  <Spinner size="lg" />
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Controls width/height (16px / 24px / 32px) |
+| `className` | `string` | — | Additional classes applied to the SVG element |
+
+## Accessibility
+
+- Outer `<span>` carries `role="status"` and `aria-label="Loading"` so screen readers announce loading state
+- A visually hidden `<span className="sr-only">Loading…</span>` provides text for readers that ignore `aria-label` on non-interactive elements
+- The SVG itself is purely decorative and has no accessible name

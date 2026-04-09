@@ -1,0 +1,44 @@
+---
+title: DatePicker
+---
+
+# DatePicker
+
+Calendar popover for single-date selection built from Popover, Calendar, and Button.
+
+## Usage
+
+```tsx
+import { DatePicker } from '@ds-foundation/react';
+
+// Uncontrolled
+<DatePicker defaultValue={new Date()} placeholder="Select date" />
+
+// Controlled
+const [date, setDate] = React.useState<Date | undefined>();
+
+<DatePicker
+  value={date}
+  onChange={setDate}
+  placeholder="Pick a date"
+  disabled={false}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `Date \| undefined` | — | Controlled selected date |
+| `defaultValue` | `Date \| undefined` | — | Uncontrolled initial date |
+| `onChange` | `(date: Date \| undefined) => void` | — | Called when the date changes or is cleared |
+| `placeholder` | `string` | `"Pick a date"` | Text shown when no date is selected |
+| `disabled` | `boolean` | `false` | Disables the trigger button |
+| `className` | `string` | — | Additional classes on the trigger button |
+
+## Accessibility
+
+- The trigger renders as a `<button>` — keyboard-accessible with Enter/Space.
+- Calendar navigation uses arrow keys; Tab moves between interactive controls.
+- The selected date cell carries `aria-selected="true"`.
+- A Clear button removes the selection without reopening the picker.

@@ -1,0 +1,92 @@
+---
+id: slider
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "relative flex w-full touch-none select-none items-center"
+accessibility:
+  role: "slider"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "2.1.1 Keyboard"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=\"slider\" on each thumb"
+    - "aria-valuemin, aria-valuemax, aria-valuenow on each thumb"
+    - "aria-label or aria-labelledby on root or individual thumbs"
+    - "aria-orientation=\"horizontal\" (default) or \"vertical\""
+  notes: "Supports single and range (multi-thumb) values. Arrow keys move thumb by step; Page Up/Down move by larger increments; Home/End jump to min/max."
+ai-prompt: "Slider is a range input control built on Radix UI for selecting a numeric value (or range) within a defined min–max. Use it for volume controls, price range filters, opacity pickers, or any continuous value selection. Pass value (array for range) and onValueChange for controlled usage, or defaultValue for uncontrolled. min defaults to 0, max to 100, step to 1. For a range slider pass two values: [20, 80]. The track fills from the leftmost thumb to the rightmost, coloured with bg-primary. Always provide an aria-label on the root for screen readers."
+---
+
+# Slider
+
+Range slider input for selecting a numeric value or range, built on Radix UI.
+
+## Usage
+
+```tsx
+import { Slider } from '@ds-foundation/react';
+
+// Single value
+<Slider
+  defaultValue={[50]}
+  min={0}
+  max={100}
+  step={1}
+  aria-label="Volume"
+/>
+
+// Controlled
+const [volume, setVolume] = React.useState([50]);
+
+<Slider
+  value={volume}
+  onValueChange={setVolume}
+  min={0}
+  max={100}
+  aria-label="Volume"
+/>
+```
+
+### Range slider (two thumbs)
+
+```tsx
+const [range, setRange] = React.useState([20, 80]);
+
+<Slider
+  value={range}
+  onValueChange={setRange}
+  min={0}
+  max={100}
+  step={5}
+  aria-label="Price range"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number[]` | — | Controlled value(s); pass two numbers for a range |
+| `defaultValue` | `number[]` | — | Initial value(s) (uncontrolled) |
+| `onValueChange` | `(value: number[]) => void` | — | Callback when value changes |
+| `min` | `number` | `0` | Minimum allowed value |
+| `max` | `number` | `100` | Maximum allowed value |
+| `step` | `number` | `1` | Increment between values |
+| `disabled` | `boolean` | `false` | Disables interaction |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Slider axis |
+| `className` | `string` | — | Additional classes |
+| `aria-label` | `string` | — | Accessible label for the slider |
+
+## Accessibility
+
+- Each thumb has `role="slider"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`, and `aria-orientation`.
+- Arrow keys move the focused thumb by `step`; Page Up/Down move by larger increments; Home/End jump to min/max.
+- The component is `touch-none select-none` to prevent accidental text selection during drag.
+- Provide `aria-label` on the root or link it to a visible label via `aria-labelledby`.

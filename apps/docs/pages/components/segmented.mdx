@@ -1,0 +1,74 @@
+---
+title: Segmented
+---
+
+# Segmented
+
+Segmented control for selecting one option from a small mutually-exclusive set.
+
+## Usage
+
+```tsx
+import { Segmented } from '@ds-foundation/react';
+
+const options = [
+  { label: 'List', value: 'list' },
+  { label: 'Grid', value: 'grid' },
+  { label: 'Map', value: 'map', disabled: true },
+];
+
+// Uncontrolled
+<Segmented options={options} defaultValue="list" />
+```
+
+### Controlled
+
+```tsx
+const [view, setView] = React.useState('list');
+
+<Segmented
+  options={options}
+  value={view}
+  onChange={setView}
+/>
+```
+
+### With icon labels
+
+```tsx
+import { ListIcon, GridIcon } from 'lucide-react';
+
+<Segmented
+  options={[
+    { label: <><ListIcon className="h-4 w-4 mr-1" />List</>, value: 'list' },
+    { label: <><GridIcon className="h-4 w-4 mr-1" />Grid</>, value: 'grid' },
+  ]}
+  defaultValue="list"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `options` | `SegmentedOption[]` | — | Array of segment definitions (required) |
+| `value` | `string` | — | Controlled active value |
+| `defaultValue` | `string` | — | Initial active value (uncontrolled) |
+| `onChange` | `(value: string) => void` | — | Callback when selection changes |
+| `className` | `string` | — | Additional classes for the container |
+
+### SegmentedOption
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `ReactNode` | — | Display content for the segment |
+| `value` | `string` | — | Unique value identifier |
+| `disabled` | `boolean` | `false` | Prevents selection; skipped in keyboard navigation |
+
+## Accessibility
+
+- Container has `role="radiogroup"`.
+- Each segment button has `role="radio"` and `aria-checked`.
+- Roving tabIndex keeps only the active segment in the tab sequence.
+- Arrow Left/Right, Home, and End navigate between enabled segments.
+- Disabled segments have the native `disabled` attribute and are skipped by arrow key navigation.

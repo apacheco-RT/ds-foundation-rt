@@ -1,0 +1,60 @@
+---
+id: separator
+type: component
+version: 1.0.0
+status: stable
+variants: []
+sizes: []
+adapters:
+  tailwind:
+    default:
+      base: "shrink-0 bg-border"
+accessibility:
+  role: "separator"
+  wcag:
+    - "1.4.3 Contrast (Minimum)"
+    - "4.1.2 Name, Role, Value"
+  aria:
+    - "role=\"separator\" when decorative=false (semantic divider)"
+    - "aria-orientation=\"horizontal\" or \"vertical\" matching the orientation prop"
+    - "role=\"none\" when decorative=true (default) — hidden from accessibility tree"
+  notes: "Default is decorative=true which hides the element from screen readers. Set decorative=false for semantic section separators that should be in the accessibility tree."
+ai-prompt: "Separator is a thin horizontal or vertical divider line built on Radix UI's separator primitive. Use it to visually separate sections of content within a card, menu, sidebar, or form. It defaults to horizontal and decorative (hidden from accessibility tree). Set orientation=\"vertical\" for inline separators in toolbars or nav bars — pair with explicit height. Set decorative=false when the separator carries structural meaning and should be announced by screen readers. There are no variants or sizes — use className to adjust thickness, color, or margin."
+---
+
+# Separator
+
+Horizontal or vertical divider for visually separating content sections, built on Radix UI.
+
+## Usage
+
+```tsx
+import { Separator } from '@ds-foundation/react';
+
+// Horizontal (default)
+<Separator className="my-4" />
+
+// Vertical — requires explicit height on parent or self
+<div className="flex items-center gap-4 h-5">
+  <span>Left</span>
+  <Separator orientation="vertical" />
+  <span>Right</span>
+</div>
+
+// Semantic separator (announced by screen readers)
+<Separator decorative={false} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direction of the divider |
+| `decorative` | `boolean` | `true` | When true, hidden from accessibility tree (role="none") |
+| `className` | `string` | — | Additional classes for color, margin, or size |
+
+## Accessibility
+
+- When `decorative={true}` (default), the element has `role="none"` and is hidden from screen readers — correct for most visual separators.
+- When `decorative={false}`, the element has `role="separator"` and `aria-orientation`, making it discoverable and announceable by assistive technology.
+- Horizontal renders as `h-[1px] w-full`; vertical as `h-full w-[1px]`.
