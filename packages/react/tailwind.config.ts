@@ -3,125 +3,73 @@ import type { Config } from 'tailwindcss';
 import animate from 'tailwindcss-animate';
 
 export default {
-  darkMode: ['class'],
+  // Dark mode fires on [data-theme="dark"] attribute on <html>.
+  // This keeps the `dark:` Tailwind variant working without a class toggle.
+  darkMode: ['selector', '[data-theme="dark"]'],
   content: {
     // Resolve globs relative to this config file, not process.cwd().
-    // Required when the PostCSS plugin is used from a different CWD (e.g. Storybook viteFinal).
+    // Required when PostCSS is invoked from a different CWD.
     relative: true,
     files: ['./src/**/*.{ts,tsx}'],
   },
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
-    },
     extend: {
       fontFamily: {
         sans: ['Inter', 'Arial', 'sans-serif'],
       },
+      // ring-offset uses ringOffsetColor, not colors
+      ringOffsetColor: {
+        'ds-surface': 'var(--ds-surface)',
+        'ds-bg':      'var(--ds-bg)',
+      },
       colors: {
-        border: 'var(--border)',
-        input: 'var(--input)',
-        ring: 'var(--ring)',
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        sidebar: 'var(--sidebar-bg)',
-        header: {
-          DEFAULT: 'var(--header-bg)',
-          foreground: 'var(--header-fg)',
-        },
-        tableheader: {
-          DEFAULT: 'var(--table-header-bg)',
-          foreground: 'var(--table-header-fg)',
-        },
-        primary: {
-          DEFAULT: 'var(--primary)',
-          foreground: 'var(--primary-foreground)',
-        },
-        secondary: {
-          DEFAULT: 'var(--secondary)',
-          foreground: 'var(--secondary-foreground)',
-        },
-        destructive: {
-          DEFAULT: 'var(--destructive)',
-          foreground: 'var(--destructive-foreground)',
-        },
-        muted: {
-          DEFAULT: 'var(--muted)',
-          foreground: 'var(--muted-foreground)',
-        },
-        accent: {
-          DEFAULT: 'var(--accent)',
-          foreground: 'var(--accent-foreground)',
-        },
-        popover: {
-          DEFAULT: 'var(--popover)',
-          foreground: 'var(--popover-foreground)',
-        },
-        card: {
-          DEFAULT: 'var(--card)',
-          foreground: 'var(--card-foreground)',
-        },
-        gray: {
-          '25': 'var(--gray-25)',
-          '50': 'var(--gray-50)',
-          '100': 'var(--gray-100)',
-          '200': 'var(--gray-200)',
-          '300': 'var(--gray-300)',
-          '400': 'var(--gray-400)',
-          '500': 'var(--gray-500)',
-          '600': 'var(--gray-600)',
-          '700': 'var(--gray-700)',
-          '800': 'var(--gray-800)',
-          '900': 'var(--gray-900)',
-        },
-        blue: {
-          '100': 'var(--blue-100)',
-          '200': 'var(--blue-200)',
-          '300': 'var(--blue-300)',
-          '400': 'var(--blue-400)',
-          '500': 'var(--blue-500)',
-          '600': 'var(--blue-600)',
-          '700': 'var(--blue-700)',
-          '800': 'var(--blue-800)',
-          '900': 'var(--blue-900)',
-        },
-        green: {
-          '100': 'var(--green-100)',
-          '200': 'var(--green-200)',
-          '300': 'var(--green-300)',
-          '400': 'var(--green-400)',
-          '500': 'var(--green-500)',
-        },
-        purple: {
-          '100': 'var(--purple-100)',
-          '200': 'var(--purple-200)',
-          '300': 'var(--purple-300)',
-          '400': 'var(--purple-400)',
-          '500': 'var(--purple-500)',
-        },
-        pink: {
-          '100': 'var(--pink-100)',
-          '200': 'var(--pink-200)',
-          '300': 'var(--pink-300)',
-          '400': 'var(--pink-400)',
-          '500': 'var(--pink-500)',
-        },
-        orange: {
-          '100': 'var(--orange-100)',
-          '200': 'var(--orange-200)',
-          '300': 'var(--orange-300)',
-          '400': 'var(--orange-400)',
-          '500': 'var(--orange-500)',
+        ds: {
+          bg:               'var(--ds-bg)',
+          surface:          'var(--ds-surface)',
+          'surface-up':     'var(--ds-surface-up)',
+          overlay:          'var(--ds-overlay)',
+          sunken:           'var(--ds-sunken)',
+          text:             'var(--ds-text)',
+          'text-muted':     'var(--ds-text-muted)',
+          'text-disabled':  'var(--ds-text-disabled)',
+          'text-inverse':   'var(--ds-text-inverse)',
+          border:           'var(--ds-border)',
+          'border-strong':  'var(--ds-border-strong)',
+          'border-focus':   'var(--ds-border-focus)',
+          primary:          'var(--ds-primary)',
+          'primary-hover':  'var(--ds-primary-hover)',
+          'primary-fg':     'var(--ds-primary-fg)',
+          'primary-subtle': 'var(--ds-primary-subtle)',
+          success:          'var(--ds-success)',
+          warning:          'var(--ds-warning)',
+          danger:           'var(--ds-danger)',
+          info:             'var(--ds-info)',
         },
       },
+      boxShadow: {
+        'ds-xs':  'var(--ds-shadow-xs)',
+        'ds-sm':  'var(--ds-shadow-sm)',
+        'ds-md':  'var(--ds-shadow-md)',
+        'ds-lg':  'var(--ds-shadow-lg)',
+        'ds-xl':  'var(--ds-shadow-xl)',
+        'ds-2xl': 'var(--ds-shadow-2xl)',
+      },
+      transitionDuration: {
+        'ds-fast':   '150ms',
+        'ds-normal': '200ms',
+        'ds-slow':   '300ms',
+      },
+      transitionTimingFunction: {
+        'ds-default': 'var(--ds-ease-default)',
+        'ds-in':      'var(--ds-ease-in)',
+        'ds-out':     'var(--ds-ease-out)',
+        'ds-in-out':  'var(--ds-ease-in-out)',
+        'ds-spring':  'var(--ds-ease-spring)',
+      },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        lg: 'var(--ds-radius-lg)',
+        md: 'var(--ds-radius-md)',
+        sm: 'var(--ds-radius-sm)',
       },
       keyframes: {
         'accordion-down': {
