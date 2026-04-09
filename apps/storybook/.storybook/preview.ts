@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/react';
 import '@ds-foundation/tokens/css';
 import '@ds-foundation/tokens/css/dark';
-import '../../../packages/react/src/styles.css';
+import '../../../packages/react/src/styles/styles.css';
 
 const preview: Preview = {
   parameters: {
