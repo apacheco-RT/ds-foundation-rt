@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "Layout grid primitives — columns, gutters, breakpoints, max-widths, z-index.",
+  "$description": "Layout grid primitives — columns, gutters, breakpoints, max-widths.",
   "grid": {
     "columns": {
       "$type": "number",
@@ -39,18 +39,5 @@
       "full": { "$value": { "value": 100,  "unit": "%" } },
       "prose":{ "$value": { "value": 65,   "unit": "ch" } }
     }
-  },
-  "z-index": {
-    "$type": "number",
-    "below":    { "$value": -1 },
-    "base":     { "$value": 0 },
-    "raised":   { "$value": 10 },
-    "dropdown": { "$value": 100 },
-    "sticky":   { "$value": 200 },
-    "overlay":  { "$value": 300 },
-    "modal":    { "$value": 400 },
-    "popover":  { "$value": 500 },
-    "toast":    { "$value": 600 },
-    "max":      { "$value": 9999 }
   }
 }
