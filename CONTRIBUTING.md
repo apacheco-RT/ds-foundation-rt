@@ -2,7 +2,7 @@
 
 ## Before you start
 
-Check whether a component already exists in `packages/react/src/components/` or `packages/react/src/treasury/` before building something new.
+Check whether a component already exists in `packages/react/src/components/` before building something new.
 
 ---
 
@@ -15,7 +15,7 @@ Check whether a component already exists in `packages/react/src/components/` or 
 | `atoms/` | `packages/react/src/components/atoms/` | Single HTML element or Radix primitive, no DS composition |
 | `molecules/` | `packages/react/src/components/molecules/` | Composes atoms, moderately complex |
 | `organisms/` | `packages/react/src/components/organisms/` | Complex, feature-rich, may compose molecules |
-| `treasury/` | `packages/react/src/treasury/` | Ripple-specific domain components |
+| `organisms/` (domain) | Ship as a separate plugin | Domain/product-specific components |
 
 ### 2. Implement the component
 
@@ -45,7 +45,7 @@ Never hardcode visual values — use `--ds-*` semantic tokens or `ds.*` Tailwind
 
 ### 3. Add a Storybook story
 
-Create `packages/react/src/components/{layer}/MyComponent.stories.tsx` (or `packages/react/src/treasury/MyComponent.stories.tsx` for treasury) showing all variants and states.
+Create `packages/react/src/components/{layer}/MyComponent.stories.tsx` showing all variants and states.
 
 ### 4. Export from the barrel
 
@@ -80,6 +80,34 @@ npx changeset
 ### 8. Open a PR
 
 CI runs all validators automatically. The PR description should include what layer the component lives in and a link to the Storybook story.
+
+---
+
+## Styling Convention
+
+All components use **Tailwind `ds.*` utility classes exclusively** for color, spacing,
+and typography. Inline `style` props are never used for design token values.
+
+Rules:
+- Colors: `bg-ds-surface`, `text-ds-text`, `border-ds-border`
+- Interactive states must always be declared: `hover:`, `active:`, `focus-visible:`, `disabled:`
+- Focus ring pattern: `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-focus-ring focus-visible:ring-offset-2`
+- Disabled pattern: `disabled:pointer-events-none disabled:opacity-50`
+- Never hardcode colors, sizes, or spacing. If a token doesn't exist, add it to `semantic.css` first.
+
+---
+
+## Testing
+
+Every new component and every modified component requires tests. Use Vitest + React Testing Library.
+
+Run tests: `npm test` (from `packages/react/`)
+
+Requirements:
+- Render test (component renders without error)
+- Interaction state test for interactive components (click, keyboard)
+- Accessibility attribute test (aria-*, role) for components with semantic meaning
+- No snapshot tests — test behavior, not markup
 
 ---
 

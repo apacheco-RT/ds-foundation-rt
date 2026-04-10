@@ -6,7 +6,7 @@ Design system for the Ripple Treasury product — tokens, components, and theme 
 
 | Package | Purpose |
 |---|---|
-| `@ds-foundation/react` | React component library — atoms, molecules, organisms, treasury |
+| `@ds-foundation/react` | React component library — atoms, molecules, organisms |
 | `@ds-foundation/tokens` | Design tokens — CSS custom properties, Tailwind preset, JS exports (DTCG 2025.10) |
 | `apps/storybook` | Component development and visual review |
 | `apps/docs` | Documentation site |
@@ -29,10 +29,10 @@ That's the entire setup. No additional configuration, no peer deps to manage.
 Components are organized into four layers:
 
 ```
-atoms/       Button, Input, Badge, Checkbox, Label, Switch, Spinner, Typography…
+atoms/       Button, Input, Badge, Checkbox, Kbd, Label, Skeleton, Switch, Spinner, Typography…
 molecules/   Card, Form, Select, Tabs, Tooltip, DatePicker, Pagination…
-organisms/   Dialog, Drawer, NavigationMenu, Table, Accordion, Command…
-treasury/    MonoAmount, CurrencyBadge, StatusPill, KpiCard, FreshnessChip…
+organisms/   Accordion, AlertDialog, Command, Dialog, Drawer, Menubar, NavigationMenu,
+             Sidebar, Table…
 ```
 
 All components consume `--ds-*` CSS custom properties — they respond to light, dark, and wireframe themes automatically.
@@ -157,7 +157,6 @@ npm run dev
 - **atom** — single HTML element or Radix primitive, no DS component composition
 - **molecule** — composes atoms, moderately complex
 - **organism** — complex, feature-rich, may compose molecules and atoms
-- **treasury** — Ripple-specific, domain-semantic components
 
 ## Publishing
 
@@ -196,7 +195,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide.
 
 Quick path for adding a component:
 
-1. Pick the right layer: `atoms/` `molecules/` `organisms/` `treasury/`
+1. Pick the right layer: `atoms/` `molecules/` `organisms/`
 2. Create `packages/react/src/components/{layer}/MyComponent.tsx` using `React.forwardRef`
 3. Add `packages/react/src/components/{layer}/MyComponent.stories.tsx`
 4. Export from `packages/react/src/index.ts`
@@ -209,7 +208,7 @@ Never hardcode hex values — every visual property must come from a `--ds-*` to
 
 - **Single barrel export** — `import { Button } from '@ds-foundation/react'` pulls the full bundle. Tree-shaking is not currently supported. For an internal package this is acceptable; revisit if consumers need sub-entry-points.
 - **Form-related deps bundled** — `react-hook-form`, `zod`, and `date-fns` are included in the bundle. If your app already uses different form or date libraries, you're shipping both.
-- **No component tests yet** — render and interaction tests are the next priority before a v1 release.
+- **Partial component test coverage** — tests exist for all new and modified components; retroactive coverage for the full library is ongoing.
 - **Wireframe palette is hardcoded CSS** — `semantic.wireframe.css` uses hex values rather than token primitives. Intentional for now; updating the wireframe palette means editing the CSS directly.
 
 ## Tech stack
