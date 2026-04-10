@@ -1,6 +1,45 @@
 # DS Foundation
 
-Design system for the Ripple Treasury product — tokens, components, and theme infrastructure in one package.
+Design system for the Ripple Treasury product — tokens, components, brand assets, and theme infrastructure in one place.
+
+## Repository layout
+
+```
+ds-foundation/
+├── brand/                 Brand assets (logos, backgrounds) organised by product
+│   └── smartr/              SmartR suite — 32 logo variants, 48 background images
+├── packages/
+│   ├── tokens/              Design tokens (DTCG 2025.10) → CSS, Tailwind, JS, SCSS
+│   ├── react/               React component library (72 components)
+│   ├── core/                Framework-agnostic types and adapter contracts
+│   └── registry/            Machine-readable component specs (MDX + Velite)
+├── apps/
+│   ├── docs/                Documentation site (Next.js + Nextra)
+│   └── storybook/           Component development and visual review
+├── scripts/                 Token validation, registry build, Figma Code Connect
+└── template/                Reference Next.js app consuming the design system
+```
+
+### For designers
+
+| You need | Go here |
+|----------|---------|
+| Logos and brand assets | `brand/smartr/` |
+| Colour tokens with hex values | `packages/tokens/src/primitives/color.tokens.json` |
+| Semantic colour decisions | `packages/tokens/src/semantic/` |
+| Component API and variants | `apps/docs/` or `packages/registry/components/` |
+| Design principles | `DESIGN_PRINCIPLES.md` |
+
+### For engineers
+
+| You need | Go here |
+|----------|---------|
+| Install the React package | `npm install @ds-foundation/react` |
+| CSS custom properties (`--ds-*`) | `packages/tokens/build/css/variables.css` |
+| Tailwind config | `packages/tokens/build/tailwind/preset.css` |
+| JS token constants | `@ds-foundation/tokens` |
+| Component source | `packages/react/src/components/` |
+| Component docs | `apps/docs/pages/components/` |
 
 ## Packages
 
