@@ -67,6 +67,9 @@ export { Stepper, type StepperProps } from './components/molecules/Stepper';
 export { Tabs, TabsContent, TabsList, TabsTrigger } from './components/molecules/Tabs';
 export { ToggleGroup, ToggleGroupItem } from './components/molecules/ToggleGroup';
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/molecules/Tooltip';
+export { DetailCard, type DetailCardProps } from './components/molecules/DetailCard';
+export { FormCard, type FormCardProps } from './components/molecules/FormCard';
+export { KpiCard, type KpiCardProps } from './components/molecules/KpiCard';
 
 // ── Organisms ──────────────────────────────────
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './components/organisms/Accordion';

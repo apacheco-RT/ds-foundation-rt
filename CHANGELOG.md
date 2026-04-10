@@ -16,6 +16,9 @@ Per-package changelogs are in `packages/*/CHANGELOG.md`.
 - `BankingWindowDot` — banking window status dot (open/closing/closed)
 - `MonoAmount` — monospace financial amount with optional provenance interaction; exports `deriveFreshnessState`
 - `FreshnessChip` — data recency indicator (fresh/watch/stale) with optional refresh button
+- `DetailCard` — labelled section card molecule with h4 heading
+- `FormCard` — selectable card molecule for radio/checkbox option selection
+- `KpiCard` — metric display card molecule with optional trend indicator
 
 ## 0.3.0 — 2026-04-09
 

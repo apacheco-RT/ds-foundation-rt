@@ -12,11 +12,11 @@ Labels: unimplemented
 Labels: unimplemented
 
 ### DetailCard (#16) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### FormCard (#17) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### FreshnessChip (#18) — unimplemented
@@ -28,7 +28,7 @@ Labels: unimplemented
 Labels: unimplemented
 
 ### KpiCard (#20) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### MonoAmount (#21) — unimplemented
