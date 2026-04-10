@@ -58,7 +58,7 @@ Labels: unimplemented
 ## Atoms
 
 ### Alert (#27) — test-coverage
-- [ ] Missing test file
+- [x] Missing test file
 Labels: test-coverage
 
 ### AspectRatio (#28) — test-coverage, code-quality
@@ -71,12 +71,12 @@ Labels: test-coverage, code-quality
 Labels: test-coverage
 
 ### Badge (#30) — test-coverage, code-quality
-- [ ] Missing test file
+- [x] Missing test file
 - [ ] Missing React.forwardRef
 Labels: test-coverage, code-quality
 
 ### Checkbox (#31) — test-coverage
-- [ ] Missing test file
+- [x] Missing test file
 Labels: test-coverage
 
 ### Collapsible (#32) — test-coverage, code-quality
@@ -90,7 +90,7 @@ Labels: test-coverage, code-quality
 Labels: test-coverage, code-quality
 
 ### Input (#34) — test-coverage
-- [ ] Missing test file
+- [x] Missing test file
 Labels: test-coverage
 
 ### Label (#35) — test-coverage
@@ -102,7 +102,7 @@ Labels: test-coverage
 Labels: test-coverage
 
 ### RadioGroup (#37) — test-coverage
-- [ ] Missing test file
+- [x] Missing test file
 Labels: test-coverage
 
 ### Separator (#38) — test-coverage
@@ -123,7 +123,7 @@ Labels: test-coverage
 Labels: test-coverage, code-quality
 
 ### Switch (#42) — test-coverage
-- [ ] Missing test file
+- [x] Missing test file
 Labels: test-coverage
 
 ### Textarea (#43) — test-coverage
@@ -136,7 +136,7 @@ Labels: test-coverage
 Labels: test-coverage, code-quality
 
 ### Toggle (#45) — test-coverage
-- [ ] Missing test file
+- [x] Missing test file
 Labels: test-coverage
 
 ## Molecules
