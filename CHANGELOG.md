@@ -7,6 +7,15 @@ Per-package changelogs are in `packages/*/CHANGELOG.md`.
 
 ### Added
 - `IconButton` — 6-variant icon button atom with forwardRef and aria-label support
+- `CurrencyBadge` — currency denomination pill with aria-label
+- `Tag` — coloured label chip with optional remove button and icon slot
+- `StatusPill` — payment workflow status badge with role=status
+- `StatusRing` — urgency dot indicator (aria-hidden, optional pulse)
+- `StateBadge` — workflow state badge with optional next-state transition
+- `UrgencyBadge` — urgency level pill (critical/watch/clear/skip)
+- `BankingWindowDot` — banking window status dot (open/closing/closed)
+- `MonoAmount` — monospace financial amount with optional provenance interaction; exports `deriveFreshnessState`
+- `FreshnessChip` — data recency indicator (fresh/watch/stale) with optional refresh button
 
 ## 0.3.0 — 2026-04-09
 

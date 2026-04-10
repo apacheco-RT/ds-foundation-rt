@@ -25,6 +25,15 @@ export { Display, H1, H2, H3, H4, H5, BodyLarge, Body, BodySmall, Caption } from
 export { DesignSystemProvider, useTheme } from './components/atoms/DesignSystemProvider';
 export type { Theme, DesignSystemProviderProps } from './components/atoms/DesignSystemProvider';
 export { ThemeToggle } from './components/atoms/ThemeToggle';
+export { CurrencyBadge, type CurrencyBadgeProps } from './components/atoms/CurrencyBadge';
+export { Tag, type TagProps } from './components/atoms/Tag';
+export { StatusPill, type StatusPillProps, type InstructionStatus } from './components/atoms/StatusPill';
+export { StatusRing, type StatusRingProps, type Urgency } from './components/atoms/StatusRing';
+export { StateBadge, type StateBadgeProps, type StateBadgeIntent } from './components/atoms/StateBadge';
+export { UrgencyBadge, type UrgencyBadgeProps, type UrgencyLevel } from './components/atoms/UrgencyBadge';
+export { BankingWindowDot, type BankingWindowDotProps, type WindowStatus } from './components/atoms/BankingWindowDot';
+export { MonoAmount, deriveFreshnessState, type MonoAmountProps, type AmountColor, type AmountCurrency, type FreshnessState } from './components/atoms/MonoAmount';
+export { FreshnessChip, type FreshnessChipProps } from './components/atoms/FreshnessChip';
 
 // ── Molecules ──────────────────────────────────
 export {

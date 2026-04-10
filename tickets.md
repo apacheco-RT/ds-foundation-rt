@@ -4,11 +4,11 @@ Generated: 2026-04-10 | Open: 62 | Closed: 0
 ## Unimplementeds
 
 ### BankingWindowDot (#14) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### CurrencyBadge (#15) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### DetailCard (#16) — unimplemented
@@ -20,7 +20,7 @@ Labels: unimplemented
 Labels: unimplemented
 
 ### FreshnessChip (#18) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### IconButton (#19) — unimplemented
@@ -32,27 +32,27 @@ Labels: unimplemented
 Labels: unimplemented
 
 ### MonoAmount (#21) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### StateBadge (#22) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### StatusPill (#23) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### StatusRing (#24) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### Tag (#25) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### UrgencyBadge (#26) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ## Atoms

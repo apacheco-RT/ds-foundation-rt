@@ -1,6 +1,6 @@
 /**
  * Auto-generated. Do not edit.
- * DTCG 2025.10 | 2026-04-08T20:16:45.831Z
+ * DTCG 2025.10 | 2026-04-10T09:09:53.063Z
  */
 
 :root {
@@ -189,16 +189,16 @@
   --ds-grid-max-width-2xl: 1536px;
   --ds-grid-max-width-full: 100%;
   --ds-grid-max-width-prose: 65ch;
-  --ds-z-index-below: -1;
-  --ds-z-index-base: 0;
-  --ds-z-index-raised: 10;
-  --ds-z-index-dropdown: 100;
-  --ds-z-index-sticky: 200;
-  --ds-z-index-overlay: 300;
-  --ds-z-index-modal: 400;
-  --ds-z-index-popover: 500;
-  --ds-z-index-toast: 600;
-  --ds-z-index-max: 9999;
+  --ds-z-base: 0;
+  --ds-z-raised: 10;
+  --ds-z-dropdown: 100;
+  --ds-z-sticky: 200;
+  --ds-z-overlay: 300;
+  --ds-z-modal: 400;
+  --ds-z-popover: 500;
+  --ds-z-toast: 600;
+  --ds-z-tooltip: 700;
+  --ds-z-max: 9999;
   --ds-component-height-xs: 1.5rem; /** 24px */
   --ds-component-height-sm: 2rem; /** 32px */
   --ds-component-height-md: 2.5rem; /** 40px */
@@ -209,6 +209,9 @@
   --ds-component-padding-md: 1rem;
   --ds-component-padding-lg: 1.25rem;
   --ds-component-padding-xl: 1.5rem;
+  --ds-layout-card-padding: 1rem; /** Standard card/container internal padding (16px). Scales with density. */
+  --ds-layout-card-padding-sm: 0.75rem; /** Compact card internal padding (12px). */
+  --ds-layout-section-gap: 1.5rem; /** Gap between major layout sections (24px). */
   --ds-color-brand-primary: var(--ds-color-blue-600);
   --ds-color-brand-primary-hover: var(--ds-color-blue-700);
   --ds-color-brand-primary-active: var(--ds-color-blue-800);
