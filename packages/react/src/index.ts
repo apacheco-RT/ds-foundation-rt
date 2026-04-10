@@ -107,3 +107,9 @@ export {
   TableFooter, TableHead, TableHeader, TableRow,
 } from './components/organisms/Table';
 export { Timeline, type TimelineItem } from './components/organisms/Timeline';
+export {
+  Sidebar, SidebarHeader, SidebarContent, SidebarFooter,
+  SidebarGroup, SidebarGroupLabel, SidebarGroupContent,
+  SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarSeparator,
+  type SidebarMenuButtonProps,
+} from './components/organisms/Sidebar';
