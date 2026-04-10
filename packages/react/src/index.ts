@@ -107,19 +107,3 @@ export {
   TableFooter, TableHead, TableHeader, TableRow,
 } from './components/organisms/Table';
 export { Timeline, type TimelineItem } from './components/organisms/Timeline';
-
-// ── Treasury ───────────────────────────────────
-export * from './treasury/MonoAmount';
-export * from './treasury/CurrencyBadge';
-export * from './treasury/StatusPill';
-export * from './treasury/StatusRing';
-export * from './treasury/FreshnessChip';
-export * from './treasury/UrgencyBadge';
-export * from './treasury/BankingWindowDot';
-export * from './treasury/DetailCard';
-export * from './treasury/IconButton';
-export * from './treasury/StateBadge';
-export { FormCard, type FormCardProps } from './treasury/FormCard';
-// (RlusdIcon is Ripple-specific branding — not exported from this package)
-export { KpiCard, type KpiCardProps } from './treasury/KpiCard';
-export { Tag, type TagProps } from './treasury/Tag';
