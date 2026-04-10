@@ -1,0 +1,42 @@
+---
+title: IconButton
+---
+
+# IconButton
+
+Compact icon-only button with semantic colour variants for contextual actions.
+
+## Usage
+
+```tsx
+import { IconButton } from '@ds-foundation/react';
+import { Trash2, Edit, Info } from 'lucide-react';
+
+<IconButton icon={<Edit className="w-4 h-4" />} aria-label="Edit" />
+<IconButton icon={<Trash2 className="w-4 h-4" />} variant="danger" aria-label="Delete" />
+<IconButton icon={<Info className="w-4 h-4" />} variant="info" size="sm" aria-label="Info" />
+```
+
+With a text label:
+
+```tsx
+<IconButton icon={<Edit className="w-4 h-4" />} variant="primary">
+  Edit
+</IconButton>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `ReactNode` | — | **Required.** Icon element to display |
+| `variant` | `"neutral" \| "primary" \| "info" \| "success" \| "warning" \| "danger"` | `"neutral"` | Hover colour intent |
+| `size` | `"sm" \| "md"` | `"md"` | Button dimensions (`sm` = 24×24, `md` = 28×28) |
+| `children` | `ReactNode` | — | Optional text label rendered next to the icon |
+| `...rest` | `ButtonHTMLAttributes` | — | Forwarded to the `<button>` element |
+
+## Accessibility
+
+- Always provide `aria-label` when there is no visible text label
+- `disabled` renders at 50% opacity with no pointer events
+- Full keyboard focus ring via `focus-visible`

@@ -1,0 +1,65 @@
+---
+title: PageLayout
+---
+
+# PageLayout
+
+Full-page shell with optional header, sidebar, footer, and a scrollable main content area. All slot props are optional — omit any you don't need.
+
+## Usage
+
+```tsx
+import { PageLayout } from '@ds-foundation/react';
+
+<PageLayout
+  header={<AppHeader />}
+  sidebar={<AppNav />}
+  footer={<AppFooter />}
+>
+  <div className="p-6">
+    Page content here
+  </div>
+</PageLayout>
+```
+
+Without sidebar or footer:
+
+```tsx
+<PageLayout header={<AppHeader />}>
+  <main className="p-6">
+    Simple page with just a header
+  </main>
+</PageLayout>
+```
+
+## Layout structure
+
+```
+┌─────────────────────────────────┐
+│            header               │  flex-shrink-0
+├──────────┬──────────────────────┤
+│          │                      │
+│ sidebar  │        main          │  flex-1, overflow-hidden
+│          │   (overflow-auto)    │
+│          │                      │
+├─────────────────────────────────┤
+│            footer               │  flex-shrink-0
+└─────────────────────────────────┘
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `header` | `ReactNode` | — | Rendered in `<header>` above the content area |
+| `sidebar` | `ReactNode` | — | Rendered in `<aside>` to the left of main |
+| `footer` | `ReactNode` | — | Rendered in `<footer>` below the content area |
+| `children` | `ReactNode` | — | **Required.** Main content area |
+| `className` | `string` | — | Additional classes on the root wrapper |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root `<div>` |
+
+## Notes
+
+- Root element is `min-h-screen flex flex-col` — fills the viewport by default
+- Sidebar slot has `flex-shrink-0`; size it with a width class or inline style on the child
+- Main area uses `overflow-auto` — scrolls independently when content exceeds available height

@@ -10,6 +10,20 @@ coverage
 *.tsbuildinfo
 .next
 
+# TypeScript compiled output — generated from src/*.ts, never commit
+**/*.js.map
+**/*.d.ts.map
+**/*.d.mts.map
+packages/core/src/**/*.js
+packages/core/src/**/*.d.ts
+mcp/*/src/**/*.js
+mcp/*/src/**/*.d.ts
+apps/docs/theme.config.js
+apps/docs/theme.config.d.ts
+packages/registry/velite.config.js
+scripts/build-spec-outputs.mjs
+scripts/build-spec-outputs.d.mts
+
 # Token build outputs — generated, do not edit
 packages/tokens/build/
 

@@ -89,6 +89,28 @@
       "400": { "$value": { "colorSpace": "oklch", "components": [0.490, 0.170, 35], "hex": "#cb4526" } },
       "500": { "$value": { "colorSpace": "oklch", "components": [0.210, 0.100, 35], "hex": "#471200" } }
     },
+    "smartr-coral": {
+      "$description": "SmartR brand coral. 500 = #FF6143 (brand spec). OKLCH L=0.693 C=0.197 H=33.",
+      "50":  { "$value": { "colorSpace": "oklch", "components": [0.975, 0.015, 33], "hex": "#fff5f3" } },
+      "100": { "$value": { "colorSpace": "oklch", "components": [0.945, 0.035, 33], "hex": "#ffd9d2" } },
+      "300": { "$value": { "colorSpace": "oklch", "components": [0.820, 0.110, 33], "hex": "#ff9e8a" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.760, 0.160, 33], "hex": "#ff7d66" } },
+      "500": { "$value": { "colorSpace": "oklch", "components": [0.693, 0.197, 33], "hex": "#ff6143" } },
+      "600": { "$value": { "colorSpace": "oklch", "components": [0.580, 0.190, 32], "hex": "#d93f25" } },
+      "700": { "$value": { "colorSpace": "oklch", "components": [0.460, 0.160, 31], "hex": "#ac2d16" } },
+      "950": { "$value": { "colorSpace": "oklch", "components": [0.165, 0.060, 29], "hex": "#400900" } }
+    },
+    "smartr-golden": {
+      "$description": "SmartR brand golden. 500 = #FFD100 (brand spec). OKLCH L=0.875 C=0.180 H=91.",
+      "50":  { "$value": { "colorSpace": "oklch", "components": [0.985, 0.012, 91], "hex": "#fffef0" } },
+      "100": { "$value": { "colorSpace": "oklch", "components": [0.970, 0.035, 91], "hex": "#fffbcc" } },
+      "300": { "$value": { "colorSpace": "oklch", "components": [0.945, 0.120, 91], "hex": "#fdf570" } },
+      "400": { "$value": { "colorSpace": "oklch", "components": [0.920, 0.155, 91], "hex": "#fee523" } },
+      "500": { "$value": { "colorSpace": "oklch", "components": [0.875, 0.180, 91], "hex": "#ffd100" } },
+      "600": { "$value": { "colorSpace": "oklch", "components": [0.740, 0.160, 80], "hex": "#d49300" } },
+      "700": { "$value": { "colorSpace": "oklch", "components": [0.580, 0.130, 70], "hex": "#976200" } },
+      "950": { "$value": { "colorSpace": "oklch", "components": [0.185, 0.050, 65], "hex": "#231200" } }
+    },
     "white":       { "$value": { "colorSpace": "oklch", "components": [1, 0, "none"], "hex": "#ffffff" } },
     "black":       { "$value": { "colorSpace": "oklch", "components": [0, 0, "none"], "hex": "#000000" } },
     "transparent": { "$value": { "colorSpace": "srgb", "components": [0, 0, 0], "alpha": 0, "hex": "#000000" } }

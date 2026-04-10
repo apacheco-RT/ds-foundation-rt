@@ -1,0 +1,67 @@
+---
+title: FormCard
+---
+
+# FormCard
+
+Selectable card for form choice scenarios — payment type selection, account picker, entity chooser. Supports radio and checkbox selection models, two layout orientations, and full keyboard navigation.
+
+## Usage
+
+```tsx
+import { FormCard } from '@ds-foundation/react';
+import { Building2 } from 'lucide-react';
+
+const [selected, setSelected] = React.useState<string | null>(null);
+
+<FormCard
+  label="Wire Transfer"
+  description="1-3 business days"
+  icon={<Building2 className="w-5 h-5" />}
+  selected={selected === 'wire'}
+  onClick={() => setSelected('wire')}
+/>
+```
+
+Checkbox variant for multi-select:
+
+```tsx
+<FormCard
+  label="Enable notifications"
+  selectionType="checkbox"
+  selected={notificationsEnabled}
+  onClick={() => setNotificationsEnabled(v => !v)}
+/>
+```
+
+Horizontal layout:
+
+```tsx
+<FormCard
+  label="Express"
+  description="Same day"
+  layout="long"
+  selected={selected === 'express'}
+  onClick={() => setSelected('express')}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | **Required.** Primary option label |
+| `description` | `string` | — | Secondary descriptor rendered below the label |
+| `icon` | `ReactNode` | — | Icon displayed in the card body |
+| `selected` | `boolean` | `false` | Selected state — drives border and background |
+| `disabled` | `boolean` | `false` | Prevents interaction, renders at 50% opacity |
+| `selectionType` | `"radio" \| "checkbox"` | `"radio"` | Controls the indicator icon (circle vs checkmark) |
+| `layout` | `"tall" \| "long"` | `"tall"` | `tall` = vertical stack; `long` = horizontal row |
+| `onClick` | `() => void` | — | Selection callback |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root `<div>` |
+
+## Accessibility
+
+- `role="button"` with `aria-pressed` for selection state
+- `aria-disabled` when `disabled`
+- Keyboard activation via Enter or Space

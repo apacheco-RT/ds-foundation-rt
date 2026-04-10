@@ -1,12 +1,51 @@
 # DS Foundation
 
-Design system for the Ripple Treasury product — tokens, components, and theme infrastructure in one package.
+Design system for the Ripple Treasury product — tokens, components, brand assets, and theme infrastructure in one place.
+
+## Repository layout
+
+```
+ds-foundation/
+├── brand/                 Brand assets (logos, backgrounds) organised by product
+│   └── smartr/              SmartR suite — 32 logo variants, 48 background images
+├── packages/
+│   ├── tokens/              Design tokens (DTCG 2025.10) → CSS, Tailwind, JS, SCSS
+│   ├── react/               React component library (72 components)
+│   ├── core/                Framework-agnostic types and adapter contracts
+│   └── registry/            Machine-readable component specs (MDX + Velite)
+├── apps/
+│   ├── docs/                Documentation site (Next.js + Nextra)
+│   └── storybook/           Component development and visual review
+├── scripts/                 Token validation, registry build, Figma Code Connect
+└── template/                Reference Next.js app consuming the design system
+```
+
+### For designers
+
+| You need | Go here |
+|----------|---------|
+| Logos and brand assets | `brand/smartr/` |
+| Colour tokens with hex values | `packages/tokens/src/primitives/color.tokens.json` |
+| Semantic colour decisions | `packages/tokens/src/semantic/` |
+| Component API and variants | `apps/docs/` or `packages/registry/components/` |
+| Design principles | `DESIGN_PRINCIPLES.md` |
+
+### For engineers
+
+| You need | Go here |
+|----------|---------|
+| Install the React package | `npm install @ds-foundation/react` |
+| CSS custom properties (`--ds-*`) | `packages/tokens/build/css/variables.css` |
+| Tailwind config | `packages/tokens/build/tailwind/preset.css` |
+| JS token constants | `@ds-foundation/tokens` |
+| Component source | `packages/react/src/components/` |
+| Component docs | `apps/docs/pages/components/` |
 
 ## Packages
 
 | Package | Purpose |
 |---|---|
-| `@ds-foundation/react` | React component library — atoms, molecules, organisms |
+| `@ds-foundation/react` | React component library — atoms, molecules, organisms, templates |
 | `@ds-foundation/tokens` | Design tokens — CSS custom properties, Tailwind preset, JS exports (DTCG 2025.10) |
 | `apps/storybook` | Component development and visual review |
 | `apps/docs` | Documentation site |
@@ -30,9 +69,12 @@ Components are organized into four layers:
 
 ```
 atoms/       Button, Input, Badge, Checkbox, Kbd, Label, Skeleton, Switch, Spinner, Typography…
+             CurrencyBadge, Tag, StatusPill, StatusRing, StateBadge, UrgencyBadge, BankingWindowDot…
 molecules/   Card, Form, Select, Tabs, Tooltip, DatePicker, Pagination…
+             MonoAmount, FreshnessChip, DetailCard, FormCard, KpiCard…
 organisms/   Accordion, AlertDialog, Command, Dialog, Drawer, Menubar, NavigationMenu,
-             Sidebar, Table…
+             Sidebar, Table, Timeline, EmptyState…
+templates/   PageLayout, SidebarLayout, TwoColumnLayout
 ```
 
 All components consume `--ds-*` CSS custom properties — they respond to light, dark, and wireframe themes automatically.
@@ -157,6 +199,7 @@ npm run dev
 - **atom** — single HTML element or Radix primitive, no DS component composition
 - **molecule** — composes atoms, moderately complex
 - **organism** — complex, feature-rich, may compose molecules and atoms
+- **template** — page-level layout shells; no business logic, slot-based composition
 
 ## Publishing
 
@@ -208,8 +251,24 @@ Never hardcode hex values — every visual property must come from a `--ds-*` to
 
 - **Single barrel export** — `import { Button } from '@ds-foundation/react'` pulls the full bundle. Tree-shaking is not currently supported. For an internal package this is acceptable; revisit if consumers need sub-entry-points.
 - **Form-related deps bundled** — `react-hook-form`, `zod`, and `date-fns` are included in the bundle. If your app already uses different form or date libraries, you're shipping both.
-- **Partial component test coverage** — tests exist for all new and modified components; retroactive coverage for the full library is ongoing.
+- **Storybook stories incomplete** — domain components and templates are missing Storybook stories; stories for the core library exist. Chromatic visual baseline not yet captured.
 - **Wireframe palette is hardcoded CSS** — `semantic.wireframe.css` uses hex values rather than token primitives. Intentional for now; updating the wireframe palette means editing the CSS directly.
+
+## Roadmap
+
+Outstanding work — full detail in the [docs Roadmap tab](./apps/docs/pages/roadmap.mdx).
+
+| Status | Item |
+|--------|------|
+| In PR | Atomic coverage loop — 72 components, 335 tests, 0 TS errors (#76) |
+| Next | Accessibility audit — axe-core pass, 0 critical violations |
+| Next | Chromatic visual baseline |
+| Next | Registry MDX specs for 13 domain components |
+| Next | Foundations docs section (colour, spacing, typography, motion) |
+| Parked | Storybook stories for domain components and templates |
+| Backlog | Tree-shaking / sub-entry-points |
+| Backlog | Wireframe token primitives (currently hardcoded CSS) |
+| Backlog | Animation tokens (`--ds-duration-*`) |
 
 ## Tech stack
 

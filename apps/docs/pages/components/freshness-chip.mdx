@@ -1,0 +1,54 @@
+---
+title: FreshnessChip
+---
+
+# FreshnessChip
+
+Data freshness indicator. Shows nothing when data is fresh, a relative timestamp badge when stale or approaching staleness, and a refresh button when data is stale. Pairs with `deriveFreshnessState` from `MonoAmount`.
+
+## Usage
+
+```tsx
+import { FreshnessChip, deriveFreshnessState } from '@ds-foundation/react';
+
+const state = deriveFreshnessState(lastUpdatedAt);
+
+<FreshnessChip state={state} timestamp={lastUpdatedAt} />
+
+{/* With refresh callback */}
+<FreshnessChip
+  state={state}
+  timestamp={lastUpdatedAt}
+  onRefresh={() => refetch()}
+/>
+```
+
+## State behaviour
+
+| State | Display |
+|-------|---------|
+| `fresh` | Nothing rendered (hidden span) |
+| `watch` | Warning badge with relative time (e.g. "7 mins ago") |
+| `stale` | Error badge with relative time + optional refresh button |
+
+## Freshness thresholds (via `deriveFreshnessState`)
+
+| Age | State |
+|-----|-------|
+| < 5 minutes | `fresh` |
+| 5–15 minutes | `watch` |
+| ≥ 15 minutes | `stale` |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `state` | `"fresh" \| "watch" \| "stale"` | — | **Required.** Freshness state |
+| `timestamp` | `Date` | — | **Required.** Last updated timestamp |
+| `onRefresh` | `() => void` | — | When provided and state is `stale`, shows a refresh button |
+| `className` | `string` | — | Additional classes |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root `<div>` |
+
+## Accessibility
+
+The badge span has `role="status"` and `aria-live="polite"` so updates are announced. The refresh button has `aria-label="Refresh data"`.

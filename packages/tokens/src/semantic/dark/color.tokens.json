@@ -12,7 +12,19 @@
       "secondary":        { "$value": "{color.violet.400}" },
       "secondary-hover":  { "$value": "{color.violet.300}" },
       "secondary-subtle": { "$value": "{color.violet.950}" },
-      "secondary-on":     { "$value": "{color.neutral.900}" }
+      "secondary-on":     { "$value": "{color.neutral.900}" },
+      "smartr": {
+        "$description": "SmartR product brand colours — dark theme. Lighter stops for legibility on dark surfaces.",
+        "coral":         { "$value": "{color.smartr-coral.400}" },
+        "coral-hover":   { "$value": "{color.smartr-coral.300}" },
+        "coral-active":  { "$value": "{color.smartr-coral.300}" },
+        "coral-subtle":  { "$value": "{color.smartr-coral.950}" },
+        "coral-on":      { "$value": "{color.neutral.1000}" },
+        "golden":        { "$value": "{color.smartr-golden.400}" },
+        "golden-hover":  { "$value": "{color.smartr-golden.300}" },
+        "golden-subtle": { "$value": "{color.smartr-golden.950}" },
+        "golden-on":     { "$value": "{color.neutral.1000}" }
+      }
     },
     "surface": {
       "page":     { "$value": "{color.neutral.950}" },

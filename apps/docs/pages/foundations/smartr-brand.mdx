@@ -1,0 +1,105 @@
+---
+title: SmartR Brand
+---
+
+# SmartR Brand
+
+Brand colours and assets for the SmartR product suite.
+
+## Colours
+
+SmartR uses two brand colours combined into a linear gradient.
+
+| Token | Role | Light | Dark |
+|-------|------|-------|------|
+| `--ds-brand-smartr-coral` | Primary — gradient start (25%) | `#FF6143` | `#FF7D66` |
+| `--ds-brand-smartr-golden` | Accent — gradient end (100%) | `#FFD100` | `#FEE523` |
+
+### Gradient
+
+```css
+background: linear-gradient(
+  90deg,
+  var(--ds-brand-smartr-coral) 25%,
+  var(--ds-brand-smartr-golden) 100%
+);
+```
+
+In React:
+```tsx
+<div
+  style={{
+    background: 'linear-gradient(90deg, var(--ds-brand-smartr-coral) 25%, var(--ds-brand-smartr-golden) 100%)',
+  }}
+/>
+```
+
+### Colour scale
+
+Both colours have a full perceptual scale in the token primitives, so you can build UI states without guessing:
+
+| Stop | Coral hex | Golden hex | Use |
+|------|-----------|------------|-----|
+| 50 | `#fff5f3` | `#fffef0` | Background tints, hover fills |
+| 100 | `#ffd9d2` | `#fffbcc` | Light backgrounds |
+| 300 | `#ff9e8a` | `#fdf570` | Borders on tinted backgrounds |
+| 400 | `#ff7d66` | `#fee523` | Hover states (dark theme primary) |
+| **500** | **`#ff6143`** | **`#ffd100`** | **Brand base** |
+| 600 | `#d93f25` | `#d49300` | Hover states (light theme) |
+| 700 | `#ac2d16` | `#976200` | Active / pressed states |
+| 950 | `#400900` | `#231200` | Text on tinted backgrounds |
+
+---
+
+## Logo variants
+
+Every module ships four colour variants:
+
+| Variant | Use case |
+|---------|----------|
+| `COLOR_BLK` | Full gradient logo — use on white / light-grey backgrounds |
+| `COLOR_WHT` | Full gradient logo — use on dark or image backgrounds |
+| `BLK` | Monochrome black — no-colour print, embossed, B&W context |
+| `WHT` | Monochrome white — dark backgrounds, reversed layouts |
+
+**Default rule:** `COLOR_BLK` on light surfaces, `COLOR_WHT` on dark surfaces.
+
+---
+
+## Product modules
+
+| Module | Logo prefix |
+|--------|-------------|
+| SmartR (main) | `SmartR_` |
+| Analytics | `SmartR_Analytics_` |
+| Connectivity | `SmartR_Connectivity_` |
+| Forecast Insights | `SmartR_Forecast_Insights_` |
+| Ledger | `SmartR_Ledger_` |
+| Liquidity Scenarios | `SmartR_Liquidity_Scenarios_` |
+| Risk Insights | `SmartR_Risk_Insights_` |
+| Risk Management | `SmartR_Risk_Management_` |
+
+Files live at `brand/smartr/logos/svg/` (production SVGs) and `brand/smartr/logos/png/` (raster fallbacks).
+
+---
+
+## Background images
+
+Six branded background variations per module (48 files total), in `brand/smartr/backgrounds/`:
+
+```
+Background_SmartR_1.png … Background_SmartR_6.png
+Background_SmartR_Analytics_1.png … Background_SmartR_Analytics_6.png
+(same pattern for each module)
+```
+
+Use in hero sections, product cards, and feature highlight banners.
+
+---
+
+## Usage rules
+
+- Never stretch, rotate, or add effects to the logo
+- Do not change the gradient angle (90°) or stop positions (25%, 100%)
+- Do not use `COLOR_BLK` on non-white/light-grey backgrounds
+- Do not replace the gradient with a flat colour

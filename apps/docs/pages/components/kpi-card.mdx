@@ -1,0 +1,52 @@
+---
+title: KpiCard
+---
+
+# KpiCard
+
+Metric display card. Shows a labelled value with an optional trend badge and icon. Used in dashboard summaries and monitoring views.
+
+## Usage
+
+```tsx
+import { KpiCard } from '@ds-foundation/react';
+import { DollarSign } from 'lucide-react';
+
+<KpiCard
+  label="Total Settled"
+  value={1250000}
+  icon={<DollarSign className="w-4 h-4" />}
+  trend={{ direction: 'up', label: '+12% vs last week' }}
+/>
+```
+
+Without trend:
+
+```tsx
+<KpiCard label="Pending Instructions" value={42} />
+```
+
+String value:
+
+```tsx
+<KpiCard label="Settlement Rate" value="98.4%" />
+```
+
+## Trend directions
+
+| Direction | Colour | Icon |
+|-----------|--------|------|
+| `up` | Success | TrendingUp |
+| `down` | Error | TrendingDown |
+| `neutral` | Neutral | Minus |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | **Required.** Metric label |
+| `value` | `string \| number` | — | **Required.** Metric value (numbers are formatted with `toLocaleString`) |
+| `trend` | `{ direction: "up" \| "down" \| "neutral"; label: string }` | — | Trend badge below the value |
+| `icon` | `ReactNode` | — | Icon rendered in the top-right corner |
+| `className` | `string` | — | Additional classes |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root `<div>` |

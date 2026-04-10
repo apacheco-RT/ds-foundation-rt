@@ -1,0 +1,52 @@
+---
+title: Roadmap
+---
+
+# Roadmap
+
+Outstanding work tracked against the design system. Items are grouped by priority.
+
+## In progress
+
+| Item | Notes |
+|------|-------|
+| PR #76 — Atomic coverage loop | 335 tests, 0 TS errors, 0 scanner gaps — awaiting merge |
+
+## Next up
+
+### Quality gates
+
+- [ ] **Accessibility audit** — axe-core pass against all 72 components; target: 0 critical/serious violations
+- [ ] **Chromatic visual baseline** — capture snapshot baseline; required before any visual regression CI can run
+
+### Documentation
+
+- [ ] **Registry MDX specs** — 13 domain components (`MonoAmount`, `FreshnessChip`, `StatusPill`, `StatusRing`, `StateBadge`, `UrgencyBadge`, `BankingWindowDot`, `CurrencyBadge`, `Tag`, `IconButton`, `DetailCard`, `FormCard`, `KpiCard`) have unimplemented spec bodies in `packages/registry/components/`
+- [x] **SmartR brand** — colours, logos, backgrounds, token scale in `brand/smartr/` + `foundations/smartr-brand`
+- [ ] **Foundations section (remaining)** — spacing, typography, motion, grid pages still needed
+
+### Storybook (parked)
+
+- [ ] **Stories for 18+ components** — all domain components and templates are missing Storybook stories; parked until Chromatic baseline is agreed
+
+## Backlog
+
+| Item | Notes |
+|------|-------|
+| Tree-shaking / sub-entry-points | Single barrel export ships the full bundle; revisit if consumers need code-splitting |
+| Wireframe token primitives | `semantic.wireframe.css` uses hardcoded hex values rather than token primitives — intentional for now |
+| Form-related bundle weight | `react-hook-form`, `zod`, and `date-fns` are bundled — evaluate if sub-entry-points would help consumers who use different libraries |
+| React 19 migration | Currently targets React 18; React 19 compatibility not yet verified |
+| Animation tokens | Motion durations and easings are hardcoded Tailwind classes — should become `--ds-duration-*` tokens |
+
+## Completed
+
+| Item | PR |
+|------|----|
+| Atomic coverage loop — 72 components, 335 tests, 0 TS errors | #76 |
+| Templates layer (PageLayout, SidebarLayout, TwoColumnLayout) | #76 |
+| forwardRef on all components; `@forwardref-exempt` annotation system | #76 |
+| DS token overlay (`bg-ds-overlay`) replacing hardcoded `bg-black/80` | #76 |
+| Scanner script (`scripts/scan-gaps.mjs`) | earlier |
+| Three-theme infrastructure (light / dark / wireframe) | earlier |
+| Design token pipeline (Style Dictionary v4, DTCG 2025.10) | earlier |

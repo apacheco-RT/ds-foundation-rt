@@ -1,0 +1,47 @@
+---
+title: StatusPill
+---
+
+# StatusPill
+
+Payment instruction lifecycle status displayed as a rounded pill badge. Maps the 8 canonical instruction states to semantic colours automatically.
+
+## Usage
+
+```tsx
+import { StatusPill } from '@ds-foundation/react';
+
+<StatusPill status="submitted" />
+<StatusPill status="in_payments" />
+<StatusPill status="first_approval" />
+<StatusPill status="second_approval" />
+<StatusPill status="sent_to_bank" />
+<StatusPill status="bank_confirmed" />
+<StatusPill status="failed" />
+<StatusPill status="rejected" />
+```
+
+## Status → colour mapping
+
+| Status | Colour | Label |
+|--------|--------|-------|
+| `submitted` | Neutral | Submitted |
+| `in_payments` | Info | In Payments |
+| `first_approval` | Info | 1st Approval |
+| `second_approval` | Info | 2nd Approval |
+| `sent_to_bank` | Success | Sent to Bank |
+| `bank_confirmed` | Success | Confirmed ✓ |
+| `failed` | Error | Failed |
+| `rejected` | Error | Rejected |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `status` | `InstructionStatus` | — | **Required.** One of the 8 instruction states |
+| `className` | `string` | — | Additional classes |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | Forwarded to the `<span>` element |
+
+## Accessibility
+
+Renders with `role="status"` and `aria-label="Status: {label}"` for screen reader announcement.

@@ -1,0 +1,46 @@
+---
+title: StatusRing
+---
+
+# StatusRing
+
+Solid coloured dot with a 2px border ring used as a visual urgency indicator. Decorative — hidden from assistive technology.
+
+## Usage
+
+```tsx
+import { StatusRing } from '@ds-foundation/react';
+
+<StatusRing urgency="critical" />
+<StatusRing urgency="watch" />
+<StatusRing urgency="clear" />
+<StatusRing urgency="skip" />
+
+{/* Pulsing animation */}
+<StatusRing urgency="critical" pulse />
+
+{/* Smaller size */}
+<StatusRing urgency="watch" size="sm" />
+```
+
+## Urgency → colour mapping
+
+| Urgency | Colour |
+|---------|--------|
+| `critical` | `--ds-danger` |
+| `watch` | `--ds-warning` |
+| `clear` | `--ds-success` |
+| `skip` | `--ds-primary` |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `urgency` | `"critical" \| "watch" \| "clear" \| "skip"` | — | **Required.** Urgency level |
+| `size` | `"sm" \| "md"` | `"md"` | Dot size (`sm` = 8px, `md` = 10px) |
+| `pulse` | `boolean` | `false` | Applies `animate-pulse` |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | Forwarded to the `<span>` element |
+
+## Accessibility
+
+Renders with `aria-hidden="true"` — pair with a visible text label or `aria-label` on the containing element.

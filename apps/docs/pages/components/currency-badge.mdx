@@ -1,0 +1,29 @@
+---
+title: CurrencyBadge
+---
+
+# CurrencyBadge
+
+Compact monospace badge that displays a currency code (USD, EUR, GBP). Used inline next to amounts and in table cells.
+
+## Usage
+
+```tsx
+import { CurrencyBadge } from '@ds-foundation/react';
+
+<CurrencyBadge currency="USD" />
+<CurrencyBadge currency="EUR" />
+<CurrencyBadge currency="GBP" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `currency` | `"USD" \| "EUR" \| "GBP"` | — | **Required.** ISO 4217 currency code |
+| `className` | `string` | — | Additional classes |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | Forwarded to the `<span>` element |
+
+## Accessibility
+
+Sets `aria-label="Currency: USD"` (or equivalent) on the span so screen readers announce the full label rather than the raw code.

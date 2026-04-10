@@ -12,7 +12,19 @@
       "secondary":        { "$value": "{color.violet.600}" },
       "secondary-hover":  { "$value": "{color.violet.700}" },
       "secondary-subtle": { "$value": "{color.violet.50}" },
-      "secondary-on":     { "$value": "{color.white}" }
+      "secondary-on":     { "$value": "{color.white}" },
+      "smartr": {
+        "$description": "SmartR product brand colours. Gradient: coral (25%) → golden (100%).",
+        "coral":         { "$value": "{color.smartr-coral.500}" },
+        "coral-hover":   { "$value": "{color.smartr-coral.600}" },
+        "coral-active":  { "$value": "{color.smartr-coral.700}" },
+        "coral-subtle":  { "$value": "{color.smartr-coral.50}" },
+        "coral-on":      { "$value": "{color.white}" },
+        "golden":        { "$value": "{color.smartr-golden.500}" },
+        "golden-hover":  { "$value": "{color.smartr-golden.600}" },
+        "golden-subtle": { "$value": "{color.smartr-golden.50}" },
+        "golden-on":     { "$value": "{color.neutral.1000}" }
+      }
     },
     "surface": {
       "page":     { "$value": "{color.neutral.50}" },

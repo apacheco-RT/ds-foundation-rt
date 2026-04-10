@@ -1,0 +1,55 @@
+---
+title: SidebarLayout
+---
+
+# SidebarLayout
+
+Fixed-width sidebar with a scrollable main content area. Use this when the sidebar width is known and constant — app nav, filter panels, detail drawers.
+
+## Usage
+
+```tsx
+import { SidebarLayout } from '@ds-foundation/react';
+
+<SidebarLayout sidebar={<AppNav />}>
+  <div className="p-6">
+    Main content
+  </div>
+</SidebarLayout>
+```
+
+Custom sidebar width:
+
+```tsx
+<SidebarLayout sidebar={<FilterPanel />} sidebarWidth="20rem">
+  <ResultsList />
+</SidebarLayout>
+```
+
+## Layout structure
+
+```
+┌──────────────┬────────────────────────┐
+│              │                        │
+│   sidebar    │         main           │  h-full
+│  (fixed w)   │    (overflow-y-auto)   │
+│  overflow-y  │                        │
+│    auto      │                        │
+└──────────────┴────────────────────────┘
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `sidebar` | `ReactNode` | — | **Required.** Sidebar content |
+| `sidebarWidth` | `string` | `"16rem"` | CSS width value for the sidebar (e.g. `"20rem"`, `"240px"`) |
+| `children` | `ReactNode` | — | **Required.** Main content |
+| `className` | `string` | — | Additional classes on the root wrapper |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root `<div>` |
+
+## Notes
+
+- Root element is `flex h-full` — inherits height from its container
+- Both sidebar and main scroll independently
+- For responsive behaviour (collapsing sidebar on mobile), wrap in your own media query logic

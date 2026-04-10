@@ -1,0 +1,49 @@
+---
+title: TwoColumnLayout
+---
+
+# TwoColumnLayout
+
+CSS Grid two-column layout. The column ratio is configurable via the `columns` prop — equal split by default, or any valid `grid-template-columns` value.
+
+## Usage
+
+```tsx
+import { TwoColumnLayout } from '@ds-foundation/react';
+
+{/* Equal columns */}
+<TwoColumnLayout
+  left={<FormPanel />}
+  right={<PreviewPanel />}
+/>
+
+{/* 2:1 ratio */}
+<TwoColumnLayout
+  columns="2fr 1fr"
+  left={<DetailView />}
+  right={<SummaryPanel />}
+/>
+
+{/* Fixed + flexible */}
+<TwoColumnLayout
+  columns="320px 1fr"
+  left={<FilterSidebar />}
+  right={<ResultsGrid />}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `left` | `ReactNode` | — | **Required.** Left column content |
+| `right` | `ReactNode` | — | **Required.** Right column content |
+| `columns` | `string` | `"1fr 1fr"` | `grid-template-columns` value |
+| `className` | `string` | — | Additional classes on the root wrapper |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root `<div>` |
+
+## Notes
+
+- Root is `grid h-full` — inherits height from container
+- Any valid CSS `grid-template-columns` value works: `"1fr 1fr"`, `"2fr 1fr"`, `"320px 1fr"`, `"repeat(2, minmax(0, 1fr))"`
+- For more than two columns, use CSS Grid directly — this template is intentionally scoped to the two-column case
