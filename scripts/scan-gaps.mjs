@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // scripts/scan-gaps.mjs
-import { readFileSync, existsSync, writeFileSync, readdirSync } from 'fs'
+import { readFileSync, existsSync, writeFileSync, readdirSync, unlinkSync } from 'fs'
 import { join, basename, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { execSync } from 'child_process'
@@ -13,7 +13,13 @@ const TICKETS_PATH = join(ROOT, 'tickets.md')
 const CHANGELOG_PATH = join(ROOT, 'CHANGELOG.md')
 
 const args = process.argv.slice(2)
-const componentFilter = args.includes('--component') ? args[args.indexOf('--component') + 1] : null
+const componentIdx = args.indexOf('--component')
+const _componentArg = componentIdx !== -1 ? (args[componentIdx + 1] ?? null) : null
+const componentFilter = _componentArg && !_componentArg.startsWith('--') ? _componentArg : null
+if (componentIdx !== -1 && !componentFilter) {
+  console.error('Error: --component requires a component name argument')
+  process.exit(1)
+}
 const isDryRun = args.includes('--dry-run')
 const LAYERS = ['atoms', 'molecules', 'organisms', 'templates']
 const FORBIDDEN_IMPORTS = { atom: ['organisms','molecules','templates'], molecule: ['organisms','templates'], organism: ['templates'], template: [] }
@@ -47,7 +53,7 @@ function getTypeScriptErrors() {
   } catch (e) {
     const errorMap = {}
     for (const line of (e.stdout || '').split('\n')) {
-      const m = line.match(/^.+\/(\w+)\.tsx?\(\d+,\d+\): error (TS\d+): (.+)$/)
+      const m = line.match(/^.+\/([\w-]+)\.tsx?\(\d+,\d+\): error (TS\d+): (.+)$/)
       if (m) {
         if (!errorMap[m[1]]) errorMap[m[1]] = []
         errorMap[m[1]].push(`${m[2]}: ${m[3]}`)
@@ -96,17 +102,25 @@ function ensureGitHubInfra() {
 
 function createIssue(componentName, layer, gapTypes, gaps, specContent) {
   if (isDryRun) { console.log(`[dry-run] [${layer}] ${componentName} — ${gapTypes.join(', ')}`); return null }
-  const title = `[${layer}] ${componentName} — ${gapTypes.join(', ')}`
   const gapList = gaps.map(g => `- [ ] ${g}`).join('\n')
-  const spec = specContent ? `\n## Registry spec\n\`\`\`\n${specContent.slice(0, 600)}\n\`\`\`` : ''
+  const spec = specContent ? `\n## Registry spec\n\`\`\`\n${specContent.slice(0, 600)}...\n\`\`\`` : ''
   const body = `## Component: ${componentName} (${layer})\n\n## Gaps\n${gapList}${spec}\n\n## Acceptance criteria\n- [ ] All gaps resolved\n- [ ] \`npx vitest run\` passes\n- [ ] \`npm run typecheck\` passes\n- [ ] \`node scripts/scan-gaps.mjs --component ${componentName}\` → 0 gaps\n- [ ] \`CHANGELOG.md\` updated under \`[Unreleased]\``
+  const title = `[${layer}] ${componentName} — ${gapTypes.join(', ')}`
+  const tmpFile = join(ROOT, '.gh-issue-body.tmp')
   try {
     const milestoneNum = execSync('gh api repos/:owner/:repo/milestones --jq \'.[] | select(.title=="Design System Coverage") | .number\'', { encoding: 'utf8' }).trim()
+    if (!milestoneNum) throw new Error('Design System Coverage milestone not found')
     const labelArgs = gapTypes.map(l => `--label "${l}"`).join(' ')
-    const out = execSync(`gh issue create --title ${JSON.stringify(title)} --body ${JSON.stringify(body)} ${labelArgs} --milestone ${milestoneNum}`, { encoding: 'utf8' })
+    writeFileSync(tmpFile, body)
+    const out = execSync(`gh issue create --title ${JSON.stringify(title)} --body-file ${tmpFile} ${labelArgs} --milestone ${milestoneNum}`, { encoding: 'utf8' })
     const m = out.match(/\/issues\/(\d+)/)
     return m ? parseInt(m[1]) : null
-  } catch (e) { console.error(`Failed to create issue for ${componentName}:`, e.message); return null }
+  } catch (e) {
+    console.error(`Failed to create issue for ${componentName}:`, e.message)
+    return null
+  } finally {
+    try { unlinkSync(tmpFile) } catch {}
+  }
 }
 
 function closeIssue(n) {
@@ -146,8 +160,8 @@ async function main() {
     allGaps.push({ name: componentName, layer: 'unimplemented', gapTypes: ['unimplemented'], gaps: ['No implementation found'], specContent: content })
   }
 
-  // CHANGELOG sentinel
-  if (existsSync(CHANGELOG_PATH) && !readFileSync(CHANGELOG_PATH, 'utf8').includes('## [Unreleased]')) {
+  // CHANGELOG sentinel (only in full scan, not per-component)
+  if (!componentFilter && existsSync(CHANGELOG_PATH) && !readFileSync(CHANGELOG_PATH, 'utf8').includes('## [Unreleased]')) {
     allGaps.push({ name: 'CHANGELOG', layer: 'meta', gapTypes: ['code-quality'], gaps: ['Missing [Unreleased] section'], specContent: null })
   }
 
