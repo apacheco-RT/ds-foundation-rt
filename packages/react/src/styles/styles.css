@@ -7,7 +7,6 @@
 
 /* Semantic aliases: short --ds-* names used by components */
 @import "./semantic.css";
-@import "./semantic.dark.css";
 @import "./semantic.wireframe.css";
 
 @layer base {
