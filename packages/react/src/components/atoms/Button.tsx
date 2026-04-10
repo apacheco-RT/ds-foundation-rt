@@ -8,62 +8,76 @@ type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'link'
 type ButtonColorScheme = 'primary' | 'success' | 'warning' | 'danger' | 'neutral'
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'icon'
 
-const SOLID_STYLES: Record<ButtonColorScheme, React.CSSProperties> = {
-  primary: { backgroundColor: 'var(--ds-primary)', color: 'var(--ds-primary-fg)' },
-  success: { backgroundColor: 'var(--ds-feedback-success-icon)', color: 'var(--ds-text-inverse)' },
-  warning: { backgroundColor: 'var(--ds-feedback-warning-icon)', color: 'var(--ds-text-inverse)' },
-  danger:  { backgroundColor: 'var(--ds-feedback-error-icon)', color: 'var(--ds-text-inverse)' },
-  neutral: { backgroundColor: 'var(--ds-surface-up)', color: 'var(--ds-text)' },
-}
-
-const OUTLINE_STYLES: Record<ButtonColorScheme, React.CSSProperties> = {
-  primary: { backgroundColor: 'transparent', borderColor: 'var(--ds-primary)', color: 'var(--ds-primary)' },
-  success: { backgroundColor: 'transparent', borderColor: 'var(--ds-feedback-success-border)', color: 'var(--ds-feedback-success-text)' },
-  warning: { backgroundColor: 'transparent', borderColor: 'var(--ds-feedback-warning-border)', color: 'var(--ds-feedback-warning-text)' },
-  danger:  { backgroundColor: 'transparent', borderColor: 'var(--ds-feedback-error-border)', color: 'var(--ds-feedback-error-text)' },
-  neutral: { backgroundColor: 'transparent', borderColor: 'var(--ds-border)', color: 'var(--ds-text)' },
-}
-
-const GHOST_STYLES: Record<ButtonColorScheme, React.CSSProperties> = {
-  primary: { backgroundColor: 'transparent', borderColor: 'transparent', color: 'var(--ds-primary)' },
-  success: { backgroundColor: 'transparent', borderColor: 'transparent', color: 'var(--ds-feedback-success-text)' },
-  warning: { backgroundColor: 'transparent', borderColor: 'transparent', color: 'var(--ds-feedback-warning-text)' },
-  danger:  { backgroundColor: 'transparent', borderColor: 'transparent', color: 'var(--ds-feedback-error-text)' },
-  neutral: { backgroundColor: 'transparent', borderColor: 'transparent', color: 'var(--ds-text)' },
-}
-
-const LINK_STYLE: React.CSSProperties = {
-  backgroundColor: 'transparent',
-  borderColor: 'transparent',
-  color: 'var(--ds-primary)',
-}
-
 const ICON_DIMENSION: Record<ButtonSize, string> = {
   xs: '14px', sm: '14px', md: '16px', lg: '16px', xl: '16px', icon: '16px',
 }
 
-const GHOST_HOVER_CLASS: Record<ButtonColorScheme, string> = {
-  primary: 'hover:bg-[var(--ds-primary-subtle)]',
-  success: 'hover:bg-[var(--ds-surface-up)]',
-  warning: 'hover:bg-[var(--ds-surface-up)]',
-  danger:  'hover:bg-[var(--ds-surface-up)]',
-  neutral: 'hover:bg-[var(--ds-surface-up)]',
-}
-
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border font-medium ring-offset-ds-bg transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-border-focus focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border font-medium ' +
+  'transition-colors duration-ds-fast ' +
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-ds-bg ' +
+  'disabled:pointer-events-none disabled:opacity-50 ' +
+  'aria-busy:pointer-events-none',
   {
     variants: {
       size: {
-        xs:   'h-7 px-2.5 text-xs',
-        sm:   'h-8 px-3 text-sm',
-        md:   'h-10 px-4 text-sm',
-        lg:   'h-11 px-6 text-base',
-        xl:   'h-12 px-8 text-base',
-        icon: 'h-10 w-10',
+        xs:   'h-7 px-2.5 text-[length:var(--ds-font-size-xs)]',
+        sm:   'h-8 px-3 text-[length:var(--ds-font-size-sm)]',
+        md:   'h-10 px-4 text-[length:var(--ds-font-size-sm)]',
+        lg:   'h-11 px-6 text-[length:var(--ds-font-size-md)]',
+        xl:   'h-12 px-8 text-[length:var(--ds-font-size-md)]',
+        icon: 'h-10 w-10 p-0',
       },
+      variant:     { solid: '', outline: '', ghost: '', link: 'underline-offset-4 hover:underline' },
+      colorScheme: { primary: '', success: '', warning: '', danger: '', neutral: '' },
     },
-    defaultVariants: { size: 'md' },
+    compoundVariants: [
+      // ── Solid ────────────────────────────────────────────────────────────
+      { variant: 'solid', colorScheme: 'primary',
+        className: 'bg-ds-primary text-ds-primary-fg border-transparent hover:bg-ds-primary-hover active:bg-ds-primary-active' },
+      { variant: 'solid', colorScheme: 'success',
+        className: 'bg-ds-success text-ds-text-inverse border-transparent hover:opacity-90 active:opacity-75' },
+      { variant: 'solid', colorScheme: 'warning',
+        className: 'bg-ds-warning text-ds-text-inverse border-transparent hover:opacity-90 active:opacity-75' },
+      { variant: 'solid', colorScheme: 'danger',
+        className: 'bg-ds-danger text-ds-text-inverse border-transparent hover:opacity-90 active:opacity-75' },
+      { variant: 'solid', colorScheme: 'neutral',
+        className: 'bg-ds-surface-up text-ds-text border-ds-border hover:bg-ds-surface hover:border-ds-border-strong active:bg-ds-sunken' },
+      // ── Outline ──────────────────────────────────────────────────────────
+      { variant: 'outline', colorScheme: 'primary',
+        className: 'bg-transparent text-ds-primary border-ds-primary hover:bg-ds-primary-subtle active:bg-ds-primary-subtle' },
+      { variant: 'outline', colorScheme: 'success',
+        className: 'bg-transparent text-ds-success-text border-ds-success-border hover:bg-ds-feedback-success-bg active:bg-ds-feedback-success-bg' },
+      { variant: 'outline', colorScheme: 'warning',
+        className: 'bg-transparent text-ds-warning-text border-ds-warning-border hover:bg-ds-feedback-warning-bg active:bg-ds-feedback-warning-bg' },
+      { variant: 'outline', colorScheme: 'danger',
+        className: 'bg-transparent text-ds-danger-text border-ds-danger-border hover:bg-ds-feedback-error-bg active:bg-ds-feedback-error-bg' },
+      { variant: 'outline', colorScheme: 'neutral',
+        className: 'bg-transparent text-ds-text border-ds-border hover:bg-ds-surface-up active:bg-ds-sunken' },
+      // ── Ghost ────────────────────────────────────────────────────────────
+      { variant: 'ghost', colorScheme: 'primary',
+        className: 'bg-transparent text-ds-primary border-transparent hover:bg-ds-primary-subtle active:bg-ds-primary-subtle' },
+      { variant: 'ghost', colorScheme: 'success',
+        className: 'bg-transparent text-ds-success border-transparent hover:bg-ds-feedback-success-bg active:bg-ds-feedback-success-bg' },
+      { variant: 'ghost', colorScheme: 'warning',
+        className: 'bg-transparent text-ds-warning border-transparent hover:bg-ds-feedback-warning-bg active:bg-ds-feedback-warning-bg' },
+      { variant: 'ghost', colorScheme: 'danger',
+        className: 'bg-transparent text-ds-danger border-transparent hover:bg-ds-feedback-error-bg active:bg-ds-feedback-error-bg' },
+      { variant: 'ghost', colorScheme: 'neutral',
+        className: 'bg-transparent text-ds-text border-transparent hover:bg-ds-surface-up active:bg-ds-sunken' },
+      // ── Link ─────────────────────────────────────────────────────────────
+      { variant: 'link', colorScheme: 'primary',
+        className: 'bg-transparent text-ds-primary border-transparent hover:text-ds-primary-hover' },
+      { variant: 'link', colorScheme: 'neutral',
+        className: 'bg-transparent text-ds-text border-transparent hover:text-ds-text-muted' },
+      { variant: 'link', colorScheme: 'danger',
+        className: 'bg-transparent text-ds-danger border-transparent' },
+      { variant: 'link', colorScheme: 'success',
+        className: 'bg-transparent text-ds-success border-transparent' },
+      { variant: 'link', colorScheme: 'warning',
+        className: 'bg-transparent text-ds-warning border-transparent' },
+    ],
+    defaultVariants: { variant: 'solid', colorScheme: 'primary', size: 'md' },
   }
 )
 
@@ -90,7 +104,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       leftIcon,
       rightIcon,
       asChild = false,
-      style,
       disabled,
       children,
       ...props
@@ -98,13 +111,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const Comp = asChild ? Slot : 'button'
-
-    let colorStyle: React.CSSProperties
-    if (variant === 'solid')        colorStyle = SOLID_STYLES[colorScheme]
-    else if (variant === 'outline') colorStyle = OUTLINE_STYLES[colorScheme]
-    else if (variant === 'ghost')   colorStyle = GHOST_STYLES[colorScheme]
-    else                            colorStyle = LINK_STYLE
-
     const iconDim = ICON_DIMENSION[size]
 
     const wrapIcon = (icon: React.ReactElement) => (
@@ -128,14 +134,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         ref={ref}
-        className={cn(
-          buttonVariants({ size }),
-          variant === 'solid' && 'hover:opacity-90',
-          variant === 'ghost' && GHOST_HOVER_CLASS[colorScheme],
-          variant === 'link' && 'underline-offset-4 hover:underline',
-          className
-        )}
-        style={{ ...colorStyle, ...style }}
+        className={cn(buttonVariants({ variant, colorScheme, size }), className)}
         disabled={isLoading || disabled}
         aria-busy={isLoading || undefined}
         {...props}
@@ -150,3 +149,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = 'Button'
 
 export { Button, buttonVariants }
+export type { ButtonVariant, ButtonColorScheme, ButtonSize }
