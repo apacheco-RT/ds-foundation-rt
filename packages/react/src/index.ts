@@ -71,6 +71,11 @@ export { DetailCard, type DetailCardProps } from './components/molecules/DetailC
 export { FormCard, type FormCardProps } from './components/molecules/FormCard';
 export { KpiCard, type KpiCardProps } from './components/molecules/KpiCard';
 
+// ── Templates ──────────────────────────────────
+export { PageLayout, type PageLayoutProps } from './components/templates/PageLayout'
+export { SidebarLayout, type SidebarLayoutProps } from './components/templates/SidebarLayout'
+export { TwoColumnLayout, type TwoColumnLayoutProps } from './components/templates/TwoColumnLayout'
+
 // ── Organisms ──────────────────────────────────
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './components/organisms/Accordion';
 export { Calendar, CalendarDayButton } from './components/organisms/Calendar';

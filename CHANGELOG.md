@@ -6,6 +6,10 @@ Per-package changelogs are in `packages/*/CHANGELOG.md`.
 ## [Unreleased]
 
 ### Added
+- `PageLayout` — full-page shell template (header/sidebar/main/footer slots)
+- `SidebarLayout` — fixed-sidebar + scrollable-content template
+- `TwoColumnLayout` — configurable two-column grid template
+- Vitest tests: Dialog, Sheet, Drawer, DropdownMenu, EmptyState, Table, ContextMenu, Command, NavigationMenu, Timeline, Calendar, Carousel, Sonner (80 tests)
 - Vitest tests: Breadcrumb, Card, DatePicker, Form, HoverCard, InputNumber, InputOTP, Pagination, Popover, Resizable, ScrollArea, Segmented, Select, Stepper, Tabs, ToggleGroup, Tooltip
 - Vitest tests: Avatar, Spinner, Progress, Label, Separator, Collapsible, Slider, Textarea, DesignSystemProvider, ThemeToggle, AspectRatio
 - `IconButton` — 6-variant icon button atom with forwardRef and aria-label support
@@ -21,6 +25,10 @@ Per-package changelogs are in `packages/*/CHANGELOG.md`.
 - `DetailCard` — labelled section card molecule with h4 heading
 - `FormCard` — selectable card molecule for radio/checkbox option selection
 - `KpiCard` — metric display card molecule with optional trend indicator
+
+### Fixed
+- `Badge` — converted to React.forwardRef for DOM ref forwarding
+- `Dialog`, `Sheet`, `Drawer` overlays — replaced hardcoded `bg-black/80` with `bg-ds-overlay` token
 
 ## 0.3.0 — 2026-04-09
 
