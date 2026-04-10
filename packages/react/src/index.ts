@@ -7,6 +7,7 @@ export { Button, type ButtonProps } from './components/atoms/Button';
 // (buttonVariants is an internal CVA helper — not exported)
 export { Checkbox } from './components/atoms/Checkbox';
 export { Collapsible, CollapsibleContent, CollapsibleTrigger } from './components/atoms/Collapsible';
+export { IconButton, type IconButtonProps } from './components/atoms/IconButton';
 export { Input, type InputProps } from './components/atoms/Input';
 export { Label } from './components/atoms/Label';
 export { Progress } from './components/atoms/Progress';

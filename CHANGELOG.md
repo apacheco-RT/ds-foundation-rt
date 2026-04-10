@@ -5,6 +5,9 @@ Per-package changelogs are in `packages/*/CHANGELOG.md`.
 
 ## [Unreleased]
 
+### Added
+- `IconButton` — 6-variant icon button atom with forwardRef and aria-label support
+
 ## 0.3.0 — 2026-04-09
 
 ### Added

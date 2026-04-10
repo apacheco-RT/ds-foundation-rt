@@ -24,7 +24,7 @@ Labels: unimplemented
 Labels: unimplemented
 
 ### IconButton (#19) — unimplemented
-- [ ] No implementation found
+- [x] No implementation found
 Labels: unimplemented
 
 ### KpiCard (#20) — unimplemented
