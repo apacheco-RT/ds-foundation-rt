@@ -1,3 +1,4 @@
+// @forwardref-exempt: react-resizable-panels compound component — refs managed by library
 "use client"
 
 import * as React from "react"

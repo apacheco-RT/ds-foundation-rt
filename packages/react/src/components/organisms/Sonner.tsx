@@ -1,3 +1,4 @@
+// @forwardref-exempt: portal-based — Sonner manages its own DOM tree
 "use client"
 
 import * as React from "react"

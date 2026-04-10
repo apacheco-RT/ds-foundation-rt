@@ -15,7 +15,7 @@ export interface SegmentedProps {
   className?: string
 }
 
-function Segmented({ options, value, defaultValue, onChange, className }: SegmentedProps) {
+const Segmented = React.forwardRef<HTMLDivElement, SegmentedProps>(({ options, value, defaultValue, onChange, className }, ref) => {
   const isControlled = value !== undefined
   const [internalValue, setInternalValue] = React.useState<string | undefined>(defaultValue)
   const activeValue = isControlled ? value : internalValue
@@ -52,6 +52,7 @@ function Segmented({ options, value, defaultValue, onChange, className }: Segmen
 
   return (
     <div
+      ref={ref}
       role="radiogroup"
       onKeyDown={handleKeyDown}
       className={cn("inline-flex items-center rounded-lg border border-ds-border bg-ds-sunken p-1 gap-1", className)}
@@ -74,6 +75,7 @@ function Segmented({ options, value, defaultValue, onChange, className }: Segmen
       })}
     </div>
   )
-}
+})
+Segmented.displayName = 'Segmented'
 
 export { Segmented }

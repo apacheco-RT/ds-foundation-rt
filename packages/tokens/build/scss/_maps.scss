@@ -188,16 +188,16 @@ $ds-grid-max-width-xl: 1280px !default;
 $ds-grid-max-width-2xl: 1536px !default;
 $ds-grid-max-width-full: 100% !default;
 $ds-grid-max-width-prose: 65ch !default;
-$ds-z-index-below: -1 !default;
-$ds-z-index-base: 0 !default;
-$ds-z-index-raised: 10 !default;
-$ds-z-index-dropdown: 100 !default;
-$ds-z-index-sticky: 200 !default;
-$ds-z-index-overlay: 300 !default;
-$ds-z-index-modal: 400 !default;
-$ds-z-index-popover: 500 !default;
-$ds-z-index-toast: 600 !default;
-$ds-z-index-max: 9999 !default;
+$ds-z-base: 0 !default;
+$ds-z-raised: 10 !default;
+$ds-z-dropdown: 100 !default;
+$ds-z-sticky: 200 !default;
+$ds-z-overlay: 300 !default;
+$ds-z-modal: 400 !default;
+$ds-z-popover: 500 !default;
+$ds-z-toast: 600 !default;
+$ds-z-tooltip: 700 !default;
+$ds-z-max: 9999 !default;
 $ds-color-brand-primary: $ds-color-blue-600 !default;
 $ds-color-brand-primary-hover: $ds-color-blue-700 !default;
 $ds-color-brand-primary-active: $ds-color-blue-800 !default;
@@ -575,16 +575,16 @@ $tokens: (
       'prose': $ds-grid-max-width-prose
     )
   ),
-  'z-index': (
-    'below': $ds-z-index-below,
-    'base': $ds-z-index-base,
-    'raised': $ds-z-index-raised,
-    'dropdown': $ds-z-index-dropdown,
-    'sticky': $ds-z-index-sticky,
-    'overlay': $ds-z-index-overlay,
-    'modal': $ds-z-index-modal,
-    'popover': $ds-z-index-popover,
-    'toast': $ds-z-index-toast,
-    'max': $ds-z-index-max
+  'z': (
+    'base': $ds-z-base,
+    'raised': $ds-z-raised,
+    'dropdown': $ds-z-dropdown,
+    'sticky': $ds-z-sticky,
+    'overlay': $ds-z-overlay,
+    'modal': $ds-z-modal,
+    'popover': $ds-z-popover,
+    'toast': $ds-z-toast,
+    'tooltip': $ds-z-tooltip,
+    'max': $ds-z-max
   )
 );

@@ -1,5 +1,10 @@
 # @ds-foundation/react — Changelog
 
+## [Unreleased]
+
+### Added
+- Vitest tests: Alert, Badge, Input, Checkbox, RadioGroup, Switch, Toggle
+
 ## 0.3.0 — 2026-04-09
 
 ### Added

@@ -1,5 +1,6 @@
-import { cn } from "../utils"
+import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "../utils"
 
 const spinnerVariants = cva("animate-spin", {
   variants: {
@@ -16,9 +17,9 @@ interface SpinnerProps extends VariantProps<typeof spinnerVariants> {
   className?: string
 }
 
-function Spinner({ size, className }: SpinnerProps) {
-  return (
-    <span role="status" aria-label="Loading">
+const Spinner = React.forwardRef<HTMLSpanElement, SpinnerProps>(
+  ({ size, className }, ref) => (
+    <span ref={ref} role="status" aria-label="Loading">
       <svg
         className={cn(spinnerVariants({ size }), className)}
         viewBox="0 0 24 24"
@@ -45,6 +46,7 @@ function Spinner({ size, className }: SpinnerProps) {
       <span className="sr-only">Loading…</span>
     </span>
   )
-}
+)
+Spinner.displayName = "Spinner"
 
 export { Spinner }

@@ -72,7 +72,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   dot?: boolean
 }
 
-function Badge({
+const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(({
   className,
   variant = 'subtle',
   color = 'neutral',
@@ -80,9 +80,10 @@ function Badge({
   dot,
   children,
   ...props
-}: BadgeProps) {
+}, ref) => {
   return (
     <span
+      ref={ref}
       className={cn(badgeVariants({ size, variant, color }), className)}
       {...props}
     >
@@ -95,7 +96,7 @@ function Badge({
       {children}
     </span>
   )
-}
+})
 
 Badge.displayName = 'Badge'
 

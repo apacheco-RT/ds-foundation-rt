@@ -1,3 +1,4 @@
+// @forwardref-exempt: context provider — no DOM element to ref
 import * as React from "react"
 
 export type Theme = 'light' | 'dark' | 'wireframe'

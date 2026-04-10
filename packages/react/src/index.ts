@@ -7,6 +7,7 @@ export { Button, type ButtonProps } from './components/atoms/Button';
 // (buttonVariants is an internal CVA helper — not exported)
 export { Checkbox } from './components/atoms/Checkbox';
 export { Collapsible, CollapsibleContent, CollapsibleTrigger } from './components/atoms/Collapsible';
+export { IconButton, type IconButtonProps } from './components/atoms/IconButton';
 export { Input, type InputProps } from './components/atoms/Input';
 export { Label } from './components/atoms/Label';
 export { Progress } from './components/atoms/Progress';
@@ -24,6 +25,15 @@ export { Display, H1, H2, H3, H4, H5, BodyLarge, Body, BodySmall, Caption } from
 export { DesignSystemProvider, useTheme } from './components/atoms/DesignSystemProvider';
 export type { Theme, DesignSystemProviderProps } from './components/atoms/DesignSystemProvider';
 export { ThemeToggle } from './components/atoms/ThemeToggle';
+export { CurrencyBadge, type CurrencyBadgeProps } from './components/atoms/CurrencyBadge';
+export { Tag, type TagProps } from './components/atoms/Tag';
+export { StatusPill, type StatusPillProps, type InstructionStatus } from './components/atoms/StatusPill';
+export { StatusRing, type StatusRingProps, type Urgency } from './components/atoms/StatusRing';
+export { StateBadge, type StateBadgeProps, type StateBadgeIntent } from './components/atoms/StateBadge';
+export { UrgencyBadge, type UrgencyBadgeProps, type UrgencyLevel } from './components/atoms/UrgencyBadge';
+export { BankingWindowDot, type BankingWindowDotProps, type WindowStatus } from './components/atoms/BankingWindowDot';
+export { MonoAmount, deriveFreshnessState, type MonoAmountProps, type AmountColor, type AmountCurrency, type FreshnessState } from './components/atoms/MonoAmount';
+export { FreshnessChip, type FreshnessChipProps } from './components/atoms/FreshnessChip';
 
 // ── Molecules ──────────────────────────────────
 export {
@@ -57,6 +67,14 @@ export { Stepper, type StepperProps } from './components/molecules/Stepper';
 export { Tabs, TabsContent, TabsList, TabsTrigger } from './components/molecules/Tabs';
 export { ToggleGroup, ToggleGroupItem } from './components/molecules/ToggleGroup';
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/molecules/Tooltip';
+export { DetailCard, type DetailCardProps } from './components/molecules/DetailCard';
+export { FormCard, type FormCardProps } from './components/molecules/FormCard';
+export { KpiCard, type KpiCardProps } from './components/molecules/KpiCard';
+
+// ── Templates ──────────────────────────────────
+export { PageLayout, type PageLayoutProps } from './components/templates/PageLayout'
+export { SidebarLayout, type SidebarLayoutProps } from './components/templates/SidebarLayout'
+export { TwoColumnLayout, type TwoColumnLayoutProps } from './components/templates/TwoColumnLayout'
 
 // ── Organisms ──────────────────────────────────
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './components/organisms/Accordion';

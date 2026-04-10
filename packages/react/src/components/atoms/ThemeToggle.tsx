@@ -16,22 +16,25 @@ const NEXT_LABEL: Record<Theme, string> = {
   wireframe: 'Switch to light theme',
 }
 
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-
-  return (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={() => setTheme(NEXT_THEME[theme])}
-      aria-label={NEXT_LABEL[theme]}
-    >
-      {theme === 'light'     && <Sun className="w-4 h-4" />}
-      {theme === 'dark'      && <Moon className="w-4 h-4" />}
-      {theme === 'wireframe' && <PenLine className="w-4 h-4" />}
-    </Button>
-  )
-}
+const ThemeToggle = React.forwardRef<HTMLButtonElement, React.HTMLAttributes<HTMLButtonElement>>(
+  (props, ref) => {
+    const { theme, setTheme } = useTheme()
+    return (
+      <Button
+        ref={ref}
+        variant="ghost"
+        size="icon"
+        onClick={() => setTheme(NEXT_THEME[theme])}
+        aria-label={NEXT_LABEL[theme]}
+        {...props}
+      >
+        {theme === 'light'     && <Sun className="w-4 h-4" />}
+        {theme === 'dark'      && <Moon className="w-4 h-4" />}
+        {theme === 'wireframe' && <PenLine className="w-4 h-4" />}
+      </Button>
+    )
+  }
+)
 
 ThemeToggle.displayName = 'ThemeToggle'
 

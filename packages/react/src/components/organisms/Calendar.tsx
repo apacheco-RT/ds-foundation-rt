@@ -1,3 +1,4 @@
+// @forwardref-exempt: DayPicker wrapper — ref management handled by react-day-picker
 import * as React from "react"
 import {
   ChevronDownIcon,

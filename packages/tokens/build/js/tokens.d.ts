@@ -1,5 +1,5 @@
 // Auto-generated — do not edit. Run `npm run build:tokens` to regenerate.
-// DTCG 2025.10 | Generated: 2026-04-08T20:16:45.884Z
+// DTCG 2025.10 | Generated: 2026-04-10T09:09:53.125Z
 
 export interface DSTokens {
   'colorNeutral0': string;
@@ -243,16 +243,16 @@ export interface DSTokens {
   'gridMaxWidth2xl': string;
   'gridMaxWidthFull': string;
   'gridMaxWidthProse': string;
-  'zIndexBelow': string;
-  'zIndexBase': string;
-  'zIndexRaised': string;
-  'zIndexDropdown': string;
-  'zIndexSticky': string;
-  'zIndexOverlay': string;
-  'zIndexModal': string;
-  'zIndexPopover': string;
-  'zIndexToast': string;
-  'zIndexMax': string;
+  'zBase': string;
+  'zRaised': string;
+  'zDropdown': string;
+  'zSticky': string;
+  'zOverlay': string;
+  'zModal': string;
+  'zPopover': string;
+  'zToast': string;
+  'zTooltip': string;
+  'zMax': string;
 }
 
 export type DSTokenPath = keyof DSTokens;
