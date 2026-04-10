@@ -1,0 +1,41 @@
+---
+title: BankingWindowDot
+---
+
+# BankingWindowDot
+
+A small coloured dot that signals the current state of a banking settlement window. Purely decorative — hidden from assistive technology.
+
+## Usage
+
+```tsx
+import { BankingWindowDot } from '@ds-foundation/react';
+
+<BankingWindowDot status="open" />
+<BankingWindowDot status="closing" />  {/* pulses */}
+<BankingWindowDot status="closed" />
+
+{/* Custom size */}
+<BankingWindowDot status="open" size={10} />
+```
+
+## Status → colour mapping
+
+| Status | Colour | Behaviour |
+|--------|--------|-----------|
+| `open` | `--ds-success` | Static |
+| `closing` | `--ds-warning` | Pulses (`animate-pulse`) |
+| `closed` | `--ds-text-muted` | Static |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `status` | `"open" \| "closing" \| "closed"` | — | **Required.** Window state |
+| `size` | `number` | `6` | Dot diameter in pixels |
+| `className` | `string` | — | Additional classes |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | Forwarded to the `<span>` element |
+
+## Accessibility
+
+Renders with `aria-hidden="true"`. Pair with a visible text label or tooltip for the window status.

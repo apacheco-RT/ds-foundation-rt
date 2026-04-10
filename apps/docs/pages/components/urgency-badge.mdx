@@ -1,0 +1,43 @@
+---
+title: UrgencyBadge
+---
+
+# UrgencyBadge
+
+Compact badge communicating payment urgency. Maps four urgency levels to semantic feedback colours with sensible default labels.
+
+## Usage
+
+```tsx
+import { UrgencyBadge } from '@ds-foundation/react';
+
+<UrgencyBadge urgency="critical" />
+<UrgencyBadge urgency="watch" />
+<UrgencyBadge urgency="clear" />
+<UrgencyBadge urgency="skip" />
+
+{/* Override the default label */}
+<UrgencyBadge urgency="critical" label="Action Required" />
+```
+
+## Urgency → default labels
+
+| Urgency | Default label |
+|---------|--------------|
+| `critical` | Critical |
+| `watch` | Watch |
+| `clear` | Clear |
+| `skip` | Skip-node |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `urgency` | `"critical" \| "watch" \| "clear" \| "skip"` | — | **Required.** Urgency level |
+| `label` | `string` | — | Override the default label text |
+| `className` | `string` | — | Additional classes |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | Forwarded to the `<span>` element |
+
+## Accessibility
+
+`aria-label="Urgency: {label}"` is set on the span for screen reader announcement.

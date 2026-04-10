@@ -1,0 +1,35 @@
+---
+title: StateBadge
+---
+
+# StateBadge
+
+Workflow state label with optional next-state indicator. Used in treasury operations tables to show current state and where it transitions next.
+
+## Usage
+
+```tsx
+import { StateBadge } from '@ds-foundation/react';
+
+<StateBadge state="Pending" intent="warning" />
+<StateBadge state="Active" intent="success" />
+<StateBadge state="Failed" intent="error" />
+<StateBadge state="Draft" intent="neutral" />
+
+{/* With transition arrow */}
+<StateBadge state="Pending" nextState="Approved" intent="info" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `state` | `string` | — | **Required.** Current state label |
+| `nextState` | `string` | — | Upcoming state — renders `state → nextState` |
+| `intent` | `"info" \| "warning" \| "success" \| "error" \| "neutral"` | `"neutral"` | Colour intent |
+| `className` | `string` | — | Additional classes |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | Forwarded to the `<span>` element |
+
+## Accessibility
+
+Renders with `role="status"` and `aria-label` that includes both `state` and `nextState` when present. The `→` arrow is `aria-hidden`.

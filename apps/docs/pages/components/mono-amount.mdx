@@ -1,0 +1,55 @@
+---
+title: MonoAmount
+---
+
+# MonoAmount
+
+Tabular monospace currency amount. Formats a numeric value with the correct currency symbol and two decimal places. Optionally interactive — tapping reveals provenance detail.
+
+## Usage
+
+```tsx
+import { MonoAmount } from '@ds-foundation/react';
+
+<MonoAmount value={1250000} currency="USD" />
+{/* → $1,250,000.00 */}
+
+<MonoAmount value={45000} currency="EUR" color="success" />
+{/* → €45,000.00 in success colour */}
+
+<MonoAmount value={12500} currency="GBP" size="lg" />
+```
+
+Interactive with provenance tap:
+
+```tsx
+<MonoAmount
+  value={1250000}
+  currency="USD"
+  onProvenanceTap={() => openProvenanceDrawer(txId)}
+/>
+```
+
+## Deriving freshness state
+
+```tsx
+import { MonoAmount, deriveFreshnessState } from '@ds-foundation/react';
+
+const state = deriveFreshnessState(lastUpdatedAt);
+// 'fresh' (<5 min), 'watch' (5–15 min), 'stale' (≥15 min)
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | — | **Required.** Numeric amount |
+| `currency` | `"USD" \| "EUR" \| "GBP"` | — | **Required.** ISO currency |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Text size |
+| `color` | `"default" \| "success" \| "warning" \| "error" \| "muted" \| "brand"` | `"default"` | Text colour |
+| `onProvenanceTap` | `() => void` | — | Makes the amount clickable; adds `role="button"` and underline |
+| `...rest` | `HTMLAttributes<HTMLSpanElement>` | — | Forwarded to the `<span>` element |
+
+## Accessibility
+
+When `onProvenanceTap` is provided, the element gains `role="button"`, `tabIndex={0}`, and `aria-label="{formatted} — view provenance"`. Keyboard activation via Enter/Space is supported.

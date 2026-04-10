@@ -1,0 +1,37 @@
+---
+title: DetailCard
+---
+
+# DetailCard
+
+A sectioned surface card with a colour-accented title bar. Used to group related fields in detail views — account info, payment metadata, counterparty details.
+
+## Usage
+
+```tsx
+import { DetailCard } from '@ds-foundation/react';
+
+<DetailCard title="Payment Details">
+  <dl className="grid grid-cols-2 gap-2 text-sm">
+    <dt className="text-ds-text-muted">Amount</dt>
+    <dd>$1,250,000.00</dd>
+    <dt className="text-ds-text-muted">Currency</dt>
+    <dd>USD</dd>
+    <dt className="text-ds-text-muted">Value Date</dt>
+    <dd>2026-04-10</dd>
+  </dl>
+</DetailCard>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | — | **Required.** Section heading rendered in the accent bar |
+| `children` | `ReactNode` | — | Card body content |
+| `className` | `string` | — | Additional classes applied to the card wrapper |
+| `...rest` | `HTMLAttributes<HTMLDivElement>` | — | Forwarded to the root `<div>` |
+
+## Design notes
+
+The title bar uses `text-ds-primary` for the heading colour and `border-ds-border` for the separator. The card surface is `bg-ds-surface` — it adapts to all three themes automatically.

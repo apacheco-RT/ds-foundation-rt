@@ -1,0 +1,41 @@
+---
+title: Kbd
+---
+
+# Kbd
+
+Keyboard shortcut key display. Renders as a semantic `<kbd>` element with monospace type and a recessed surface.
+
+## Usage
+
+```tsx
+import { Kbd } from '@ds-foundation/react';
+
+<Kbd>⌘K</Kbd>
+<Kbd>Enter</Kbd>
+<Kbd>Ctrl</Kbd>
+```
+
+Inline in a sentence:
+
+```tsx
+<p>
+  Press <Kbd>⌘</Kbd> + <Kbd>K</Kbd> to open the command palette.
+</p>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | — | Key label or symbol |
+| `className` | `string` | — | Additional classes |
+| `...rest` | `HTMLAttributes<HTMLElement>` | — | Forwarded to the `<kbd>` element |
+
+## Wireframe mode
+
+In wireframe mode `sketch:` overrides remove the shadow and border-radius, and switch to `font-sans` for a neutral appearance.
+
+## Accessibility
+
+Uses the native `<kbd>` semantic element — screen readers announce it as a keyboard key.
