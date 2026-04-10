@@ -3,6 +3,8 @@
 All notable changes to this project are documented in this file.
 Per-package changelogs are in `packages/*/CHANGELOG.md`.
 
+## [Unreleased]
+
 ## 0.3.0 — 2026-04-09
 
 ### Added
