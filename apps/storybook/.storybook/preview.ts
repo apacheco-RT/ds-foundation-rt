@@ -11,6 +11,7 @@ const preview: Preview = {
       list: [
         { name: 'light', class: '', color: '#f8fafc' },
         { name: 'dark', class: 'dark', color: '#0f172a', default: false },
+        { name: 'wireframe', class: 'wireframe', color: '#e2e8f0', default: false },
       ],
       target: 'html',
       attribute: 'data-theme',
