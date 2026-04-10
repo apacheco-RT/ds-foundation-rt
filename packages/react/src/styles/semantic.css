@@ -61,4 +61,30 @@
   --ds-ease-out:        cubic-bezier(0, 0, 0.2, 1);
   --ds-ease-in-out:     cubic-bezier(0.4, 0, 0.2, 1);
   --ds-ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Interactive states ─────────────────────────── */
+  --ds-interactive:          var(--ds-color-interactive-default);
+  --ds-interactive-hover:    var(--ds-color-interactive-hover);
+  --ds-interactive-active:   var(--ds-color-interactive-active);
+  --ds-interactive-disabled: var(--ds-color-interactive-disabled);
+  --ds-interactive-selected: var(--ds-color-interactive-selected);
+  --ds-interactive-selected-bg: var(--ds-color-interactive-selected-bg);
+
+  /* ── Focus ring ─────────────────────────────────── */
+  --ds-focus-ring-color:  var(--ds-color-border-focus);
+  --ds-focus-ring-width:  2px;
+  --ds-focus-ring-offset: 2px;
+
+  /* ── Feedback — button-usable sets ─────────────── */
+  --ds-success-text:    var(--ds-color-feedback-success-text);
+  --ds-success-border:  var(--ds-color-feedback-success-border);
+  --ds-warning-text:    var(--ds-color-feedback-warning-text);
+  --ds-warning-border:  var(--ds-color-feedback-warning-border);
+  --ds-danger-text:     var(--ds-color-feedback-error-text);
+  --ds-danger-border:   var(--ds-color-feedback-error-border);
+  --ds-info-text:       var(--ds-color-feedback-info-text);
+  --ds-info-border:     var(--ds-color-feedback-info-border);
+
+  /* ── Primary active state ───────────────────────── */
+  --ds-primary-active:  var(--ds-color-brand-primary-active);
 }

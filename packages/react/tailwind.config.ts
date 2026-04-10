@@ -45,6 +45,36 @@ export default {
           warning:          'var(--ds-warning)',
           danger:           'var(--ds-danger)',
           info:             'var(--ds-info)',
+
+          // Interactive states
+          interactive:                 'var(--ds-interactive)',
+          'interactive-hover':         'var(--ds-interactive-hover)',
+          'interactive-active':        'var(--ds-interactive-active)',
+          'interactive-disabled':      'var(--ds-interactive-disabled)',
+          'interactive-selected':      'var(--ds-interactive-selected)',
+          'interactive-selected-bg':   'var(--ds-interactive-selected-bg)',
+
+          // Primary active
+          'primary-active':             'var(--ds-primary-active)',
+
+          // Focus ring
+          'focus-ring':                 'var(--ds-focus-ring-color)',
+
+          // Feedback text + border (for outline/ghost buttons)
+          'success-text':               'var(--ds-success-text)',
+          'success-border':             'var(--ds-success-border)',
+          'warning-text':               'var(--ds-warning-text)',
+          'warning-border':             'var(--ds-warning-border)',
+          'danger-text':                'var(--ds-danger-text)',
+          'danger-border':              'var(--ds-danger-border)',
+          'info-text':                  'var(--ds-info-text)',
+          'info-border':                'var(--ds-info-border)',
+
+          // Feedback backgrounds (for hover fills on outline/ghost buttons)
+          'feedback-success-bg':        'var(--ds-feedback-success-bg)',
+          'feedback-error-bg':          'var(--ds-feedback-error-bg)',
+          'feedback-warning-bg':        'var(--ds-feedback-warning-bg)',
+          'feedback-info-bg':           'var(--ds-feedback-info-bg)',
         },
       },
       boxShadow: {
@@ -92,6 +122,7 @@ export default {
     animate,
     plugin(function ({ addVariant }) {
       addVariant('sketch', '[data-theme="wireframe"] &')
+      addVariant('hifi', ':not([data-theme="wireframe"]) &')
     }),
   ],
 } satisfies Config;
