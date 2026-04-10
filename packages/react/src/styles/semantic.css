@@ -8,7 +8,7 @@
   --ds-bg:              var(--ds-color-surface-page);
   --ds-surface:         var(--ds-color-surface-default);
   --ds-surface-up:      var(--ds-color-surface-raised);
-  --ds-overlay:         var(--ds-color-surface-overlay);
+  --ds-overlay:         rgba(0, 0, 0, 0.6); /* modal backdrop scrim — intentionally not a token alias */
   --ds-sunken:          var(--ds-color-surface-sunken);
 
   /* ── Text ───────────────────────────────────────────── */
